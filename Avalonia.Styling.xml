@@ -1,0 +1,659 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Avalonia.Styling</name>
+    </assembly>
+    <members>
+        <member name="T:Avalonia.LogicalTree.ILogical">
+            <summary>
+            Represents a node in the logical tree.
+            </summary>
+        </member>
+        <member name="E:Avalonia.LogicalTree.ILogical.AttachedToLogicalTree">
+            <summary>
+            Raised when the control is attached to a rooted logical tree.
+            </summary>
+        </member>
+        <member name="E:Avalonia.LogicalTree.ILogical.DetachedFromLogicalTree">
+            <summary>
+            Raised when the control is detached from a rooted logical tree.
+            </summary>
+        </member>
+        <member name="P:Avalonia.LogicalTree.ILogical.IsAttachedToLogicalTree">
+            <summary>
+            Gets a value indicating whether the element is attached to a rooted logical tree.
+            </summary>
+        </member>
+        <member name="P:Avalonia.LogicalTree.ILogical.LogicalParent">
+            <summary>
+            Gets the logical parent.
+            </summary>
+        </member>
+        <member name="P:Avalonia.LogicalTree.ILogical.LogicalChildren">
+            <summary>
+            Gets the logical children.
+            </summary>
+        </member>
+        <member name="M:Avalonia.LogicalTree.ILogical.NotifyDetachedFromLogicalTree(Avalonia.LogicalTree.LogicalTreeAttachmentEventArgs)">
+            <summary>
+            Notifies the control that it is being detached from a rooted logical tree.
+            </summary>
+            <param name="e">The event args.</param>
+            <remarks>
+            This method will be called automatically by the framework, you should not need to call
+            this method yourself.
+            </remarks>
+        </member>
+        <member name="T:Avalonia.LogicalTree.LogicalTreeAttachmentEventArgs">
+            <summary>
+            Holds the event arguments for the <see cref="E:Avalonia.LogicalTree.ILogical.AttachedToLogicalTree"/> and 
+            <see cref="E:Avalonia.LogicalTree.ILogical.DetachedFromLogicalTree"/> events.
+            </summary>
+        </member>
+        <member name="M:Avalonia.LogicalTree.LogicalTreeAttachmentEventArgs.#ctor(Avalonia.Styling.IStyleHost)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.LogicalTree.LogicalTreeAttachmentEventArgs"/> class.
+            </summary>
+            <param name="root">The root of the logical tree.</param>
+        </member>
+        <member name="P:Avalonia.LogicalTree.LogicalTreeAttachmentEventArgs.Root">
+            <summary>
+            Gets the root of the logical tree that the control is being attached to or detached from.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Styling.ActivatedSubject">
+            <summary>
+            A subject which is switched on or off according to an activator observable.
+            </summary>
+            <remarks>
+            An <see cref="T:Avalonia.Styling.ActivatedSubject"/> has two inputs: an activator observable and either an
+            <see cref="T:Avalonia.Styling.ActivatedValue"/> or a <see cref="P:Avalonia.Styling.ActivatedSubject.Source"/> observable which produces the
+            activated value. When the activator produces true, the <see cref="T:Avalonia.Styling.ActivatedObservable"/> will
+            produce the current activated value. When the activator produces false it will produce
+            <see cref="F:Avalonia.AvaloniaProperty.UnsetValue"/>.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Styling.ActivatedSubject.#ctor(System.IObservable{System.Boolean},System.Reactive.Subjects.ISubject{System.Object},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Styling.ActivatedSubject"/> class.
+            </summary>
+            <param name="activator">The activator.</param>
+            <param name="source">An observable that produces the activated value.</param>
+            <param name="description">The binding description.</param>
+        </member>
+        <member name="P:Avalonia.Styling.ActivatedSubject.Source">
+            <summary>
+            Gets the underlying subject.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Styling.ActivatedSubject.OnCompleted">
+            <summary>
+            Notifies all subscribed observers about the end of the sequence.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Styling.ActivatedSubject.OnError(System.Exception)">
+            <summary>
+            Notifies all subscribed observers with the exception.
+            </summary>
+            <param name="error">The exception to send to all subscribed observers.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="error"/> is null.</exception>
+        </member>
+        <member name="M:Avalonia.Styling.ActivatedSubject.OnNext(System.Object)">
+            <summary>
+            Notifies all subscribed observers with the value.
+            </summary>
+            <param name="value">The value to send to all subscribed observers.</param>        
+        </member>
+        <member name="T:Avalonia.Styling.ActivatedValue">
+            <summary>
+            An value which is switched on or off according to an activator observable.
+            </summary>
+            <remarks>
+            An <see cref="T:Avalonia.Styling.ActivatedValue"/> has two inputs: an activator observable and an
+            <see cref="P:Avalonia.Styling.ActivatedValue.Value"/>. When the activator produces true, the 
+            <see cref="T:Avalonia.Styling.ActivatedValue"/> will produce the current value. When the activator 
+            produces false it will produce <see cref="F:Avalonia.AvaloniaProperty.UnsetValue"/>.
+            </remarks>
+        </member>
+        <member name="F:Avalonia.Styling.ActivatedValue._activator">
+            <summary>
+            The activator.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Styling.ActivatedValue.#ctor(System.IObservable{System.Boolean},System.Object,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Styling.ActivatedObservable"/> class.
+            </summary>
+            <param name="activator">The activator.</param>
+            <param name="value">The activated value.</param>
+            <param name="description">The binding description.</param>
+        </member>
+        <member name="P:Avalonia.Styling.ActivatedValue.Value">
+            <summary>
+            Gets the activated value.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Styling.ActivatedValue.Description">
+            <summary>
+            Gets a description of the binding.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Styling.ActivatedValue.SubscribeCore(System.IObserver{System.Object})">
+            <summary>
+            Notifies the provider that an observer is to receive notifications.
+            </summary>
+            <param name="observer">The observer.</param>
+            <returns>IDisposable object used to unsubscribe from the observable sequence.</returns>
+        </member>
+        <member name="P:Avalonia.Styling.TemplateSelector.InTemplate">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Styling.TemplateSelector.TargetType">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Styling.DescendentSelector.InTemplate">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Styling.DescendentSelector.TargetType">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Styling.ChildSelector.InTemplate">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Styling.ChildSelector.TargetType">
+            <inheritdoc/>
+        </member>
+        <member name="T:Avalonia.Styling.IGlobalStyles">
+            <summary>
+            Defines the style host that provides styles global to the application.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Styling.ISetter">
+            <summary>
+            Represents a setter for a <see cref="T:Avalonia.Styling.Style"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Styling.ISetter.Apply(Avalonia.Styling.IStyle,Avalonia.Styling.IStyleable,System.IObservable{System.Boolean})">
+            <summary>
+            Applies the setter to a control.
+            </summary>
+            <param name="style">The style that is being applied.</param>
+            <param name="control">The control.</param>
+            <param name="activator">An optional activator.</param>
+        </member>
+        <member name="T:Avalonia.Styling.IStyle">
+            <summary>
+            Defines the interface for styles.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Styling.IStyle.Attach(Avalonia.Styling.IStyleable,Avalonia.Styling.IStyleHost)">
+            <summary>
+            Attaches the style to a control if the style's selector matches.
+            </summary>
+            <param name="control">The control to attach to.</param>
+            <param name="container">
+            The control that contains this style. May be null.
+            </param>
+        </member>
+        <member name="M:Avalonia.Styling.IStyle.FindResource(System.String)">
+            <summary>
+            Tries to find a named resource within the style.
+            </summary>
+            <param name="name">The resource name.</param>
+            <returns>
+            The resource if found, otherwise <see cref="F:Avalonia.AvaloniaProperty.UnsetValue"/>.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Styling.IStyleable">
+            <summary>
+            Interface for styleable elements.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Styling.IStyleable.StyleDetach">
+            <summary>
+            Signalled when the control's style should be removed.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Styling.IStyleable.Classes">
+            <summary>
+            Gets the list of classes for the control.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Styling.IStyleable.StyleKey">
+            <summary>
+            Gets the type by which the control is styled.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Styling.IStyleable.TemplatedParent">
+            <summary>
+            Gets the template parent of this element if the control comes from a template.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Styling.IStyleRoot">
+            <summary>
+            Denotes the root <see cref="T:Avalonia.Styling.IStyleHost"/> in a tree.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Styling.IStyleHost">
+            <summary>
+            Defines an element that has a <see cref="P:Avalonia.Styling.IStyleHost.Styles"/> collection.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Styling.IStyleHost.Styles">
+            <summary>
+            Gets the styles for the element.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Styling.IStyleHost.StylingParent">
+            <summary>
+            Gets the parent style host element.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Styling.SelectorMatch">
+            <summary>
+            Holds the result of a <see cref="!:FuncSelector"/> match.
+            </summary>
+            <remarks>
+            There are two types of selectors - ones whose match can never change for a particular
+            control (such as <see cref="!:Selectors.OfType&lt;T&gt;(FuncSelector)"/>) and ones whose result can
+            change over time (such as <see cref="!:Selectors.Class(FuncSelector, string)"/>. For the first
+            category of selectors, the value of <see cref="P:Avalonia.Styling.SelectorMatch.ImmediateResult"/> will be set but for the
+            second, <see cref="P:Avalonia.Styling.SelectorMatch.ImmediateResult"/> will be null and <see cref="P:Avalonia.Styling.SelectorMatch.ObservableResult"/> will
+            hold an observable which tracks the match.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Styling.SelectorMatch.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Styling.SelectorMatch"/> class.
+            </summary>
+            <param name="match">The immediate match value.</param>
+        </member>
+        <member name="M:Avalonia.Styling.SelectorMatch.#ctor(System.IObservable{System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Styling.SelectorMatch"/> class.
+            </summary>
+            <param name="match">The observable match value.</param>
+        </member>
+        <member name="P:Avalonia.Styling.SelectorMatch.ImmediateResult">
+            <summary>
+            Gets the immedate result of the selector match, in the case of selectors that cannot
+            change over time.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Styling.SelectorMatch.ObservableResult">
+            <summary>
+            Gets an observable which tracks the selector match, in the case of selectors that can
+            change over time.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Styling.Selector">
+            <summary>
+            A selector in a <see cref="T:Avalonia.Styling.Style"/>.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Styling.Selector.InTemplate">
+            <summary>
+            Gets a value indicating whether either this selector or a previous selector has moved
+            into a template.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Styling.Selector.TargetType">
+            <summary>
+            Gets the target type of the selector, if available.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Styling.Selector.Match(Avalonia.Styling.IStyleable,System.Boolean)">
+            <summary>
+            Tries to match the selector with a control.
+            </summary>
+            <param name="control">The control.</param>
+            <param name="subscribe">
+            Whether the match should subscribe to changes in order to track the match over time,
+            or simply return an immediate result.
+            </param>
+            <returns>A <see cref="T:Avalonia.Styling.SelectorMatch"/>.</returns>
+        </member>
+        <member name="M:Avalonia.Styling.Selector.Evaluate(Avalonia.Styling.IStyleable,System.Boolean)">
+            <summary>
+            Evaluates the selector for a match.
+            </summary>
+            <param name="control">The control.</param>
+            <param name="subscribe">
+            Whether the match should subscribe to changes in order to track the match over time,
+            or simply return an immediate result.
+            </param>
+            <returns>A <see cref="T:Avalonia.Styling.SelectorMatch"/>.</returns>
+        </member>
+        <member name="M:Avalonia.Styling.Selector.MovePrevious">
+            <summary>
+            Moves to the previous selector.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Styling.Selectors">
+            <summary>
+            Extension methods for <see cref="T:Avalonia.Styling.Selector"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Styling.Selectors.Child(Avalonia.Styling.Selector)">
+            <summary>
+            Returns a selector which matches a previous selector's child.
+            </summary>
+            <param name="previous">The previous selector.</param>
+            <returns>The selector.</returns>
+        </member>
+        <member name="M:Avalonia.Styling.Selectors.Class(Avalonia.Styling.Selector,System.String)">
+            <summary>
+            Returns a selector which matches a control's style class.
+            </summary>
+            <param name="previous">The previous selector.</param>
+            <param name="name">The name of the style class.</param>
+            <returns>The selector.</returns>
+        </member>
+        <member name="M:Avalonia.Styling.Selectors.Descendent(Avalonia.Styling.Selector)">
+            <summary>
+            Returns a selector which matches a descendent of a previous selector.
+            </summary>
+            <param name="previous">The previous selector.</param>
+            <returns>The selector.</returns>
+        </member>
+        <member name="M:Avalonia.Styling.Selectors.Is(Avalonia.Styling.Selector,System.Type)">
+            <summary>
+            Returns a selector which matches a type or a derived type.
+            </summary>
+            <param name="previous">The previous selector.</param>
+            <param name="type">The type.</param>
+            <returns>The selector.</returns>
+        </member>
+        <member name="M:Avalonia.Styling.Selectors.Is``1(Avalonia.Styling.Selector)">
+            <summary>
+            Returns a selector which matches a type or a derived type.
+            </summary>
+            <typeparam name="T">The type.</typeparam>
+            <param name="previous">The previous selector.</param>
+            <returns>The selector.</returns>
+        </member>
+        <member name="M:Avalonia.Styling.Selectors.Name(Avalonia.Styling.Selector,System.String)">
+            <summary>
+            Returns a selector which matches a control's Name.
+            </summary>
+            <param name="previous">The previous selector.</param>
+            <param name="name">The name.</param>
+            <returns>The selector.</returns>
+        </member>
+        <member name="M:Avalonia.Styling.Selectors.OfType(Avalonia.Styling.Selector,System.Type)">
+            <summary>
+            Returns a selector which matches a type.
+            </summary>
+            <param name="previous">The previous selector.</param>
+            <param name="type">The type.</param>
+            <returns>The selector.</returns>
+        </member>
+        <member name="M:Avalonia.Styling.Selectors.OfType``1(Avalonia.Styling.Selector)">
+            <summary>
+            Returns a selector which matches a type.
+            </summary>
+            <typeparam name="T">The type.</typeparam>
+            <param name="previous">The previous selector.</param>
+            <returns>The selector.</returns>
+        </member>
+        <member name="M:Avalonia.Styling.Selectors.PropertyEquals``1(Avalonia.Styling.Selector,Avalonia.AvaloniaProperty{``0},System.Object)">
+            <summary>
+            Returns a selector which matches a control with the specified property value.
+            </summary>
+            <typeparam name="T">The property type.</typeparam>
+            <param name="previous">The previous selector.</param>
+            <param name="property">The property.</param>
+            <param name="value">The property value.</param>
+            <returns>The selector.</returns>
+        </member>
+        <member name="M:Avalonia.Styling.Selectors.PropertyEquals(Avalonia.Styling.Selector,Avalonia.AvaloniaProperty,System.Object)">
+            <summary>
+            Returns a selector which matches a control with the specified property value.
+            </summary>
+            <param name="previous">The previous selector.</param>
+            <param name="property">The property.</param>
+            <param name="value">The property value.</param>
+            <returns>The selector.</returns>
+        </member>
+        <member name="M:Avalonia.Styling.Selectors.Template(Avalonia.Styling.Selector)">
+            <summary>
+            Returns a selector which enters a lookless control's template.
+            </summary>
+            <param name="previous">The previous selector.</param>
+            <returns>The selector.</returns>
+        </member>
+        <member name="T:Avalonia.Styling.Setter">
+            <summary>
+            A setter for a <see cref="T:Avalonia.Styling.Style"/>.
+            </summary>
+            <remarks>
+            A <see cref="T:Avalonia.Styling.Setter"/> is used to set a <see cref="T:Avalonia.AvaloniaProperty"/> value on a
+            <see cref="T:Avalonia.AvaloniaObject"/> depending on a condition.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Styling.Setter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Styling.Setter"/> class.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Styling.Setter.#ctor(Avalonia.AvaloniaProperty,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Styling.Setter"/> class.
+            </summary>
+            <param name="property">The property to set.</param>
+            <param name="value">The property value.</param>
+        </member>
+        <member name="P:Avalonia.Styling.Setter.Property">
+            <summary>
+            Gets or sets the property to set.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Styling.Setter.Value">
+            <summary>
+            Gets or sets the property value.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Styling.Setter.Apply(Avalonia.Styling.IStyle,Avalonia.Styling.IStyleable,System.IObservable{System.Boolean})">
+            <summary>
+            Applies the setter to a control.
+            </summary>
+            <param name="style">The style that is being applied.</param>
+            <param name="control">The control.</param>
+            <param name="activator">An optional activator.</param>
+        </member>
+        <member name="T:Avalonia.Styling.Style">
+            <summary>
+            Defines a style.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Styling.Style.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Styling.Style"/> class.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Styling.Style.#ctor(System.Func{Avalonia.Styling.Selector,Avalonia.Styling.Selector})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Styling.Style"/> class.
+            </summary>
+            <param name="selector">The style selector.</param>
+        </member>
+        <member name="P:Avalonia.Styling.Style.Resources">
+            <summary>
+            Gets or sets a dictionary of style resources.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Styling.Style.Selector">
+            <summary>
+            Gets or sets style's selector.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Styling.Style.Setters">
+            <summary>
+            Gets or sets style's setters.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Styling.Style.Attach(Avalonia.Styling.IStyleable,Avalonia.Styling.IStyleHost)">
+            <summary>
+            Attaches the style to a control if the style's selector matches.
+            </summary>
+            <param name="control">The control to attach to.</param>
+            <param name="container">
+            The control that contains this style. May be null.
+            </param>
+        </member>
+        <member name="M:Avalonia.Styling.Style.FindResource(System.String)">
+            <summary>
+            Tries to find a named resource within the style.
+            </summary>
+            <param name="name">The resource name.</param>
+            <returns>
+            The resource if found, otherwise <see cref="F:Avalonia.AvaloniaProperty.UnsetValue"/>.
+            </returns>
+        </member>
+        <member name="M:Avalonia.Styling.Style.ToString">
+            <summary>
+            Returns a string representation of the style.
+            </summary>
+            <returns>A string representation of the style.</returns>
+        </member>
+        <member name="M:Avalonia.Styling.Style.ControlDetach(Avalonia.Styling.IStyleable)">
+            <summary>
+            Called when a control's <see cref="P:Avalonia.Styling.IStyleable.StyleDetach"/> is signalled to remove
+            all applied styles.
+            </summary>
+            <param name="control">The control.</param>
+        </member>
+        <member name="T:Avalonia.Styling.ActivatedObservable">
+            <summary>
+            An observable which is switched on or off according to an activator observable.
+            </summary>
+            <remarks>
+            An <see cref="T:Avalonia.Styling.ActivatedObservable"/> has two inputs: an activator observable a 
+            <see cref="P:Avalonia.Styling.ActivatedObservable.Source"/> observable which produces the activated value. When the activator 
+            produces true, the <see cref="T:Avalonia.Styling.ActivatedObservable"/> will produce the current activated 
+            value. When the activator produces false it will produce
+            <see cref="F:Avalonia.AvaloniaProperty.UnsetValue"/>.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Styling.ActivatedObservable.#ctor(System.IObservable{System.Boolean},System.IObservable{System.Object},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Styling.ActivatedObservable"/> class.
+            </summary>
+            <param name="activator">The activator.</param>
+            <param name="source">An observable that produces the activated value.</param>
+            <param name="description">The binding description.</param>
+        </member>
+        <member name="P:Avalonia.Styling.ActivatedObservable.Activator">
+            <summary>
+            Gets the activator observable.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Styling.ActivatedObservable.Description">
+            <summary>
+            Gets a description of the binding.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Styling.ActivatedObservable.Source">
+            <summary>
+            Gets an observable which produces the <see cref="T:Avalonia.Styling.ActivatedValue"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Styling.ActivatedObservable.SubscribeCore(System.IObserver{System.Object})">
+            <summary>
+            Notifies the provider that an observer is to receive notifications.
+            </summary>
+            <param name="observer">The observer.</param>
+            <returns>IDisposable object used to unsubscribe from the observable sequence.</returns>
+        </member>
+        <member name="M:Avalonia.Styling.StyleExtensions.FindStyleResource(Avalonia.Styling.IStyleHost,System.String)">
+            <summary>
+            Tries to find a named style resource.
+            </summary>
+            <param name="control">The control from which to find the resource.</param>
+            <param name="name">The resource name.</param>
+            <returns>
+            The resource if found, otherwise <see cref="F:Avalonia.AvaloniaProperty.UnsetValue"/>.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Styling.Styles">
+            <summary>
+            A style that consists of a number of child styles.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Styling.Styles.Attach(Avalonia.Styling.IStyleable,Avalonia.Styling.IStyleHost)">
+            <summary>
+            Attaches the style to a control if the style's selector matches.
+            </summary>
+            <param name="control">The control to attach to.</param>
+            <param name="container">
+            The control that contains this style. May be null.
+            </param>
+        </member>
+        <member name="M:Avalonia.Styling.Styles.FindResource(System.String)">
+            <summary>
+            Tries to find a named resource within the style.
+            </summary>
+            <param name="name">The resource name.</param>
+            <returns>
+            The resource if found, otherwise <see cref="F:Avalonia.AvaloniaProperty.UnsetValue"/>.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Styling.PropertyEqualsSelector">
+            <summary>
+            A selector that matches the common case of a type and/or name followed by a collection of
+            style classes and pseudoclasses.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Styling.PropertyEqualsSelector.InTemplate">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Styling.PropertyEqualsSelector.Name">
+            <summary>
+            Gets the name of the control to match.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Styling.PropertyEqualsSelector.TargetType">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Styling.PropertyEqualsSelector.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Styling.PropertyEqualsSelector.Evaluate(Avalonia.Styling.IStyleable,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Avalonia.Styling.TypeNameAndClassSelector">
+            <summary>
+            A selector that matches the common case of a type and/or name followed by a collection of
+            style classes and pseudoclasses.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Styling.TypeNameAndClassSelector.InTemplate">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Styling.TypeNameAndClassSelector.Name">
+            <summary>
+            Gets the name of the control to match.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Styling.TypeNameAndClassSelector.TargetType">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Styling.TypeNameAndClassSelector.IsConcreteType">
+            <summary>
+            Whether the selector matches the concrete <see cref="P:Avalonia.Styling.TypeNameAndClassSelector.TargetType"/> or any object which
+            implements <see cref="P:Avalonia.Styling.TypeNameAndClassSelector.TargetType"/>.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Styling.TypeNameAndClassSelector.Classes">
+            <summary>
+            The style classes which the selector matches.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Styling.TypeNameAndClassSelector.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Styling.TypeNameAndClassSelector.Evaluate(Avalonia.Styling.IStyleable,System.Boolean)">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,3231 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Avalonia.Base</name>
+    </assembly>
+    <members>
+        <member name="T:Avalonia.Data.BindingError">
+            <summary>
+            Represents a recoverable binding error.
+            </summary>
+            <remarks>
+            When produced by a binding source observable, informs the binding system that an error
+            occurred. It can also provide an optional fallback value to be pushed to the binding
+            target. 
+            
+            Instead of using <see cref="T:Avalonia.Data.BindingError"/>, one could simply not push a value (in the
+            case of a no fallback value) or push a fallback value, but BindingError also causes an
+            error to be logged with the correct binding target.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Data.BindingError.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Data.BindingError"/> class.
+            </summary>
+            <param name="exception">An exception describing the binding error.</param>
+        </member>
+        <member name="M:Avalonia.Data.BindingError.#ctor(System.Exception,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Data.BindingError"/> class.
+            </summary>
+            <param name="exception">An exception describing the binding error.</param>
+            <param name="fallbackValue">The fallback value.</param>
+        </member>
+        <member name="P:Avalonia.Data.BindingError.Exception">
+            <summary>
+            Gets the exception describing the binding error.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Data.BindingError.FallbackValue">
+            <summary>
+            Get the fallback value.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Data.BindingError.UseFallbackValue">
+            <summary>
+            Get a value indicating whether the fallback value should be pushed to the binding
+            target.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Data.ValidationStatus">
+            <summary>
+            Contains information on if the current object passed validation.
+            Subclasses of this class contain additional information depending on the method of validation checking. 
+            </summary>
+        </member>
+        <member name="P:Avalonia.Data.ValidationStatus.IsValid">
+            <summary>
+            True when the data passes validation; otherwise, false.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Data.ValidationStatus.Match(Avalonia.Data.ValidationMethods)">
+            <summary>
+            Checks if this validation status came from a currently enabled method of validation checking.
+            </summary>
+            <param name="enabledMethods">The enabled methods of validation checking.</param>
+            <returns>True if enabled; otherwise, false.</returns>
+        </member>
+        <member name="T:Avalonia.Data.AssignBindingAttribute">
+            <summary>
+            Signifies that a binding can be assigned to a property.
+            </summary>
+            <remarks>
+            Usually in markup, when a binding is set for a property that property will be bound. 
+            Applying this attribute to a property indicates that the binding should be assigned to 
+            the property rather than bound.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Data.BindingOperations.Apply(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty,Avalonia.Data.InstancedBinding,System.Object)">
+            <summary>
+            Applies an <see cref="T:Avalonia.Data.InstancedBinding"/> a property on an <see cref="T:Avalonia.IAvaloniaObject"/>.
+            </summary>
+            <param name="target">The target object.</param>
+            <param name="property">The property to bind.</param>
+            <param name="binding">The instanced binding.</param>
+            <param name="anchor">
+            An optional anchor from which to locate required context. When binding to objects that
+            are not in the logical tree, certain types of binding need an anchor into the tree in 
+            order to locate named controls or resources. The <paramref name="anchor"/> parameter 
+            can be used to provice this context.
+            </param>
+            <returns>An <see cref="T:System.IDisposable"/> which can be used to cancel the binding.</returns>
+        </member>
+        <member name="T:Avalonia.Data.InstancedBinding">
+            <summary>
+            Holds the result of calling <see cref="M:Avalonia.Data.IBinding.Initiate(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty,System.Object)"/>.
+            </summary>
+            <remarks>
+            Whereas an <see cref="T:Avalonia.Data.IBinding"/> holds a description of a binding such as "Bind to the X
+            property on a control's DataContext"; this class represents a binding that has been 
+            *instanced* by calling <see cref="M:Avalonia.Data.IBinding.Initiate(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty,System.Object)"/>
+            on a target object.
+            
+            When a binding is initiated, it can return one of 3 possible sources for the binding:
+            - An <see cref="T:System.Reactive.Subjects.ISubject`1"/> which can be used for any type of binding.
+            - An <see cref="T:System.IObservable`1"/> which can be used for all types of bindings except
+             <see cref="F:Avalonia.Data.BindingMode.OneWayToSource"/> and <see cref="F:Avalonia.Data.BindingMode.TwoWay"/>.
+            - A plain object, which can only represent a <see cref="F:Avalonia.Data.BindingMode.OneTime"/> binding.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Data.InstancedBinding.#ctor(System.Object,Avalonia.Data.BindingPriority)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Data.InstancedBinding"/> class.
+            </summary>
+            <param name="value">
+            The value used for the <see cref="F:Avalonia.Data.BindingMode.OneTime"/> binding.
+            </param>
+            <param name="priority">The binding priority.</param>
+        </member>
+        <member name="M:Avalonia.Data.InstancedBinding.#ctor(System.IObservable{System.Object},Avalonia.Data.BindingMode,Avalonia.Data.BindingPriority)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Data.InstancedBinding"/> class.
+            </summary>
+            <param name="observable">The observable for a one-way binding.</param>
+            <param name="mode">The binding mode.</param>
+            <param name="priority">The binding priority.</param>
+        </member>
+        <member name="M:Avalonia.Data.InstancedBinding.#ctor(System.Reactive.Subjects.ISubject{System.Object},Avalonia.Data.BindingMode,Avalonia.Data.BindingPriority)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Data.InstancedBinding"/> class.
+            </summary>
+            <param name="subject">The subject for a two-way binding.</param>
+            <param name="mode">The binding mode.</param>
+            <param name="priority">The binding priority.</param>
+        </member>
+        <member name="P:Avalonia.Data.InstancedBinding.Mode">
+            <summary>
+            Gets the binding mode with which the binding was initiated.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Data.InstancedBinding.Priority">
+            <summary>
+            Gets the binding priority.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Data.InstancedBinding.Value">
+            <summary>
+            Gets the value used for a <see cref="F:Avalonia.Data.BindingMode.OneTime"/> binding.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Data.InstancedBinding.Observable">
+            <summary>
+            Gets the observable for a one-way binding.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Data.InstancedBinding.Subject">
+            <summary>
+            Gets the subject for a two-way binding.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Data.IBinding">
+            <summary>
+            Holds a binding that can be applied to a property on an object.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Data.IBinding.Initiate(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty,System.Object)">
+            <summary>
+            Initiates the binding on a target object.
+            </summary>
+            <param name="target">The target instance.</param>
+            <param name="targetProperty">The target property. May be null.</param>
+            <param name="anchor">
+            An optional anchor from which to locate required context. When binding to objects that
+            are not in the logical tree, certain types of binding need an anchor into the tree in 
+            order to locate named controls or resources. The <paramref name="anchor"/> parameter 
+            can be used to provice this context.
+            </param>
+            <returns>
+            A <see cref="T:Avalonia.Data.InstancedBinding"/> or null if the binding could not be resolved.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Data.IndexerDescriptor">
+            <summary>
+            Holds a description of a binding for <see cref="T:Avalonia.AvaloniaObject"/>'s [] operator.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Data.IndexerDescriptor.Mode">
+            <summary>
+            Gets or sets the binding mode.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Data.IndexerDescriptor.Priority">
+            <summary>
+            Gets or sets the binding priority.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Data.IndexerDescriptor.Property">
+            <summary>
+            Gets or sets the source property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Data.IndexerDescriptor.Source">
+            <summary>
+            Gets or sets the source object.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Data.IndexerDescriptor.SourceObservable">
+            <summary>
+            Gets or sets the source observable.
+            </summary>
+            <remarks>
+            If null, then <see cref="P:Avalonia.Data.IndexerDescriptor.Source"/>.<see cref="P:Avalonia.Data.IndexerDescriptor.Property"/> will be used.
+            </remarks>
+        </member>
+        <member name="P:Avalonia.Data.IndexerDescriptor.Description">
+            <summary>
+            Gets a description of the binding.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Data.IndexerDescriptor.op_LogicalNot(Avalonia.Data.IndexerDescriptor)">
+            <summary>
+            Makes a two-way binding.
+            </summary>
+            <param name="binding">The current binding.</param>
+            <returns>A two-way binding.</returns>
+        </member>
+        <member name="M:Avalonia.Data.IndexerDescriptor.op_OnesComplement(Avalonia.Data.IndexerDescriptor)">
+            <summary>
+            Makes a two-way binding.
+            </summary>
+            <param name="binding">The current binding.</param>
+            <returns>A two-way binding.</returns>
+        </member>
+        <member name="M:Avalonia.Data.IndexerDescriptor.WithMode(Avalonia.Data.BindingMode)">
+            <summary>
+            Modifies the binding mode.
+            </summary>
+            <param name="mode">The binding mode.</param>
+            <returns>The object that the method was called on.</returns>
+        </member>
+        <member name="M:Avalonia.Data.IndexerDescriptor.WithPriority(Avalonia.Data.BindingPriority)">
+            <summary>
+            Modifies the binding priority.
+            </summary>
+            <param name="priority">The binding priority.</param>
+            <returns>The object that the method was called on.</returns>
+        </member>
+        <member name="M:Avalonia.Data.IndexerDescriptor.SubscribeCore(System.IObserver{System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Avalonia.Data.BindingMode">
+            <summary>
+            Defines possible binding modes.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Data.BindingMode.Default">
+            <summary>
+            Uses the default binding mode specified for the property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Data.BindingMode.OneWay">
+            <summary>
+            Binds one way from source to target.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Data.BindingMode.TwoWay">
+            <summary>
+            Binds two-way with the initial value coming from the target.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Data.BindingMode.OneTime">
+            <summary>
+            Updates the target when the application starts or when the data context changes.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Data.BindingMode.OneWayToSource">
+            <summary>
+            Binds one way from target to source.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Data.BindingPriority">
+            <summary>
+            The priority of a binding.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Data.BindingPriority.Animation">
+            <summary>
+            A value that comes from an animation.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Data.BindingPriority.LocalValue">
+            <summary>
+            A local value.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Data.BindingPriority.StyleTrigger">
+            <summary>
+            A triggered style binding.
+            </summary>
+            <remarks>
+            A style trigger is a selector such as .class which overrides a
+            <see cref="F:Avalonia.Data.BindingPriority.TemplatedParent"/> binding. In this way, a basic control can have
+            for example a Background from the templated parent which changes when the
+            control has the :pointerover class.
+            </remarks>
+        </member>
+        <member name="F:Avalonia.Data.BindingPriority.TemplatedParent">
+            <summary>
+            A binding to a property on the templated parent.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Data.BindingPriority.Style">
+            <summary>
+            A style binding.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Data.BindingPriority.Unset">
+            <summary>
+            The binding is uninitialized.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Diagnostics.INotifyCollectionChangedDebug">
+            <summary>
+            Provides a debug interface into <see cref="T:System.Collections.Specialized.INotifyCollectionChanged"/> subscribers on
+            <see cref="T:Avalonia.Collections.AvaloniaList`1"/>
+            </summary>
+        </member>
+        <member name="M:Avalonia.Diagnostics.INotifyCollectionChangedDebug.GetCollectionChangedSubscribers">
+            <summary>
+            Gets the subscriber list for the <see cref="E:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged"/>
+            event.
+            </summary>
+            <returns>
+            The subscribers or null if no subscribers.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Diagnostics.IAvaloniaObjectDebug">
+            <summary>
+            Provides a debug interface into <see cref="T:Avalonia.AvaloniaObject"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Diagnostics.IAvaloniaObjectDebug.GetPropertyChangedSubscribers">
+            <summary>
+            Gets the subscriber list for the <see cref="E:Avalonia.IAvaloniaObject.PropertyChanged"/>
+            event.
+            </summary>
+            <returns>
+            The subscribers or null if no subscribers.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Diagnostics.AvaloniaObjectExtensions">
+            <summary>
+            Defines diagnostic extensions on <see cref="T:Avalonia.AvaloniaObject"/>s.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Diagnostics.AvaloniaObjectExtensions.GetDiagnostic(Avalonia.AvaloniaObject,Avalonia.AvaloniaProperty)">
+            <summary>
+            Gets a diagnostic for a <see cref="T:Avalonia.AvaloniaProperty"/> on a <see cref="T:Avalonia.AvaloniaObject"/>.
+            </summary>
+            <param name="o">The object.</param>
+            <param name="property">The property.</param>
+            <returns>
+            A <see cref="T:Avalonia.Diagnostics.AvaloniaPropertyValue"/> that can be used to diagnose the state of the
+            property on the object.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Diagnostics.AvaloniaPropertyValue">
+            <summary>
+            Holds diagnostic-related information about the value of a <see cref="T:Avalonia.AvaloniaProperty"/>
+            on a <see cref="T:Avalonia.AvaloniaObject"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Diagnostics.AvaloniaPropertyValue.#ctor(Avalonia.AvaloniaProperty,System.Object,Avalonia.Data.BindingPriority,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Diagnostics.AvaloniaPropertyValue"/> class.
+            </summary>
+            <param name="property">The property.</param>
+            <param name="value">The current property value.</param>
+            <param name="priority">The priority of the current value.</param>
+            <param name="diagnostic">A diagnostic string.</param>
+        </member>
+        <member name="P:Avalonia.Diagnostics.AvaloniaPropertyValue.Property">
+            <summary>
+            Gets the property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Diagnostics.AvaloniaPropertyValue.Value">
+            <summary>
+            Gets the current property value.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Diagnostics.AvaloniaPropertyValue.Priority">
+            <summary>
+            Gets the priority of the current value.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Diagnostics.AvaloniaPropertyValue.Diagnostic">
+            <summary>
+            Gets a diagnostic string.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Collections.AvaloniaDictionary`2">
+            <summary>
+            A notifying dictionary.
+            </summary>
+            <typeparam name="TKey">The type of the dictionary key.</typeparam>
+            <typeparam name="TValue">The type of the dictionary value.</typeparam>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaDictionary`2.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Collections.AvaloniaDictionary`2"/> class.
+            </summary>
+        </member>
+        <member name="E:Avalonia.Collections.AvaloniaDictionary`2.CollectionChanged">
+            <summary>
+            Occurs when the collection changes.
+            </summary>
+        </member>
+        <member name="E:Avalonia.Collections.AvaloniaDictionary`2.PropertyChanged">
+            <summary>
+            Raised when a property on the collection changes.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Collections.AvaloniaDictionary`2.Count">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Collections.AvaloniaDictionary`2.IsReadOnly">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Collections.AvaloniaDictionary`2.Keys">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Collections.AvaloniaDictionary`2.Values">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Collections.AvaloniaDictionary`2.Item(`0)">
+            <summary>
+            Gets or sets the named resource.
+            </summary>
+            <param name="key">The resource key.</param>
+            <returns>The resource, or null if not found.</returns>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaDictionary`2.Add(`0,`1)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaDictionary`2.Clear">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaDictionary`2.ContainsKey(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaDictionary`2.CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaDictionary`2.GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaDictionary`2.Remove(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaDictionary`2.TryGetValue(`0,`1@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaDictionary`2.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaDictionary`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#Add(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaDictionary`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#Contains(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaDictionary`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#Remove(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Avalonia.Collections.IAvaloniaList`1">
+            <summary>
+            A notiftying list.
+            </summary>
+            <typeparam name="T">The type of the items in the list.</typeparam>
+        </member>
+        <member name="P:Avalonia.Collections.IAvaloniaList`1.Count">
+            <summary>
+            Gets the number of items in the list.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Collections.IAvaloniaList`1.Item(System.Int32)">
+            <summary>
+            Gets or sets the element at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+            <returns>The element at the requested index.</returns>
+        </member>
+        <member name="M:Avalonia.Collections.IAvaloniaList`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Adds multiple items to the collection.
+            </summary>
+            <param name="items">The items.</param>
+        </member>
+        <member name="M:Avalonia.Collections.IAvaloniaList`1.InsertRange(System.Int32,System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Inserts multiple items at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+            <param name="items">The items.</param>
+        </member>
+        <member name="M:Avalonia.Collections.IAvaloniaList`1.RemoveAll(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Removes multiple items from the collection.
+            </summary>
+            <param name="items">The items.</param>
+        </member>
+        <member name="M:Avalonia.Collections.IAvaloniaList`1.RemoveRange(System.Int32,System.Int32)">
+            <summary>
+            Removes a range of elements from the collection.
+            </summary>
+            <param name="index">The first index to remove.</param>
+            <param name="count">The number of items to remove.</param>
+        </member>
+        <member name="T:Avalonia.Collections.ResetBehavior">
+            <summary>
+            Describes the action notified on a clear of a <see cref="T:Avalonia.Collections.AvaloniaList`1"/>.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Collections.ResetBehavior.Reset">
+            <summary>
+            Clearing the list notifies a with a 
+            <see cref="F:System.Collections.Specialized.NotifyCollectionChangedAction.Reset"/>.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Collections.ResetBehavior.Remove">
+            <summary>
+            Clearing the list notifies a with a
+            <see cref="F:System.Collections.Specialized.NotifyCollectionChangedAction.Remove"/>.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Collections.AvaloniaList`1">
+            <summary>
+            A notifying list.
+            </summary>
+            <typeparam name="T">The type of the list items.</typeparam>
+            <remarks>
+            <para>
+            AvaloniaList is similar to <see cref="T:System.Collections.ObjectModel.ObservableCollection`1"/>
+            with a few added features:
+            </para>
+            
+            <list type="bullet">
+            <item>
+            It can be configured to notify the <see cref="E:Avalonia.Collections.AvaloniaList`1.CollectionChanged"/> event with a
+            <see cref="F:System.Collections.Specialized.NotifyCollectionChangedAction.Remove"/> action instead of a
+            <see cref="F:System.Collections.Specialized.NotifyCollectionChangedAction.Reset"/> when the list is cleared by
+            setting <see cref="P:Avalonia.Collections.AvaloniaList`1.ResetBehavior"/> to <see cref="F:Avalonia.Collections.ResetBehavior.Remove"/>.
+            removed
+            </item>
+            <item>
+            A <see cref="P:Avalonia.Collections.AvaloniaList`1.Validate"/> function can be used to validate each item before insertion.
+            removed
+            </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Collections.AvaloniaList`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Collections.AvaloniaList`1"/> class.
+            </summary>
+            <param name="items">The initial items for the collection.</param>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.#ctor(`0[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Collections.AvaloniaList`1"/> class.
+            </summary>
+            <param name="items">The initial items for the collection.</param>
+        </member>
+        <member name="E:Avalonia.Collections.AvaloniaList`1.CollectionChanged">
+            <summary>
+            Raised when a change is made to the collection's items.
+            </summary>
+        </member>
+        <member name="E:Avalonia.Collections.AvaloniaList`1.PropertyChanged">
+            <summary>
+            Raised when a property on the collection changes.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Collections.AvaloniaList`1.Count">
+            <summary>
+            Gets the number of items in the collection.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Collections.AvaloniaList`1.ResetBehavior">
+            <summary>
+            Gets or sets the reset behavior of the list.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Collections.AvaloniaList`1.Validate">
+            <summary>
+            Gets or sets a validation routine that can be used to validate items before they are
+            added.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Collections.AvaloniaList`1.System#Collections#IList#IsFixedSize">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Collections.AvaloniaList`1.System#Collections#IList#IsReadOnly">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Collections.AvaloniaList`1.System#Collections#ICollection#Count">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Collections.AvaloniaList`1.System#Collections#ICollection#IsSynchronized">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Collections.AvaloniaList`1.System#Collections#ICollection#SyncRoot">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Collections.AvaloniaList`1.System#Collections#Generic#ICollection{T}#IsReadOnly">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Collections.AvaloniaList`1.Item(System.Int32)">
+            <summary>
+            Gets or sets the item at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+            <returns>The item.</returns>
+        </member>
+        <member name="P:Avalonia.Collections.AvaloniaList`1.System#Collections#IList#Item(System.Int32)">
+            <summary>
+            Gets or sets the item at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+            <returns>The item.</returns>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.Add(`0)">
+            <summary>
+            Adds an item to the collection.
+            </summary>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Adds multiple items to the collection.
+            </summary>
+            <param name="items">The items.</param>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.Clear">
+            <summary>
+            Removes all items from the collection.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.Contains(`0)">
+            <summary>
+            Tests if the collection contains the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <returns>True if the collection contains the item; otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies the collection's contents to an array.
+            </summary>
+            <param name="array">The array.</param>
+            <param name="arrayIndex">The first index of the array to copy to.</param>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that enumerates the items in the collection.
+            </summary>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerator`1"/>.</returns>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.GetRange(System.Int32,System.Int32)">
+            <summary>
+            Gets a range of items from the collection.
+            </summary>
+            <param name="index">The first index to remove.</param>
+            <param name="count">The number of items to remove.</param>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.IndexOf(`0)">
+            <summary>
+            Gets the index of the specified item in the collection.
+            </summary>
+            <param name="item">The item.</param>
+            <returns>
+            The index of the item or -1 if the item is not contained in the collection.
+            </returns>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.Insert(System.Int32,`0)">
+            <summary>
+            Inserts an item at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.InsertRange(System.Int32,System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Inserts multiple items at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+            <param name="items">The items.</param>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.Remove(`0)">
+            <summary>
+            Removes an item from the collection.
+            </summary>
+            <param name="item">The item.</param>
+            <returns>True if the item was found and removed, otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.RemoveAll(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Removes multiple items from the collection.
+            </summary>
+            <param name="items">The items.</param>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.RemoveAt(System.Int32)">
+            <summary>
+            Removes the item at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.RemoveRange(System.Int32,System.Int32)">
+            <summary>
+            Removes a range of elements from the collection.
+            </summary>
+            <param name="index">The first index to remove.</param>
+            <param name="count">The number of items to remove.</param>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.System#Collections#IList#Add(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.System#Collections#IList#Contains(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.System#Collections#IList#Clear">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.System#Collections#IList#IndexOf(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.System#Collections#IList#Insert(System.Int32,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.System#Collections#IList#Remove(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.System#Collections#IList#RemoveAt(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.System#Collections#ICollection#CopyTo(System.Array,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.Avalonia#Diagnostics#INotifyCollectionChangedDebug#GetCollectionChangedSubscribers">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.NotifyAdd(System.Collections.IList,System.Int32)">
+            <summary>
+            Raises the <see cref="E:Avalonia.Collections.AvaloniaList`1.CollectionChanged"/> event with an add action.
+            </summary>
+            <param name="t">The items that were added.</param>
+            <param name="index">The starting index.</param>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.NotifyCountChanged">
+            <summary>
+            Raises the <see cref="E:Avalonia.Collections.AvaloniaList`1.PropertyChanged"/> event when the <see cref="P:Avalonia.Collections.AvaloniaList`1.Count"/> property
+            changes.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.NotifyRemove(System.Collections.IList,System.Int32)">
+            <summary>
+            Raises the <see cref="E:Avalonia.Collections.AvaloniaList`1.CollectionChanged"/> event with a remove action.
+            </summary>
+            <param name="t">The items that were removed.</param>
+            <param name="index">The starting index.</param>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.NotifyReset(System.Collections.IList)">
+            <summary>
+            Raises the <see cref="E:Avalonia.Collections.AvaloniaList`1.CollectionChanged"/> event with a reset action.
+            </summary>
+            <param name="t">The items that were removed.</param>
+        </member>
+        <member name="T:Avalonia.Collections.AvaloniaListExtensions">
+            <summary>
+            Defines extension methods for working with <see cref="T:Avalonia.Collections.AvaloniaList`1"/>s.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaListExtensions.ForEachItem``1(Avalonia.Collections.IAvaloniaReadOnlyList{``0},System.Action{``0},System.Action{``0},System.Action)">
+            <summary>
+            Invokes an action for each item in a collection and subsequently each item added or
+            removed from the collection.
+            </summary>
+            <typeparam name="T">The type of the collection items.</typeparam>
+            <param name="collection">The collection.</param>
+            <param name="added">
+            An action called initially for each item in the collection and subsequently for each
+            item added to the collection. The parameters passed are the index in the collection and
+            the item.
+            </param>
+            <param name="removed">
+            An action called for each item removed from the collection. The parameters passed are
+            the index in the collection and the item.
+            </param>
+            <param name="reset">
+            An action called when the collection is reset.
+            </param>
+            <returns>A disposable used to terminate the subscription.</returns>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaListExtensions.ForEachItem``1(Avalonia.Collections.IAvaloniaReadOnlyList{``0},System.Action{System.Int32,``0},System.Action{System.Int32,``0},System.Action)">
+            <summary>
+            Invokes an action for each item in a collection and subsequently each item added or
+            removed from the collection.
+            </summary>
+            <typeparam name="T">The type of the collection items.</typeparam>
+            <param name="collection">The collection.</param>
+            <param name="added">
+            An action called initially for each item in the collection and subsequently for each
+            item added to the collection. The parameters passed are the index in the collection and
+            the item.
+            </param>
+            <param name="removed">
+            An action called for each item removed from the collection. The parameters passed are
+            the index in the collection and the item.
+            </param>
+            <param name="reset">
+            An action called when the collection is reset.
+            </param>
+            <returns>A disposable used to terminate the subscription.</returns>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaListExtensions.ForEachItem``1(Avalonia.Collections.IAvaloniaReadOnlyList{``0},System.Action{System.Int32,System.Collections.Generic.IEnumerable{``0}},System.Action{System.Int32,System.Collections.Generic.IEnumerable{``0}},System.Action)">
+            <summary>
+            Invokes an action for each item in a collection and subsequently each item added or
+            removed from the collection.
+            </summary>
+            <typeparam name="T">The type of the collection items.</typeparam>
+            <param name="collection">The collection.</param>
+            <param name="added">
+            An action called initially with all items in the collection and subsequently with a
+            list of items added to the collection. The parameters passed are the index of the
+            first item added to the collection and the items added.
+            </param>
+            <param name="removed">
+            An action called with all items removed from the collection. The parameters passed 
+            are the index of the first item removed from the collection and the items removed.
+            </param>
+            <param name="reset">
+            An action called when the collection is reset.
+            </param>
+            <returns>A disposable used to terminate the subscription.</returns>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaListExtensions.TrackItemPropertyChanged``1(Avalonia.Collections.IAvaloniaReadOnlyList{``0},System.Action{System.Tuple{System.Object,System.ComponentModel.PropertyChangedEventArgs}})">
+            <summary>
+            Listens for property changed events from all items in a collection.
+            </summary>
+            <typeparam name="T">The type of the collection items.</typeparam>
+            <param name="collection">The collection.</param>
+            <param name="callback">A callback to call for each property changed event.</param>
+            <returns>A disposable used to terminate the subscription.</returns>
+        </member>
+        <member name="T:Avalonia.Collections.IAvaloniaReadOnlyList`1">
+            <summary>
+            A read-only notiftying list.
+            </summary>
+            <typeparam name="T">The type of the items in the list.</typeparam>
+        </member>
+        <member name="T:Avalonia.AttachedProperty`1">
+            <summary>
+            An attached avalonia property.
+            </summary>
+            <typeparam name="TValue">The type of the property's value.</typeparam>
+        </member>
+        <member name="M:Avalonia.AttachedProperty`1.#ctor(System.String,System.Type,Avalonia.StyledPropertyMetadata{`0},System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.AttachedProperty`1"/> class.
+            </summary>
+            <param name="name">The name of the property.</param>
+            <param name="ownerType">The class that is registering the property.</param>
+            <param name="metadata">The property metadata.</param>
+            <param name="inherits">Whether the property inherits its value.</param>
+        </member>
+        <member name="P:Avalonia.AttachedProperty`1.IsAttached">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.AttachedProperty`1.AddOwner``1">
+            <summary>
+            Attaches the property as a non-attached property on the specified type.
+            </summary>
+            <typeparam name="TOwner">The owner type.</typeparam>
+            <returns>The property.</returns>
+        </member>
+        <member name="T:Avalonia.IPriorityValueOwner">
+            <summary>
+            An owner of a <see cref="T:Avalonia.PriorityValue"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.IPriorityValueOwner.Changed(Avalonia.PriorityValue,System.Object,System.Object)">
+            <summary>
+            Called when a <see cref="T:Avalonia.PriorityValue"/>'s value changes.
+            </summary>
+            <param name="sender">The source of the change.</param>
+            <param name="oldValue">The old value.</param>
+            <param name="newValue">The new value.</param>
+        </member>
+        <member name="M:Avalonia.IPriorityValueOwner.DataValidationChanged(Avalonia.PriorityValue,Avalonia.Data.ValidationStatus)">
+            <summary>
+            Called when the validation state of a <see cref="T:Avalonia.PriorityValue"/> changes.
+            </summary>
+            <param name="sender">The source of the change.</param>
+            <param name="status">The validation status.</param>
+        </member>
+        <member name="T:Avalonia.IStyledPropertyAccessor">
+            <summary>
+            Provides a runtime interface for interfacing with <see cref="T:Avalonia.StyledProperty`1"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.IStyledPropertyAccessor.GetDefaultValue(System.Type)">
+            <summary>
+            Gets the default value for the property for the specified type.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>
+            The default value.
+            </returns>
+        </member>
+        <member name="M:Avalonia.IStyledPropertyAccessor.GetValidationFunc(System.Type)">
+            <summary>
+            Gets a validation function for the property on the specified type.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>
+            The validation function, or null if no validation function exists.
+            </returns>
+        </member>
+        <member name="T:Avalonia.IDirectPropertyAccessor">
+            <summary>
+            Provides a runtime interface for getting and setting 
+            <see cref="T:Avalonia.DirectProperty`2"/> values.
+            </summary>
+        </member>
+        <member name="P:Avalonia.IDirectPropertyAccessor.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the property is read-only.
+            </summary>
+        </member>
+        <member name="M:Avalonia.IDirectPropertyAccessor.GetValue(Avalonia.IAvaloniaObject)">
+            <summary>
+            Gets the value of the property on the instance.
+            </summary>
+            <param name="instance">The instance.</param>
+            <returns>The property value.</returns>
+        </member>
+        <member name="M:Avalonia.IDirectPropertyAccessor.SetValue(Avalonia.IAvaloniaObject,System.Object)">
+            <summary>
+            Sets the value of the property on the instance.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="T:Avalonia.DirectProperty`2">
+            <summary>
+            A direct avalonia property.
+            </summary>
+            <typeparam name="TOwner">The class that registered the property.</typeparam>
+            <typeparam name="TValue">The type of the property's value.</typeparam>
+            <remarks>
+            Direct avalonia properties are backed by a field on the object, but exposed via the
+            <see cref="T:Avalonia.AvaloniaProperty"/> system. They hold a getter and an optional setter which
+            allows the avalonia property system to read and write the current value.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.DirectProperty`2.#ctor(System.String,System.Func{`0,`1},System.Action{`0,`1},Avalonia.PropertyMetadata)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.DirectProperty`2"/> class.
+            </summary>
+            <param name="name">The name of the property.</param>
+            <param name="getter">Gets the current value of the property.</param>
+            <param name="setter">Sets the value of the property. May be null.</param>
+            <param name="metadata">The property metadata.</param>
+        </member>
+        <member name="M:Avalonia.DirectProperty`2.#ctor(Avalonia.AvaloniaProperty{`1},System.Func{`0,`1},System.Action{`0,`1},Avalonia.PropertyMetadata)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.AvaloniaProperty"/> class.
+            </summary>
+            <param name="source">The property to copy.</param>
+            <param name="getter">Gets the current value of the property.</param>
+            <param name="setter">Sets the value of the property. May be null.</param>
+            <param name="metadata">Optional overridden metadata.</param>
+        </member>
+        <member name="P:Avalonia.DirectProperty`2.IsDirect">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.DirectProperty`2.IsReadOnly">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.DirectProperty`2.Getter">
+            <summary>
+            Gets the getter function.
+            </summary>
+        </member>
+        <member name="P:Avalonia.DirectProperty`2.Setter">
+            <summary>
+            Gets the setter function.
+            </summary>
+        </member>
+        <member name="M:Avalonia.DirectProperty`2.AddOwner``1(System.Func{``0,`1},System.Action{``0,`1},`1,Avalonia.Data.BindingMode)">
+            <summary>
+            Registers the direct property on another type.
+            </summary>
+            <typeparam name="TNewOwner">The type of the additional owner.</typeparam>
+            <param name="getter">Gets the current value of the property.</param>
+            <param name="setter">Sets the value of the property.</param>
+            <param name="unsetValue">
+            The value to use when the property is set to <see cref="F:Avalonia.AvaloniaProperty.UnsetValue"/>
+            </param>
+            <param name="defaultBindingMode">The default binding mode for the property.</param>
+            <returns>The property.</returns>
+        </member>
+        <member name="M:Avalonia.DirectProperty`2.Avalonia#IDirectPropertyAccessor#GetValue(Avalonia.IAvaloniaObject)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.DirectProperty`2.Avalonia#IDirectPropertyAccessor#SetValue(Avalonia.IAvaloniaObject,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Avalonia.IAvaloniaObject">
+            <summary>
+            Interface for getting/setting <see cref="T:Avalonia.AvaloniaProperty"/> values on an object.
+            </summary>
+        </member>
+        <member name="E:Avalonia.IAvaloniaObject.PropertyChanged">
+            <summary>
+            Raised when a <see cref="T:Avalonia.AvaloniaProperty"/> value changes on this object.
+            </summary>
+        </member>
+        <member name="M:Avalonia.IAvaloniaObject.GetValue(Avalonia.AvaloniaProperty)">
+            <summary>
+            Gets a <see cref="T:Avalonia.AvaloniaProperty"/> value.
+            </summary>
+            <param name="property">The property.</param>
+            <returns>The value.</returns>
+        </member>
+        <member name="M:Avalonia.IAvaloniaObject.GetValue``1(Avalonia.AvaloniaProperty{``0})">
+            <summary>
+            Gets a <see cref="T:Avalonia.AvaloniaProperty"/> value.
+            </summary>
+            <typeparam name="T">The type of the property.</typeparam>
+            <param name="property">The property.</param>
+            <returns>The value.</returns>
+        </member>
+        <member name="M:Avalonia.IAvaloniaObject.IsSet(Avalonia.AvaloniaProperty)">
+            <summary>
+            Checks whether a <see cref="T:Avalonia.AvaloniaProperty"/> is set on this object.
+            </summary>
+            <param name="property">The property.</param>
+            <returns>True if the property is set, otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.IAvaloniaObject.SetValue(Avalonia.AvaloniaProperty,System.Object,Avalonia.Data.BindingPriority)">
+            <summary>
+            Sets a <see cref="T:Avalonia.AvaloniaProperty"/> value.
+            </summary>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <param name="priority">The priority of the value.</param>
+        </member>
+        <member name="M:Avalonia.IAvaloniaObject.SetValue``1(Avalonia.AvaloniaProperty{``0},``0,Avalonia.Data.BindingPriority)">
+            <summary>
+            Sets a <see cref="T:Avalonia.AvaloniaProperty"/> value.
+            </summary>
+            <typeparam name="T">The type of the property.</typeparam>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <param name="priority">The priority of the value.</param>
+        </member>
+        <member name="M:Avalonia.IAvaloniaObject.Bind(Avalonia.AvaloniaProperty,System.IObservable{System.Object},Avalonia.Data.BindingPriority)">
+            <summary>
+            Binds a <see cref="T:Avalonia.AvaloniaProperty"/> to an observable.
+            </summary>
+            <param name="property">The property.</param>
+            <param name="source">The observable.</param>
+            <param name="priority">The priority of the binding.</param>
+            <returns>
+            A disposable which can be used to terminate the binding.
+            </returns>
+        </member>
+        <member name="M:Avalonia.IAvaloniaObject.Bind``1(Avalonia.AvaloniaProperty{``0},System.IObservable{``0},Avalonia.Data.BindingPriority)">
+            <summary>
+            Binds a <see cref="T:Avalonia.AvaloniaProperty"/> to an observable.
+            </summary>
+            <typeparam name="T">The type of the property.</typeparam>
+            <param name="property">The property.</param>
+            <param name="source">The observable.</param>
+            <param name="priority">The priority of the binding.</param>
+            <returns>
+            A disposable which can be used to terminate the binding.
+            </returns>
+        </member>
+        <member name="T:Avalonia.IDirectPropertyMetadata">
+            <summary>
+            Untyped interface to <see cref="T:Avalonia.DirectPropertyMetadata`1"/>
+            </summary>
+        </member>
+        <member name="P:Avalonia.IDirectPropertyMetadata.UnsetValue">
+            <summary>
+            Gets the to use when the property is set to <see cref="F:Avalonia.AvaloniaProperty.UnsetValue"/>.
+            </summary>
+        </member>
+        <member name="T:Avalonia.IStyledPropertyMetadata">
+            <summary>
+            Untyped interface to <see cref="T:Avalonia.StyledPropertyMetadata`1"/>
+            </summary>
+        </member>
+        <member name="P:Avalonia.IStyledPropertyMetadata.DefaultValue">
+            <summary>
+            Gets the default value for the property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.IStyledPropertyMetadata.Validate">
+            <summary>
+            Gets the property's validation function.
+            </summary>
+        </member>
+        <member name="T:Avalonia.ISupportInitialize">
+            <summary>
+            Specifies that this object supports a simple, transacted notification for batch 
+            initialization.
+            </summary>
+        </member>
+        <member name="M:Avalonia.ISupportInitialize.BeginInit">
+            <summary>
+            Signals the object that initialization is starting.
+            </summary>
+        </member>
+        <member name="M:Avalonia.ISupportInitialize.EndInit">
+            <summary>
+            Signals the object that initialization is complete.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Logging.ILogSink">
+            <summary>
+            Defines a sink for Avalonia logging messages.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Logging.ILogSink.Log(Avalonia.Logging.LogEventLevel,System.String,System.Object,System.String,System.Object[])">
+            <summary>
+            Logs a new event.
+            </summary>
+            <param name="level">The log event level.</param>
+            <param name="area">The area that the event originates.</param>
+            <param name="source">The object from which the event originates.</param>
+            <param name="messageTemplate">The message template.</param>
+            <param name="propertyValues">The message property values.</param>
+        </member>
+        <member name="T:Avalonia.Logging.LogArea">
+            <summary>
+            Specifies the area in which a log event occurred.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Logging.LogArea.Property">
+            <summary>
+            The log event comes from the property system.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Logging.LogArea.Binding">
+            <summary>
+            The log event comes from the binding system.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Logging.LogArea.Visual">
+            <summary>
+            The log event comes from the visual system.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Logging.LogArea.Layout">
+            <summary>
+            The log event comes from the layout system.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Logging.LogArea.Control">
+            <summary>
+            The log event comes from the control system.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Logging.LogEventLevel">
+            <summary>
+            Specifies the meaning and relative importance of a log event.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Logging.LogEventLevel.Verbose">
+            <summary>
+            Anything and everything you might want to know about a running block of code.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Logging.LogEventLevel.Debug">
+            <summary>
+            Internal system events that aren't necessarily observable from the outside.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Logging.LogEventLevel.Information">
+            <summary>
+            The lifeblood of operational intelligence - things happen.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Logging.LogEventLevel.Warning">
+            <summary>
+            Service is degraded or endangered.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Logging.LogEventLevel.Error">
+            <summary>
+            Functionality is unavailable, invariants are broken or data is lost.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Logging.LogEventLevel.Fatal">
+            <summary>
+            If you have a pager, it goes off when one of these occurs.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Logging.Logger">
+            <summary>
+            Logs avalonia messages.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Logging.Logger.Sink">
+            <summary>
+            Gets or sets the application-defined sink that recieves the messages.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Logging.Logger.Log(Avalonia.Logging.LogEventLevel,System.String,System.Object,System.String,System.Object[])">
+            <summary>
+            Logs an event.
+            </summary>
+            <param name="level">The log event level.</param>
+            <param name="area">The area that the event originates.</param>
+            <param name="source">The object from which the event originates.</param>
+            <param name="messageTemplate">The message template.</param>
+            <param name="propertyValues">The message property values.</param>
+        </member>
+        <member name="M:Avalonia.Logging.Logger.Verbose(System.String,System.Object,System.String,System.Object[])">
+            <summary>
+            Logs an event with the <see cref="F:Avalonia.Logging.LogEventLevel.Verbose"/> level.
+            </summary>
+            <param name="area">The area that the event originates.</param>
+            <param name="source">The object from which the event originates.</param>
+            <param name="messageTemplate">The message template.</param>
+            <param name="propertyValues">The message property values.</param>
+        </member>
+        <member name="M:Avalonia.Logging.Logger.Debug(System.String,System.Object,System.String,System.Object[])">
+            <summary>
+            Logs an event with the <see cref="F:Avalonia.Logging.LogEventLevel.Debug"/> level.
+            </summary>
+            <param name="area">The area that the event originates.</param>
+            <param name="source">The object from which the event originates.</param>
+            <param name="messageTemplate">The message template.</param>
+            <param name="propertyValues">The message property values.</param>
+        </member>
+        <member name="M:Avalonia.Logging.Logger.Information(System.String,System.Object,System.String,System.Object[])">
+            <summary>
+            Logs an event with the <see cref="F:Avalonia.Logging.LogEventLevel.Information"/> level.
+            </summary>
+            <param name="area">The area that the event originates.</param>
+            <param name="source">The object from which the event originates.</param>
+            <param name="messageTemplate">The message template.</param>
+            <param name="propertyValues">The message property values.</param>
+        </member>
+        <member name="M:Avalonia.Logging.Logger.Warning(System.String,System.Object,System.String,System.Object[])">
+            <summary>
+            Logs an event with the <see cref="F:Avalonia.Logging.LogEventLevel.Warning"/> level.
+            </summary>
+            <param name="area">The area that the event originates.</param>
+            <param name="source">The object from which the event originates.</param>
+            <param name="messageTemplate">The message template.</param>
+            <param name="propertyValues">The message property values.</param>
+        </member>
+        <member name="M:Avalonia.Logging.Logger.Error(System.String,System.Object,System.String,System.Object[])">
+            <summary>
+            Logs an event with the <see cref="F:Avalonia.Logging.LogEventLevel.Error"/> level.
+            </summary>
+            <param name="area">The area that the event originates.</param>
+            <param name="source">The object from which the event originates.</param>
+            <param name="messageTemplate">The message template.</param>
+            <param name="propertyValues">The message property values.</param>
+        </member>
+        <member name="M:Avalonia.Logging.Logger.Fatal(System.String,System.Object,System.String,System.Object[])">
+            <summary>
+            Logs an event with the <see cref="F:Avalonia.Logging.LogEventLevel.Fatal"/> level.
+            </summary>
+            <param name="area">The area that the event originates.</param>
+            <param name="source">The object from which the event originates.</param>
+            <param name="messageTemplate">The message template.</param>
+            <param name="propertyValues">The message property values.</param>
+        </member>
+        <member name="T:Avalonia.Metadata.DependsOnAttribute">
+            <summary>
+            Indicates that the property depends on the value of another property in markup.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Metadata.DependsOnAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Metadata.DependsOnAttribute"/> class.
+            </summary>
+            <param name="propertyName">
+            The name of the property that this property depends on.
+            </param>
+        </member>
+        <member name="P:Avalonia.Metadata.DependsOnAttribute.Name">
+            <summary>
+            Gets the name of the property that this property depends on.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Metadata.ContentAttribute">
+            <summary>
+            Defines the property that contains the object's content in markup.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Metadata.XmlnsDefinitionAttribute">
+            <summary>
+            Maps an XML namespace to a CLR namespace for use in XAML.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Metadata.XmlnsDefinitionAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Metadata.XmlnsDefinitionAttribute"/> class.
+            </summary>
+            <param name="xmlNamespace">The URL of the XML namespace.</param>
+            <param name="clrNamespace">The CLR namespace.</param>
+        </member>
+        <member name="P:Avalonia.Metadata.XmlnsDefinitionAttribute.XmlNamespace">
+            <summary>
+            Gets or sets the URL of the XML namespace.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Metadata.XmlnsDefinitionAttribute.ClrNamespace">
+            <summary>
+            Gets or sets the CLR namespace.
+            </summary>
+        </member>
+        <member name="T:Avalonia.AvaloniaInternalException">
+            <summary>
+            Exception signifying an internal logic error in Avalonia.
+            </summary>
+        </member>
+        <member name="M:Avalonia.AvaloniaInternalException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.AvaloniaInternalException"/> class.
+            </summary>
+            <param name="message">The exception message.</param>
+        </member>
+        <member name="T:Avalonia.AvaloniaObjectExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:Avalonia.AvaloniaObject"/> and related classes.
+            </summary>
+        </member>
+        <member name="M:Avalonia.AvaloniaObjectExtensions.GetObservable(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty)">
+            <summary>
+            Gets an observable for a <see cref="T:Avalonia.AvaloniaProperty"/>.
+            </summary>
+            <param name="o">The object.</param>
+            <param name="property">The property.</param>
+            <returns>
+            An observable which fires immediately with the current value of the property on the
+            object and subsequently each time the property value changes.
+            </returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObjectExtensions.GetObservable``1(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty{``0})">
+            <summary>
+            Gets an observable for a <see cref="T:Avalonia.AvaloniaProperty"/>.
+            </summary>
+            <param name="o">The object.</param>
+            <typeparam name="T">The property type.</typeparam>
+            <param name="property">The property.</param>
+            <returns>
+            An observable which fires immediately with the current value of the property on the
+            object and subsequently each time the property value changes.
+            </returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObjectExtensions.GetObservableWithHistory``1(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty{``0})">
+            <summary>
+            Gets an observable for a <see cref="T:Avalonia.AvaloniaProperty"/>.
+            </summary>
+            <param name="o">The object.</param>
+            <typeparam name="T">The type of the property.</typeparam>
+            <param name="property">The property.</param>
+            <returns>
+            An observable which when subscribed pushes the old and new values of the property each
+            time it is changed. Note that the observable returned from this method does not fire
+            with the current value of the property immediately.
+            </returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObjectExtensions.GetSubject(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty,Avalonia.Data.BindingPriority)">
+            <summary>
+            Gets a subject for a <see cref="T:Avalonia.AvaloniaProperty"/>.
+            </summary>
+            <param name="o">The object.</param>
+            <param name="property">The property.</param>
+            <param name="priority">
+            The priority with which binding values are written to the object.
+            </param>
+            <returns>
+            An <see cref="T:System.Reactive.Subjects.ISubject`1"/> which can be used for two-way binding to/from the 
+            property.
+            </returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObjectExtensions.GetSubject``1(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty{``0},Avalonia.Data.BindingPriority)">
+            <summary>
+            Gets a subject for a <see cref="T:Avalonia.AvaloniaProperty"/>.
+            </summary>
+            <typeparam name="T">The property type.</typeparam>
+            <param name="o">The object.</param>
+            <param name="property">The property.</param>
+            <param name="priority">
+            The priority with which binding values are written to the object.
+            </param>
+            <returns>
+            An <see cref="T:System.Reactive.Subjects.ISubject`1"/> which can be used for two-way binding to/from the 
+            property.
+            </returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObjectExtensions.GetWeakObservable(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty)">
+            <summary>
+            Gets a weak observable for a <see cref="T:Avalonia.AvaloniaProperty"/>.
+            </summary>
+            <param name="o">The object.</param>
+            <param name="property">The property.</param>
+            <returns>An observable.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObjectExtensions.Bind(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty,Avalonia.Data.IBinding,System.Object)">
+            <summary>
+            Binds a property on an <see cref="T:Avalonia.IAvaloniaObject"/> to an <see cref="T:Avalonia.Data.IBinding"/>.
+            </summary>
+            <param name="target">The object.</param>
+            <param name="property">The property to bind.</param>
+            <param name="binding">The binding.</param>
+            <param name="anchor">
+            An optional anchor from which to locate required context. When binding to objects that
+            are not in the logical tree, certain types of binding need an anchor into the tree in 
+            order to locate named controls or resources. The <paramref name="anchor"/> parameter 
+            can be used to provice this context.
+            </param>
+            <returns>An <see cref="T:System.IDisposable"/> which can be used to cancel the binding.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObjectExtensions.AddClassHandler``1(System.IObservable{Avalonia.AvaloniaPropertyChangedEventArgs},System.Action{``0,Avalonia.AvaloniaPropertyChangedEventArgs})">
+            <summary>
+            Subscribes to a property changed notifications for changes that originate from a
+            <typeparamref name="TTarget"/>.
+            </summary>
+            <typeparam name="TTarget">The type of the property change sender.</typeparam>
+            <param name="observable">The property changed observable.</param>
+            <param name="action">
+            The method to call. The parameters are the sender and the event args.
+            </param>
+            <returns>A disposable that can be used to terminate the subscription.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObjectExtensions.AddClassHandler``1(System.IObservable{Avalonia.AvaloniaPropertyChangedEventArgs},System.Func{``0,System.Action{Avalonia.AvaloniaPropertyChangedEventArgs}})">
+            <summary>
+            Subscribes to a property changed notifications for changes that originate from a
+            <typeparamref name="TTarget"/>.
+            </summary>
+            <typeparam name="TTarget">The type of the property change sender.</typeparam>
+            <param name="observable">The property changed observable.</param>
+            <param name="handler">Given a TTarget, returns the handler.</param>
+            <returns>A disposable that can be used to terminate the subscription.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObjectExtensions.GetDescription(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty)">
+            <summary>
+            Gets a description of a property that van be used in observables.
+            </summary>
+            <param name="o">The object.</param>
+            <param name="property">The property</param>
+            <returns>The description.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObjectExtensions.SubscribeAdapter``1(Avalonia.AvaloniaPropertyChangedEventArgs,System.Func{``0,System.Action{Avalonia.AvaloniaPropertyChangedEventArgs}})">
+            <summary>
+            Observer method for <see cref="M:Avalonia.AvaloniaObjectExtensions.AddClassHandler``1(System.IObservable{Avalonia.AvaloniaPropertyChangedEventArgs},System.Func{``0,System.Action{Avalonia.AvaloniaPropertyChangedEventArgs}})"/>.
+            </summary>
+            <typeparam name="TTarget">The sender type to accept.</typeparam>
+            <param name="e">The event args.</param>
+            <param name="handler">Given a TTarget, returns the handler.</param>
+        </member>
+        <member name="T:Avalonia.PropertyMetadata">
+            <summary>
+            Base class for avalonia property metadata.
+            </summary>
+        </member>
+        <member name="M:Avalonia.PropertyMetadata.#ctor(Avalonia.Data.BindingMode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.PropertyMetadata"/> class.
+            </summary>
+            <param name="defaultBindingMode">The default binding mode.</param>
+        </member>
+        <member name="P:Avalonia.PropertyMetadata.DefaultBindingMode">
+            <summary>
+            Gets the default binding mode for the property.
+            </summary>
+        </member>
+        <member name="M:Avalonia.PropertyMetadata.Merge(Avalonia.PropertyMetadata,Avalonia.AvaloniaProperty)">
+            <summary>
+            Merges the metadata with the base metadata.
+            </summary>
+            <param name="baseMetadata">The base metadata to merge.</param>
+            <param name="property">The property to which the metadata is being applied.</param>
+        </member>
+        <member name="T:Avalonia.Reactive.ObservableEx">
+            <summary>
+            Provides common observable methods not found in standard Rx framework.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Reactive.ObservableEx.SingleValue``1(``0)">
+            <summary>
+            Returns an observable that fires once with the specified value and never completes.
+            </summary>
+            <typeparam name="T">The type of the value.</typeparam>
+            <param name="value">The value.</param>
+            <returns>The observable.</returns>
+        </member>
+        <member name="T:Avalonia.Reactive.AvaloniaObservable`1">
+            <summary>
+            An <see cref="T:System.IObservable`1"/> with an additional description.
+            </summary>
+            <typeparam name="T">The type of the elements in the sequence.</typeparam>
+        </member>
+        <member name="M:Avalonia.Reactive.AvaloniaObservable`1.#ctor(System.Func{System.IObserver{`0},System.IDisposable},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Reactive.AvaloniaObservable`1"/> class.
+            </summary>
+            <param name="subscribe">The subscribe function.</param>
+            <param name="description">The description of the observable.</param>
+        </member>
+        <member name="P:Avalonia.Reactive.AvaloniaObservable`1.Description">
+            <summary>
+            Gets the description of the observable.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Reactive.AvaloniaObservable`1.SubscribeCore(System.IObserver{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Avalonia.StyledProperty`1">
+            <summary>
+            A styled avalonia property.
+            </summary>
+        </member>
+        <member name="M:Avalonia.StyledProperty`1.#ctor(System.String,System.Type,Avalonia.StyledPropertyMetadata{`0},System.Boolean,System.Action{Avalonia.IAvaloniaObject,System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.StyledPropertyBase`1"/> class.
+            </summary>
+            <param name="name">The name of the property.</param>
+            <param name="ownerType">The type of the class that registers the property.</param>
+            <param name="metadata">The property metadata.</param>
+            <param name="inherits">Whether the property inherits its value.</param>
+            <param name="notifying">A <see cref="P:Avalonia.AvaloniaProperty.Notifying"/> callback.</param>
+        </member>
+        <member name="M:Avalonia.StyledProperty`1.#ctor(Avalonia.StyledPropertyBase{`0},System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.StyledPropertyBase`1"/> class.
+            </summary>
+            <param name="source">The property to add the owner to.</param>
+            <param name="ownerType">The type of the class that registers the property.</param>
+        </member>
+        <member name="M:Avalonia.StyledProperty`1.AddOwner``1">
+            <summary>
+            Registers the property on another type.
+            </summary>
+            <typeparam name="TOwner">The type of the additional owner.</typeparam>
+            <returns>The property.</returns>        
+        </member>
+        <member name="T:Avalonia.StyledPropertyBase`1">
+            <summary>
+            Base class for styled properties.
+            </summary>
+        </member>
+        <member name="M:Avalonia.StyledPropertyBase`1.#ctor(System.String,System.Type,Avalonia.StyledPropertyMetadata{`0},System.Boolean,System.Action{Avalonia.IAvaloniaObject,System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.StyledPropertyBase`1"/> class.
+            </summary>
+            <param name="name">The name of the property.</param>
+            <param name="ownerType">The type of the class that registers the property.</param>
+            <param name="metadata">The property metadata.</param>
+            <param name="inherits">Whether the property inherits its value.</param>
+            <param name="notifying">A <see cref="P:Avalonia.AvaloniaProperty.Notifying"/> callback.</param>
+        </member>
+        <member name="M:Avalonia.StyledPropertyBase`1.#ctor(Avalonia.StyledPropertyBase{`0},System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.StyledPropertyBase`1"/> class.
+            </summary>
+            <param name="source">The property to add the owner to.</param>
+            <param name="ownerType">The type of the class that registers the property.</param>
+        </member>
+        <member name="P:Avalonia.StyledPropertyBase`1.Inherits">
+            <summary>
+            Gets a value indicating whether the property inherits its value.
+            </summary>
+            <value>
+            A value indicating whether the property inherits its value.
+            </value>
+        </member>
+        <member name="M:Avalonia.StyledPropertyBase`1.GetDefaultValue(System.Type)">
+            <summary>
+            Gets the default value for the property on the specified type.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The default value.</returns>
+        </member>
+        <member name="M:Avalonia.StyledPropertyBase`1.GetMetadata(System.Type)">
+            <summary>
+            Gets the property metadata for the specified type.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>
+            The property metadata.
+            </returns>
+        </member>
+        <member name="M:Avalonia.StyledPropertyBase`1.OverrideDefaultValue``1(`0)">
+            <summary>
+            Overrides the default value for the property on the specified type.
+            </summary>
+            <typeparam name="T">The type.</typeparam>
+            <param name="defaultValue">The default value.</param>
+        </member>
+        <member name="M:Avalonia.StyledPropertyBase`1.OverrideDefaultValue(System.Type,`0)">
+            <summary>
+            Overrides the default value for the property on the specified type.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="defaultValue">The default value.</param>
+        </member>
+        <member name="M:Avalonia.StyledPropertyBase`1.OverrideMetadata``1(Avalonia.StyledPropertyMetadata{`0})">
+            <summary>
+            Overrides the metadata for the property on the specified type.
+            </summary>
+            <typeparam name="T">The type.</typeparam>
+            <param name="metadata">The metadata.</param>
+        </member>
+        <member name="M:Avalonia.StyledPropertyBase`1.OverrideMetadata(System.Type,Avalonia.StyledPropertyMetadata{`0})">
+            <summary>
+            Overrides the metadata for the property on the specified type.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="metadata">The metadata.</param>
+        </member>
+        <member name="M:Avalonia.StyledPropertyBase`1.OverrideValidation``1(System.Func{``0,`0,`0})">
+            <summary>
+            Overrides the validation function for the specified type.
+            </summary>
+            <typeparam name="THost">The type.</typeparam>
+            <param name="validate">The validation function.</param>
+        </member>
+        <member name="M:Avalonia.StyledPropertyBase`1.ToString">
+            <summary>
+            Gets the string representation of the property.
+            </summary>
+            <returns>The property's string representation.</returns>
+        </member>
+        <member name="M:Avalonia.StyledPropertyBase`1.Avalonia#IStyledPropertyAccessor#GetValidationFunc(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.StyledPropertyBase`1.Avalonia#IStyledPropertyAccessor#GetDefaultValue(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Avalonia.AvaloniaPropertyRegistry">
+            <summary>
+            Tracks registered <see cref="T:Avalonia.AvaloniaProperty"/> instances.
+            </summary>
+        </member>
+        <member name="F:Avalonia.AvaloniaPropertyRegistry._registered">
+            <summary>
+            The registered properties by type.
+            </summary>
+        </member>
+        <member name="F:Avalonia.AvaloniaPropertyRegistry._attached">
+            <summary>
+            The registered attached properties by owner type.
+            </summary>
+        </member>
+        <member name="P:Avalonia.AvaloniaPropertyRegistry.Instance">
+            <summary>
+            Gets the <see cref="T:Avalonia.AvaloniaPropertyRegistry"/> instance
+            </summary>
+        </member>
+        <member name="M:Avalonia.AvaloniaPropertyRegistry.GetAttached(System.Type)">
+            <summary>
+            Gets all attached <see cref="T:Avalonia.AvaloniaProperty"/>s registered by an owner.
+            </summary>
+            <param name="ownerType">The owner type.</param>
+            <returns>A collection of <see cref="T:Avalonia.AvaloniaProperty"/> definitions.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaPropertyRegistry.GetRegistered(System.Type)">
+            <summary>
+            Gets all <see cref="T:Avalonia.AvaloniaProperty"/>s registered on a type.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>A collection of <see cref="T:Avalonia.AvaloniaProperty"/> definitions.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaPropertyRegistry.GetRegistered(Avalonia.AvaloniaObject)">
+            <summary>
+            Gets all <see cref="T:Avalonia.AvaloniaProperty"/>s registered on a object.
+            </summary>
+            <param name="o">The object.</param>
+            <returns>A collection of <see cref="T:Avalonia.AvaloniaProperty"/> definitions.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaPropertyRegistry.FindRegistered(System.Type,Avalonia.AvaloniaProperty)">
+            <summary>
+            Finds a <see cref="T:Avalonia.AvaloniaProperty"/> registered on a type.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="property">The property.</param>
+            <returns>The registered property or null if not found.</returns>
+            <remarks>
+            Calling AddOwner on a AvaloniaProperty creates a new AvaloniaProperty that is a 
+            different object but is equal according to <see cref="M:System.Object.Equals(System.Object)"/>.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.AvaloniaPropertyRegistry.FindRegistered(System.Object,Avalonia.AvaloniaProperty)">
+            <summary>
+            Finds <see cref="T:Avalonia.AvaloniaProperty"/> registered on an object.
+            </summary>
+            <param name="o">The object.</param>
+            <param name="property">The property.</param>
+            <returns>The registered property or null if not found.</returns>
+            <remarks>
+            Calling AddOwner on a AvaloniaProperty creates a new AvaloniaProperty that is a 
+            different object but is equal according to <see cref="M:System.Object.Equals(System.Object)"/>.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.AvaloniaPropertyRegistry.FindRegistered(System.Type,System.String)">
+            <summary>
+            Finds a registered property on a type by name.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="name">
+            The property name. If an attached property it should be in the form 
+            "OwnerType.PropertyName".
+            </param>
+            <returns>
+            The registered property or null if no matching property found.
+            </returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaPropertyRegistry.FindRegistered(Avalonia.AvaloniaObject,System.String)">
+            <summary>
+            Finds a registered property on an object by name.
+            </summary>
+            <param name="o">The object.</param>
+            <param name="name">
+            The property name. If an attached property it should be in the form 
+            "OwnerType.PropertyName".
+            </param>
+            <returns>
+            The registered property or null if no matching property found.
+            </returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaPropertyRegistry.GetImplementedTypes(System.Type)">
+            <summary>
+            Returns a type and all its base types.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The type and all its base types.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaPropertyRegistry.IsRegistered(System.Type,Avalonia.AvaloniaProperty)">
+            <summary>
+            Checks whether a <see cref="T:Avalonia.AvaloniaProperty"/> is registered on a type.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="property">The property.</param>
+            <returns>True if the property is registered, otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaPropertyRegistry.IsRegistered(System.Object,Avalonia.AvaloniaProperty)">
+            <summary>
+            Checks whether a <see cref="T:Avalonia.AvaloniaProperty"/> is registered on a object.
+            </summary>
+            <param name="o">The object.</param>
+            <param name="property">The property.</param>
+            <returns>True if the property is registered, otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaPropertyRegistry.Register(System.Type,Avalonia.AvaloniaProperty)">
+            <summary>
+            Registers a <see cref="T:Avalonia.AvaloniaProperty"/> on a type.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="property">The property.</param>
+            <remarks>
+            You won't usually want to call this method directly, instead use the
+            <see cref="M:Avalonia.AvaloniaProperty.Register``2(System.String,``1,System.Boolean,Avalonia.Data.BindingMode,System.Func{``0,``1,``1},System.Action{Avalonia.IAvaloniaObject,System.Boolean})"/> method.
+            </remarks>
+        </member>
+        <member name="T:Avalonia.AvaloniaProperty`1">
+            <summary>
+            A typed avalonia property.
+            </summary>
+            <typeparam name="TValue">The value type of the property.</typeparam>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty`1.#ctor(System.String,System.Type,Avalonia.PropertyMetadata,System.Action{Avalonia.IAvaloniaObject,System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.AvaloniaProperty`1"/> class.
+            </summary>
+            <param name="name">The name of the property.</param>
+            <param name="ownerType">The type of the class that registers the property.</param>
+            <param name="metadata">The property metadata.</param>
+            <param name="notifying">A <see cref="P:Avalonia.AvaloniaProperty.Notifying"/> callback.</param>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty`1.#ctor(Avalonia.AvaloniaProperty,System.Type,Avalonia.PropertyMetadata)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.AvaloniaProperty"/> class.
+            </summary>
+            <param name="source">The property to copy.</param>
+            <param name="ownerType">The new owner type.</param>
+            <param name="metadata">Optional overridden metadata.</param>
+        </member>
+        <member name="T:Avalonia.Platform.IAssetLoader">
+            <summary>
+            Loads assets compiled into the application binary.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Platform.IAssetLoader.SetDefaultAssembly(System.Reflection.Assembly)">
+            <summary>
+            We need a way to override the default assembly selected by the host platform
+            because right now it is selecting the wrong one for PCL based Apps. The 
+            AssetLoader needs a refactor cause right now it lives in 3+ platforms which 
+            can all be loaded on Windows. 
+            </summary>
+            <param name="asm"></param>
+        </member>
+        <member name="M:Avalonia.Platform.IAssetLoader.Exists(System.Uri,System.Uri)">
+            <summary>
+            Checks if an asset with the specified URI exists.
+            </summary>
+            <param name="uri">The URI.</param>
+            <param name="baseUri">
+            A base URI to use if <paramref name="uri"/> is relative.
+            </param>
+            <returns>True if the asset could be found; otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.Platform.IAssetLoader.Open(System.Uri,System.Uri)">
+            <summary>
+            Opens the resource with the requested URI.
+            </summary>
+            <param name="uri">The URI.</param>
+            <param name="baseUri">
+            A base URI to use if <paramref name="uri"/> is relative.
+            </param>
+            <returns>A stream containing the resource contents.</returns>
+            <exception cref="T:System.IO.FileNotFoundException">
+            The resource was not found.
+            </exception>
+        </member>
+        <member name="T:Avalonia.Platform.IPlatformHandle">
+            <summary>
+            Represents a platform-specific handle.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Platform.IPlatformHandle.Handle">
+            <summary>
+            Gets the handle.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Platform.IPlatformHandle.HandleDescriptor">
+            <summary>
+            Gets an optional string that describes what <see cref="P:Avalonia.Platform.IPlatformHandle.Handle"/> represents.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Platform.IPlatformThreadingInterface">
+            <summary>
+            Provides platform-specific services relating to threading.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Platform.IPlatformThreadingInterface.StartTimer(System.TimeSpan,System.Action)">
+            <summary>
+            Starts a timer.
+            </summary>
+            <param name="interval">The interval.</param>
+            <param name="tick">The action to call on each tick.</param>
+            <returns>An <see cref="T:System.IDisposable"/> used to stop the timer.</returns>
+        </member>
+        <member name="M:Avalonia.Platform.IPlatformThreadingInterface.Signal">
+            <summary>
+            Sends a message that causes <see cref="!:ProcessMessage"/> to exit.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Platform.PlatformHandle">
+            <summary>
+            Represents a platform-specific handle.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Platform.PlatformHandle.#ctor(System.IntPtr,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Platform.PlatformHandle"/> class.
+            </summary>
+            <param name="handle">The handle.</param>
+            <param name="descriptor">
+            An optional string that describes what <paramref name="handle"/> represents.
+            </param>
+        </member>
+        <member name="P:Avalonia.Platform.PlatformHandle.Handle">
+            <summary>
+            Gets the handle.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Platform.PlatformHandle.HandleDescriptor">
+            <summary>
+            Gets an optional string that describes what <see cref="P:Avalonia.Platform.PlatformHandle.Handle"/> represents.
+            </summary>
+        </member>
+        <member name="T:Avalonia.PriorityBindingEntry">
+            <summary>
+            A registered binding in a <see cref="T:Avalonia.PriorityValue"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.PriorityBindingEntry.#ctor(Avalonia.PriorityLevel,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.PriorityBindingEntry"/> class.
+            </summary>
+            <param name="owner">The owner.</param>
+            <param name="index">
+            The binding index. Later bindings should have higher indexes.
+            </param>
+            <param name="validation">The validation settings for the binding.</param>
+        </member>
+        <member name="P:Avalonia.PriorityBindingEntry.Observable">
+            <summary>
+            Gets the observable associated with the entry.
+            </summary>
+        </member>
+        <member name="P:Avalonia.PriorityBindingEntry.Description">
+            <summary>
+            Gets a description of the binding.
+            </summary>
+        </member>
+        <member name="P:Avalonia.PriorityBindingEntry.Index">
+            <summary>
+            Gets the binding entry index. Later bindings will have higher indexes.
+            </summary>
+        </member>
+        <member name="P:Avalonia.PriorityBindingEntry.Value">
+            <summary>
+            The current value of the binding.
+            </summary>
+        </member>
+        <member name="M:Avalonia.PriorityBindingEntry.Start(System.IObservable{System.Object})">
+            <summary>
+            Starts listening to the binding.
+            </summary>
+            <param name="binding">The binding.</param>
+        </member>
+        <member name="M:Avalonia.PriorityBindingEntry.Dispose">
+            <summary>
+            Ends the binding subscription.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Contract">
+            <summary>
+            A stub of Code Contract's Contract class.
+            </summary>
+            <remarks>
+            It would be nice to use Code Contracts on Avalonia but last time I tried it slowed things
+            to a crawl and often crashed. Instead use the same signature for checking preconditions
+            in the hope that it might become usable at some point.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Contract.Requires``1(System.Boolean)">
+            <summary>
+            Specifies a precondition.
+            </summary>
+            <typeparam name="TException">
+            The exception to throw if <paramref name="condition"/> is false.
+            </typeparam>
+            <param name="condition">The precondition.</param>
+        </member>
+        <member name="T:Avalonia.IDescription">
+            <summary>
+            Interface for objects with a <see cref="P:Avalonia.IDescription.Description"/>.
+            </summary>
+        </member>
+        <member name="P:Avalonia.IDescription.Description">
+            <summary>
+            Gets the description of the object.
+            </summary>
+            <value>
+            The description of the object.
+            </value>
+        </member>
+        <member name="T:Avalonia.AvaloniaObject">
+            <summary>
+            An object with <see cref="T:Avalonia.AvaloniaProperty"/> support.
+            </summary>
+            <remarks>
+            This class is analogous to DependencyObject in WPF.
+            </remarks>
+        </member>
+        <member name="F:Avalonia.AvaloniaObject._inheritanceParent">
+            <summary>
+            The parent object that inherited values are inherited from.
+            </summary>
+        </member>
+        <member name="F:Avalonia.AvaloniaObject._values">
+            <summary>
+            The set values/bindings on this object.
+            </summary>
+        </member>
+        <member name="F:Avalonia.AvaloniaObject._directBindings">
+            <summary>
+            Maintains a list of direct property binding subscriptions so that the binding source
+            doesn't get collected.
+            </summary>
+        </member>
+        <member name="F:Avalonia.AvaloniaObject._inpcChanged">
+            <summary>
+            Event handler for <see cref="T:System.ComponentModel.INotifyPropertyChanged"/> implementation.
+            </summary>
+        </member>
+        <member name="F:Avalonia.AvaloniaObject._propertyChanged">
+            <summary>
+            Event handler for <see cref="E:Avalonia.AvaloniaObject.PropertyChanged"/> implementation.
+            </summary>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.AvaloniaObject"/> class.
+            </summary>
+        </member>
+        <member name="E:Avalonia.AvaloniaObject.PropertyChanged">
+            <summary>
+            Raised when a <see cref="T:Avalonia.AvaloniaProperty"/> value changes on this object.
+            </summary>
+        </member>
+        <member name="E:Avalonia.AvaloniaObject.System#ComponentModel#INotifyPropertyChanged#PropertyChanged">
+            <summary>
+            Raised when a <see cref="T:Avalonia.AvaloniaProperty"/> value changes on this object.
+            </summary>
+        </member>
+        <member name="P:Avalonia.AvaloniaObject.InheritanceParent">
+            <summary>
+            Gets or sets the parent object that inherited <see cref="T:Avalonia.AvaloniaProperty"/> values
+            are inherited from.
+            </summary>
+            <value>
+            The inheritance parent.
+            </value>
+        </member>
+        <member name="P:Avalonia.AvaloniaObject.Item(Avalonia.AvaloniaProperty)">
+            <summary>
+            Gets or sets the value of a <see cref="T:Avalonia.AvaloniaProperty"/>.
+            </summary>
+            <param name="property">The property.</param>
+        </member>
+        <member name="P:Avalonia.AvaloniaObject.Item(Avalonia.Data.IndexerDescriptor)">
+            <summary>
+            Gets or sets a binding for a <see cref="T:Avalonia.AvaloniaProperty"/>.
+            </summary>
+            <param name="binding">The binding information.</param>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.ClearValue(Avalonia.AvaloniaProperty)">
+            <summary>
+            Clears a <see cref="T:Avalonia.AvaloniaProperty"/>'s local value.
+            </summary>
+            <param name="property">The property.</param>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.GetValue(Avalonia.AvaloniaProperty)">
+            <summary>
+            Gets a <see cref="T:Avalonia.AvaloniaProperty"/> value.
+            </summary>
+            <param name="property">The property.</param>
+            <returns>The value.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.GetValue``1(Avalonia.AvaloniaProperty{``0})">
+            <summary>
+            Gets a <see cref="T:Avalonia.AvaloniaProperty"/> value.
+            </summary>
+            <typeparam name="T">The type of the property.</typeparam>
+            <param name="property">The property.</param>
+            <returns>The value.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.IsSet(Avalonia.AvaloniaProperty)">
+            <summary>
+            Checks whether a <see cref="T:Avalonia.AvaloniaProperty"/> is set on this object.
+            </summary>
+            <param name="property">The property.</param>
+            <returns>True if the property is set, otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.SetValue(Avalonia.AvaloniaProperty,System.Object,Avalonia.Data.BindingPriority)">
+            <summary>
+            Sets a <see cref="T:Avalonia.AvaloniaProperty"/> value.
+            </summary>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <param name="priority">The priority of the value.</param>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.SetValue``1(Avalonia.AvaloniaProperty{``0},``0,Avalonia.Data.BindingPriority)">
+            <summary>
+            Sets a <see cref="T:Avalonia.AvaloniaProperty"/> value.
+            </summary>
+            <typeparam name="T">The type of the property.</typeparam>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <param name="priority">The priority of the value.</param>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.Bind(Avalonia.AvaloniaProperty,System.IObservable{System.Object},Avalonia.Data.BindingPriority)">
+            <summary>
+            Binds a <see cref="T:Avalonia.AvaloniaProperty"/> to an observable.
+            </summary>
+            <param name="property">The property.</param>
+            <param name="source">The observable.</param>
+            <param name="priority">The priority of the binding.</param>
+            <returns>
+            A disposable which can be used to terminate the binding.
+            </returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.Bind``1(Avalonia.AvaloniaProperty{``0},System.IObservable{``0},Avalonia.Data.BindingPriority)">
+            <summary>
+            Binds a <see cref="T:Avalonia.AvaloniaProperty"/> to an observable.
+            </summary>
+            <typeparam name="T">The type of the property.</typeparam>
+            <param name="property">The property.</param>
+            <param name="source">The observable.</param>
+            <param name="priority">The priority of the binding.</param>
+            <returns>
+            A disposable which can be used to terminate the binding.
+            </returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.Revalidate(Avalonia.AvaloniaProperty)">
+            <summary>
+            Forces the specified property to be revalidated.
+            </summary>
+            <param name="property">The property.</param>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.Avalonia#IPriorityValueOwner#Changed(Avalonia.PriorityValue,System.Object,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.Avalonia#IPriorityValueOwner#DataValidationChanged(Avalonia.PriorityValue,Avalonia.Data.ValidationStatus)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.DataValidation(Avalonia.AvaloniaProperty,Avalonia.Data.ValidationStatus)">
+            <summary>
+            Called when the validation state on a tracked property is changed.
+            </summary>
+            <param name="property">The property whose validation state changed.</param>
+            <param name="status">The new validation state.</param>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.Avalonia#Diagnostics#IAvaloniaObjectDebug#GetPropertyChangedSubscribers">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.GetSetValues">
+            <summary>
+            Gets all priority values set on the object.
+            </summary>
+            <returns>A collection of property/value tuples.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.AffectsValidation(Avalonia.AvaloniaProperty,Avalonia.AvaloniaProperty[])">
+            <summary>
+            Forces revalidation of properties when a property value changes.
+            </summary>
+            <param name="property">The property to that affects validation.</param>
+            <param name="affected">The affected properties.</param>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.OnPropertyChanged(Avalonia.AvaloniaPropertyChangedEventArgs)">
+            <summary>
+            Called when a avalonia property changes on the object.
+            </summary>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.RaisePropertyChanged(Avalonia.AvaloniaProperty,System.Object,System.Object,Avalonia.Data.BindingPriority)">
+            <summary>
+            Raises the <see cref="E:Avalonia.AvaloniaObject.PropertyChanged"/> event.
+            </summary>
+            <param name="property">The property that has changed.</param>
+            <param name="oldValue">The old property value.</param>
+            <param name="newValue">The new property value.</param>
+            <param name="priority">The priority of the binding that produced the value.</param>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.SetAndRaise``1(Avalonia.AvaloniaProperty{``0},``0@,``0)">
+            <summary>
+            Sets the backing field for a direct avalonia property, raising the 
+            <see cref="E:Avalonia.AvaloniaObject.PropertyChanged"/> event if the value has changed.
+            </summary>
+            <typeparam name="T">The type of the property.</typeparam>
+            <param name="property">The property.</param>
+            <param name="field">The backing field.</param>
+            <param name="value">The value.</param>
+            <returns>
+            True if the value changed, otherwise false.
+            </returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.CastOrDefault(System.Object,System.Type)">
+            <summary>
+            Tries to cast a value to a type, taking into account that the value may be a
+            <see cref="T:Avalonia.Data.BindingError"/>.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <returns>The cast value, or a <see cref="T:Avalonia.Data.BindingError"/>.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.CreatePriorityValue(Avalonia.AvaloniaProperty)">
+            <summary>
+            Creates a <see cref="T:Avalonia.PriorityValue"/> for a <see cref="T:Avalonia.AvaloniaProperty"/>.
+            </summary>
+            <param name="property">The property.</param>
+            <returns>The <see cref="T:Avalonia.PriorityValue"/>.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.DirectBindingSet(Avalonia.AvaloniaProperty,System.Object)">
+            <summary>
+            Sets a property value for a direct property binding.
+            </summary>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.DirectUnsetToDefault(System.Object,Avalonia.AvaloniaProperty)">
+            <summary>
+            Converts an unset value to the default value for a direct property.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="property">The property.</param>
+            <returns>The value.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.GetDefaultValue(Avalonia.AvaloniaProperty)">
+            <summary>
+            Gets the default value for a property.
+            </summary>
+            <param name="property">The property.</param>
+            <returns>The default value.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.GetRegistered(Avalonia.AvaloniaProperty)">
+            <summary>
+            Given a <see cref="T:Avalonia.AvaloniaProperty"/> returns a registered avalonia property that is
+            equal or throws if not found.
+            </summary>
+            <param name="property">The property.</param>
+            <returns>The registered property.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.ParentPropertyChanged(System.Object,Avalonia.AvaloniaPropertyChangedEventArgs)">
+            <summary>
+            Called when a property is changed on the current <see cref="P:Avalonia.AvaloniaObject.InheritanceParent"/>.
+            </summary>
+            <param name="sender">The event sender.</param>
+            <param name="e">The event args.</param>
+            <remarks>
+            Checks for changes in an inherited property value.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.GetDescription(System.IObservable{System.Object})">
+            <summary>
+            Gets a description of an observable that van be used in logs.
+            </summary>
+            <param name="o">The observable.</param>
+            <returns>The description.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.LogPropertySet(Avalonia.AvaloniaProperty,System.Object,Avalonia.Data.BindingPriority)">
+            <summary>
+            Logs a property set message.
+            </summary>
+            <param name="property">The property.</param>
+            <param name="value">The new value.</param>
+            <param name="priority">The priority.</param>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.ThrowNotRegistered(Avalonia.AvaloniaProperty)">
+            <summary>
+            Throws an exception indicating that the specified property is not registered on this
+            object.
+            </summary>
+            <param name="p">The property</param>
+        </member>
+        <member name="T:Avalonia.AvaloniaProperty">
+            <summary>
+            Base class for avalonia properties.
+            </summary>
+        </member>
+        <member name="F:Avalonia.AvaloniaProperty.UnsetValue">
+            <summary>
+            Represents an unset property value.
+            </summary>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.#ctor(System.String,System.Type,System.Type,Avalonia.PropertyMetadata,System.Action{Avalonia.IAvaloniaObject,System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.AvaloniaProperty"/> class.
+            </summary>
+            <param name="name">The name of the property.</param>
+            <param name="valueType">The type of the property's value.</param>
+            <param name="ownerType">The type of the class that registers the property.</param>
+            <param name="metadata">The property metadata.</param>
+            <param name="notifying">A <see cref="P:Avalonia.AvaloniaProperty.Notifying"/> callback.</param>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.#ctor(Avalonia.AvaloniaProperty,System.Type,Avalonia.PropertyMetadata)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.AvaloniaProperty"/> class.
+            </summary>
+            <param name="source">The direct property to copy.</param>
+            <param name="ownerType">The new owner type.</param>
+            <param name="metadata">Optional overridden metadata.</param>
+        </member>
+        <member name="P:Avalonia.AvaloniaProperty.Name">
+            <summary>
+            Gets the name of the property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.AvaloniaProperty.PropertyType">
+            <summary>
+            Gets the type of the property's value.
+            </summary>
+        </member>
+        <member name="P:Avalonia.AvaloniaProperty.OwnerType">
+            <summary>
+            Gets the type of the class that registered the property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.AvaloniaProperty.Inherits">
+            <summary>
+            Gets a value indicating whether the property inherits its value.
+            </summary>
+        </member>
+        <member name="P:Avalonia.AvaloniaProperty.IsAttached">
+            <summary>
+            Gets a value indicating whether this is an attached property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.AvaloniaProperty.IsDirect">
+            <summary>
+            Gets a value indicating whether this is a direct property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.AvaloniaProperty.IsReadOnly">
+            <summary>
+            Gets a value indicating whether this is a readonly property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.AvaloniaProperty.Initialized">
+            <summary>
+            Gets an observable that is fired when this property is initialized on a
+            new <see cref="T:Avalonia.AvaloniaObject"/> instance.
+            </summary>
+            <remarks>
+            This observable is fired each time a new <see cref="T:Avalonia.AvaloniaObject"/> is constructed
+            for all properties registered on the object's type. The default value of the property
+            for the object is passed in the args' NewValue (OldValue will always be
+            <see cref="F:Avalonia.AvaloniaProperty.UnsetValue"/>.
+            </remarks>
+            <value>
+            An observable that is fired when this property is initialized on a new
+            <see cref="T:Avalonia.AvaloniaObject"/> instance.
+            </value>
+        </member>
+        <member name="P:Avalonia.AvaloniaProperty.Changed">
+            <summary>
+            Gets an observable that is fired when this property changes on any
+            <see cref="T:Avalonia.AvaloniaObject"/> instance.
+            </summary>
+            <value>
+            An observable that is fired when this property changes on any
+            <see cref="T:Avalonia.AvaloniaObject"/> instance.
+            </value>
+        </member>
+        <member name="P:Avalonia.AvaloniaProperty.Notifying">
+            <summary>
+            Gets a method that gets called before and after the property starts being notified on an
+            object.
+            </summary>
+            <remarks>
+            When a property changes, change notifications are sent to all property subscribers; 
+            for example via the <see cref="P:Avalonia.AvaloniaProperty.Changed"/> observable and and the 
+            <see cref="E:Avalonia.AvaloniaObject.PropertyChanged"/> event. If this callback is set for a property,
+            then it will be called before and after these notifications take place. The bool argument
+            will be true before the property change notifications are sent and false afterwards. This 
+            callback is intended to support Control.IsDataContextChanging.
+            </remarks>
+        </member>
+        <member name="P:Avalonia.AvaloniaProperty.Id">
+            <summary>
+            Gets the integer ID that represents this property.
+            </summary>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.op_LogicalNot(Avalonia.AvaloniaProperty)">
+            <summary>
+            Provides access to a property's binding via the <see cref="T:Avalonia.AvaloniaObject"/>
+            indexer.
+            </summary>
+            <param name="property">The property.</param>
+            <returns>A <see cref="T:Avalonia.Data.IndexerDescriptor"/> describing the binding.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.op_OnesComplement(Avalonia.AvaloniaProperty)">
+            <summary>
+            Provides access to a property's template binding via the <see cref="T:Avalonia.AvaloniaObject"/>
+            indexer.
+            </summary>
+            <param name="property">The property.</param>
+            <returns>A <see cref="T:Avalonia.Data.IndexerDescriptor"/> describing the binding.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.op_Equality(Avalonia.AvaloniaProperty,Avalonia.AvaloniaProperty)">
+            <summary>
+            Tests two <see cref="T:Avalonia.AvaloniaProperty"/>s for equality.
+            </summary>
+            <param name="a">The first property.</param>
+            <param name="b">The second property.</param>
+            <returns>True if the properties are equal, otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.op_Inequality(Avalonia.AvaloniaProperty,Avalonia.AvaloniaProperty)">
+            <summary>
+            Tests two <see cref="T:Avalonia.AvaloniaProperty"/>s for unequality.
+            </summary>
+            <param name="a">The first property.</param>
+            <param name="b">The second property.</param>
+            <returns>True if the properties are equal, otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.Register``2(System.String,``1,System.Boolean,Avalonia.Data.BindingMode,System.Func{``0,``1,``1},System.Action{Avalonia.IAvaloniaObject,System.Boolean})">
+            <summary>
+            Registers a <see cref="T:Avalonia.AvaloniaProperty"/>.
+            </summary>
+            <typeparam name="TOwner">The type of the class that is registering the property.</typeparam>
+            <typeparam name="TValue">The type of the property's value.</typeparam>
+            <param name="name">The name of the property.</param>
+            <param name="defaultValue">The default value of the property.</param>
+            <param name="inherits">Whether the property inherits its value.</param>
+            <param name="defaultBindingMode">The default binding mode for the property.</param>
+            <param name="validate">A validation function.</param>
+            <param name="notifying">
+            A method that gets called before and after the property starts being notified on an
+            object; the bool argument will be true before and false afterwards. This callback is
+            intended to support IsDataContextChanging.
+            </param>
+            <returns>A <see cref="T:Avalonia.StyledProperty`1"/></returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.RegisterAttached``3(System.String,``2,System.Boolean,Avalonia.Data.BindingMode,System.Func{``1,``2,``2})">
+            <summary>
+            Registers an attached <see cref="T:Avalonia.AvaloniaProperty"/>.
+            </summary>
+            <typeparam name="TOwner">The type of the class that is registering the property.</typeparam>
+            <typeparam name="THost">The type of the class that the property is to be registered on.</typeparam>
+            <typeparam name="TValue">The type of the property's value.</typeparam>
+            <param name="name">The name of the property.</param>
+            <param name="defaultValue">The default value of the property.</param>
+            <param name="inherits">Whether the property inherits its value.</param>
+            <param name="defaultBindingMode">The default binding mode for the property.</param>
+            <param name="validate">A validation function.</param>
+            <returns>A <see cref="T:Avalonia.AvaloniaProperty`1"/></returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.RegisterAttached``2(System.String,System.Type,``1,System.Boolean,Avalonia.Data.BindingMode,System.Func{``0,``1,``1})">
+            <summary>
+            Registers an attached <see cref="T:Avalonia.AvaloniaProperty"/>.
+            </summary>
+            <typeparam name="THost">The type of the class that the property is to be registered on.</typeparam>
+            <typeparam name="TValue">The type of the property's value.</typeparam>
+            <param name="name">The name of the property.</param>
+            <param name="ownerType">The type of the class that is registering the property.</param>
+            <param name="defaultValue">The default value of the property.</param>
+            <param name="inherits">Whether the property inherits its value.</param>
+            <param name="defaultBindingMode">The default binding mode for the property.</param>
+            <param name="validate">A validation function.</param>
+            <returns>A <see cref="T:Avalonia.AvaloniaProperty`1"/></returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.RegisterDirect``2(System.String,System.Func{``0,``1},System.Action{``0,``1},``1,Avalonia.Data.BindingMode)">
+            <summary>
+            Registers a direct <see cref="T:Avalonia.AvaloniaProperty"/>.
+            </summary>
+            <typeparam name="TOwner">The type of the class that is registering the property.</typeparam>
+            <typeparam name="TValue">The type of the property's value.</typeparam>
+            <param name="name">The name of the property.</param>
+            <param name="getter">Gets the current value of the property.</param>
+            <param name="setter">Sets the value of the property.</param>
+            <param name="unsetValue">
+            The value to use when the property is set to <see cref="F:Avalonia.AvaloniaProperty.UnsetValue"/>
+            </param>
+            <param name="defaultBindingMode">The default binding mode for the property.</param>
+            <returns>A <see cref="T:Avalonia.AvaloniaProperty`1"/></returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.Bind">
+            <summary>
+            Returns a binding accessor that can be passed to <see cref="T:Avalonia.AvaloniaObject"/>'s []
+            operator to initiate a binding.
+            </summary>
+            <returns>A <see cref="T:Avalonia.Data.IndexerDescriptor"/>.</returns>
+            <remarks>
+            The ! and ~ operators are short forms of this.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.Equals(Avalonia.AvaloniaProperty)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.GetMetadata``1">
+            <summary>
+            Gets the property metadata for the specified type.
+            </summary>
+            <typeparam name="T">The type.</typeparam>
+            <returns>
+            The property metadata.
+            </returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.GetMetadata(System.Type)">
+            <summary>
+            Gets the property metadata for the specified type.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>
+            The property metadata.
+            </returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.IsValidValue(System.Object)">
+            <summary>
+            Checks whether the <paramref name="value"/> is valid for the property.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>True if the value is valid, otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.ToString">
+            <summary>
+            Gets the string representation of the property.
+            </summary>
+            <returns>The property's string representation.</returns>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.NotifyInitialized(Avalonia.AvaloniaPropertyChangedEventArgs)">
+            <summary>
+            Notifies the <see cref="P:Avalonia.AvaloniaProperty.Initialized"/> observable.
+            </summary>
+            <param name="e">The observable arguments.</param>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.NotifyChanged(Avalonia.AvaloniaPropertyChangedEventArgs)">
+            <summary>
+            Notifies the <see cref="P:Avalonia.AvaloniaProperty.Changed"/> observable.
+            </summary>
+            <param name="e">The observable arguments.</param>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.OverrideMetadata(System.Type,Avalonia.PropertyMetadata)">
+            <summary>
+            Overrides the metadata for the property on the specified type.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="metadata">The metadata.</param>
+        </member>
+        <member name="T:Avalonia.AvaloniaProperty.Unset">
+            <summary>
+            Class representing the <see cref="F:Avalonia.AvaloniaProperty.UnsetValue"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.AvaloniaProperty.Unset.ToString">
+            <summary>
+            Returns the string representation of the <see cref="F:Avalonia.AvaloniaProperty.UnsetValue"/>.
+            </summary>
+            <returns>The string "(unset)".</returns>
+        </member>
+        <member name="T:Avalonia.AvaloniaPropertyChangedEventArgs">
+            <summary>
+            Provides information for a avalonia property change.
+            </summary>
+        </member>
+        <member name="M:Avalonia.AvaloniaPropertyChangedEventArgs.#ctor(Avalonia.AvaloniaObject,Avalonia.AvaloniaProperty,System.Object,System.Object,Avalonia.Data.BindingPriority)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.AvaloniaPropertyChangedEventArgs"/> class.
+            </summary>
+            <param name="sender">The object that the property changed on.</param>
+            <param name="property">The property that changed.</param>
+            <param name="oldValue">The old value of the property.</param>
+            <param name="newValue">The new value of the property.</param>
+            <param name="priority">The priority of the binding that produced the value.</param>
+        </member>
+        <member name="P:Avalonia.AvaloniaPropertyChangedEventArgs.Sender">
+            <summary>
+            Gets the <see cref="T:Avalonia.AvaloniaObject"/> that the property changed on.
+            </summary>
+            <value>The sender object.</value>
+        </member>
+        <member name="P:Avalonia.AvaloniaPropertyChangedEventArgs.Property">
+            <summary>
+            Gets the property that changed.
+            </summary>
+            <value>
+            The property that changed.
+            </value>
+        </member>
+        <member name="P:Avalonia.AvaloniaPropertyChangedEventArgs.OldValue">
+            <summary>
+            Gets the old value of the property.
+            </summary>
+            <value>
+            The old value of the property.
+            </value>
+        </member>
+        <member name="P:Avalonia.AvaloniaPropertyChangedEventArgs.NewValue">
+            <summary>
+            Gets the new value of the property.
+            </summary>
+            <value>
+            The new value of the property.
+            </value>
+        </member>
+        <member name="P:Avalonia.AvaloniaPropertyChangedEventArgs.Priority">
+            <summary>
+            Gets the priority of the binding that produced the value.
+            </summary>
+            <value>
+            The priority of the binding that produced the value.
+            </value>
+        </member>
+        <member name="T:Avalonia.PriorityLevel">
+            <summary>
+            Stores bindings for a priority level in a <see cref="T:Avalonia.PriorityValue"/>.
+            </summary>
+            <remarks>
+            <para>
+            Each priority level in a <see cref="T:Avalonia.PriorityValue"/> has a current <see cref="P:Avalonia.PriorityLevel.Value"/>,
+            a list of <see cref="P:Avalonia.PriorityLevel.Bindings"/> and a <see cref="P:Avalonia.PriorityLevel.DirectValue"/>. When there are no
+            bindings present, or all bindings return <see cref="F:Avalonia.AvaloniaProperty.UnsetValue"/> then
+            <code>Value</code> will equal <code>DirectValue</code>.
+            </para>
+            <para>
+            When there are bindings present, then the latest added binding that doesn't return
+            <code>UnsetValue</code> will take precedence. The active binding is returned by the
+            <see cref="P:Avalonia.PriorityLevel.ActiveBindingIndex"/> property (which refers to the active binding's
+            <see cref="P:Avalonia.PriorityBindingEntry.Index"/> property rather than the index in
+            <code>Bindings</code>).
+            </para>
+            <para>
+            If <code>DirectValue</code> is set while a binding is active, then it will replace the
+            current value until the active binding fires again.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Avalonia.PriorityLevel.#ctor(Avalonia.PriorityValue,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.PriorityLevel"/> class.
+            </summary>
+            <param name="owner">The owner.</param>
+            <param name="priority">The priority.</param>
+        </member>
+        <member name="P:Avalonia.PriorityLevel.Priority">
+            <summary>
+            Gets the priority of this level.
+            </summary>
+        </member>
+        <member name="P:Avalonia.PriorityLevel.DirectValue">
+            <summary>
+            Gets or sets the direct value for this priority level.
+            </summary>
+        </member>
+        <member name="P:Avalonia.PriorityLevel.Value">
+            <summary>
+            Gets the current binding for the priority level.
+            </summary>
+        </member>
+        <member name="P:Avalonia.PriorityLevel.ActiveBindingIndex">
+            <summary>
+            Gets the <see cref="P:Avalonia.PriorityBindingEntry.Index"/> value of the active binding, or -1
+            if no binding is active.
+            </summary>
+        </member>
+        <member name="P:Avalonia.PriorityLevel.Bindings">
+            <summary>
+            Gets the bindings for the priority level.
+            </summary>
+        </member>
+        <member name="M:Avalonia.PriorityLevel.Add(System.IObservable{System.Object})">
+            <summary>
+            Adds a binding.
+            </summary>
+            <param name="binding">The binding to add.</param>
+            <param name="validation">Validation settings for the binding.</param>
+            <returns>A disposable used to remove the binding.</returns>
+        </member>
+        <member name="M:Avalonia.PriorityLevel.Changed(Avalonia.PriorityBindingEntry)">
+            <summary>
+            Invoked when an entry in <see cref="P:Avalonia.PriorityLevel.Bindings"/> changes value.
+            </summary>
+            <param name="entry">The entry that changed.</param>
+        </member>
+        <member name="M:Avalonia.PriorityLevel.Completed(Avalonia.PriorityBindingEntry)">
+            <summary>
+            Invoked when an entry in <see cref="P:Avalonia.PriorityLevel.Bindings"/> completes.
+            </summary>
+            <param name="entry">The entry that completed.</param>
+        </member>
+        <member name="M:Avalonia.PriorityLevel.Error(Avalonia.PriorityBindingEntry,Avalonia.Data.BindingError)">
+            <summary>
+            Invoked when an entry in <see cref="P:Avalonia.PriorityLevel.Bindings"/> encounters a recoverable error.
+            </summary>
+            <param name="entry">The entry that completed.</param>
+            <param name="error">The error.</param>
+        </member>
+        <member name="M:Avalonia.PriorityLevel.Validation(Avalonia.PriorityBindingEntry,Avalonia.Data.ValidationStatus)">
+            <summary>
+            Invoked when an entry in <see cref="P:Avalonia.PriorityLevel.Bindings"/> reports validation status.
+            </summary>
+            <param name="entry">The entry that completed.</param>
+            <param name="validationStatus">The validation status.</param>
+        </member>
+        <member name="M:Avalonia.PriorityLevel.ActivateFirstBinding">
+            <summary>
+            Activates the first binding that has a value.
+            </summary>
+        </member>
+        <member name="T:Avalonia.PriorityValue">
+            <summary>
+            Maintains a list of prioritised bindings together with a current value.
+            </summary>
+            <remarks>
+            Bindings, in the form of <see cref="T:System.IObservable`1"/>s are added to the object using
+            the <see cref="M:Avalonia.PriorityValue.Add(System.IObservable{System.Object},System.Int32)"/> method. With the observable is passed a priority, where lower values
+            represent higher priorites. The current <see cref="P:Avalonia.PriorityValue.Value"/> is selected from the highest
+            priority binding that doesn't return <see cref="F:Avalonia.AvaloniaProperty.UnsetValue"/>. Where there
+            are multiple bindings registered with the same priority, the most recently added binding
+            has a higher priority. Each time the value changes, the 
+            <see cref="M:Avalonia.IPriorityValueOwner.Changed(Avalonia.PriorityValue,System.Object,System.Object)"/> method on the 
+            owner object is fired with the old and new values.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.PriorityValue.#ctor(Avalonia.IPriorityValueOwner,Avalonia.AvaloniaProperty,System.Type,System.Func{System.Object,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.PriorityValue"/> class.
+            </summary>
+            <param name="owner">The owner of the object.</param>
+            <param name="property">The property that the value represents.</param>
+            <param name="valueType">The value type.</param>
+            <param name="validate">An optional validation function.</param>
+        </member>
+        <member name="P:Avalonia.PriorityValue.Property">
+            <summary>
+            Gets the property that the value represents.
+            </summary>
+        </member>
+        <member name="P:Avalonia.PriorityValue.Value">
+            <summary>
+            Gets the current value.
+            </summary>
+        </member>
+        <member name="P:Avalonia.PriorityValue.ValuePriority">
+            <summary>
+            Gets the priority of the binding that is currently active.
+            </summary>
+        </member>
+        <member name="M:Avalonia.PriorityValue.Add(System.IObservable{System.Object},System.Int32)">
+            <summary>
+            Adds a new binding.
+            </summary>
+            <param name="binding">The binding.</param>
+            <param name="priority">The binding priority.</param>
+            <param name="validation">Validation settings for the binding.</param>
+            <returns>
+            A disposable that will remove the binding.
+            </returns>
+        </member>
+        <member name="M:Avalonia.PriorityValue.SetValue(System.Object,System.Int32)">
+            <summary>
+            Sets the value for a specified priority.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="priority">The priority</param>
+        </member>
+        <member name="M:Avalonia.PriorityValue.GetBindings">
+            <summary>
+            Gets the currently active bindings on this object.
+            </summary>
+            <returns>An enumerable collection of bindings.</returns>
+        </member>
+        <member name="M:Avalonia.PriorityValue.GetDiagnostic">
+            <summary>
+            Returns diagnostic string that can help the user debug the bindings in effect on
+            this object.
+            </summary>
+            <returns>A diagnostic string.</returns>
+        </member>
+        <member name="M:Avalonia.PriorityValue.LevelValueChanged(Avalonia.PriorityLevel)">
+            <summary>
+            Called when the value for a priority level changes.
+            </summary>
+            <param name="level">The priority level of the changed entry.</param>
+        </member>
+        <member name="M:Avalonia.PriorityValue.LevelValidation(Avalonia.PriorityLevel,Avalonia.Data.ValidationStatus)">
+            <summary>
+            Called whenever a priority level validation state changes.
+            </summary>
+            <param name="priorityLevel">The priority level of the changed entry.</param>
+            <param name="validationStatus">The validation status.</param>
+        </member>
+        <member name="M:Avalonia.PriorityValue.LevelError(Avalonia.PriorityLevel,Avalonia.Data.BindingError)">
+            <summary>
+            Called when a priority level encounters an error.
+            </summary>
+            <param name="level">The priority level of the changed entry.</param>
+            <param name="error">The binding error.</param>
+        </member>
+        <member name="M:Avalonia.PriorityValue.Revalidate">
+            <summary>
+            Causes a revalidation of the value.
+            </summary>
+        </member>
+        <member name="M:Avalonia.PriorityValue.GetLevel(System.Int32)">
+            <summary>
+            Gets the <see cref="T:Avalonia.PriorityLevel"/> with the specified priority, creating it if it
+            doesn't already exist.
+            </summary>
+            <param name="priority">The priority.</param>
+            <returns>The priority level.</returns>
+        </member>
+        <member name="M:Avalonia.PriorityValue.UpdateValue(System.Object,System.Int32)">
+            <summary>
+            Updates the current <see cref="P:Avalonia.PriorityValue.Value"/> and notifies all subscibers.
+            </summary>
+            <param name="value">The value to set.</param>
+            <param name="priority">The priority level that the value came from.</param>
+        </member>
+        <member name="T:Avalonia.DirectPropertyMetadata`1">
+            <summary>
+            Metadata for direct avalonia properties.
+            </summary>
+        </member>
+        <member name="M:Avalonia.DirectPropertyMetadata`1.#ctor(`0,Avalonia.Data.BindingMode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.StyledPropertyMetadata`1"/> class.
+            </summary>
+            <param name="unsetValue">
+            The value to use when the property is set to <see cref="F:Avalonia.AvaloniaProperty.UnsetValue"/>
+            </param>
+            <param name="defaultBindingMode">The default binding mode.</param>
+        </member>
+        <member name="P:Avalonia.DirectPropertyMetadata`1.UnsetValue">
+            <summary>
+            Gets the to use when the property is set to <see cref="F:Avalonia.AvaloniaProperty.UnsetValue"/>.
+            </summary>
+        </member>
+        <member name="P:Avalonia.DirectPropertyMetadata`1.Avalonia#IDirectPropertyMetadata#UnsetValue">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.DirectPropertyMetadata`1.Merge(Avalonia.PropertyMetadata,Avalonia.AvaloniaProperty)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Avalonia.StyledPropertyMetadata`1">
+            <summary>
+            Metadata for styled avalonia properties.
+            </summary>
+        </member>
+        <member name="M:Avalonia.StyledPropertyMetadata`1.#ctor(`0,System.Func{Avalonia.IAvaloniaObject,`0,`0},Avalonia.Data.BindingMode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.StyledPropertyMetadata`1"/> class.
+            </summary>
+            <param name="defaultValue">The default value of the property.</param>
+            <param name="validate">A validation function.</param>
+            <param name="defaultBindingMode">The default binding mode.</param>
+        </member>
+        <member name="P:Avalonia.StyledPropertyMetadata`1.DefaultValue">
+            <summary>
+            Gets the default value for the property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.StyledPropertyMetadata`1.Validate">
+            <summary>
+            Gets the validation callback.
+            </summary>
+        </member>
+        <member name="M:Avalonia.StyledPropertyMetadata`1.Merge(Avalonia.PropertyMetadata,Avalonia.AvaloniaProperty)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Avalonia.Threading.Dispatcher">
+            <summary>
+            Provides services for managing work items on a thread.
+            </summary>
+            <remarks>
+            In Avalonia, there is usually only a single <see cref="T:Avalonia.Threading.Dispatcher"/> in the application -
+            the one for the UI thread, retrieved via the <see cref="P:Avalonia.Threading.Dispatcher.UIThread"/> property.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Threading.Dispatcher.MainLoop(System.Threading.CancellationToken)">
+            <summary>
+            Runs the dispatcher's main loop.
+            </summary>
+            <param name="cancellationToken">
+            A cancellation token used to exit the main loop.
+            </param>
+        </member>
+        <member name="M:Avalonia.Threading.Dispatcher.RunJobs">
+            <summary>
+            Runs continuations pushed on the loop.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Threading.Dispatcher.InvokeTaskAsync(System.Action,Avalonia.Threading.DispatcherPriority)">
+            <summary>
+            Invokes a method on the dispatcher thread.
+            </summary>
+            <param name="action">The method.</param>
+            <param name="priority">The priority with which to invoke the method.</param>
+            <returns>A task that can be used to track the method's execution.</returns>
+        </member>
+        <member name="M:Avalonia.Threading.Dispatcher.InvokeAsync(System.Action,Avalonia.Threading.DispatcherPriority)">
+            <summary>
+            Post action that will be invoked on main thread
+            </summary>
+            <param name="action">The method.</param>
+            <param name="priority">The priority with which to invoke the method.</param>
+        </member>
+        <member name="T:Avalonia.Threading.DispatcherPriority">
+            <summary>
+            Defines the priorities with which jobs can be invoked on a <see cref="T:Avalonia.Threading.Dispatcher"/>.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Threading.DispatcherPriority.Inactive">
+            <summary>
+            The job will not be processed.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Threading.DispatcherPriority.SystemIdle">
+            <summary>
+            The job will be processed when the system is idle.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Threading.DispatcherPriority.ApplicationIdle">
+            <summary>
+            The job will be processed when the application sis idle.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Threading.DispatcherPriority.ContextIdle">
+            <summary>
+            The job will be processed after background operations have completed.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Threading.DispatcherPriority.Background">
+            <summary>
+            The job will be processed after other non-idle operations have completed.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Threading.DispatcherPriority.Input">
+            <summary>
+            The job will be processed with the same priority as input.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Threading.DispatcherPriority.Loaded">
+            <summary>
+            The job will be processed after layout and render but before input.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Threading.DispatcherPriority.Render">
+            <summary>
+            The job will be processed with the same priority as render.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Threading.DispatcherPriority.DataBind">
+            <summary>
+            The job will be processed with the same priority as data binding.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Threading.DispatcherPriority.Normal">
+            <summary>
+            The job will be processed with normal priority.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Threading.DispatcherPriority.Send">
+            <summary>
+            The job will be processed before other asynchronous operations.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Threading.DispatcherTimer">
+            <summary>
+            A timer that uses a <see cref="T:Avalonia.Threading.Dispatcher"/> to fire at a specified interval.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Threading.DispatcherTimer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Threading.DispatcherTimer"/> class.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Threading.DispatcherTimer.#ctor(Avalonia.Threading.DispatcherPriority)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Threading.DispatcherTimer"/> class.
+            </summary>
+            <param name="priority">The priority to use.</param>
+        </member>
+        <member name="M:Avalonia.Threading.DispatcherTimer.#ctor(System.TimeSpan,Avalonia.Threading.DispatcherPriority,System.EventHandler)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Threading.DispatcherTimer"/> class.
+            </summary>
+            <param name="interval">The interval at which to tick.</param>
+            <param name="priority">The priority to use.</param>
+            <param name="callback">The event to call when the timer ticks.</param>
+        </member>
+        <member name="M:Avalonia.Threading.DispatcherTimer.Finalize">
+            <summary>
+            Finalizes an instance of the <see cref="T:Avalonia.Threading.DispatcherTimer"/> class.
+            </summary>
+        </member>
+        <member name="E:Avalonia.Threading.DispatcherTimer.Tick">
+            <summary>
+            Raised when the timer ticks.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Threading.DispatcherTimer.Interval">
+            <summary>
+            Gets or sets the interval at which the timer ticks.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Threading.DispatcherTimer.IsEnabled">
+            <summary>
+            Gets or sets a value indicating whether the timer is running.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Threading.DispatcherTimer.Tag">
+            <summary>
+            Gets or sets user-defined data associated with the timer.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Threading.DispatcherTimer.Run(System.Func{System.Boolean},System.TimeSpan,Avalonia.Threading.DispatcherPriority)">
+            <summary>
+            Starts a new timer.
+            </summary>
+            <param name="action">
+            The method to call on timer tick. If the method returns false, the timer will stop.
+            </param>
+            <param name="interval">The interval at which to tick.</param>
+            <param name="priority">The priority to use.</param>
+            <returns>An <see cref="T:System.IDisposable"/> used to cancel the timer.</returns>
+        </member>
+        <member name="M:Avalonia.Threading.DispatcherTimer.RunOnce(System.Action,System.TimeSpan,Avalonia.Threading.DispatcherPriority)">
+            <summary>
+            Runs a method once, after the specified interval.
+            </summary>
+            <param name="action">
+            The method to call after the interval has elapsed.
+            </param>
+            <param name="interval">The interval after which to call the method.</param>
+            <param name="priority">The priority to use.</param>
+            <returns>An <see cref="T:System.IDisposable"/> used to cancel the timer.</returns>
+        </member>
+        <member name="M:Avalonia.Threading.DispatcherTimer.Start">
+            <summary>
+            Starts the timer.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Threading.DispatcherTimer.Stop">
+            <summary>
+            Stops the timer.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Threading.DispatcherTimer.InternalTick">
+            <summary>
+            Raises the <see cref="E:Avalonia.Threading.DispatcherTimer.Tick"/> event on the dispatcher thread.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Threading.DispatcherTimer.RaiseTick">
+            <summary>
+            Raises the <see cref="E:Avalonia.Threading.DispatcherTimer.Tick"/> event.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Threading.JobRunner">
+            <summary>
+            A main loop in a <see cref="T:Avalonia.Threading.Dispatcher"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Threading.JobRunner.RunJobs">
+            <summary>
+            Runs continuations pushed on the loop.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Threading.JobRunner.InvokeAsync(System.Action,Avalonia.Threading.DispatcherPriority)">
+            <summary>
+            Invokes a method on the main loop.
+            </summary>
+            <param name="action">The method.</param>
+            <param name="priority">The priority with which to invoke the method.</param>
+            <returns>A task that can be used to track the method's execution.</returns>
+        </member>
+        <member name="M:Avalonia.Threading.JobRunner.Post(System.Action,Avalonia.Threading.DispatcherPriority)">
+            <summary>
+            Post action that will be invoked on main thread
+            </summary>
+            <param name="action">The method.</param>
+            
+            <param name="priority">The priority with which to invoke the method.</param>
+        </member>
+        <member name="T:Avalonia.Threading.JobRunner.Job">
+            <summary>
+            A job to run.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Threading.JobRunner.Job.#ctor(System.Action,Avalonia.Threading.DispatcherPriority,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Threading.JobRunner.Job"/> class.
+            </summary>
+            <param name="action">The method to call.</param>
+            <param name="priority">The job priority.</param>
+            <param name="throwOnUiThread">Do not wrap excepption in TaskCompletionSource</param>
+        </member>
+        <member name="P:Avalonia.Threading.JobRunner.Job.Action">
+            <summary>
+            Gets the method to call.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Threading.JobRunner.Job.Priority">
+            <summary>
+            Gets the job priority.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Threading.JobRunner.Job.TaskCompletionSource">
+            <summary>
+            Gets the task completion source.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Threading.AvaloniaScheduler">
+            <summary>
+            A reactive scheduler that uses Avalonia's <see cref="T:Avalonia.Threading.Dispatcher"/>.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Threading.AvaloniaScheduler.Instance">
+            <summary>
+            The instance of the <see cref="T:Avalonia.Threading.AvaloniaScheduler"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Threading.AvaloniaScheduler.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Threading.AvaloniaScheduler"/> class.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Threading.AvaloniaScheduler.Schedule``1(``0,System.TimeSpan,System.Func{System.Reactive.Concurrency.IScheduler,``0,System.IDisposable})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Avalonia.Threading.AvaloniaSynchronizationContext">
+            <summary>
+            SynchronizationContext to be used on main thread
+            </summary>
+        </member>
+        <member name="P:Avalonia.Threading.AvaloniaSynchronizationContext.AutoInstall">
+            <summary>
+            Controls if SynchronizationContext should be installed in InstallIfNeeded. Used by Designer.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Threading.AvaloniaSynchronizationContext.InstallIfNeeded">
+            <summary>
+            Installs synchronization context in current thread
+            </summary>
+        </member>
+        <member name="M:Avalonia.Threading.AvaloniaSynchronizationContext.Post(System.Threading.SendOrPostCallback,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Threading.AvaloniaSynchronizationContext.Send(System.Threading.SendOrPostCallback,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Avalonia.Utilities.IWeakSubscriber`1">
+            <summary>
+            Defines a listener to a event subscribed vis the <see cref="T:Avalonia.Utilities.WeakSubscriptionManager"/>.
+            </summary>
+            <typeparam name="T">The type of the event arguments.</typeparam>
+        </member>
+        <member name="M:Avalonia.Utilities.IWeakSubscriber`1.OnEvent(System.Object,`0)">
+            <summary>
+            Invoked when the subscribed event is raised.
+            </summary>
+            <param name="sender">The event sender.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:Avalonia.Utilities.MathUtilities">
+            <summary>
+            Provides math utilities not provided in System.Math.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Utilities.MathUtilities.Clamp(System.Double,System.Double,System.Double)">
+            <summary>
+            Clamps a value between a minimum and maximum value.
+            </summary>
+            <param name="val">The value.</param>
+            <param name="min">The minimum value.</param>
+            <param name="max">The maximum value.</param>
+            <returns>The clamped value.</returns>
+        </member>
+        <member name="T:Avalonia.Utilities.TypeUtilities">
+            <summary>
+            Provides utilities for working with types at runtime.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Utilities.TypeUtilities.AcceptsNull(System.Type)">
+            <summary>
+            Returns a value indicating whether null can be assigned to the specified type.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>True if the type accepts null values; otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.Utilities.TypeUtilities.TryCast(System.Type,System.Object,System.Object@)">
+            <summary>
+            Try to cast a value to a type, using implicit conversions if possible.
+            </summary>
+            <param name="to">The type to cast to.</param>
+            <param name="value">The value to cast.</param>
+            <param name="result">If sucessful, contains the cast value.</param>
+            <returns>True if the cast was sucessful, otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.Utilities.TypeUtilities.TryConvert(System.Type,System.Object,System.Globalization.CultureInfo,System.Object@)">
+            <summary>
+            Try to convert a value to a type, using <see cref="T:System.Convert"/> if possible,
+            otherwise using <see cref="M:Avalonia.Utilities.TypeUtilities.TryCast(System.Type,System.Object,System.Object@)"/>.
+            </summary>
+            <param name="to">The type to cast to.</param>
+            <param name="value">The value to cast.</param>
+            <param name="culture">The culture to use.</param>
+            <param name="result">If sucessful, contains the cast value.</param>
+            <returns>True if the cast was sucessful, otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.Utilities.TypeUtilities.CastOrDefault(System.Object,System.Type)">
+            <summary>
+            Casts a value to a type, returning the default for that type if the value could not be
+            cast.
+            </summary>
+            <param name="value">The value to cast.</param>
+            <param name="type">The type to cast to..</param>
+            <returns>A value of <paramref name="type"/>.</returns>
+        </member>
+        <member name="M:Avalonia.Utilities.TypeUtilities.Default(System.Type)">
+            <summary>
+            Gets the default value for the specified type.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The default value.</returns>
+        </member>
+        <member name="T:Avalonia.Utilities.WeakSubscriptionManager">
+            <summary>
+            Manages subscriptions to events using weak listeners.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Utilities.WeakSubscriptionManager.Subscribe``1(System.Object,System.String,Avalonia.Utilities.IWeakSubscriber{``0})">
+            <summary>
+            Subscribes to an event on an object using a weak subscription.
+            </summary>
+            <typeparam name="T">The type of the event arguments.</typeparam>
+            <param name="target">The event source.</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="subscriber">The subscriber.</param>
+        </member>
+        <member name="M:Avalonia.Utilities.WeakSubscriptionManager.Unsubscribe``1(System.Object,System.String,Avalonia.Utilities.IWeakSubscriber{``0})">
+            <summary>
+            Unsubscribes from an event.
+            </summary>
+            <typeparam name="T">The type of the event arguments.</typeparam>
+            <param name="target">The event source.</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="subscriber">The subscriber.</param>
+        </member>
+    </members>
+</doc>

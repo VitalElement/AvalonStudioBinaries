@@ -1,0 +1,321 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Avalonia.Xaml.Interactions</name>
+    </assembly>
+    <members>
+        <member name="T:Avalonia.Xaml.Interactions.Core.CallMethodAction">
+            <summary>
+            An action that calls a method on a specified object when invoked.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.CallMethodAction.MethodNameProperty">
+            <summary>
+            Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.CallMethodAction.MethodName"/> avalonia property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.CallMethodAction.TargetObjectProperty">
+            <summary>
+            Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.CallMethodAction.TargetObject"/> avalonia property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Xaml.Interactions.Core.CallMethodAction.MethodName">
+            <summary>
+            Gets or sets the name of the method to invoke. This is a avalonia property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Xaml.Interactions.Core.CallMethodAction.TargetObject">
+            <summary>
+            Gets or sets the object that exposes the method of interest. This is a avalonia property.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Xaml.Interactions.Core.CallMethodAction.Execute(System.Object,System.Object)">
+            <summary>
+            Executes the action.
+            </summary>
+            <param name="sender">The <see cref="T:System.Object"/> that is passed to the action by the behavior. Generally this is <seealso cref="P:Avalonia.Xaml.Interactivity.IBehavior.AssociatedObject"/> or a target object.</param>
+            <param name="parameter">The value of this parameter is determined by the caller.</param>
+            <returns>True if the method is called; else false.</returns>
+        </member>
+        <member name="T:Avalonia.Xaml.Interactions.Core.ChangePropertyAction">
+            <summary>
+            An action that will change a specified property to a specified value when invoked.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.ChangePropertyAction.PropertyNameProperty">
+            <summary>
+            Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.ChangePropertyAction.PropertyName"/> avalonia property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.ChangePropertyAction.TargetObjectProperty">
+            <summary>
+            Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.ChangePropertyAction.TargetObject"/> avalonia property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.ChangePropertyAction.ValueProperty">
+            <summary>
+            Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.ChangePropertyAction.Value"/> avalonia property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Xaml.Interactions.Core.ChangePropertyAction.PropertyName">
+            <summary>
+            Gets or sets the name of the property to change. This is a avalonia property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Xaml.Interactions.Core.ChangePropertyAction.Value">
+            <summary>
+            Gets or sets the value to set. This is a avalonia property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Xaml.Interactions.Core.ChangePropertyAction.TargetObject">
+            <summary>
+            Gets or sets the object whose property will be changed.
+            If <seealso cref="P:Avalonia.Xaml.Interactions.Core.ChangePropertyAction.TargetObject"/> is not set or cannot be resolved, the sender of <seealso cref="M:Avalonia.Xaml.Interactions.Core.ChangePropertyAction.Execute(System.Object,System.Object)"/> will be used. This is a avalonia property.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Xaml.Interactions.Core.ChangePropertyAction.Execute(System.Object,System.Object)">
+            <summary>
+            Executes the action.
+            </summary>
+            <param name="sender">The <see cref="T:System.Object"/> that is passed to the action by the behavior. Generally this is <seealso cref="P:Avalonia.Xaml.Interactivity.IBehavior.AssociatedObject"/> or a target object.</param>
+            <param name="parameter">The value of this parameter is determined by the caller.</param>
+            <returns>True if updating the property value succeeds; else false.</returns>
+        </member>
+        <member name="M:Avalonia.Xaml.Interactions.Core.ChangePropertyAction.ValidateProperty(System.String,System.Reflection.PropertyInfo)">
+            <summary>
+            Ensures the property is not null and can be written to.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Xaml.Interactions.Core.ChangePropertyAction.ValidateAvaloniaProperty(Avalonia.AvaloniaProperty)">
+            <summary>
+            Ensures the property is not null and can be written to.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Xaml.Interactions.Core.ComparisonConditionType">
+            <summary>
+            Represents one ternary condition.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.ComparisonConditionType.Equal">
+            <summary>
+            Specifies an equal condition.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.ComparisonConditionType.NotEqual">
+            <summary>
+            Specifies a not equal condition.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.ComparisonConditionType.LessThan">
+            <summary>
+            Specifies a less than condition.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.ComparisonConditionType.LessThanOrEqual">
+            <summary>
+            Specifies a less than or equal condition.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.ComparisonConditionType.GreaterThan">
+            <summary>
+            Specifies a greater than condition.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.ComparisonConditionType.GreaterThanOrEqual">
+            <summary>
+            Specifies a greater than or equal condition.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Xaml.Interactions.Core.DataBindingHelper.RefreshDataBindingsOnActions(Avalonia.Xaml.Interactivity.ActionCollection)">
+            <summary>
+            Ensures that all binding expression on actions are up to date.
+            </summary>
+            <remarks>
+            <see cref="T:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior"/> fires during data binding phase. Since the <see cref="T:Avalonia.Xaml.Interactivity.ActionCollection"/> is a child of the behavior,
+            bindings on the action  may not be up-to-date. This routine is called before the action
+            is executed in order to guarantee that all bindings are refreshed with the most current data.
+            </remarks>
+        </member>
+        <member name="T:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior">
+            <summary>
+            A behavior that performs actions when the bound data meets a specified condition.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.ActionsProperty">
+            <summary>
+            Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.Actions"/> avalonia property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.BindingProperty">
+            <summary>
+            Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.Binding"/> avalonia property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.ComparisonConditionProperty">
+            <summary>
+            Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.ComparisonCondition"/> avalonia property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.ValueProperty">
+            <summary>
+            Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.Value"/> avalonia property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.Actions">
+            <summary>
+            Gets the collection of actions associated with the behavior. This is a avalonia property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.Binding">
+            <summary>
+            Gets or sets the bound object that the <see cref="T:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior"/> will listen to. This is a avalonia property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.ComparisonCondition">
+            <summary>
+            Gets or sets the type of comparison to be performed between <see cref="P:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.Binding"/> and <see cref="P:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.Value"/>. This is a avalonia property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.Value">
+            <summary>
+            Gets or sets the value to be compared with the value of <see cref="P:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.Binding"/>. This is a avalonia property.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.EvaluateComparable(System.IComparable,Avalonia.Xaml.Interactions.Core.ComparisonConditionType,System.IComparable)">
+            <summary>
+            Evaluates both operands that implement the IComparable interface.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior">
+            <summary>
+            A behavior that listens for a specified event on its source and executes its actions when that event is fired.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior.ActionsProperty">
+            <summary>
+            Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior.Actions"/> avalonia property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior.EventNameProperty">
+            <summary>
+            Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior.EventName"/> avalonia property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior.SourceObjectProperty">
+            <summary>
+            Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior.SourceObject"/> avalonia property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior.Actions">
+            <summary>
+            Gets the collection of actions associated with the behavior. This is a avalonia property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior.EventName">
+            <summary>
+            Gets or sets the name of the event to listen for. This is a avalonia property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior.SourceObject">
+            <summary>
+            Gets or sets the source object from which this behavior listens for events.
+            If <seealso cref="P:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior.SourceObject"/> is not set, the source will default to <seealso cref="P:Avalonia.Xaml.Interactivity.Behavior.AssociatedObject"/>. This is a avalonia property.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior.OnAttached">
+            <summary>
+            Called after the behavior is attached to the <see cref="P:Avalonia.Xaml.Interactivity.Behavior.AssociatedObject"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior.OnDetaching">
+            <summary>
+            Called when the behavior is being detached from its <see cref="P:Avalonia.Xaml.Interactivity.Behavior.AssociatedObject"/>.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Xaml.Interactions.Core.InvokeCommandAction">
+            <summary>
+            Executes a specified <see cref="T:System.Windows.Input.ICommand"/> when invoked. 
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.InvokeCommandAction.CommandProperty">
+            <summary>
+            Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.InvokeCommandAction.Command"/> avalonia property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.InvokeCommandAction.CommandParameterProperty">
+            <summary>
+            Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.InvokeCommandAction.CommandParameter"/> avalonia property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.InvokeCommandAction.InputConverterProperty">
+            <summary>
+            Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.InvokeCommandAction.InputConverter"/> avalonia property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.InvokeCommandAction.InputConverterParameterProperty">
+            <summary>
+            Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.InvokeCommandAction.InputConverterParameter"/> avalonia property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactions.Core.InvokeCommandAction.InputConverterLanguageProperty">
+            <summary>
+            Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.InvokeCommandAction.InputConverterLanguage"/> avalonia property.
+            </summary>
+            <remarks>The string.Empty used for default value string means the invariant culture.</remarks>
+        </member>
+        <member name="P:Avalonia.Xaml.Interactions.Core.InvokeCommandAction.Command">
+            <summary>
+            Gets or sets the command this action should invoke. This is a avalonia property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Xaml.Interactions.Core.InvokeCommandAction.CommandParameter">
+            <summary>
+            Gets or sets the parameter that is passed to <see cref="M:System.Windows.Input.ICommand.Execute(System.Object)"/>.
+            If this is not set, the parameter from the <seealso cref="M:Avalonia.Xaml.Interactions.Core.InvokeCommandAction.Execute(System.Object,System.Object)"/> method will be used.
+            This is an optional avalonia property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Xaml.Interactions.Core.InvokeCommandAction.InputConverter">
+            <summary>
+            Gets or sets the converter that is run on the parameter from the <seealso cref="M:Avalonia.Xaml.Interactions.Core.InvokeCommandAction.Execute(System.Object,System.Object)"/> method.
+            This is an optional avalonia property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Xaml.Interactions.Core.InvokeCommandAction.InputConverterParameter">
+            <summary>
+            Gets or sets the parameter that is passed to the <see cref="M:Avalonia.Markup.IValueConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)"/>
+            method of <see cref="P:Avalonia.Xaml.Interactions.Core.InvokeCommandAction.InputConverter"/>.
+            This is an optional avalonia property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Xaml.Interactions.Core.InvokeCommandAction.InputConverterLanguage">
+            <summary>
+            Gets or sets the language that is passed to the <see cref="M:Avalonia.Markup.IValueConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)"/>
+            method of <see cref="P:Avalonia.Xaml.Interactions.Core.InvokeCommandAction.InputConverter"/>.
+            This is an optional avalonia property.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Xaml.Interactions.Core.InvokeCommandAction.Execute(System.Object,System.Object)">
+            <summary>
+            Executes the action.
+            </summary>
+            <param name="sender">The <see cref="T:System.Object"/> that is passed to the action by the behavior. Generally this is <seealso cref="P:Avalonia.Xaml.Interactivity.IBehavior.AssociatedObject"/> or a target object.</param>
+            <param name="parameter">The value of this parameter is determined by the caller.</param>
+            <returns>True if the command is successfully executed; else false.</returns>
+        </member>
+        <member name="T:Avalonia.Xaml.Interactions.Core.TypeConverterHelper">
+            <summary>
+            A helper class that enables converting values specified in markup (strings) to their object representation.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Xaml.Interactions.Core.TypeConverterHelper.Convert(System.String,System.String)">
+            <summary>
+            Converts string representation of a value to its object representation.
+            </summary>
+            <param name="value">The value to convert.</param>
+            <param name="destinationTypeFullName">The full name of the destination type.</param>
+            <returns>Object representation of the string value.</returns>
+            <exception cref="T:System.ArgumentNullException">destinationTypeFullName cannot be null.</exception>
+        </member>
+    </members>
+</doc>
