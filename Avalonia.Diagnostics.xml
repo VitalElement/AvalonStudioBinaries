@@ -4,5 +4,52 @@
         <name>Avalonia.Diagnostics</name>
     </assembly>
     <members>
+        <member name="T:Avalonia.Diagnostics.Views.SimpleGrid">
+            <summary>
+            A simple grid control that lays out columns with a equal width and rows to their desired
+            size.
+            </summary>
+            <remarks>
+            This is used in the devtools because our <see cref="T:Avalonia.Controls.Grid"/> performance sucks.
+            </remarks>
+        </member>
+        <member name="F:Avalonia.Diagnostics.Views.SimpleGrid.ColumnProperty">
+            <summary>
+            Defines the Column attached property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Diagnostics.Views.SimpleGrid.RowProperty">
+            <summary>
+            Defines the Row attached property.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Diagnostics.Views.SimpleGrid.GetColumn(Avalonia.Controls.IControl)">
+            <summary>
+            Gets the value of the Column attached property for a control.
+            </summary>
+            <param name="control">The control.</param>
+            <returns>The control's column.</returns>
+        </member>
+        <member name="M:Avalonia.Diagnostics.Views.SimpleGrid.GetRow(Avalonia.Controls.IControl)">
+            <summary>
+            Gets the value of the Row attached property for a control.
+            </summary>
+            <param name="control">The control.</param>
+            <returns>The control's row.</returns>
+        </member>
+        <member name="M:Avalonia.Diagnostics.Views.SimpleGrid.SetColumn(Avalonia.Controls.IControl,System.Int32)">
+            <summary>
+            Sets the value of the Column attached property for a control.
+            </summary>
+            <param name="control">The control.</param>
+            <param name="value">The column value.</param>
+        </member>
+        <member name="M:Avalonia.Diagnostics.Views.SimpleGrid.SetRow(Avalonia.Controls.IControl,System.Int32)">
+            <summary>
+            Sets the value of the Row attached property for a control.
+            </summary>
+            <param name="control">The control.</param>
+            <param name="value">The row value.</param>
+        </member>
     </members>
 </doc>
