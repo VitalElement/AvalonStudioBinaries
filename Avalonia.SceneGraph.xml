@@ -2082,6 +2082,13 @@
             <param name="clip">The clip rectangle.</param>
             <returns>A disposable used to undo the clip rectangle.</returns>
         </member>
+        <member name="M:Avalonia.Media.DrawingContext.PushGeometryClip(Avalonia.Media.Geometry)">
+            <summary>
+            Pushes a clip geometry.
+            </summary>
+            <param name="clip">The clip geometry.</param>
+            <returns>A disposable used to undo the clip geometry.</returns>
+        </member>
         <member name="M:Avalonia.Media.DrawingContext.PushOpacity(System.Double)">
             <summary>
             Pushes an opacity value.
@@ -2746,6 +2753,13 @@
             <param name="strokeThickness">The stroke thickness.</param>
             <returns>The bounding rectangle.</returns>
         </member>
+        <member name="M:Avalonia.Media.Geometry.FillContains(Avalonia.Point)">
+            <summary>
+            Indicates whether the geometry contains the specified point.
+            </summary>
+            <param name="point">The point.</param>
+            <returns><c>true</c> if the geometry contains the point; otherwise, <c>false</c>.</returns>
+        </member>
         <member name="T:Avalonia.Media.IDrawingContextImpl">
             <summary>
             Defines the interface through which drawing occurs.
@@ -2810,14 +2824,18 @@
             Pushes a clip rectange.
             </summary>
             <param name="clip">The clip rectangle.</param>
-            <returns>A disposable used to undo the clip rectangle.</returns>
         </member>
         <member name="M:Avalonia.Media.IDrawingContextImpl.PushOpacity(System.Double)">
             <summary>
             Pushes an opacity value.
             </summary>
             <param name="opacity">The opacity.</param>
-            <returns>A disposable used to undo the opacity.</returns>
+        </member>
+        <member name="M:Avalonia.Media.IDrawingContextImpl.PushGeometryClip(Avalonia.Media.Geometry)">
+            <summary>
+            Pushes a clip geometry.
+            </summary>
+            <param name="clip">The clip geometry.</param>
         </member>
         <member name="T:Avalonia.Media.Imaging.Bitmap">
             <summary>
@@ -3522,6 +3540,11 @@
             Gets a value indicating whether the scene graph node should be clipped to its bounds.
             </summary>
         </member>
+        <member name="P:Avalonia.VisualTree.IVisual.Clip">
+            <summary>
+            Gets or sets the geometry clip for this visual.
+            </summary>
+        </member>
         <member name="P:Avalonia.VisualTree.IVisual.IsAttachedToVisualTree">
             <summary>
             Gets a value indicating whether this scene graph node is attached to a visual root.
@@ -3547,9 +3570,9 @@
             Gets or sets the render transform of the scene graph node.
             </summary>
         </member>
-        <member name="P:Avalonia.VisualTree.IVisual.TransformOrigin">
+        <member name="P:Avalonia.VisualTree.IVisual.RenderTransformOrigin">
             <summary>
-            Gets or sets the transform origin of the scene graph node.
+            Gets or sets the render transform origin of the scene graph node.
             </summary>
         </member>
         <member name="P:Avalonia.VisualTree.IVisual.VisualChildren">
@@ -3622,12 +3645,12 @@
         </member>
         <member name="T:Avalonia.VisualTree.TransformedBounds">
             <summary>
-            Holds information about the bounds of a control, together with a transform and a clip/
+            Holds information about the bounds of a control, together with a transform and a clip.
             </summary>
         </member>
         <member name="M:Avalonia.VisualTree.TransformedBounds.#ctor(Avalonia.Rect,Avalonia.Rect,Avalonia.Matrix)">
             <summary>
-            Initializes a new instance of the <see cref="T:Avalonia.VisualTree.TransformedBounds"/> class.
+            Initializes a new instance of the <see cref="T:Avalonia.VisualTree.TransformedBounds"/> struct.
             </summary>
             <param name="bounds">The control's bounds.</param>
             <param name="clip">The control's clip rectangle.</param>
@@ -3663,20 +3686,12 @@
             <param name="visual">The visual.</param>
             <returns>An observable that returns the tracked bounds.</returns>
         </member>
-        <member name="M:Avalonia.VisualTree.BoundsTracker.Track(Avalonia.Visual,Avalonia.Visual)">
+        <member name="M:Avalonia.VisualTree.BoundsTracker.GetTransformedBounds(Avalonia.Visual)">
             <summary>
-            Starts tracking the specified visual relative to another control.
+            Gets the transformed bounds of the visual.
             </summary>
             <param name="visual">The visual.</param>
-            <param name="relativeTo">The control that the tracking should be relative to.</param>
-            <returns>An observable that returns the tracked bounds.</returns>
-        </member>
-        <member name="M:Avalonia.VisualTree.BoundsTracker.ExtractBounds(System.Collections.Generic.IList{Avalonia.Rect})">
-            <summary>
-            Sums a collection of rectangles.
-            </summary>
-            <param name="rects">The collection of rectangles.</param>
-            <returns>The summed rectangle.</returns>
+            <returns>The transformed bounds.</returns>
         </member>
         <member name="T:Avalonia.VisualTree.VisualExtensions">
             <summary>
@@ -3877,6 +3892,13 @@
             </summary>
             <param name="strokeThickness">The stroke thickness.</param>
             <returns>The bounding rectangle.</returns>
+        </member>
+        <member name="M:Avalonia.Platform.IGeometryImpl.FillContains(Avalonia.Point)">
+            <summary>
+            Indicates whether the geometry contains the specified point.
+            </summary>
+            <param name="point">The point.</param>
+            <returns><c>true</c> if the geometry contains the point; otherwise, <c>false</c>.</returns>
         </member>
         <member name="T:Avalonia.Platform.IPlatformRenderInterface">
             <summary>
@@ -5257,6 +5279,11 @@
             Defines the <see cref="P:Avalonia.Visual.ClipToBounds"/> property.
             </summary>
         </member>
+        <member name="F:Avalonia.Visual.ClipProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.Visual.Clip"/> property.
+            </summary>
+        </member>
         <member name="F:Avalonia.Visual.IsVisibleProperty">
             <summary>
             Defines the <see cref="F:Avalonia.Visual.IsVisibleProperty"/> property.
@@ -5272,9 +5299,9 @@
             Defines the <see cref="P:Avalonia.Visual.RenderTransform"/> property.
             </summary>
         </member>
-        <member name="F:Avalonia.Visual.TransformOriginProperty">
+        <member name="F:Avalonia.Visual.RenderTransformOriginProperty">
             <summary>
-            Defines the <see cref="P:Avalonia.Visual.TransformOrigin"/> property.
+            Defines the <see cref="P:Avalonia.Visual.RenderTransformOrigin"/> property.
             </summary>
         </member>
         <member name="F:Avalonia.Visual.VisualParentProperty">
@@ -5317,6 +5344,11 @@
             Gets a value indicating whether the scene graph node should be clipped to its bounds.
             </summary>
         </member>
+        <member name="P:Avalonia.Visual.Clip">
+            <summary>
+            Gets or sets the geometry clip for this visual.
+            </summary>
+        </member>
         <member name="P:Avalonia.Visual.IsEffectivelyVisible">
             <summary>
             Gets a value indicating whether this scene graph node and all its parents are visible.
@@ -5337,7 +5369,7 @@
             Gets the render transform of the scene graph node.
             </summary>
         </member>
-        <member name="P:Avalonia.Visual.TransformOrigin">
+        <member name="P:Avalonia.Visual.RenderTransformOrigin">
             <summary>
             Gets the transform origin of the scene graph node.
             </summary>

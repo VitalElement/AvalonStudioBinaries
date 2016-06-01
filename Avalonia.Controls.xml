@@ -1586,6 +1586,16 @@
             Defines the <see cref="P:Avalonia.Controls.Primitives.Popup.PlacementMode"/> property.
             </summary>
         </member>
+        <member name="F:Avalonia.Controls.Primitives.Popup.HorizontalOffsetProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.Controls.Primitives.Popup.HorizontalOffset"/> property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Controls.Primitives.Popup.VerticalOffsetProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.Controls.Primitives.Popup.VerticalOffset"/> property.
+            </summary>
+        </member>
         <member name="F:Avalonia.Controls.Primitives.Popup.PlacementTargetProperty">
             <summary>
             Defines the <see cref="P:Avalonia.Controls.Primitives.Popup.PlacementTarget"/> property.
@@ -1638,6 +1648,16 @@
         <member name="P:Avalonia.Controls.Primitives.Popup.PlacementMode">
             <summary>
             Gets or sets the placement mode of the popup in relation to the <see cref="P:Avalonia.Controls.Primitives.Popup.PlacementTarget"/>.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Controls.Primitives.Popup.HorizontalOffset">
+            <summary>
+            Gets or sets the Horizontal offset of the popup in relation to the <see cref="P:Avalonia.Controls.Primitives.Popup.PlacementTarget"/>
+            </summary>
+        </member>
+        <member name="P:Avalonia.Controls.Primitives.Popup.VerticalOffset">
+            <summary>
+            Gets or sets the Vertical offset of the popup in relation to the <see cref="P:Avalonia.Controls.Primitives.Popup.PlacementTarget"/>
             </summary>
         </member>
         <member name="P:Avalonia.Controls.Primitives.Popup.PlacementTarget">
