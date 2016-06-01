@@ -47,23 +47,34 @@
             target.
             </summary>
         </member>
-        <member name="T:Avalonia.Data.ValidationStatus">
+        <member name="T:Avalonia.Data.IValidationStatus">
             <summary>
             Contains information on if the current object passed validation.
             Subclasses of this class contain additional information depending on the method of validation checking. 
             </summary>
         </member>
-        <member name="P:Avalonia.Data.ValidationStatus.IsValid">
+        <member name="P:Avalonia.Data.IValidationStatus.IsValid">
             <summary>
             True when the data passes validation; otherwise, false.
             </summary>
         </member>
-        <member name="M:Avalonia.Data.ValidationStatus.Match(Avalonia.Data.ValidationMethods)">
+        <member name="T:Avalonia.Data.ObjectValidationStatus">
             <summary>
-            Checks if this validation status came from a currently enabled method of validation checking.
+            An immutable struct that contains validation information for a <see cref="T:Avalonia.AvaloniaObject"/> that validates a single property.
             </summary>
-            <param name="enabledMethods">The enabled methods of validation checking.</param>
-            <returns>True if enabled; otherwise, false.</returns>
+        </member>
+        <member name="M:Avalonia.Data.ObjectValidationStatus.#ctor(System.Collections.Generic.Dictionary{System.Type,Avalonia.Data.IValidationStatus})">
+            <summary>
+            Constructs the structure with the given validation information.
+            </summary>
+            <param name="validations">The validation information</param>
+        </member>
+        <member name="M:Avalonia.Data.ObjectValidationStatus.UpdateValidationStatus(Avalonia.Data.IValidationStatus)">
+            <summary>
+            Creates a new status with the updated information.
+            </summary>
+            <param name="status">The updated status information.</param>
+            <returns>The new validation status.</returns>
         </member>
         <member name="T:Avalonia.Data.AssignBindingAttribute">
             <summary>
@@ -904,7 +915,7 @@
             <param name="oldValue">The old value.</param>
             <param name="newValue">The new value.</param>
         </member>
-        <member name="M:Avalonia.IPriorityValueOwner.DataValidationChanged(Avalonia.PriorityValue,Avalonia.Data.ValidationStatus)">
+        <member name="M:Avalonia.IPriorityValueOwner.DataValidationChanged(Avalonia.PriorityValue,Avalonia.Data.IValidationStatus)">
             <summary>
             Called when the validation state of a <see cref="T:Avalonia.PriorityValue"/> changes.
             </summary>
@@ -2011,6 +2022,16 @@
             Event handler for <see cref="E:Avalonia.AvaloniaObject.PropertyChanged"/> implementation.
             </summary>
         </member>
+        <member name="F:Avalonia.AvaloniaObject.ValidationStatusProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.AvaloniaObject.ValidationStatus"/> property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.AvaloniaObject.ValidationStatus">
+            <summary>
+            The current validation status of the control.
+            </summary>
+        </member>
         <member name="M:Avalonia.AvaloniaObject.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:Avalonia.AvaloniaObject"/> class.
@@ -2124,15 +2145,21 @@
         <member name="M:Avalonia.AvaloniaObject.Avalonia#IPriorityValueOwner#Changed(Avalonia.PriorityValue,System.Object,System.Object)">
             <inheritdoc/>
         </member>
-        <member name="M:Avalonia.AvaloniaObject.Avalonia#IPriorityValueOwner#DataValidationChanged(Avalonia.PriorityValue,Avalonia.Data.ValidationStatus)">
+        <member name="M:Avalonia.AvaloniaObject.Avalonia#IPriorityValueOwner#DataValidationChanged(Avalonia.PriorityValue,Avalonia.Data.IValidationStatus)">
             <inheritdoc/>
         </member>
-        <member name="M:Avalonia.AvaloniaObject.DataValidation(Avalonia.AvaloniaProperty,Avalonia.Data.ValidationStatus)">
+        <member name="M:Avalonia.AvaloniaObject.DataValidationChanged(Avalonia.AvaloniaProperty,Avalonia.Data.IValidationStatus)">
             <summary>
             Called when the validation state on a tracked property is changed.
             </summary>
             <param name="property">The property whose validation state changed.</param>
             <param name="status">The new validation state.</param>
+        </member>
+        <member name="M:Avalonia.AvaloniaObject.UpdateValidationState(Avalonia.Data.IValidationStatus)">
+            <summary>
+            Updates the validation status of the current object.
+            </summary>
+            <param name="status">The new validation status.</param>
         </member>
         <member name="M:Avalonia.AvaloniaObject.Avalonia#Diagnostics#IAvaloniaObjectDebug#GetPropertyChangedSubscribers">
             <inheritdoc/>
@@ -2653,7 +2680,6 @@
             Adds a binding.
             </summary>
             <param name="binding">The binding to add.</param>
-            <param name="validation">Validation settings for the binding.</param>
             <returns>A disposable used to remove the binding.</returns>
         </member>
         <member name="M:Avalonia.PriorityLevel.Changed(Avalonia.PriorityBindingEntry)">
@@ -2675,7 +2701,7 @@
             <param name="entry">The entry that completed.</param>
             <param name="error">The error.</param>
         </member>
-        <member name="M:Avalonia.PriorityLevel.Validation(Avalonia.PriorityBindingEntry,Avalonia.Data.ValidationStatus)">
+        <member name="M:Avalonia.PriorityLevel.Validation(Avalonia.PriorityBindingEntry,Avalonia.Data.IValidationStatus)">
             <summary>
             Invoked when an entry in <see cref="P:Avalonia.PriorityLevel.Bindings"/> reports validation status.
             </summary>
@@ -2763,7 +2789,7 @@
             </summary>
             <param name="level">The priority level of the changed entry.</param>
         </member>
-        <member name="M:Avalonia.PriorityValue.LevelValidation(Avalonia.PriorityLevel,Avalonia.Data.ValidationStatus)">
+        <member name="M:Avalonia.PriorityValue.LevelValidation(Avalonia.PriorityLevel,Avalonia.Data.IValidationStatus)">
             <summary>
             Called whenever a priority level validation state changes.
             </summary>

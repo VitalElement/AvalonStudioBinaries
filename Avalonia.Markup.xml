@@ -75,76 +75,76 @@
         <member name="M:Avalonia.Markup.Data.ExpressionSubject.Subscribe(System.IObserver{System.Object})">
             <inheritdoc/>
         </member>
-        <member name="T:Avalonia.Markup.Data.Plugins.ExceptionValidationCheckerPlugin">
+        <member name="T:Avalonia.Markup.Data.Plugins.ExceptionValidationPlugin">
             <summary>
             Validates properties that report errors by throwing exceptions.
             </summary>
         </member>
-        <member name="M:Avalonia.Markup.Data.Plugins.ExceptionValidationCheckerPlugin.Match(System.WeakReference)">
+        <member name="M:Avalonia.Markup.Data.Plugins.ExceptionValidationPlugin.Match(System.WeakReference)">
             <inheritdoc/>
         </member>
-        <member name="M:Avalonia.Markup.Data.Plugins.ExceptionValidationCheckerPlugin.Start(System.WeakReference,System.String,Avalonia.Markup.Data.Plugins.IPropertyAccessor,System.Action{Avalonia.Data.ValidationStatus})">
+        <member name="M:Avalonia.Markup.Data.Plugins.ExceptionValidationPlugin.Start(System.WeakReference,System.String,Avalonia.Markup.Data.Plugins.IPropertyAccessor,System.Action{Avalonia.Data.IValidationStatus})">
             <inheritdoc/>
         </member>
-        <member name="T:Avalonia.Markup.Data.Plugins.ExceptionValidationCheckerPlugin.ExceptionValidationStatus">
+        <member name="T:Avalonia.Markup.Data.Plugins.ExceptionValidationPlugin.ExceptionValidationStatus">
             <summary>
             Describes the current validation status after setting a property value.
             </summary>
         </member>
-        <member name="P:Avalonia.Markup.Data.Plugins.ExceptionValidationCheckerPlugin.ExceptionValidationStatus.Exception">
+        <member name="P:Avalonia.Markup.Data.Plugins.ExceptionValidationPlugin.ExceptionValidationStatus.Exception">
             <summary>
             The thrown exception. If there was no thrown exception, null.
             </summary>
         </member>
-        <member name="P:Avalonia.Markup.Data.Plugins.ExceptionValidationCheckerPlugin.ExceptionValidationStatus.IsValid">
+        <member name="P:Avalonia.Markup.Data.Plugins.ExceptionValidationPlugin.ExceptionValidationStatus.IsValid">
             <inheritdoc/>
         </member>
-        <member name="T:Avalonia.Markup.Data.Plugins.IndeiValidationCheckerPlugin">
+        <member name="T:Avalonia.Markup.Data.Plugins.IndeiValidationPlugin">
             <summary>
             Validates properties on objects that implement <see cref="T:System.ComponentModel.INotifyDataErrorInfo"/>.
             </summary>
         </member>
-        <member name="M:Avalonia.Markup.Data.Plugins.IndeiValidationCheckerPlugin.Match(System.WeakReference)">
+        <member name="M:Avalonia.Markup.Data.Plugins.IndeiValidationPlugin.Match(System.WeakReference)">
             <inheritdoc/>
         </member>
-        <member name="M:Avalonia.Markup.Data.Plugins.IndeiValidationCheckerPlugin.Start(System.WeakReference,System.String,Avalonia.Markup.Data.Plugins.IPropertyAccessor,System.Action{Avalonia.Data.ValidationStatus})">
+        <member name="M:Avalonia.Markup.Data.Plugins.IndeiValidationPlugin.Start(System.WeakReference,System.String,Avalonia.Markup.Data.Plugins.IPropertyAccessor,System.Action{Avalonia.Data.IValidationStatus})">
             <inheritdoc/>
         </member>
-        <member name="T:Avalonia.Markup.Data.Plugins.IndeiValidationCheckerPlugin.IndeiValidationStatus">
+        <member name="T:Avalonia.Markup.Data.Plugins.IndeiValidationPlugin.IndeiValidationStatus">
             <summary>
             Describes the current validation status of a property as reported by an object that implements <see cref="T:System.ComponentModel.INotifyDataErrorInfo"/>.
             </summary>
         </member>
-        <member name="P:Avalonia.Markup.Data.Plugins.IndeiValidationCheckerPlugin.IndeiValidationStatus.IsValid">
+        <member name="P:Avalonia.Markup.Data.Plugins.IndeiValidationPlugin.IndeiValidationStatus.IsValid">
             <inheritdoc/>
         </member>
-        <member name="P:Avalonia.Markup.Data.Plugins.IndeiValidationCheckerPlugin.IndeiValidationStatus.Errors">
+        <member name="P:Avalonia.Markup.Data.Plugins.IndeiValidationPlugin.IndeiValidationStatus.Errors">
             <summary>
             The errors on the given property and on the object as a whole.
             </summary>
         </member>
-        <member name="T:Avalonia.Markup.Data.Plugins.IValidationCheckerPlugin">
+        <member name="T:Avalonia.Markup.Data.Plugins.IValidationPlugin">
             <summary>
             Defines how view model data validation is observed by an <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/>.
             </summary>
         </member>
-        <member name="M:Avalonia.Markup.Data.Plugins.IValidationCheckerPlugin.Match(System.WeakReference)">
+        <member name="M:Avalonia.Markup.Data.Plugins.IValidationPlugin.Match(System.WeakReference)">
             <summary>
             Checks whether the data uses a validation scheme supported by this plugin.
             </summary>
             <param name="reference">A weak reference to the data.</param>
             <returns><c>true</c> if this plugin can observe the validation; otherwise, <c>false</c>.</returns>
         </member>
-        <member name="M:Avalonia.Markup.Data.Plugins.IValidationCheckerPlugin.Start(System.WeakReference,System.String,Avalonia.Markup.Data.Plugins.IPropertyAccessor,System.Action{Avalonia.Data.ValidationStatus})">
+        <member name="M:Avalonia.Markup.Data.Plugins.IValidationPlugin.Start(System.WeakReference,System.String,Avalonia.Markup.Data.Plugins.IPropertyAccessor,System.Action{Avalonia.Data.IValidationStatus})">
             <summary>
-            Starts monitering the validation state of an object for the given property.
+            Starts monitoring the validation state of an object for the given property.
             </summary>
             <param name="reference">A weak reference to the object.</param>
             <param name="name">The property name.</param>
             <param name="accessor">An underlying <see cref="T:Avalonia.Markup.Data.Plugins.IPropertyAccessor"/> to access the property.</param>
             <param name="callback">A function to call when the validation state changes.</param>
             <returns>
-            A <see cref="T:Avalonia.Markup.Data.Plugins.ValidationCheckerBase"/> subclass through which future interactions with the 
+            A <see cref="T:Avalonia.Markup.Data.Plugins.ValidatingPropertyAccessorBase"/> subclass through which future interactions with the 
             property will be made.
             </returns>
         </member>
@@ -275,6 +275,29 @@
         <member name="M:Avalonia.Markup.Data.Plugins.PropertyError.SetValue(System.Object,Avalonia.Data.BindingPriority)">
             <inheritdoc/>
         </member>
+        <member name="T:Avalonia.Markup.Data.Plugins.ValidatingPropertyAccessorBase">
+            <summary>
+            A base class for validating <see cref="T:Avalonia.Markup.Data.Plugins.IPropertyAccessor"/>s that wraps an <see cref="T:Avalonia.Markup.Data.Plugins.IPropertyAccessor"/> and forwards method calls to it.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Markup.Data.Plugins.ValidatingPropertyAccessorBase.PropertyType">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Markup.Data.Plugins.ValidatingPropertyAccessorBase.Value">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.ValidatingPropertyAccessorBase.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.ValidatingPropertyAccessorBase.SetValue(System.Object,Avalonia.Data.BindingPriority)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.ValidatingPropertyAccessorBase.SendValidationCallback(Avalonia.Data.IValidationStatus)">
+            <summary>
+            Sends the validation status to the callback specified in construction.
+            </summary>
+            <param name="status">The validation status.</param>
+        </member>
         <member name="T:Avalonia.Markup.Data.ExpressionObserver">
             <summary>
             Observes and sets the value of an expression on an object.
@@ -292,30 +315,30 @@
             the validation of view model and model data.
             </summary>
         </member>
-        <member name="M:Avalonia.Markup.Data.ExpressionObserver.#ctor(System.Object,System.String,Avalonia.Data.ValidationMethods)">
+        <member name="M:Avalonia.Markup.Data.ExpressionObserver.#ctor(System.Object,System.String,System.Boolean)">
             <summary>
             Initializes a new instance of the <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/> class.
             </summary>
             <param name="root">The root object.</param>
             <param name="expression">The expression.</param>
-            <param name="methods">The validation methods to enable on this observer.</param>
+            <param name="enableValidation">Whether property validation should be enabled.</param>
         </member>
-        <member name="M:Avalonia.Markup.Data.ExpressionObserver.#ctor(System.IObservable{System.Object},System.String,Avalonia.Data.ValidationMethods)">
+        <member name="M:Avalonia.Markup.Data.ExpressionObserver.#ctor(System.IObservable{System.Object},System.String,System.Boolean)">
             <summary>
             Initializes a new instance of the <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/> class.
             </summary>
             <param name="rootObservable">An observable which provides the root object.</param>
             <param name="expression">The expression.</param>
-            <param name="methods">The validation methods to enable on this observer.</param>
+            <param name="enableValidation">Whether property validation should be enabled.</param>
         </member>
-        <member name="M:Avalonia.Markup.Data.ExpressionObserver.#ctor(System.Func{System.Object},System.String,System.IObservable{System.Reactive.Unit},Avalonia.Data.ValidationMethods)">
+        <member name="M:Avalonia.Markup.Data.ExpressionObserver.#ctor(System.Func{System.Object},System.String,System.IObservable{System.Reactive.Unit},System.Boolean)">
             <summary>
             Initializes a new instance of the <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/> class.
             </summary>
             <param name="rootGetter">A function which gets the root object.</param>
             <param name="expression">The expression.</param>
             <param name="update">An observable which triggers a re-read of the getter.</param>
-            <param name="methods">The validation methods to enable on this observer.</param>
+            <param name="enableValidation">Whether property validation should be enabled.</param>
         </member>
         <member name="M:Avalonia.Markup.Data.ExpressionObserver.SetValue(System.Object,Avalonia.Data.BindingPriority)">
             <summary>

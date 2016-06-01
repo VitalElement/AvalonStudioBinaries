@@ -4,126 +4,83 @@
         <name>Avalonia.Controls</name>
     </assembly>
     <members>
-        <member name="T:Avalonia.Application">
+        <member name="T:Avalonia.Controls.AppBuilder">
             <summary>
-            Encapsulates a Avalonia application.
-            </summary>
-            <remarks>
-            The <see cref="T:Avalonia.Application"/> class encapsulates Avalonia application-specific
-            functionality, including:
-            - A global set of <see cref="P:Avalonia.Application.DataTemplates"/>.
-            - A global set of <see cref="P:Avalonia.Application.Styles"/>.
-            - A <see cref="P:Avalonia.Application.FocusManager"/>.
-            - An <see cref="P:Avalonia.Application.InputManager"/>.
-            - Loads and initializes rendering and windowing subsystems with
-            <see cref="M:Avalonia.Application.InitializeSubsystems(System.Int32)"/> and <see cref="M:Avalonia.Application.InitializeSubsystem(System.String)"/>.
-            - Registers services needed by the rest of Avalonia in the <see cref="M:Avalonia.Application.RegisterServices"/>
-            method.
-            - Tracks the lifetime of the application.
-            </remarks>
-        </member>
-        <member name="F:Avalonia.Application._dataTemplates">
-            <summary>
-            The application-global data templates.
+            Initializes up platform-specific services for an <see cref="T:Avalonia.Application"/>.
             </summary>
         </member>
-        <member name="M:Avalonia.Application.#ctor">
+        <member name="P:Avalonia.Controls.AppBuilder.Instance">
             <summary>
-            Initializes a new instance of the <see cref="T:Avalonia.Application"/> class.
+            Gets or sets the <see cref="T:Avalonia.Application"/> instance being initialized.
             </summary>
         </member>
-        <member name="P:Avalonia.Application.Current">
+        <member name="P:Avalonia.Controls.AppBuilder.WindowingSubsystem">
             <summary>
-            Gets the current instance of the <see cref="T:Avalonia.Application"/> class.
-            </summary>
-            <value>
-            The current instance of the <see cref="T:Avalonia.Application"/> class.
-            </value>
-        </member>
-        <member name="P:Avalonia.Application.DataTemplates">
-            <summary>
-            Gets or sets the application's global data templates.
-            </summary>
-            <value>
-            The application's global data templates.
-            </value>
-        </member>
-        <member name="P:Avalonia.Application.FocusManager">
-            <summary>
-            Gets the application's focus manager.
-            </summary>
-            <value>
-            The application's focus manager.
-            </value>
-        </member>
-        <member name="P:Avalonia.Application.InputManager">
-            <summary>
-            Gets the application's input manager.
-            </summary>
-            <value>
-            The application's input manager.
-            </value>
-        </member>
-        <member name="P:Avalonia.Application.Clipboard">
-            <summary>
-            Gets the application clipboard.
+            Gets or sets a method to call the initialize the windowing subsystem.
             </summary>
         </member>
-        <member name="P:Avalonia.Application.Styles">
+        <member name="P:Avalonia.Controls.AppBuilder.RenderingSubsystem">
             <summary>
-            Gets the application's global styles.
-            </summary>
-            <value>
-            The application's global styles.
-            </value>
-            <remarks>
-            Global styles apply to all windows in the application.
-            </remarks>
-        </member>
-        <member name="P:Avalonia.Application.Avalonia#Styling#IStyleHost#StylingParent">
-            <summary>
-            Gets the styling parent of the application, which is null.
+            Gets or sets a method to call the initialize the windowing subsystem.
             </summary>
         </member>
-        <member name="M:Avalonia.Application.Run(Avalonia.Input.ICloseable)">
+        <member name="P:Avalonia.Controls.AppBuilder.BeforeStartCallback">
             <summary>
-            Runs the application's main loop until the <see cref="T:Avalonia.Input.ICloseable"/> is closed.
-            </summary>
-            <param name="closable">The closable to track</param>
-        </member>
-        <member name="M:Avalonia.Application.Exit">
-            <summary>
-            Exits the application
+            Gets or sets a method to call before <see cref="M:Avalonia.Controls.AppBuilder.Start``1"/> is called on the
+            <see cref="T:Avalonia.Application"/>.
             </summary>
         </member>
-        <member name="E:Avalonia.Application.OnExit">
+        <member name="M:Avalonia.Controls.AppBuilder.Configure``1">
             <summary>
-            Sent when the application is exiting.
+            Begin configuring an <see cref="T:Avalonia.Application"/>.
             </summary>
+            <typeparam name="TApp">The subclass of <see cref="T:Avalonia.Application"/> to configure.</typeparam>
+            <returns>An <see cref="T:Avalonia.Controls.AppBuilder"/> instance.</returns>
         </member>
-        <member name="M:Avalonia.Application.OnExiting(System.Object,System.EventArgs)">
+        <member name="M:Avalonia.Controls.AppBuilder.Configure(Avalonia.Application)">
             <summary>
-            Called when the application is exiting.
+            Begin configuring an <see cref="T:Avalonia.Application"/>.
             </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
+            <returns>An <see cref="T:Avalonia.Controls.AppBuilder"/> instance.</returns>
         </member>
-        <member name="M:Avalonia.Application.RegisterServices">
+        <member name="M:Avalonia.Controls.AppBuilder.BeforeStarting(System.Action{Avalonia.Controls.AppBuilder})">
             <summary>
-            Register's the services needed by Avalonia.
+            Registers a callback to call before <see cref="M:Avalonia.Controls.AppBuilder.Start``1"/> is called on the
+            <see cref="T:Avalonia.Application"/>.
             </summary>
+            <param name="callback">The callback.</param>
+            <returns>An <see cref="T:Avalonia.Controls.AppBuilder"/> instance.</returns>
         </member>
-        <member name="M:Avalonia.Application.InitializeSubsystems(System.Int32)">
+        <member name="M:Avalonia.Controls.AppBuilder.Start``1">
             <summary>
-            Initializes the rendering and windowing subsystems according to platform.
+            Starts the application with an instance of <typeparamref name="TMainWindow"/>.
             </summary>
-            <param name="platformID">The value of Environment.OSVersion.Platform.</param>
+            <typeparam name="TMainWindow">The window type.</typeparam>
         </member>
-        <member name="M:Avalonia.Application.InitializeSubsystem(System.String)">
+        <member name="M:Avalonia.Controls.AppBuilder.SetupWithoutStarting">
             <summary>
-            Initializes the rendering or windowing subsystem defined by the specified assemblt.
+            Sets up the platform-specific services for the application, but does not run it.
             </summary>
-            <param name="assemblyName">The name of the assembly.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Avalonia.Controls.AppBuilder.WithWindowingSubsystem(System.Action)">
+            <summary>
+            Specifies a windowing subsystem to use.
+            </summary>
+            <param name="initializer">The method to call to initialize the windowing subsystem.</param>
+            <returns>An <see cref="T:Avalonia.Controls.AppBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Avalonia.Controls.AppBuilder.WithRenderingSubsystem(System.Action)">
+            <summary>
+            Specifies a rendering subsystem to use.
+            </summary>
+            <param name="initializer">The method to call to initialize the rendering subsystem.</param>
+            <returns>An <see cref="T:Avalonia.Controls.AppBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Avalonia.Controls.AppBuilder.Setup">
+            <summary>
+            Sets up the platform-speciic services for the <see cref="T:Avalonia.Application"/>.
+            </summary>
         </member>
         <member name="T:Avalonia.Controls.Classes">
             <summary>
@@ -466,12 +423,13 @@
             </summary>
             <typeparam name="T">The type of the container.</typeparam>
         </member>
-        <member name="M:Avalonia.Controls.Generators.TreeItemContainerGenerator`1.#ctor(Avalonia.Controls.IControl,Avalonia.AvaloniaProperty,Avalonia.AvaloniaProperty,Avalonia.AvaloniaProperty,Avalonia.Controls.Generators.TreeContainerIndex)">
+        <member name="M:Avalonia.Controls.Generators.TreeItemContainerGenerator`1.#ctor(Avalonia.Controls.IControl,Avalonia.AvaloniaProperty,Avalonia.AvaloniaProperty,Avalonia.AvaloniaProperty,Avalonia.AvaloniaProperty,Avalonia.Controls.Generators.TreeContainerIndex)">
             <summary>
             Initializes a new instance of the <see cref="T:Avalonia.Controls.Generators.TreeItemContainerGenerator`1"/> class.
             </summary>
             <param name="owner">The owner control.</param>
             <param name="contentProperty">The container's Content property.</param>
+            <param name="contentTemplateProperty">The container's ContentTemplate property.</param>
             <param name="itemsProperty">The container's Items property.</param>
             <param name="isExpandedProperty">The container's IsExpanded property.</param>
             <param name="index">The container index for the tree</param>
@@ -494,7 +452,7 @@
         <member name="M:Avalonia.Controls.Generators.TreeItemContainerGenerator`1.CreateContainer(System.Object)">
             <inheritdoc/>
         </member>
-        <member name="M:Avalonia.Controls.Generators.TreeItemContainerGenerator`1.GetTreeDataTemplate(System.Object)">
+        <member name="M:Avalonia.Controls.Generators.TreeItemContainerGenerator`1.GetTreeDataTemplate(System.Object,Avalonia.Controls.Templates.IDataTemplate)">
             <summary>
             Gets the data template for the specified item.
             </summary>
@@ -507,16 +465,22 @@
             </summary>
             <typeparam name="T">The type of the container.</typeparam>
         </member>
-        <member name="M:Avalonia.Controls.Generators.ItemContainerGenerator`1.#ctor(Avalonia.Controls.IControl,Avalonia.AvaloniaProperty)">
+        <member name="M:Avalonia.Controls.Generators.ItemContainerGenerator`1.#ctor(Avalonia.Controls.IControl,Avalonia.AvaloniaProperty,Avalonia.AvaloniaProperty)">
             <summary>
             Initializes a new instance of the <see cref="T:Avalonia.Controls.Generators.ItemContainerGenerator`1"/> class.
             </summary>
             <param name="owner">The owner control.</param>
             <param name="contentProperty">The container's Content property.</param>
+            <param name="contentTemplateProperty">The container's ContentTemplate property.</param>
         </member>
         <member name="P:Avalonia.Controls.Generators.ItemContainerGenerator`1.ContentProperty">
             <summary>
             Gets the container's Content property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Controls.Generators.ItemContainerGenerator`1.ContentTemplateProperty">
+            <summary>
+            Gets the container's ContentTemplate property.
             </summary>
         </member>
         <member name="M:Avalonia.Controls.Generators.ItemContainerGenerator`1.CreateContainer(System.Object)">
@@ -541,6 +505,11 @@
         </member>
         <member name="E:Avalonia.Controls.Generators.ItemContainerGenerator.Dematerialized">
             <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Controls.Generators.ItemContainerGenerator.ItemTemplate">
+            <summary>
+            Gets or sets the data template used to display the items in the control.
+            </summary>
         </member>
         <member name="P:Avalonia.Controls.Generators.ItemContainerGenerator.Owner">
             <summary>
@@ -597,6 +566,11 @@
         <member name="P:Avalonia.Controls.Generators.IItemContainerGenerator.Containers">
             <summary>
             Gets the currently realized containers.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Controls.Generators.IItemContainerGenerator.ItemTemplate">
+            <summary>
+            Gets or sets the data template used to display the items in the control.
             </summary>
         </member>
         <member name="E:Avalonia.Controls.Generators.IItemContainerGenerator.Materialized">
@@ -1021,6 +995,11 @@
             Defines the <see cref="P:Avalonia.Controls.Presenters.ItemsPresenterBase.ItemsPanel"/> property.
             </summary>
         </member>
+        <member name="F:Avalonia.Controls.Presenters.ItemsPresenterBase.ItemTemplateProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.Controls.Presenters.ItemsPresenterBase.ItemTemplate"/> property.
+            </summary>
+        </member>
         <member name="F:Avalonia.Controls.Presenters.ItemsPresenterBase.MemberSelectorProperty">
             <summary>
             Defines the <see cref="P:Avalonia.Controls.Presenters.ItemsPresenterBase.MemberSelector"/> property.
@@ -1044,6 +1023,11 @@
         <member name="P:Avalonia.Controls.Presenters.ItemsPresenterBase.ItemsPanel">
             <summary>
             Gets or sets a template which creates the <see cref="P:Avalonia.Controls.Presenters.ItemsPresenterBase.Panel"/> used to display the items.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Controls.Presenters.ItemsPresenterBase.ItemTemplate">
+            <summary>
+            Gets or sets the data template used to display the items in the control.
             </summary>
         </member>
         <member name="P:Avalonia.Controls.Presenters.ItemsPresenterBase.MemberSelector">
@@ -1278,6 +1262,11 @@
             Defines the <see cref="P:Avalonia.Controls.Presenters.ContentPresenter.Content"/> property.
             </summary>
         </member>
+        <member name="F:Avalonia.Controls.Presenters.ContentPresenter.ContentTemplateProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.Controls.Presenters.ContentPresenter.ContentTemplate"/> property.
+            </summary>
+        </member>
         <member name="F:Avalonia.Controls.Presenters.ContentPresenter.CornerRadiusProperty">
             <summary>
             Defines the <see cref="P:Avalonia.Controls.Presenters.ContentPresenter.CornerRadius"/> property.
@@ -1331,6 +1320,11 @@
         <member name="P:Avalonia.Controls.Presenters.ContentPresenter.Content">
             <summary>
             Gets or sets the content to be displayed by the presenter.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Controls.Presenters.ContentPresenter.ContentTemplate">
+            <summary>
+            Gets or sets the data template used to display the content of the control.
             </summary>
         </member>
         <member name="P:Avalonia.Controls.Presenters.ContentPresenter.CornerRadius">
@@ -2497,6 +2491,11 @@
             Gets or sets the content to display.
             </summary>
         </member>
+        <member name="P:Avalonia.Controls.IContentControl.ContentTemplate">
+            <summary>
+            Gets or sets the data template used to display the content of the control.
+            </summary>
+        </member>
         <member name="P:Avalonia.Controls.IContentControl.HorizontalContentAlignment">
             <summary>
             Gets or sets the horizontal alignment of the content within the control.
@@ -3547,20 +3546,28 @@
             Defines extension methods for working with <see cref="T:Avalonia.Controls.Templates.IDataTemplate"/>s.
             </summary>
         </member>
-        <member name="M:Avalonia.Controls.Templates.DataTemplateExtensions.MaterializeDataTemplate(Avalonia.Controls.IControl,System.Object)">
+        <member name="M:Avalonia.Controls.Templates.DataTemplateExtensions.MaterializeDataTemplate(Avalonia.Controls.IControl,System.Object,Avalonia.Controls.Templates.IDataTemplate)">
             <summary>
             Materializes a piece of data based on a data template.
             </summary>
             <param name="control">The control materializing the data template.</param>
             <param name="data">The data.</param>
+            <param name="primary">
+            An optional primary template that can will be tried before the
+            <see cref="P:Avalonia.Controls.IControl.DataTemplates"/> in the tree are searched.
+            </param>
             <returns>The data materialized as a control.</returns>
         </member>
-        <member name="M:Avalonia.Controls.Templates.DataTemplateExtensions.FindDataTemplate(Avalonia.Controls.IControl,System.Object)">
+        <member name="M:Avalonia.Controls.Templates.DataTemplateExtensions.FindDataTemplate(Avalonia.Controls.IControl,System.Object,Avalonia.Controls.Templates.IDataTemplate)">
             <summary>
             Find a data template that matches a piece of data.
             </summary>
             <param name="control">The control searching for the data template.</param>
             <param name="data">The data.</param>
+            <param name="primary">
+            An optional primary template that can will be tried before the
+            <see cref="P:Avalonia.Controls.IControl.DataTemplates"/> in the tree are searched.
+            </param>
             <returns>The data template or null if no matching data template was found.</returns>
         </member>
         <member name="T:Avalonia.Controls.Templates.FuncDataTemplate">
@@ -3866,6 +3873,11 @@
             Defines the <see cref="P:Avalonia.Controls.ContentControl.Content"/> property.
             </summary>
         </member>
+        <member name="F:Avalonia.Controls.ContentControl.ContentTemplateProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.Controls.ContentControl.ContentTemplate"/> property.
+            </summary>
+        </member>
         <member name="F:Avalonia.Controls.ContentControl.HorizontalContentAlignmentProperty">
             <summary>
             Defines the <see cref="P:Avalonia.Controls.ContentControl.HorizontalContentAlignment"/> property.
@@ -3884,6 +3896,11 @@
         <member name="P:Avalonia.Controls.ContentControl.Content">
             <summary>
             Gets or sets the content to display.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Controls.ContentControl.ContentTemplate">
+            <summary>
+            Gets or sets the data template used to display the content of the control.
             </summary>
         </member>
         <member name="P:Avalonia.Controls.ContentControl.Presenter">
@@ -4048,11 +4065,6 @@
         <member name="F:Avalonia.Controls.Control.RequestBringIntoViewEvent">
             <summary>
             Event raised when an element wishes to be scrolled into view.
-            </summary>
-        </member>
-        <member name="F:Avalonia.Controls.Control.ValidationStatusProperty">
-            <summary>
-            Defines the <see cref="P:Avalonia.Controls.Control.ValidationStatus"/> property.
             </summary>
         </member>
         <member name="M:Avalonia.Controls.Control.#cctor">
@@ -4240,12 +4252,7 @@
             pseudoclasses.
             </summary>
         </member>
-        <member name="P:Avalonia.Controls.Control.ValidationStatus">
-            <summary>
-            The current validation status of the control.
-            </summary>
-        </member>
-        <member name="M:Avalonia.Controls.Control.DataValidation(Avalonia.AvaloniaProperty,Avalonia.Data.ValidationStatus)">
+        <member name="M:Avalonia.Controls.Control.DataValidationChanged(Avalonia.AvaloniaProperty,Avalonia.Data.IValidationStatus)">
             <inheritdoc/>
         </member>
         <member name="M:Avalonia.Controls.Control.Avalonia#Controls#ISetLogicalParent#SetParent(Avalonia.LogicalTree.ILogical)">
@@ -4751,6 +4758,11 @@
             Defines the <see cref="P:Avalonia.Controls.ItemsControl.ItemsPanel"/> property.
             </summary>
         </member>
+        <member name="F:Avalonia.Controls.ItemsControl.ItemTemplateProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.Controls.ItemsControl.ItemTemplate"/> property.
+            </summary>
+        </member>
         <member name="F:Avalonia.Controls.ItemsControl.MemberSelectorProperty">
             <summary>
             Defines the <see cref="P:Avalonia.Controls.ItemsControl.MemberSelector"/> property.
@@ -4779,6 +4791,11 @@
         <member name="P:Avalonia.Controls.ItemsControl.ItemsPanel">
             <summary>
             Gets or sets the panel used to display the items.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Controls.ItemsControl.ItemTemplate">
+            <summary>
+            Gets or sets the data template used to display the items in the control.
             </summary>
         </member>
         <member name="P:Avalonia.Controls.ItemsControl.MemberSelector">
@@ -4871,7 +4888,13 @@
             <summary>
             Subscribes to an <see cref="P:Avalonia.Controls.ItemsControl.Items"/> collection.
             </summary>
-            <param name="items"></param>
+            <param name="items">The items collection.</param>
+        </member>
+        <member name="M:Avalonia.Controls.ItemsControl.ItemTemplateChanged(Avalonia.AvaloniaPropertyChangedEventArgs)">
+            <summary>
+            Called when the <see cref="P:Avalonia.Controls.ItemsControl.ItemTemplate"/> changes.
+            </summary>
+            <param name="e">The event args.</param>
         </member>
         <member name="T:Avalonia.Controls.Panel">
             <summary>
@@ -5034,21 +5057,6 @@
         </member>
         <member name="M:Avalonia.Controls.UserControl.Avalonia#Controls#INameScope#Unregister(System.String)">
             <inheritdoc/>
-        </member>
-        <member name="T:Avalonia.Controls.TextWrapping">
-            <summary>
-            Controls the wrapping mode in a <see cref="T:Avalonia.Controls.TextBlock"/>.
-            </summary>
-        </member>
-        <member name="F:Avalonia.Controls.TextWrapping.NoWrap">
-            <summary>
-            Text should not wrap.
-            </summary>
-        </member>
-        <member name="F:Avalonia.Controls.TextWrapping.Wrap">
-            <summary>
-            Text can wrap.
-            </summary>
         </member>
         <member name="T:Avalonia.Controls.TopLevel">
             <summary>
@@ -6236,6 +6244,132 @@
             U is direction in line. (x if orientation is horizontal)
             V is direction of lines. (y if orientation is horizonral)
             </summary>
+        </member>
+        <member name="T:Avalonia.Application">
+            <summary>
+            Encapsulates a Avalonia application.
+            </summary>
+            <remarks>
+            The <see cref="T:Avalonia.Application"/> class encapsulates Avalonia application-specific
+            functionality, including:
+            - A global set of <see cref="P:Avalonia.Application.DataTemplates"/>.
+            - A global set of <see cref="P:Avalonia.Application.Styles"/>.
+            - A <see cref="P:Avalonia.Application.FocusManager"/>.
+            - An <see cref="P:Avalonia.Application.InputManager"/>.
+            - Loads and initializes rendering and windowing subsystems with
+            <see cref="M:Avalonia.Application.InitializeSubsystems(System.Int32)"/> and <see cref="M:Avalonia.Application.InitializeSubsystem(System.String)"/>.
+            - Registers services needed by the rest of Avalonia in the <see cref="M:Avalonia.Application.RegisterServices"/>
+            method.
+            - Tracks the lifetime of the application.
+            </remarks>
+        </member>
+        <member name="F:Avalonia.Application._dataTemplates">
+            <summary>
+            The application-global data templates.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Application.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Application"/> class.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Application.Current">
+            <summary>
+            Gets the current instance of the <see cref="T:Avalonia.Application"/> class.
+            </summary>
+            <value>
+            The current instance of the <see cref="T:Avalonia.Application"/> class.
+            </value>
+        </member>
+        <member name="P:Avalonia.Application.DataTemplates">
+            <summary>
+            Gets or sets the application's global data templates.
+            </summary>
+            <value>
+            The application's global data templates.
+            </value>
+        </member>
+        <member name="P:Avalonia.Application.FocusManager">
+            <summary>
+            Gets the application's focus manager.
+            </summary>
+            <value>
+            The application's focus manager.
+            </value>
+        </member>
+        <member name="P:Avalonia.Application.InputManager">
+            <summary>
+            Gets the application's input manager.
+            </summary>
+            <value>
+            The application's input manager.
+            </value>
+        </member>
+        <member name="P:Avalonia.Application.Clipboard">
+            <summary>
+            Gets the application clipboard.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Application.Styles">
+            <summary>
+            Gets the application's global styles.
+            </summary>
+            <value>
+            The application's global styles.
+            </value>
+            <remarks>
+            Global styles apply to all windows in the application.
+            </remarks>
+        </member>
+        <member name="P:Avalonia.Application.Avalonia#Styling#IStyleHost#StylingParent">
+            <summary>
+            Gets the styling parent of the application, which is null.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Application.Initialize">
+            <summary>
+            Initializes the application by loading XAML etc.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Application.Run(Avalonia.Input.ICloseable)">
+            <summary>
+            Runs the application's main loop until the <see cref="T:Avalonia.Input.ICloseable"/> is closed.
+            </summary>
+            <param name="closable">The closable to track</param>
+        </member>
+        <member name="M:Avalonia.Application.Exit">
+            <summary>
+            Exits the application
+            </summary>
+        </member>
+        <member name="E:Avalonia.Application.OnExit">
+            <summary>
+            Sent when the application is exiting.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Application.OnExiting(System.Object,System.EventArgs)">
+            <summary>
+            Called when the application is exiting.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Avalonia.Application.RegisterServices">
+            <summary>
+            Register's the services needed by Avalonia.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Application.InitializeSubsystems(System.Int32)">
+            <summary>
+            Initializes the rendering and windowing subsystems according to platform.
+            </summary>
+            <param name="platformID">The value of Environment.OSVersion.Platform.</param>
+        </member>
+        <member name="M:Avalonia.Application.InitializeSubsystem(System.String)">
+            <summary>
+            Initializes the rendering or windowing subsystem defined by the specified assemblt.
+            </summary>
+            <param name="assemblyName">The name of the assembly.</param>
         </member>
         <member name="T:Avalonia.Platform.IPopupImpl">
             <summary>

@@ -65,9 +65,9 @@
             Gets or sets the source for the binding.
             </summary>
         </member>
-        <member name="P:Avalonia.Markup.Xaml.Data.Binding.ValidationMethods">
+        <member name="P:Avalonia.Markup.Xaml.Data.Binding.EnableValidation">
             <summary>
-            Gets or sets the validation methods for the binding to use.
+            Gets or sets a value indicating whether the property should be validated.
             </summary>
         </member>
         <member name="M:Avalonia.Markup.Xaml.Data.Binding.Initiate(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty,System.Object)">
