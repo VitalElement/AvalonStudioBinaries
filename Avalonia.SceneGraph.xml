@@ -2096,6 +2096,13 @@
             <param name="opacity">The opacity.</param>
             <returns>A disposable used to undo the opacity.</returns>
         </member>
+        <member name="M:Avalonia.Media.DrawingContext.PushOpacityMask(Avalonia.Media.IBrush,Avalonia.Rect)">
+            <summary>
+            Pushes an opacity mask.
+            </summary>
+            <param name="mask">The opacity mask.</param>
+            <returns>A disposable to undo the opacity mask.</returns>
+        </member>
         <member name="M:Avalonia.Media.DrawingContext.PushPostTransform(Avalonia.Matrix)">
             <summary>
             Pushes a matrix transformation.
@@ -3565,6 +3572,11 @@
             Gets or sets the opacity of the scene graph node.
             </summary>
         </member>
+        <member name="P:Avalonia.VisualTree.IVisual.OpacityMask">
+            <summary>
+            Gets or sets the opacity mask of the scene graph node.
+            </summary>
+        </member>
         <member name="P:Avalonia.VisualTree.IVisual.RenderTransform">
             <summary>
             Gets or sets the render transform of the scene graph node.
@@ -3730,10 +3742,22 @@
         </member>
         <member name="M:Avalonia.VisualTree.VisualExtensions.GetVisualsAt(Avalonia.VisualTree.IVisual,Avalonia.Point)">
             <summary>
+            Enumerates the visible visuals in the visual tree whose bounds contain a point.
+            </summary>
+            <param name="visual">The root visual to test.</param>
+            <param name="p">The point.</param>
+            <returns>The visuals at the requested point.</returns>
+        </member>
+        <member name="M:Avalonia.VisualTree.VisualExtensions.GetVisualsAt(Avalonia.VisualTree.IVisual,Avalonia.Point,System.Func{Avalonia.VisualTree.IVisual,System.Boolean})">
+            <summary>
             Enumerates the visuals in the visual tree whose bounds contain a point.
             </summary>
             <param name="visual">The root visual to test.</param>
             <param name="p">The point.</param>
+            <param name="filter">
+            A filter predicate. If the predicate returns false then the visual and all its
+            children will be excluded from the results.
+            </param>
             <returns>The visuals at the requested point.</returns>
         </member>
         <member name="M:Avalonia.VisualTree.VisualExtensions.GetVisualChildren(Avalonia.VisualTree.IVisual)">
@@ -4611,10 +4635,17 @@
         </member>
         <member name="M:Avalonia.Rect.Contains(Avalonia.Point)">
             <summary>
-            Determines whether a points in in the bounds of the rectangle.
+            Determines whether a point in in the bounds of the rectangle.
             </summary>
             <param name="p">The point.</param>
             <returns>true if the point is in the bounds of the rectangle; otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.Rect.Contains(Avalonia.Rect)">
+            <summary>
+            Determines whether the rectangle fully contains another rectangle.
+            </summary>
+            <param name="r">The rectangle.</param>
+            <returns>true if the rectangle is fully contained; otherwise false.</returns>
         </member>
         <member name="M:Avalonia.Rect.CenterIn(Avalonia.Rect)">
             <summary>
@@ -5294,6 +5325,11 @@
             Defines the <see cref="P:Avalonia.Visual.Opacity"/> property.
             </summary>
         </member>
+        <member name="F:Avalonia.Visual.OpacityMaskProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.Visual.OpacityMask"/> property.
+            </summary>
+        </member>
         <member name="F:Avalonia.Visual.RenderTransformProperty">
             <summary>
             Defines the <see cref="P:Avalonia.Visual.RenderTransform"/> property.
@@ -5362,6 +5398,11 @@
         <member name="P:Avalonia.Visual.Opacity">
             <summary>
             Gets the opacity of the scene graph node.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Visual.OpacityMask">
+            <summary>
+            Gets the opacity mask of the scene graph node.
             </summary>
         </member>
         <member name="P:Avalonia.Visual.RenderTransform">
@@ -5473,6 +5514,13 @@
             Called when the control is removed from a visual tree.
             </summary>
             <param name="e">The event args.</param>
+        </member>
+        <member name="M:Avalonia.Visual.OnVisualParentChanged(Avalonia.VisualTree.IVisual,Avalonia.VisualTree.IVisual)">
+            <summary>
+            Called when the control's visual parent changes.
+            </summary>
+            <param name="oldParent">The old visual parent.</param>
+            <param name="newParent">The new visual parent.</param>
         </member>
         <member name="M:Avalonia.Visual.AffectsRenderInvalidate(Avalonia.AvaloniaPropertyChangedEventArgs)">
             <summary>

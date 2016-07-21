@@ -35,7 +35,7 @@
             <param name="inner">The <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/>.</param>
             <param name="targetType">The type to convert the value to.</param>
         </member>
-        <member name="M:Avalonia.Markup.Data.ExpressionSubject.#ctor(Avalonia.Markup.Data.ExpressionObserver,System.Type,Avalonia.Markup.IValueConverter,System.Object,System.Object,Avalonia.Data.BindingPriority)">
+        <member name="M:Avalonia.Markup.Data.ExpressionSubject.#ctor(Avalonia.Markup.Data.ExpressionObserver,System.Type,Avalonia.Markup.IValueConverter,System.Object,Avalonia.Data.BindingPriority)">
             <summary>
             Initializes a new instance of the <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/> class.
             </summary>
@@ -45,8 +45,20 @@
             <param name="converterParameter">
             A parameter to pass to <paramref name="converter"/>.
             </param>
+            <param name="priority">The binding priority.</param>
+        </member>
+        <member name="M:Avalonia.Markup.Data.ExpressionSubject.#ctor(Avalonia.Markup.Data.ExpressionObserver,System.Type,System.Object,Avalonia.Markup.IValueConverter,System.Object,Avalonia.Data.BindingPriority)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/> class.
+            </summary>
+            <param name="inner">The <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/>.</param>
+            <param name="targetType">The type to convert the value to.</param>
             <param name="fallbackValue">
             The value to use when the binding is unable to produce a value.
+            </param>
+            <param name="converter">The value converter to use.</param>
+            <param name="converterParameter">
+            A parameter to pass to <paramref name="converter"/>.
             </param>
             <param name="priority">The binding priority.</param>
         </member>

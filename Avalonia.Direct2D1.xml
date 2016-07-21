@@ -1,0 +1,804 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Avalonia.Direct2D1</name>
+    </assembly>
+    <members>
+        <member name="F:Avalonia.Win32.Interop.UnmanagedMethods.WINDOWPLACEMENT.Length">
+            <summary>
+            The length of the structure, in bytes. Before calling the GetWindowPlacement or SetWindowPlacement functions, set this member to sizeof(WINDOWPLACEMENT).
+            <para>
+            GetWindowPlacement and SetWindowPlacement fail if this member is not set correctly.
+            </para>
+            </summary>
+        </member>
+        <member name="F:Avalonia.Win32.Interop.UnmanagedMethods.WINDOWPLACEMENT.Flags">
+            <summary>
+            Specifies flags that control the position of the minimized window and the method by which the window is restored.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Win32.Interop.UnmanagedMethods.WINDOWPLACEMENT.ShowCmd">
+            <summary>
+            The current show state of the window.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Win32.Interop.UnmanagedMethods.WINDOWPLACEMENT.MinPosition">
+            <summary>
+            The coordinates of the window's upper-left corner when the window is minimized.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Win32.Interop.UnmanagedMethods.WINDOWPLACEMENT.MaxPosition">
+            <summary>
+            The coordinates of the window's upper-left corner when the window is maximized.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Win32.Interop.UnmanagedMethods.WINDOWPLACEMENT.NormalPosition">
+            <summary>
+            The window's coordinates when the window is in the restored position.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Win32.Interop.UnmanagedMethods.WINDOWPLACEMENT.Default">
+            <summary>
+            Gets the default (empty) value.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Direct2D1.Media.DrawingContext">
+            <summary>
+            Draws using Direct2D1.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Direct2D1.Media.DrawingContext._renderTarget">
+            <summary>
+            The Direct2D1 render target.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Direct2D1.Media.DrawingContext._directWriteFactory">
+            <summary>
+            The DirectWrite factory.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.DrawingContext.#ctor(SharpDX.Direct2D1.RenderTarget,SharpDX.DirectWrite.Factory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Direct2D1.Media.DrawingContext"/> class.
+            </summary>
+            <param name="renderTarget">The render target to draw to.</param>
+            <param name="directWriteFactory">The DirectWrite factory.</param>
+        </member>
+        <member name="P:Avalonia.Direct2D1.Media.DrawingContext.Transform">
+            <summary>
+            Gets the current transform of the drawing context.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.DrawingContext.Dispose">
+            <summary>
+            Ends a draw operation.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.DrawingContext.DrawImage(Avalonia.Media.Imaging.IBitmap,System.Double,Avalonia.Rect,Avalonia.Rect)">
+            <summary>
+            Draws a bitmap image.
+            </summary>
+            <param name="source">The bitmap image.</param>
+            <param name="opacity">The opacity to draw with.</param>
+            <param name="sourceRect">The rect in the image to draw.</param>
+            <param name="destRect">The rect in the output to draw to.</param>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.DrawingContext.DrawLine(Avalonia.Media.Pen,Avalonia.Point,Avalonia.Point)">
+            <summary>
+            Draws a line.
+            </summary>
+            <param name="pen">The stroke pen.</param>
+            <param name="p1">The first point of the line.</param>
+            <param name="p2">The second point of the line.</param>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.DrawingContext.DrawGeometry(Avalonia.Media.IBrush,Avalonia.Media.Pen,Avalonia.Media.Geometry)">
+            <summary>
+            Draws a geometry.
+            </summary>
+            <param name="brush">The fill brush.</param>
+            <param name="pen">The stroke pen.</param>
+            <param name="geometry">The geometry.</param>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.DrawingContext.DrawRectangle(Avalonia.Media.Pen,Avalonia.Rect,System.Single)">
+            <summary>
+            Draws the outline of a rectangle.
+            </summary>
+            <param name="pen">The pen.</param>
+            <param name="rect">The rectangle bounds.</param>
+            <param name="cornerRadius">The corner radius.</param>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.DrawingContext.DrawText(Avalonia.Media.IBrush,Avalonia.Point,Avalonia.Media.FormattedText)">
+            <summary>
+            Draws text.
+            </summary>
+            <param name="foreground">The foreground brush.</param>
+            <param name="origin">The upper-left corner of the text.</param>
+            <param name="text">The text.</param>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.DrawingContext.FillRectangle(Avalonia.Media.IBrush,Avalonia.Rect,System.Single)">
+            <summary>
+            Draws a filled rectangle.
+            </summary>
+            <param name="brush">The brush.</param>
+            <param name="rect">The rectangle bounds.</param>
+            <param name="cornerRadius">The corner radius.</param>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.DrawingContext.PushClip(Avalonia.Rect)">
+            <summary>
+            Pushes a clip rectange.
+            </summary>
+            <param name="clip">The clip rectangle.</param>
+            <returns>A disposable used to undo the clip rectangle.</returns>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.DrawingContext.PushOpacity(System.Double)">
+            <summary>
+            Pushes an opacity value.
+            </summary>
+            <param name="opacity">The opacity.</param>
+            <returns>A disposable used to undo the opacity.</returns>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.DrawingContext.CreateBrush(Avalonia.Media.IBrush,Avalonia.Size)">
+            <summary>
+            Creates a Direct2D brush wrapper for a Avalonia brush.
+            </summary>
+            <param name="brush">The avalonia brush.</param>
+            <param name="destinationSize">The size of the brush's target area.</param>
+            <returns>The Direct2D brush wrapper.</returns>
+        </member>
+        <member name="T:Avalonia.Direct2D1.Media.BitmapImpl">
+            <summary>
+            A Direct2D implementation of a <see cref="T:Avalonia.Media.Imaging.Bitmap"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.BitmapImpl.#ctor(SharpDX.WIC.ImagingFactory,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Direct2D1.Media.BitmapImpl"/> class.
+            </summary>
+            <param name="factory">The WIC imaging factory to use.</param>
+            <param name="fileName">The filename of the bitmap to load.</param>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.BitmapImpl.#ctor(SharpDX.WIC.ImagingFactory,System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Direct2D1.Media.BitmapImpl"/> class.
+            </summary>
+            <param name="factory">The WIC imaging factory to use.</param>
+            <param name="stream">The stream to read the bitmap from.</param>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.BitmapImpl.#ctor(SharpDX.WIC.ImagingFactory,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Direct2D1.Media.BitmapImpl"/> class.
+            </summary>
+            <param name="factory">The WIC imaging factory to use.</param>
+            <param name="width">The width of the bitmap.</param>
+            <param name="height">The height of the bitmap.</param>
+        </member>
+        <member name="P:Avalonia.Direct2D1.Media.BitmapImpl.PixelWidth">
+            <summary>
+            Gets the width of the bitmap, in pixels.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Direct2D1.Media.BitmapImpl.PixelHeight">
+            <summary>
+            Gets the height of the bitmap, in pixels.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Direct2D1.Media.BitmapImpl.WicImpl">
+            <summary>
+            Gets the WIC implementation of the bitmap.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.BitmapImpl.GetDirect2DBitmap(SharpDX.Direct2D1.RenderTarget)">
+            <summary>
+            Gets a Direct2D bitmap to use on the specified render target.
+            </summary>
+            <param name="renderTarget">The render target.</param>
+            <returns>The Direct2D bitmap.</returns>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.BitmapImpl.Save(System.String)">
+            <summary>
+            Saves the bitmap to a file.
+            </summary>
+            <param name="fileName">The filename.</param>
+        </member>
+        <member name="T:Avalonia.Direct2D1.Media.GeometryImpl">
+            <summary>
+            The platform-specific interface for <see cref="T:Avalonia.Media.Geometry"/>.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Direct2D1.Media.GeometryImpl.Bounds">
+            <summary>
+            Gets the geometry's bounding rectangle.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Direct2D1.Media.GeometryImpl.DefiningGeometry">
+            <summary>
+            Gets the geomentry without any transforms applied.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Direct2D1.Media.GeometryImpl.Geometry">
+            <summary>
+            Gets the Direct2D <see cref="P:Avalonia.Direct2D1.Media.GeometryImpl.Geometry"/>.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Direct2D1.Media.GeometryImpl.Transform">
+            <summary>
+            Gets or sets the transform for the geometry.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.GeometryImpl.GetRenderBounds(System.Double)">
+            <summary>
+            Gets the geometry's bounding rectangle with the specified stroke thickness.
+            </summary>
+            <param name="strokeThickness">The stroke thickness.</param>
+            <returns>The bounding rectangle.</returns>
+        </member>
+        <member name="T:Avalonia.Direct2D1.Media.StreamGeometryImpl">
+            <summary>
+            A Direct2D implementation of a <see cref="!:StreamGeometry"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.StreamGeometryImpl.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Direct2D1.Media.StreamGeometryImpl"/> class.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.StreamGeometryImpl.#ctor(SharpDX.Direct2D1.PathGeometry)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Direct2D1.Media.StreamGeometryImpl"/> class.
+            </summary>
+            <param name="geometry">An existing Direct2D <see cref="T:SharpDX.Direct2D1.PathGeometry"/>.</param>
+        </member>
+        <member name="P:Avalonia.Direct2D1.Media.StreamGeometryImpl.Bounds">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Direct2D1.Media.StreamGeometryImpl.DefiningGeometry">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.StreamGeometryImpl.Clone">
+            <summary>
+            Clones the geometry.
+            </summary>
+            <returns>A cloned geometry.</returns>
+        </member>
+        <member name="M:Avalonia.Direct2D1.Media.StreamGeometryImpl.Open">
+            <summary>
+            Opens the geometry to start defining it.
+            </summary>
+            <returns>
+            A <see cref="!:StreamGeometryContext"/> which can be used to define the geometry.
+            </returns>
+        </member>
+        <member name="F:Avalonia.Direct2D1.PrimitiveExtensions.ZeroTolerance">
+            <summary>
+            The value for which all absolute numbers smaller than are considered equal to zero.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Direct2D1.PrimitiveExtensions.Matrix3x2Identity">
+            <summary>
+            Gets the identity matrix.
+            </summary>
+            <value>The identity matrix.</value>
+        </member>
+        <member name="M:Avalonia.Direct2D1.PrimitiveExtensions.ToDirect2DStrokeStyle(Avalonia.Media.Pen,SharpDX.Direct2D1.RenderTarget)">
+            <summary>
+            Converts a pen to a Direct2D stroke style.
+            </summary>
+            <param name="pen">The pen to convert.</param>
+            <param name="target">The render target.</param>
+            <returns>The Direct2D brush.</returns>
+        </member>
+        <member name="M:Avalonia.Direct2D1.PrimitiveExtensions.ToDirect2D(Avalonia.Media.Color)">
+            <summary>
+            Converts a Avalonia <see cref="T:Avalonia.Media.Color"/> to Direct2D.
+            </summary>
+            <param name="color">The color to convert.</param>
+            <returns>The Direct2D color.</returns>
+        </member>
+        <member name="M:Avalonia.Direct2D1.PrimitiveExtensions.ToDirect2D(Avalonia.Matrix)">
+            <summary>
+            Converts a Avalonia <see cref="T:Avalonia.Matrix"/> to a Direct2D <see cref="T:SharpDX.Mathematics.Interop.RawMatrix3x2"/>
+            </summary>
+            <param name="matrix">The <see cref="T:Avalonia.Matrix"/>.</param>
+            <returns>The <see cref="T:SharpDX.Mathematics.Interop.RawMatrix3x2"/>.</returns>
+        </member>
+        <member name="M:Avalonia.Direct2D1.PrimitiveExtensions.ToAvalonia(SharpDX.Mathematics.Interop.RawMatrix3x2)">
+            <summary>
+            Converts a Direct2D <see cref="T:SharpDX.Mathematics.Interop.RawMatrix3x2"/> to a Avalonia <see cref="T:Avalonia.Matrix"/>.
+            </summary>
+            <param name="matrix">The matrix</param>
+            <returns>a <see cref="T:Avalonia.Matrix"/>.</returns>
+        </member>
+        <member name="M:Avalonia.Direct2D1.PrimitiveExtensions.ToDirect2D(Avalonia.Rect)">
+            <summary>
+            Converts a Avalonia <see cref="T:Avalonia.Rect"/> to a Direct2D <see cref="T:SharpDX.Mathematics.Interop.RawRectangleF"/>
+            </summary>
+            <param name="rect">The <see cref="T:Avalonia.Rect"/>.</param>
+            <returns>The <see cref="T:SharpDX.Mathematics.Interop.RawRectangleF"/>.</returns>
+        </member>
+        <member name="F:Avalonia.Direct2D1.RenderTarget._renderTarget">
+            <summary>
+            The render target.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Direct2D1.RenderTarget.#ctor(System.IntPtr)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Direct2D1.RenderTarget"/> class.
+            </summary>
+            <param name="hwnd">The window handle.</param>
+        </member>
+        <member name="M:Avalonia.Direct2D1.RenderTarget.#ctor(SharpDX.Direct2D1.RenderTarget)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Direct2D1.RenderTarget"/> class.
+            </summary>
+            <param name="renderTarget">The render target.</param>
+        </member>
+        <member name="P:Avalonia.Direct2D1.RenderTarget.Direct2DFactory">
+            <summary>
+            Gets the Direct2D factory.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Direct2D1.RenderTarget.DirectWriteFactory">
+            <summary>
+            Gets the DirectWrite factory.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Direct2D1.RenderTarget.CreateDrawingContext">
+            <summary>
+            Creates a drawing context for a rendering session.
+            </summary>
+            <returns>An <see cref="T:Avalonia.Media.DrawingContext"/>.</returns>
+        </member>
+        <member name="T:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc">
+            <summary>
+            This class represents an elliptical arc on a 2D plane.
+            
+            This class is adapted for use with WPF StreamGeometryContext, and needs to be created explicitly
+            for each particular arc.
+            
+            Some helpers
+            
+            It can handle ellipses which are not aligned with the x and y reference axes of the plane,
+            as well as their parts.
+            
+            Another improvement is that this class can handle degenerated cases like for example very 
+            flat ellipses(semi-minor axis much smaller than semi-major axis) and drawing of very small 
+            parts of such ellipses at very high magnification scales.This imply monitoring the drawing 
+            approximation error for extremely small values.Such cases occur for example while drawing 
+            orbits of comets near the perihelion.
+            
+            When the arc does not cover the complete ellipse, the lines joining the center of the 
+            ellipse to the endpoints can optionally be included or not in the outline, hence allowing 
+            to use it for pie-charts rendering. If these lines are not included, the curve is not 
+            naturally closed.
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.Coeffs2Low">
+            <summary>
+            Coefficients for error estimation while using quadratic Bezier curves for approximation,
+            0 ≤ b/a ≤ 0.25
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.Coeffs2High">
+            <summary>
+            Coefficients for error estimation while using quadratic Bezier curves for approximation,
+            0.25 ≤ b/a ≤ 1
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.Safety2">
+            <summary>
+            Safety factor to convert the "best" error approximation into a "max bound" error
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.Coeffs3Low">
+            <summary>
+            Coefficients for error estimation while using cubic Bezier curves for approximation,
+            0.25 ≤ b/a ≤ 1
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.Coeffs3High">
+            <summary>
+            Coefficients for error estimation while using cubic Bezier curves for approximation,
+            0.25 ≤ b/a ≤ 1
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.Safety3">
+            <summary>
+            Safety factor to convert the "best" error approximation into a "max bound" error
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.Cx">
+            <summary>
+            Abscissa of the center of the ellipse
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.Cy">
+            <summary>
+            Ordinate of the center of the ellipse
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.A">
+            <summary>
+            Semi-major axis
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.B">
+            <summary>
+            Semi-minor axis
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.Theta">
+            <summary>
+            Orientation of the major axis with respect to the x axis
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc._cosTheta">
+            <summary>
+            Pre-calculated cosine value for the major-axis-to-X orientation (Theta)
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc._sinTheta">
+            <summary>
+            Pre-calculated sine value for the major-axis-to-X orientation (Theta)
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.Eta1">
+            <summary>
+            Start angle of the arc
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.Eta2">
+            <summary>
+            End angle of the arc
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.X1">
+            <summary>
+            Abscissa of the start point
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.Y1">
+            <summary>
+            Ordinate of the start point
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.X2">
+            <summary>
+            Abscissa of the end point
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.Y2">
+            <summary>
+            Ordinate of the end point
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.FirstFocusX">
+            <summary>
+            Abscissa of the first focus
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.FirstFocusY">
+            <summary>
+            Ordinate of the first focus
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.SecondFocusX">
+            <summary>
+            Abscissa of the second focus
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.SecondFocusY">
+            <summary>
+            Ordinate of the second focus
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc._xLeft">
+            <summary>
+            Abscissa of the leftmost point of the arc
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc._yUp">
+            <summary>
+            Ordinate of the highest point of the arc
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc._width">
+            <summary>
+            Horizontal width of the arc
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc._height">
+            <summary>
+            Vertical height of the arc
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.IsPieSlice">
+            <summary>
+            Indicator for center to endpoints line inclusion
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc._maxDegree">
+            <summary>
+            Maximal degree for Bezier curve approximation
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc._defaultFlatness">
+            <summary>
+            Default flatness for Bezier curve approximation
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.F">
+            <summary>
+            Indicator for semi-major axis significance (compared to semi-minor one).
+            Computed by dividing the (A-B) difference by the value of A.
+            This indicator is used for an early escape in intersection test
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.E2">
+            <summary>
+            Indicator used for an early escape in intersection test
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.G">
+            <summary>
+            Indicator used for an early escape in intersection test
+            </summary>
+        </member>
+        <member name="F:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.G2">
+            <summary>
+            Indicator used for an early escape in intersection test
+            </summary>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.#ctor">
+            <summary>
+            Builds an elliptical arc composed of the full unit circle around (0,0)
+            </summary>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.#ctor(Avalonia.Point,System.Double,System.Double,System.Double,System.Double,System.Double,System.Boolean)">
+            <summary>
+            Builds an elliptical arc from its canonical geometrical elements
+            </summary>
+            <param name="center">Center of the ellipse</param>
+            <param name="a">Semi-major axis</param>
+            <param name="b">Semi-minor axis</param>
+            <param name="theta">Orientation of the major axis with respect to the x axis</param>
+            <param name="lambda1">Start angle of the arc</param>
+            <param name="lambda2">End angle of the arc</param>
+            <param name="isPieSlice">If true, the lines between the center of the ellipse
+             and the endpoints are part of the shape (it is pie slice like)</param>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Boolean)">
+            <summary>
+            Builds an elliptical arc from its canonical geometrical elements
+            </summary>
+            <param name="cx">Abscissa of the center of the ellipse</param>
+            <param name="cy">Ordinate of the center of the ellipse</param>
+            <param name="a">Semi-major axis</param>
+            <param name="b">Semi-minor axis</param>
+            <param name="theta">Orientation of the major axis with respect to the x axis</param>
+            <param name="lambda1">Start angle of the arc</param>
+            <param name="lambda2">End angle of the arc</param>
+            <param name="isPieSlice">If true, the lines between the center of the ellipse
+             and the endpoints are part of the shape (it is pie slice like)</param>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.#ctor(Avalonia.Point,System.Double,System.Double,System.Double)">
+            <summary>
+            Build a full ellipse from its canonical geometrical elements
+            </summary>
+            <param name="center">Center of the ellipse</param>
+            <param name="a">Semi-major axis</param>
+            <param name="b">Semi-minor axis</param>
+            <param name="theta">Orientation of the major axis with respect to the x axis</param>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Build a full ellipse from its canonical geometrical elements
+            </summary>
+            <param name="cx">Abscissa of the center of the ellipse</param>
+            <param name="cy">Ordinate of the center of the ellipse</param>
+            <param name="a">Semi-major axis</param>
+            <param name="b">Semi-minor axis</param>
+            <param name="theta">Orientation of the major axis with respect to the x axis</param>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.SetMaxDegree(System.Int32)">
+            <summary>
+            Sets the maximal degree allowed for Bezier curve approximation.
+            </summary>
+            <param name="maxDegree">Maximal allowed degree (must be between 1 and 3)</param>
+            <exception cref="T:System.ArgumentException">Thrown if maxDegree is not between 1 and 3</exception>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.SetDefaultFlatness(System.Double)">
+            <summary>
+            Sets the default flatness for Bezier curve approximation
+            </summary>
+            <param name="defaultFlatness">default flatness (must be greater than 1e-10)</param>
+            <exception cref="T:System.ArgumentException">Thrown if defaultFlatness is lower than 1e-10</exception>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.ComputeFocii">
+            <summary>
+            Computes the locations of the focii
+            </summary>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.ComputeEndPoints">
+            <summary>
+            Computes the locations of the endpoints
+            </summary>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.ComputeBounds">
+            <summary>
+            Computes the bounding box
+            </summary>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.ComputeDerivedFlatnessParameters">
+            <summary>
+            Computes the flatness parameters used in intersection tests
+            </summary>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.RationalFunction(System.Double,System.Double[])">
+            <summary>
+            Computes the value of a rational function.
+            This method handles rational functions where the numerator is quadratic
+            and the denominator is linear
+            </summary>
+            <param name="x">Abscissa for which the value should be computed</param>
+            <param name="c">Coefficients array of the rational function</param>
+            <returns></returns>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.EstimateError(System.Int32,System.Double,System.Double)">
+            <summary>
+            Estimate the approximation error for a sub-arc of the instance
+            </summary>
+            <param name="degree">Degree of the Bezier curve to use (1, 2 or 3)</param>
+            <param name="etaA">Start angle of the sub-arc</param>
+            <param name="etaB">End angle of the sub-arc</param>
+            <returns>Upper bound of the approximation error between the Bezier curve and the real ellipse</returns>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.PointAt(System.Double)">
+            <summary>
+            Get the elliptical arc point for a given angular parameter
+            </summary>
+            <param name="lambda">Angular parameter for which point is desired</param> 
+            <returns>The desired elliptical arc point location</returns>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.Contains(System.Double,System.Double)">
+            <summary>
+            Tests if the specified coordinates are inside the closed shape formed by this arc.
+            If this is not a pie, then a shape derived by adding a closing chord is considered.
+            </summary>
+            <param name="x">Abscissa of the test point</param>
+            <param name="y">Ordinate of the test point</param>
+            <returns>True if the specified coordinates are inside the closed shape of this arc</returns>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.IntersectArc(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Tests if a line segment intersects the arc
+            </summary>
+            <param name="xA">abscissa of the first point of the line segment</param>
+            <param name="yA">ordinate of the first point of the line segment</param>
+            <param name="xB">abscissa of the second point of the line segment</param>
+            <param name="yB">ordinate of the second point of the line segment</param>
+            <returns>true if the two line segments intersect</returns>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.Intersect(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Tests if two line segments intersect
+            </summary>
+            <param name="x1">Abscissa of the first point of the first line segment</param>
+            <param name="y1">Ordinate of the first point of the first line segment</param>
+            <param name="x2">Abscissa of the second point of the first line segment</param>
+            <param name="y2">Ordinate of the second point of the first line segment</param>
+            <param name="xA">Abscissa of the first point of the second line segment</param>
+            <param name="yA">Ordinate of the first point of the second line segment</param>
+            <param name="xB">Abscissa of the second point of the second line segment</param>
+            <param name="yB">Ordinate of the second point of the second line segment</param>
+            <returns>true if the two line segments intersect</returns>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.IntersectOutline(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Tests if a line segment intersects the outline
+            </summary>
+            <param name="xA">Abscissa of the first point of the line segment</param>
+            <param name="yA">Ordinate of the first point of the line segment</param>
+            <param name="xB">Abscissa of the second point of the line segment</param>
+            <param name="yB">Ordinate of the second point of the line segment</param>
+            <returns>true if the two line segments intersect</returns>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.Contains(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Tests if the interior of a closed path derived from this arc entirely contains the specified rectangular area.
+            The closed path is derived with respect to the IsPieSlice value.
+            </summary>
+            <param name="x">Abscissa of the upper-left corner of the test rectangle</param>
+            <param name="y">Ordinate of the upper-left corner of the test rectangle</param>
+            <param name="w">Width of the test rectangle</param>
+            <param name="h">Height of the test rectangle</param>
+            <returns>true if the interior of a closed path derived from this arc entirely contains the specified rectangular area; false otherwise</returns>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.Contains(Avalonia.Point)">
+            <summary>
+            Tests if a specified Point2D is inside the boundary of a closed path derived from this arc.
+            The closed path is derived with respect to the IsPieSlice value.
+            </summary>
+            <param name="p">Test point</param>
+            <returns>true if the specified point is inside a closed path derived from this arc</returns>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.Contains(Avalonia.Rect)">
+            <summary>
+            Tests if the interior of a closed path derived from this arc entirely contains the specified Rectangle2D.
+            The closed path is derived with respect to the IsPieSlice value.
+            </summary>
+            <param name="r">Test rectangle</param>
+            <returns>True if the interior of a closed path derived from this arc entirely contains the specified Rectangle2D; false otherwise</returns>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.GetBounds">
+            <summary>
+            Returns an integer Rectangle that completely encloses the closed path derived from this arc.
+            The closed path is derived with respect to the IsPieSlice value.
+            </summary> 
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.BuildArc(Avalonia.Platform.IStreamGeometryContextImpl)">
+            <summary>
+            Builds the arc outline using given StreamGeometryContext and default (max) Bezier curve degree and acceptable error of half a pixel (0.5)
+            </summary>
+            <param name="path">A StreamGeometryContext to output the path commands to</param>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.BuildArc(Avalonia.Platform.IStreamGeometryContextImpl,System.Int32,System.Double,System.Boolean)">
+            <summary>
+            Builds the arc outline using given StreamGeometryContext
+            </summary>
+            <param name="path">A StreamGeometryContext to output the path commands to</param>
+            <param name="degree">degree of the Bezier curve to use</param>
+            <param name="threshold">acceptable error</param>
+            <param name="openNewFigure">if true, a new figure will be started in the specified StreamGeometryContext</param>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.GetAngle(Avalonia.Vector,Avalonia.Vector)">
+            <summary>
+            Calculates the angle between two vectors
+            </summary>
+            <param name="v1">Vector V1</param>
+            <param name="v2">Vector V2</param>
+            <returns>The signed angle between v2 and v1</returns>
+        </member>
+        <member name="T:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.SimpleMatrix">
+            <summary>
+            Simple matrix used for rotate transforms. 
+            At some point I did not trust the WPF Matrix struct, and wrote my own simple one -_-
+            This is supposed to be replaced with proper WPF Matrices everywhere
+            </summary>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.BuildArc(Avalonia.Platform.IStreamGeometryContextImpl,Avalonia.Point,Avalonia.Point,Avalonia.Size,System.Double,System.Boolean,System.Boolean)">
+            <summary>
+            ArcTo Helper for StreamGeometryContext
+            </summary>
+            <param name="path">Target path</param>
+            <param name="p1">Start point</param>
+            <param name="p2">End point</param>
+            <param name="size">Ellipse radii</param>
+            <param name="theta">Ellipse theta (angle measured from the abscissa)</param>
+            <param name="isLargeArc">Large Arc Indicator</param>
+            <param name="clockwise">Clockwise direction flag</param>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.Intersects(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Tests if the interior of the closed path derived from this arc intersects the interior of a specified rectangular area.
+            The closed path is derived with respect to the IsPieSlice value.
+            </summary>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.ArcToHelper.EllipticalArc.Intersects(Avalonia.Rect)">
+            <summary>
+            Tests if the interior of the closed path derived from this arc intersects the interior of a specified rectangular area.
+            The closed path is derived with respect to the IsPieSlice value.
+            </summary>
+        </member>
+        <member name="M:Avalonia.RenderHelpers.TileBrushImplHelper.CalculateTranslate(Avalonia.Media.TileBrush,Avalonia.Rect,Avalonia.Rect,Avalonia.Vector)">
+            <summary>
+            Calculates a translate based on a <see cref="T:Avalonia.Media.TileBrush"/>, a source and destination
+            rectangle and a scale.
+            </summary>
+            <param name="brush">The brush.</param>
+            <param name="sourceRect">The source rectangle.</param>
+            <param name="destinationRect">The destination rectangle.</param>
+            <param name="scale">The _scale factor.</param>
+            <returns>A vector with the X and Y _translate.</returns>
+        </member>
+    </members>
+</doc>

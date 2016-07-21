@@ -712,6 +712,21 @@
             <param name="index">The index.</param>
             <param name="items">The items.</param>
         </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.Move(System.Int32,System.Int32)">
+            <summary>
+            Moves an item to a new index.
+            </summary>
+            <param name="oldIndex">The index of the item to move.</param>
+            <param name="newIndex">The index to move the item to.</param>
+        </member>
+        <member name="M:Avalonia.Collections.AvaloniaList`1.MoveRange(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Moves multiple items to a new index.
+            </summary>
+            <param name="oldIndex">The first index of the items to move.</param>
+            <param name="count">The number of items to move.</param>
+            <param name="newIndex">The index to move the items to.</param>
+        </member>
         <member name="M:Avalonia.Collections.AvaloniaList`1.Remove(`0)">
             <summary>
             Removes an item from the collection.
@@ -1678,6 +1693,11 @@
             The registered properties by type.
             </summary>
         </member>
+        <member name="F:Avalonia.AvaloniaPropertyRegistry._registeredCache">
+            <summary>
+            The registered properties by type cached values to increase performance.
+            </summary>
+        </member>
         <member name="F:Avalonia.AvaloniaPropertyRegistry._attached">
             <summary>
             The registered attached properties by owner type.
@@ -1729,7 +1749,7 @@
             <param name="property">The property.</param>
             <returns>The registered property or null if not found.</returns>
             <remarks>
-            Calling AddOwner on a AvaloniaProperty creates a new AvaloniaProperty that is a 
+            Calling AddOwner on a AvaloniaProperty creates a new AvaloniaProperty that is a
             different object but is equal according to <see cref="M:System.Object.Equals(System.Object)"/>.
             </remarks>
         </member>
@@ -1739,7 +1759,7 @@
             </summary>
             <param name="type">The type.</param>
             <param name="name">
-            The property name. If an attached property it should be in the form 
+            The property name. If an attached property it should be in the form
             "OwnerType.PropertyName".
             </param>
             <returns>
@@ -1752,7 +1772,7 @@
             </summary>
             <param name="o">The object.</param>
             <param name="name">
-            The property name. If an attached property it should be in the form 
+            The property name. If an attached property it should be in the form
             "OwnerType.PropertyName".
             </param>
             <returns>
@@ -2244,6 +2264,16 @@
             <param name="property">The property.</param>
             <returns>The default value.</returns>
         </member>
+        <member name="M:Avalonia.AvaloniaObject.GetValueInternal(Avalonia.AvaloniaProperty)">
+            <summary>
+            Gets a <see cref="T:Avalonia.AvaloniaProperty"/> value
+            without check for registered as this can slow getting the value
+            this method is intended for internal usage in AvaloniaObject only
+            it's called only after check the property is registered
+            </summary>
+            <param name="property">The property.</param>
+            <returns>The value.</returns>
+        </member>
         <member name="M:Avalonia.AvaloniaObject.GetRegistered(Avalonia.AvaloniaProperty)">
             <summary>
             Given a <see cref="T:Avalonia.AvaloniaProperty"/> returns a registered avalonia property that is
@@ -2379,11 +2409,11 @@
             object.
             </summary>
             <remarks>
-            When a property changes, change notifications are sent to all property subscribers; 
-            for example via the <see cref="P:Avalonia.AvaloniaProperty.Changed"/> observable and and the 
+            When a property changes, change notifications are sent to all property subscribers;
+            for example via the <see cref="P:Avalonia.AvaloniaProperty.Changed"/> observable and and the
             <see cref="E:Avalonia.AvaloniaObject.PropertyChanged"/> event. If this callback is set for a property,
             then it will be called before and after these notifications take place. The bool argument
-            will be true before the property change notifications are sent and false afterwards. This 
+            will be true before the property change notifications are sent and false afterwards. This
             callback is intended to support Control.IsDataContextChanging.
             </remarks>
         </member>
@@ -2514,13 +2544,14 @@
             </returns>
         </member>
         <member name="M:Avalonia.AvaloniaProperty.GetMetadata(System.Type)">
-            <summary>
-            Gets the property metadata for the specified type.
-            </summary>
-            <param name="type">The type.</param>
-            <returns>
-            The property metadata.
-            </returns>
+             <summary>
+             Gets the property metadata for the specified type.
+             </summary>
+             <param name="type">The type.</param>
+             <returns>
+             The property metadata.
+             </returns>
+            
         </member>
         <member name="M:Avalonia.AvaloniaProperty.IsValidValue(System.Object)">
             <summary>

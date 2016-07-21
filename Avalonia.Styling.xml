@@ -4,6 +4,119 @@
         <name>Avalonia.Styling</name>
     </assembly>
     <members>
+        <member name="T:Avalonia.Controls.NameScopeExtensions">
+            <summary>
+            Extension methods for <see cref="T:Avalonia.Controls.INameScope"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Controls.NameScopeExtensions.Find``1(Avalonia.Controls.INameScope,System.String)">
+            <summary>
+            Finds a named element in an <see cref="T:Avalonia.Controls.INameScope"/>.
+            </summary>
+            <typeparam name="T">The element type.</typeparam>
+            <param name="nameScope">The name scope.</param>
+            <param name="name">The name.</param>
+            <returns>The named element or null if not found.</returns>
+        </member>
+        <member name="M:Avalonia.Controls.NameScopeExtensions.Get``1(Avalonia.Controls.INameScope,System.String)">
+            <summary>
+            Gets a named element from an <see cref="T:Avalonia.Controls.INameScope"/> or throws if no element of the
+            requested name was found.
+            </summary>
+            <typeparam name="T">The element type.</typeparam>
+            <param name="nameScope">The name scope.</param>
+            <param name="name">The name.</param>
+            <returns>The named element.</returns>
+        </member>
+        <member name="T:Avalonia.Controls.INameScope">
+            <summary>
+            Defines a name scope.
+            </summary>
+        </member>
+        <member name="E:Avalonia.Controls.INameScope.Registered">
+            <summary>
+            Raised when an element is registered with the name scope.
+            </summary>
+        </member>
+        <member name="E:Avalonia.Controls.INameScope.Unregistered">
+            <summary>
+            Raised when an element is unregistered with the name scope.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Controls.INameScope.Register(System.String,System.Object)">
+            <summary>
+            Registers an element eith the name scope.
+            </summary>
+            <param name="name">The element name.</param>
+            <param name="element">The element.</param>
+        </member>
+        <member name="M:Avalonia.Controls.INameScope.Find(System.String)">
+            <summary>
+            Finds a named element in the name scope.
+            </summary>
+            <param name="name">The name.</param>
+            <returns>The element, or null if the name was not found.</returns>
+        </member>
+        <member name="M:Avalonia.Controls.INameScope.Unregister(System.String)">
+            <summary>
+            Unregisters an element with the name scope.
+            </summary>
+            <param name="name">The name.</param>
+        </member>
+        <member name="T:Avalonia.Controls.NameScope">
+            <summary>
+            Implements a name scope.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Controls.NameScope.NameScopeProperty">
+            <summary>
+            Defines the NameScope attached property.
+            </summary>
+        </member>
+        <member name="E:Avalonia.Controls.NameScope.Registered">
+            <summary>
+            Raised when an element is registered with the name scope.
+            </summary>
+        </member>
+        <member name="E:Avalonia.Controls.NameScope.Unregistered">
+            <summary>
+            Raised when an element is unregistered with the name scope.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Controls.NameScope.GetNameScope(Avalonia.Visual)">
+            <summary>
+            Gets the value of the attached <see cref="F:Avalonia.Controls.NameScope.NameScopeProperty"/> on a visual.
+            </summary>
+            <param name="visual">The visual.</param>
+            <returns>The value of the NameScope attached property.</returns>
+        </member>
+        <member name="M:Avalonia.Controls.NameScope.SetNameScope(Avalonia.Visual,Avalonia.Controls.INameScope)">
+            <summary>
+            Sets the value of the attached <see cref="F:Avalonia.Controls.NameScope.NameScopeProperty"/> on a visual.
+            </summary>
+            <param name="visual">The visual.</param>
+            <param name="value">The value to set.</param>
+        </member>
+        <member name="M:Avalonia.Controls.NameScope.Register(System.String,System.Object)">
+            <summary>
+            Registers an element with the name scope.
+            </summary>
+            <param name="name">The element name.</param>
+            <param name="element">The element.</param>
+        </member>
+        <member name="M:Avalonia.Controls.NameScope.Find(System.String)">
+            <summary>
+            Finds a named element in the name scope.
+            </summary>
+            <param name="name">The name.</param>
+            <returns>The element, or null if the name was not found.</returns>
+        </member>
+        <member name="M:Avalonia.Controls.NameScope.Unregister(System.String)">
+            <summary>
+            Unregisters an element with the name scope.
+            </summary>
+            <param name="name">The name.</param>
+        </member>
         <member name="T:Avalonia.LogicalTree.ILogical">
             <summary>
             Represents a node in the logical tree.

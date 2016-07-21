@@ -444,6 +444,9 @@
             <param name="finalSize">The size available to the control.</param>
             <returns>The actual size used.</returns>
         </member>
+        <member name="M:Avalonia.Layout.Layoutable.OnVisualParentChanged(Avalonia.VisualTree.IVisual,Avalonia.VisualTree.IVisual)">
+            <inheritdoc/>
+        </member>
         <member name="M:Avalonia.Layout.Layoutable.AffectsMeasureInvalidate(Avalonia.AvaloniaPropertyChangedEventArgs)">
             <summary>
             Calls <see cref="M:Avalonia.Layout.Layoutable.InvalidateMeasure"/> on the control on which a property changed.

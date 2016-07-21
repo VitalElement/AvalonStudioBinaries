@@ -349,49 +349,59 @@
             <param name="sender">The event sender.</param>
             <param name="e">The event args.</param>
         </member>
-        <member name="T:Avalonia.Input.FocusNavigationDirection">
+        <member name="T:Avalonia.Input.NavigationDirection">
             <summary>
-            Describes how focus should be moved.
+            Describes how focus should be moved by directional or tab keys.
             </summary>
         </member>
-        <member name="F:Avalonia.Input.FocusNavigationDirection.Next">
+        <member name="F:Avalonia.Input.NavigationDirection.Next">
             <summary>
             Move the focus to the next control in the tab order.
             </summary>
         </member>
-        <member name="F:Avalonia.Input.FocusNavigationDirection.Previous">
+        <member name="F:Avalonia.Input.NavigationDirection.Previous">
             <summary>
             Move the focus to the previous control in the tab order.
             </summary>
         </member>
-        <member name="F:Avalonia.Input.FocusNavigationDirection.First">
+        <member name="F:Avalonia.Input.NavigationDirection.First">
             <summary>
             Move the focus to the first control in the tab order.
             </summary>
         </member>
-        <member name="F:Avalonia.Input.FocusNavigationDirection.Last">
+        <member name="F:Avalonia.Input.NavigationDirection.Last">
             <summary>
             Move the focus to the last control in the tab order.
             </summary>
         </member>
-        <member name="F:Avalonia.Input.FocusNavigationDirection.Left">
+        <member name="F:Avalonia.Input.NavigationDirection.Left">
             <summary>
             Move the focus to the left.
             </summary>
         </member>
-        <member name="F:Avalonia.Input.FocusNavigationDirection.Right">
+        <member name="F:Avalonia.Input.NavigationDirection.Right">
             <summary>
             Move the focus to the right.
             </summary>
         </member>
-        <member name="F:Avalonia.Input.FocusNavigationDirection.Up">
+        <member name="F:Avalonia.Input.NavigationDirection.Up">
             <summary>
             Move the focus up.
             </summary>
         </member>
-        <member name="F:Avalonia.Input.FocusNavigationDirection.Down">
+        <member name="F:Avalonia.Input.NavigationDirection.Down">
             <summary>
             Move the focus down.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Input.NavigationDirection.PageUp">
+            <summary>
+            Move the focus up a page.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Input.NavigationDirection.PageDown">
+            <summary>
+            Move the focus down a page.
             </summary>
         </member>
         <member name="T:Avalonia.Input.IFocusManager">
@@ -580,7 +590,7 @@
             This method can only be called once, typically by the owner itself on creation.
             </remarks>
         </member>
-        <member name="M:Avalonia.Input.IKeyboardNavigationHandler.Move(Avalonia.Input.IInputElement,Avalonia.Input.FocusNavigationDirection,Avalonia.Input.InputModifiers)">
+        <member name="M:Avalonia.Input.IKeyboardNavigationHandler.Move(Avalonia.Input.IInputElement,Avalonia.Input.NavigationDirection,Avalonia.Input.InputModifiers)">
             <summary>
             Moves the focus in the specified direction.
             </summary>
@@ -603,7 +613,7 @@
             Defines a container in which the child controls can be navigated by keyboard.
             </summary>
         </member>
-        <member name="M:Avalonia.Input.INavigableContainer.GetControl(Avalonia.Input.FocusNavigationDirection,Avalonia.Input.IInputElement)">
+        <member name="M:Avalonia.Input.INavigableContainer.GetControl(Avalonia.Input.NavigationDirection,Avalonia.Input.IInputElement)">
             <summary>
             Gets the next control in the specified direction.
             </summary>
@@ -2080,7 +2090,7 @@
             This method can only be called once, typically by the owner itself on creation.
             </remarks>
         </member>
-        <member name="M:Avalonia.Input.KeyboardNavigationHandler.GetNext(Avalonia.Input.IInputElement,Avalonia.Input.FocusNavigationDirection)">
+        <member name="M:Avalonia.Input.KeyboardNavigationHandler.GetNext(Avalonia.Input.IInputElement,Avalonia.Input.NavigationDirection)">
             <summary>
             Gets the next control in the specified navigation direction.
             </summary>
@@ -2091,7 +2101,7 @@
             was the last in therequested direction.
             </returns>
         </member>
-        <member name="M:Avalonia.Input.KeyboardNavigationHandler.Move(Avalonia.Input.IInputElement,Avalonia.Input.FocusNavigationDirection,Avalonia.Input.InputModifiers)">
+        <member name="M:Avalonia.Input.KeyboardNavigationHandler.Move(Avalonia.Input.IInputElement,Avalonia.Input.NavigationDirection,Avalonia.Input.InputModifiers)">
             <summary>
             Moves the focus in the specified direction.
             </summary>
@@ -2145,7 +2155,7 @@
             The implementation for default directional navigation.
             </summary>
         </member>
-        <member name="M:Avalonia.Input.Navigation.DirectionalNavigation.GetNext(Avalonia.Input.IInputElement,Avalonia.Input.FocusNavigationDirection)">
+        <member name="M:Avalonia.Input.Navigation.DirectionalNavigation.GetNext(Avalonia.Input.IInputElement,Avalonia.Input.NavigationDirection)">
             <summary>
             Gets the next control in the specified navigation direction.
             </summary>
@@ -2156,14 +2166,14 @@
             was the last in the requested direction.
             </returns>
         </member>
-        <member name="M:Avalonia.Input.Navigation.DirectionalNavigation.IsForward(Avalonia.Input.FocusNavigationDirection)">
+        <member name="M:Avalonia.Input.Navigation.DirectionalNavigation.IsForward(Avalonia.Input.NavigationDirection)">
             <summary>
             Returns a value indicting whether the specified direction is forward.
             </summary>
             <param name="direction">The direction.</param>
             <returns>True if the direction is forward.</returns>
         </member>
-        <member name="M:Avalonia.Input.Navigation.DirectionalNavigation.GetFocusableDescendent(Avalonia.Input.IInputElement,Avalonia.Input.FocusNavigationDirection)">
+        <member name="M:Avalonia.Input.Navigation.DirectionalNavigation.GetFocusableDescendent(Avalonia.Input.IInputElement,Avalonia.Input.NavigationDirection)">
             <summary>
             Gets the first or last focusable descendent of the specified element.
             </summary>
@@ -2178,7 +2188,7 @@
             <param name="element">The element.</param>
             <returns>The element's focusable descendents.</returns>
         </member>
-        <member name="M:Avalonia.Input.Navigation.DirectionalNavigation.GetNextInContainer(Avalonia.Input.IInputElement,Avalonia.Input.IInputElement,Avalonia.Input.FocusNavigationDirection)">
+        <member name="M:Avalonia.Input.Navigation.DirectionalNavigation.GetNextInContainer(Avalonia.Input.IInputElement,Avalonia.Input.IInputElement,Avalonia.Input.NavigationDirection)">
             <summary>
             Gets the next item that should be focused in the specified container.
             </summary>
@@ -2187,7 +2197,7 @@
             <param name="direction">The direction.</param>
             <returns>The next element, or null if the element is the last.</returns>
         </member>
-        <member name="M:Avalonia.Input.Navigation.DirectionalNavigation.GetFirstInNextContainer(Avalonia.Input.IInputElement,Avalonia.Input.FocusNavigationDirection)">
+        <member name="M:Avalonia.Input.Navigation.DirectionalNavigation.GetFirstInNextContainer(Avalonia.Input.IInputElement,Avalonia.Input.NavigationDirection)">
             <summary>
             Gets the first item that should be focused in the next container.
             </summary>
@@ -2200,7 +2210,7 @@
             The implementation for default tab navigation.
             </summary>
         </member>
-        <member name="M:Avalonia.Input.Navigation.TabNavigation.GetNextInTabOrder(Avalonia.Input.IInputElement,Avalonia.Input.FocusNavigationDirection)">
+        <member name="M:Avalonia.Input.Navigation.TabNavigation.GetNextInTabOrder(Avalonia.Input.IInputElement,Avalonia.Input.NavigationDirection)">
             <summary>
             Gets the next control in the specified tab direction.
             </summary>
@@ -2211,7 +2221,7 @@
             was the last in the requested direction.
             </returns>
         </member>
-        <member name="M:Avalonia.Input.Navigation.TabNavigation.GetFocusableDescendent(Avalonia.Input.IInputElement,Avalonia.Input.FocusNavigationDirection)">
+        <member name="M:Avalonia.Input.Navigation.TabNavigation.GetFocusableDescendent(Avalonia.Input.IInputElement,Avalonia.Input.NavigationDirection)">
             <summary>
             Gets the first or last focusable descendent of the specified element.
             </summary>
@@ -2226,7 +2236,7 @@
             <param name="element">The element.</param>
             <returns>The element's focusable descendents.</returns>
         </member>
-        <member name="M:Avalonia.Input.Navigation.TabNavigation.GetNextInContainer(Avalonia.Input.IInputElement,Avalonia.Input.IInputElement,Avalonia.Input.FocusNavigationDirection)">
+        <member name="M:Avalonia.Input.Navigation.TabNavigation.GetNextInContainer(Avalonia.Input.IInputElement,Avalonia.Input.IInputElement,Avalonia.Input.NavigationDirection)">
             <summary>
             Gets the next item that should be focused in the specified container.
             </summary>
@@ -2235,7 +2245,7 @@
             <param name="direction">The direction.</param>
             <returns>The next element, or null if the element is the last.</returns>
         </member>
-        <member name="M:Avalonia.Input.Navigation.TabNavigation.GetFirstInNextContainer(Avalonia.Input.IInputElement,Avalonia.Input.FocusNavigationDirection)">
+        <member name="M:Avalonia.Input.Navigation.TabNavigation.GetFirstInNextContainer(Avalonia.Input.IInputElement,Avalonia.Input.NavigationDirection)">
             <summary>
             Gets the first item that should be focused in the next container.
             </summary>

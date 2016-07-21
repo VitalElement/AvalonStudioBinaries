@@ -167,5 +167,49 @@
             <param name="parameter">The value of this parameter is determined by the calling behavior.</param>
             <returns>Returns the results of the actions.</returns>
         </member>
+        <member name="T:Avalonia.Xaml.Interactivity.ITrigger">
+            <summary>
+            Interface implemented by all custom triggers.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Xaml.Interactivity.ITrigger.Actions">
+            <summary>
+            Gets the collection of actions associated with the behavior.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Xaml.Interactivity.Trigger">
+            <summary>
+            A base class for behaviors, implementing the basic plumbing of ITrigger
+            </summary>
+        </member>
+        <member name="F:Avalonia.Xaml.Interactivity.Trigger.ActionsProperty">
+            <summary>
+            Identifies the <seealso cref="P:Avalonia.Xaml.Interactivity.Trigger.Actions"/> avalonia property.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Xaml.Interactivity.Trigger.Actions">
+            <summary>
+            Gets the collection of actions associated with the behavior. This is a avalonia property.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Xaml.Interactivity.Trigger`1">
+            <summary>
+            A base class for behaviors, implementing the basic plumbing of ITrigger
+            </summary>
+            <typeparam name="T">The object type to attach to</typeparam>
+        </member>
+        <member name="P:Avalonia.Xaml.Interactivity.Trigger`1.AssociatedObject">
+            <summary>
+            Gets the object to which this behavior is attached.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Xaml.Interactivity.Trigger`1.OnAttached">
+            <summary>
+            Called after the behavior is attached to the <see cref="P:Avalonia.Xaml.Interactivity.Behavior.AssociatedObject"/>.
+            </summary>
+            <remarks>
+            Override this to hook up functionality to the <see cref="P:Avalonia.Xaml.Interactivity.Behavior.AssociatedObject"/>
+            </remarks>
+        </member>
     </members>
 </doc>

@@ -141,11 +141,6 @@
             A behavior that performs actions when the bound data meets a specified condition.
             </summary>
         </member>
-        <member name="F:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.ActionsProperty">
-            <summary>
-            Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.Actions"/> avalonia property.
-            </summary>
-        </member>
         <member name="F:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.BindingProperty">
             <summary>
             Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.Binding"/> avalonia property.
@@ -159,11 +154,6 @@
         <member name="F:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.ValueProperty">
             <summary>
             Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.Value"/> avalonia property.
-            </summary>
-        </member>
-        <member name="P:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.Actions">
-            <summary>
-            Gets the collection of actions associated with the behavior. This is a avalonia property.
             </summary>
         </member>
         <member name="P:Avalonia.Xaml.Interactions.Core.DataTriggerBehavior.Binding">
@@ -191,11 +181,6 @@
             A behavior that listens for a specified event on its source and executes its actions when that event is fired.
             </summary>
         </member>
-        <member name="F:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior.ActionsProperty">
-            <summary>
-            Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior.Actions"/> avalonia property.
-            </summary>
-        </member>
         <member name="F:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior.EventNameProperty">
             <summary>
             Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior.EventName"/> avalonia property.
@@ -204,11 +189,6 @@
         <member name="F:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior.SourceObjectProperty">
             <summary>
             Identifies the <seealso cref="P:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior.SourceObject"/> avalonia property.
-            </summary>
-        </member>
-        <member name="P:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior.Actions">
-            <summary>
-            Gets the collection of actions associated with the behavior. This is a avalonia property.
             </summary>
         </member>
         <member name="P:Avalonia.Xaml.Interactions.Core.EventTriggerBehavior.EventName">

@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Avalonia.Win32</name>
+    </assembly>
+    <members>
+        <member name="F:Avalonia.Win32.Interop.UnmanagedMethods.WINDOWPLACEMENT.Length">
+            <summary>
+            The length of the structure, in bytes. Before calling the GetWindowPlacement or SetWindowPlacement functions, set this member to sizeof(WINDOWPLACEMENT).
+            <para>
+            GetWindowPlacement and SetWindowPlacement fail if this member is not set correctly.
+            </para>
+            </summary>
+        </member>
+        <member name="F:Avalonia.Win32.Interop.UnmanagedMethods.WINDOWPLACEMENT.Flags">
+            <summary>
+            Specifies flags that control the position of the minimized window and the method by which the window is restored.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Win32.Interop.UnmanagedMethods.WINDOWPLACEMENT.ShowCmd">
+            <summary>
+            The current show state of the window.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Win32.Interop.UnmanagedMethods.WINDOWPLACEMENT.MinPosition">
+            <summary>
+            The coordinates of the window's upper-left corner when the window is minimized.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Win32.Interop.UnmanagedMethods.WINDOWPLACEMENT.MaxPosition">
+            <summary>
+            The coordinates of the window's upper-left corner when the window is maximized.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Win32.Interop.UnmanagedMethods.WINDOWPLACEMENT.NormalPosition">
+            <summary>
+            The window's coordinates when the window is in the restored position.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Win32.Interop.UnmanagedMethods.WINDOWPLACEMENT.Default">
+            <summary>
+            Gets the default (empty) value.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Shared.PlatformSupport.AssetLoader">
+            <summary>
+            Loads assets compiled into the application binary.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Shared.PlatformSupport.AssetLoader.Exists(System.Uri,System.Uri)">
+            <summary>
+            Checks if an asset with the specified URI exists.
+            </summary>
+            <param name="uri">The URI.</param>
+            <param name="baseUri">
+            A base URI to use if <paramref name="uri"/> is relative.
+            </param>
+            <returns>True if the asset could be found; otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.Shared.PlatformSupport.AssetLoader.Open(System.Uri,System.Uri)">
+            <summary>
+            Opens the resource with the requested URI.
+            </summary>
+            <param name="uri">The URI.</param>
+            <param name="baseUri">
+            A base URI to use if <paramref name="uri"/> is relative.
+            </param>
+            <returns>A stream containing the resource contents.</returns>
+            <exception cref="T:System.IO.FileNotFoundException">
+            The resource was not found.
+            </exception>
+        </member>
+    </members>
+</doc>
