@@ -2914,6 +2914,12 @@
             </summary>
             <param name="fileName">The filename.</param>
         </member>
+        <member name="M:Avalonia.Media.Imaging.IBitmap.Save(System.IO.Stream)">
+            <summary>
+            Saves the bitmap to a stream in png format.
+            </summary>
+            <param name="stream">The stream.</param>
+        </member>
         <member name="T:Avalonia.Media.Imaging.RenderTargetBitmap">
             <summary>
             A bitmap that holds the rendering of a <see cref="!:IVisual"/>.
@@ -3894,6 +3900,12 @@
             Saves the bitmap to a file.
             </summary>
             <param name="fileName">The filename.</param>
+        </member>
+        <member name="M:Avalonia.Platform.IBitmapImpl.Save(System.IO.Stream)">
+            <summary>
+            Saves the bitmap to a stream in png format.
+            </summary>
+            <param name="stream">The stream.</param>
         </member>
         <member name="T:Avalonia.Platform.IGeometryImpl">
             <summary>

@@ -380,10 +380,11 @@
             </summary>
             <param name="container">The item container.</param>
         </member>
-        <member name="M:Avalonia.Controls.Generators.TreeContainerIndex.Remove(System.Collections.Generic.IEnumerable{Avalonia.Controls.Generators.ItemContainerInfo})">
+        <member name="M:Avalonia.Controls.Generators.TreeContainerIndex.Remove(System.Int32,System.Collections.Generic.IEnumerable{Avalonia.Controls.Generators.ItemContainerInfo})">
             <summary>
             Removes a set of containers from the index.
             </summary>
+            <param name="startingIndex">The index of the first item.</param>
             <param name="containers">The item containers.</param>
         </member>
         <member name="M:Avalonia.Controls.Generators.TreeContainerIndex.ContainerFromItem(System.Object)">
@@ -428,6 +429,10 @@
             </summary>
             <param name="startingIndex">The index of the first container in the source items.</param>
             <param name="containers">The containers.</param>
+            <remarks>
+            TODO: Do we really need to pass in StartingIndex here? The ItemContainerInfo objects
+            have an index, and what happens if the contains passed in aren't sequential?
+            </remarks>
         </member>
         <member name="P:Avalonia.Controls.Generators.ItemContainerEventArgs.Containers">
             <summary>
@@ -1676,9 +1681,6 @@
         <member name="M:Avalonia.Controls.Primitives.TemplatedControl.ApplyTemplate">
             <inheritdoc/>
         </member>
-        <member name="M:Avalonia.Controls.Primitives.TemplatedControl.CreateBindingDescriptor(Avalonia.Data.IndexerDescriptor)">
-            <inheritdoc/>
-        </member>
         <member name="M:Avalonia.Controls.Primitives.TemplatedControl.GetTemplateFocusTarget">
             <inheritdoc/>
         </member>
@@ -1703,6 +1705,11 @@
             </summary>
             <param name="control">The control.</param>
             <param name="nameScope">The name scope.</param>
+        </member>
+        <member name="T:Avalonia.Controls.WindowIcon">
+            <summary>
+            Represents an icon for a window.
+            </summary>
         </member>
         <member name="T:Avalonia.Controls.IPseudoClasses">
             <summary>
@@ -5794,6 +5801,11 @@
             Defines the <see cref="P:Avalonia.Controls.Window.Title"/> property.
             </summary>
         </member>
+        <member name="F:Avalonia.Controls.Window.IconProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.Controls.Window.Icon"/> property.
+            </summary>
+        </member>
         <member name="M:Avalonia.Controls.Window.#cctor">
             <summary>
             Initializes static members of the <see cref="T:Avalonia.Controls.Window"/> class.
@@ -5840,6 +5852,11 @@
         <member name="P:Avalonia.Controls.Window.WindowState">
             <summary>
             Gets or sets the minimized/maximized state of the window.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Controls.Window.Icon">
+            <summary>
+            Gets or sets the icon of the window.
             </summary>
         </member>
         <member name="P:Avalonia.Controls.Window.Avalonia#Layout#ILayoutRoot#MaxClientSize">
@@ -6982,6 +6999,11 @@
         <member name="M:Avalonia.Platform.IWindowImpl.SetSystemDecorations(System.Boolean)">
             <summary>
             Enables of disables system window decorations (title bar, buttons, etc)
+            </summary>
+        </member>
+        <member name="M:Avalonia.Platform.IWindowImpl.SetIcon(Avalonia.Platform.IWindowIconImpl)">
+            <summary>
+            Sets the icon of this window.
             </summary>
         </member>
     </members>
