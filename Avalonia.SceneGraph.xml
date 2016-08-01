@@ -3694,8 +3694,15 @@
             Tracks the bounds of a control.
             </summary>
             <remarks>
-            This class is used by Adorners to track the control that the adorner is attached to.
+            This class is used to track a controls's bounds for hit testing.
+            TODO: This shouldn't be implemented as an attached property: it would be more performant
+            to just store bounds in some sort of central repository.
             </remarks>
+        </member>
+        <member name="F:Avalonia.VisualTree.BoundsTracker.TransformedBoundsProperty">
+            <summary>
+            Defines the TransformedBounds attached property.
+            </summary>
         </member>
         <member name="M:Avalonia.VisualTree.BoundsTracker.Track(Avalonia.Visual)">
             <summary>
@@ -3704,12 +3711,19 @@
             <param name="visual">The visual.</param>
             <returns>An observable that returns the tracked bounds.</returns>
         </member>
+        <member name="M:Avalonia.VisualTree.BoundsTracker.SetTransformedBounds(Avalonia.Visual,System.Nullable{Avalonia.VisualTree.TransformedBounds})">
+            <summary>
+            Sets the transformed bounds of the visual.
+            </summary>
+            <param name="visual">The visual.</param>
+            <param name="value">The transformed bounds.</param>
+        </member>
         <member name="M:Avalonia.VisualTree.BoundsTracker.GetTransformedBounds(Avalonia.Visual)">
             <summary>
             Gets the transformed bounds of the visual.
             </summary>
             <param name="visual">The visual.</param>
-            <returns>The transformed bounds.</returns>
+            <returns>The transformed bounds or null if the visual is not visible.</returns>
         </member>
         <member name="T:Avalonia.VisualTree.VisualExtensions">
             <summary>
