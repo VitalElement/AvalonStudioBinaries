@@ -3583,6 +3583,11 @@
             Defines the <see cref="P:Avalonia.Controls.DropDown.IsDropDownOpen"/> property.
             </summary>
         </member>
+        <member name="F:Avalonia.Controls.DropDown.MaxDropDownHeightProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.Controls.DropDown.MaxDropDownHeight"/> property.
+            </summary>
+        </member>
         <member name="F:Avalonia.Controls.DropDown.SelectionBoxItemProperty">
             <summary>
             Defines the <see cref="P:Avalonia.Controls.DropDown.SelectionBoxItem"/> property.
@@ -3596,6 +3601,11 @@
         <member name="P:Avalonia.Controls.DropDown.IsDropDownOpen">
             <summary>
             Gets or sets a value indicating whether the dropdown is currently open.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Controls.DropDown.MaxDropDownHeight">
+            <summary>
+            Gets or sets the maximum height for the dropdown list.
             </summary>
         </member>
         <member name="P:Avalonia.Controls.DropDown.SelectionBoxItem">
