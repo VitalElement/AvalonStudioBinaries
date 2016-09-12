@@ -14,11 +14,12 @@
             Initializes a new instance of the <see cref="T:Avalonia.Markup.Xaml.Data.Binding"/> class.
             </summary>
         </member>
-        <member name="M:Avalonia.Markup.Xaml.Data.Binding.#ctor(System.String)">
+        <member name="M:Avalonia.Markup.Xaml.Data.Binding.#ctor(System.String,Avalonia.Data.BindingMode)">
             <summary>
             Initializes a new instance of the <see cref="T:Avalonia.Markup.Xaml.Data.Binding"/> class.
             </summary>
             <param name="path">The binding path.</param>
+            <param name="mode">The binding mode.</param>
         </member>
         <member name="P:Avalonia.Markup.Xaml.Data.Binding.Converter">
             <summary>
@@ -65,12 +66,7 @@
             Gets or sets the source for the binding.
             </summary>
         </member>
-        <member name="P:Avalonia.Markup.Xaml.Data.Binding.EnableValidation">
-            <summary>
-            Gets or sets a value indicating whether the property should be validated.
-            </summary>
-        </member>
-        <member name="M:Avalonia.Markup.Xaml.Data.Binding.Initiate(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty,System.Object)">
+        <member name="M:Avalonia.Markup.Xaml.Data.Binding.Initiate(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty,System.Object,System.Boolean)">
             <inheritdoc/>
         </member>
         <member name="T:Avalonia.Markup.Xaml.Data.DelayedBinding">
@@ -135,7 +131,7 @@
             Gets or sets the relative source for the binding.
             </summary>
         </member>
-        <member name="M:Avalonia.Markup.Xaml.Data.MultiBinding.Initiate(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty,System.Object)">
+        <member name="M:Avalonia.Markup.Xaml.Data.MultiBinding.Initiate(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty,System.Object,System.Boolean)">
             <inheritdoc/>
         </member>
         <member name="M:Avalonia.Markup.Xaml.Data.MultiBinding.Bind(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty,System.Reactive.Subjects.ISubject{System.Object})">
@@ -163,7 +159,7 @@
         <member name="P:Avalonia.Markup.Xaml.Data.StyleResourceBinding.Priority">
             <inheritdoc/>
         </member>
-        <member name="M:Avalonia.Markup.Xaml.Data.StyleResourceBinding.Initiate(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty,System.Object)">
+        <member name="M:Avalonia.Markup.Xaml.Data.StyleResourceBinding.Initiate(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty,System.Object,System.Boolean)">
             <inheritdoc/>
         </member>
         <member name="T:Avalonia.Markup.Xaml.Parsers.SelectorParser">

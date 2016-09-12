@@ -3,6 +3,391 @@
         <name>SkiaSharp</name>
     </assembly>
     <members>
+        <member name="T:SkiaSharp.GRBackend">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:SkiaSharp.GRBackend.OpenGL">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.GRBackend.Vulkan">
+            <summary>To be added.</summary>
+        </member>
+        <member name="T:SkiaSharp.GRBackendRenderTargetDesc">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRBackendRenderTargetDesc.Config">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRBackendRenderTargetDesc.Height">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRBackendRenderTargetDesc.Origin">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRBackendRenderTargetDesc.RenderTargetHandle">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRBackendRenderTargetDesc.SampleCount">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRBackendRenderTargetDesc.StencilBits">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRBackendRenderTargetDesc.Width">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:SkiaSharp.GRBackendTextureDesc">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRBackendTextureDesc.Config">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRBackendTextureDesc.Flags">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRBackendTextureDesc.Height">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRBackendTextureDesc.Origin">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRBackendTextureDesc.SampleCount">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRBackendTextureDesc.TextureHandle">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRBackendTextureDesc.Width">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:SkiaSharp.GRBackendTextureDescFlags">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:SkiaSharp.GRBackendTextureDescFlags.None">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.GRBackendTextureDescFlags.RenderTarget">
+            <summary>To be added.</summary>
+        </member>
+        <member name="T:SkiaSharp.GRContext">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRContext.AbandonContext(System.Boolean)">
+            <param name="releaseResources">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRContext.Create(SkiaSharp.GRBackend)">
+            <param name="backend">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRContext.Create(SkiaSharp.GRBackend,SkiaSharp.GRGlInterface)">
+            <param name="backend">To be added.</param>
+            <param name="backendContext">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRContext.Create(SkiaSharp.GRBackend,System.IntPtr)">
+            <param name="backend">To be added.</param>
+            <param name="backendContext">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRContext.Create(SkiaSharp.GRBackend,SkiaSharp.GRGlInterface,SkiaSharp.GRContextOptions)">
+            <param name="backend">To be added.</param>
+            <param name="backendContext">To be added.</param>
+            <param name="options">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRContext.Create(SkiaSharp.GRBackend,System.IntPtr,SkiaSharp.GRContextOptions)">
+            <param name="backend">To be added.</param>
+            <param name="backendContext">To be added.</param>
+            <param name="options">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRContext.Dispose(System.Boolean)">
+            <param name="disposing">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRContext.GetRecommendedSampleCount(SkiaSharp.GRPixelConfig,System.Single)">
+            <param name="config">To be added.</param>
+            <param name="dpi">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRContext.GetResourceCacheLimits(System.Int32@,System.Int64@)">
+            <param name="maxResources">To be added.</param>
+            <param name="maxResourceBytes">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRContext.GetResourceCacheUsage(System.Int32@,System.Int64@)">
+            <param name="maxResources">To be added.</param>
+            <param name="maxResourceBytes">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRContext.SetResourceCacheLimits(System.Int32,System.Int64)">
+            <param name="maxResources">To be added.</param>
+            <param name="maxResourceBytes">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:SkiaSharp.GRContextOptions">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRContextOptions.BufferMapThreshold">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRContextOptions.ClipBatchToBounds">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRContextOptions.DoManualMipmapping">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRContextOptions.DrawBatchBounds">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRContextOptions.ImmediateMode">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRContextOptions.MaxBatchLookahead">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRContextOptions.MaxBatchLookback">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRContextOptions.MaxTextureSizeOverride">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRContextOptions.MaxTileSizeOverride">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRContextOptions.SuppressDualSourceBlending">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRContextOptions.SuppressPrints">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRContextOptions.UseDrawInsteadOfPartialRenderTargetWrite">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.GRContextOptions.UseShaderSwizzling">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:SkiaSharp.GRGlGetProcDelegate">
+            <param name="context">To be added.</param>
+            <param name="name">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:SkiaSharp.GRGlInterface">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRGlInterface.AssembleGlesInterface(SkiaSharp.GRGlGetProcDelegate)">
+            <param name="get">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRGlInterface.AssembleGlesInterface(System.Object,SkiaSharp.GRGlGetProcDelegate)">
+            <param name="context">To be added.</param>
+            <param name="get">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRGlInterface.AssembleGlInterface(SkiaSharp.GRGlGetProcDelegate)">
+            <param name="get">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRGlInterface.AssembleGlInterface(System.Object,SkiaSharp.GRGlGetProcDelegate)">
+            <param name="context">To be added.</param>
+            <param name="get">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRGlInterface.AssembleInterface(SkiaSharp.GRGlGetProcDelegate)">
+            <param name="get">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRGlInterface.AssembleInterface(System.Object,SkiaSharp.GRGlGetProcDelegate)">
+            <param name="context">To be added.</param>
+            <param name="get">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRGlInterface.Clone">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRGlInterface.CreateDefaultInterface">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRGlInterface.CreateNativeInterface">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRGlInterface.Dispose(System.Boolean)">
+            <param name="disposing">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRGlInterface.HasExtension(System.String)">
+            <param name="extension">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRGlInterface.Validate">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:SkiaSharp.GRPixelConfig">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:SkiaSharp.GRPixelConfig.Alpha8">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.GRPixelConfig.AlphaHalf">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.GRPixelConfig.Astc12x12">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.GRPixelConfig.Bgra8888">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.GRPixelConfig.Etc1">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.GRPixelConfig.Index8">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.GRPixelConfig.Latc">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.GRPixelConfig.R11Eac">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.GRPixelConfig.Rgb565">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.GRPixelConfig.Rgba4444">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.GRPixelConfig.Rgba8888">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.GRPixelConfig.RgbaFloat">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.GRPixelConfig.RgbaHalf">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.GRPixelConfig.Sbgra8888">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.GRPixelConfig.Srgba8888">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.GRPixelConfig.Unknown">
+            <summary>To be added.</summary>
+        </member>
+        <member name="T:SkiaSharp.GRSurfaceOrigin">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:SkiaSharp.GRSurfaceOrigin.BottomLeft">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.GRSurfaceOrigin.TopLeft">
+            <summary>To be added.</summary>
+        </member>
         <member name="T:SkiaSharp.SKAlphaType">
             <summary>Describes how to interpret the alpha component of a pixel.</summary>
             <remarks>
@@ -67,9 +452,15 @@
             <summary>Constructor that configures the bitmap based on an <see cref="T:SkiaSharp.SKImageInfo" /> specification.</summary>
             <remarks>This constructor might throw an exception if it is not possible to create a bitmap with the specified configuration (for example, the image info requires a color table, and there is no color table).</remarks>
         </member>
+        <member name="C:SkiaSharp.SKBitmap(SkiaSharp.SKImageInfo,SkiaSharp.SKColorTable)">
+            <param name="info">Description of the desired image format.</param>
+            <param name="ctable">Color lookup table</param>
+            <summary>Constructor that configures the bitmap based on an <see cref="T:SkiaSharp.SKImageInfo" /> specification and a color table.</summary>
+            <remarks>Use this method to create a bitmap that will use a color lookup table.   The bitmap will be an 8-bit indexed bitmap, where each value represents an index into the color table, and the color is determined by the value in the specific location in the color table array.</remarks>
+        </member>
         <member name="C:SkiaSharp.SKBitmap(SkiaSharp.SKImageInfo,System.Int32)">
-            <param name="info">To be added.</param>
-            <param name="rowBytes">To be added.</param>
+            <param name="info">Description of the desired image format.</param>
+            <param name="rowBytes">The number of bytes per row.</param>
             <summary>Constructor that configures the bitmap based on an <see cref="T:SkiaSharp.SKImageInfo" /> specification, and the specified number of bytes per row (the stride size)</summary>
             <remarks>This constructor might throw an exception if it is not possible to create a bitmap with the specified configuration (for example, the image info requires a color table, and there is no color table).</remarks>
         </member>
@@ -117,6 +508,11 @@
             <param name="colorType">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKBitmap.ColorTable">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:SkiaSharp.SKBitmap.ColorType">
@@ -267,6 +663,13 @@
             <param name="color">To be added.</param>
             <param name="rect">To be added.</param>
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKBitmap.GetIndex8Color(System.Int32,System.Int32)">
+            <param name="x">To be added.</param>
+            <param name="y">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.SKBitmap.GetPixel(System.Int32,System.Int32)">
@@ -448,6 +851,11 @@
                 </example>
             </remarks>
         </member>
+        <member name="C:SkiaSharp.SKCanvas(SkiaSharp.SKBitmap)">
+            <param name="bitmap">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.SKCanvas.Clear">
             <summary>Replaces all the pixels in the canvas’ current clip with the <see cref="P:SkiaSharp.SKColors.Empty" /> color.</summary>
             <remarks>
@@ -517,6 +925,23 @@
             <summary>Draws a bitmap on the canvas.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:SkiaSharp.SKCanvas.DrawBitmapLattice(SkiaSharp.SKBitmap,System.Int32[],System.Int32[],SkiaSharp.SKRect,SkiaSharp.SKPaint)">
+            <param name="bitmap">To be added.</param>
+            <param name="xDivs">To be added.</param>
+            <param name="yDivs">To be added.</param>
+            <param name="dst">To be added.</param>
+            <param name="paint">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKCanvas.DrawBitmapNinePatch(SkiaSharp.SKBitmap,SkiaSharp.SKRectI,SkiaSharp.SKRect,SkiaSharp.SKPaint)">
+            <param name="bitmap">To be added.</param>
+            <param name="center">To be added.</param>
+            <param name="dst">To be added.</param>
+            <param name="paint">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.SKCanvas.DrawCircle(System.Single,System.Single,System.Single,SkiaSharp.SKPaint)">
             <param name="cx">Center X coordinate.</param>
             <param name="cy">Center Y coordinate.</param>
@@ -554,6 +979,23 @@
             <param name="y">Targe y coordinate destination for the image.</param>
             <param name="paint">The paint used to draw the image, or <see langword="null" />.</param>
             <summary>Draws an image on the canvas.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKCanvas.DrawImageLattice(SkiaSharp.SKImage,System.Int32[],System.Int32[],SkiaSharp.SKRect,SkiaSharp.SKPaint)">
+            <param name="image">To be added.</param>
+            <param name="xDivs">To be added.</param>
+            <param name="yDivs">To be added.</param>
+            <param name="dst">To be added.</param>
+            <param name="paint">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKCanvas.DrawImageNinePatch(SkiaSharp.SKImage,SkiaSharp.SKRectI,SkiaSharp.SKRect,SkiaSharp.SKPaint)">
+            <param name="image">To be added.</param>
+            <param name="center">To be added.</param>
+            <param name="dst">To be added.</param>
+            <param name="paint">To be added.</param>
+            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.SKCanvas.DrawLine(System.Single,System.Single,System.Single,System.Single,SkiaSharp.SKPaint)">
@@ -764,6 +1206,10 @@
                 <para>Draw the <paramref name="text" />, using the specified <paramref name="paint" />, along the specified <paramref name="path" />. The paint's Align setting determins where along the path to start the text.</para>
                 <para>The <paramref name="buffer" /> parameter is a pointer to a region in memory that contains a UTF-8 encoded block of text.   This only consumes up to <paramref name="length" /> bytes from the buffer.</para>
             </remarks>
+        </member>
+        <member name="M:SkiaSharp.SKCanvas.Flush">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.SKCanvas.GetClipBounds(SkiaSharp.SKRect@)">
             <param name="bounds">To be added.</param>
@@ -999,6 +1445,66 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:SkiaSharp.SKCodec.GetPixels(SkiaSharp.SKImageInfo,System.IntPtr,SkiaSharp.SKColorTable,System.Int32@)">
+            <param name="info">To be added.</param>
+            <param name="pixels">To be added.</param>
+            <param name="colorTable">To be added.</param>
+            <param name="colorTableCount">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKCodec.GetPixels(SkiaSharp.SKImageInfo,System.IntPtr,System.IntPtr,System.Int32@)">
+            <param name="info">To be added.</param>
+            <param name="pixels">To be added.</param>
+            <param name="colorTable">To be added.</param>
+            <param name="colorTableCount">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKCodec.GetPixels(SkiaSharp.SKImageInfo,System.IntPtr,SkiaSharp.SKCodecOptions,SkiaSharp.SKColorTable,System.Int32@)">
+            <param name="info">To be added.</param>
+            <param name="pixels">To be added.</param>
+            <param name="options">To be added.</param>
+            <param name="colorTable">To be added.</param>
+            <param name="colorTableCount">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKCodec.GetPixels(SkiaSharp.SKImageInfo,System.IntPtr,SkiaSharp.SKCodecOptions,System.IntPtr,System.Int32@)">
+            <param name="info">To be added.</param>
+            <param name="pixels">To be added.</param>
+            <param name="options">To be added.</param>
+            <param name="colorTable">To be added.</param>
+            <param name="colorTableCount">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKCodec.GetPixels(SkiaSharp.SKImageInfo,System.IntPtr,System.Int32,SkiaSharp.SKCodecOptions,SkiaSharp.SKColorTable,System.Int32@)">
+            <param name="info">To be added.</param>
+            <param name="pixels">To be added.</param>
+            <param name="rowBytes">To be added.</param>
+            <param name="options">To be added.</param>
+            <param name="colorTable">To be added.</param>
+            <param name="colorTableCount">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKCodec.GetPixels(SkiaSharp.SKImageInfo,System.IntPtr,System.Int32,SkiaSharp.SKCodecOptions,System.IntPtr,System.Int32@)">
+            <param name="info">To be added.</param>
+            <param name="pixels">To be added.</param>
+            <param name="rowBytes">To be added.</param>
+            <param name="options">To be added.</param>
+            <param name="colorTable">To be added.</param>
+            <param name="colorTableCount">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.SKCodec.GetScaledDimensions(System.Single)">
             <param name="desiredScale">To be added.</param>
             <summary>To be added.</summary>
@@ -1034,16 +1540,46 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="C:SkiaSharp.SKCodecOptions(SkiaSharp.SKZeroInitialized)">
+            <param name="zeroInitialized">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:SkiaSharp.SKCodecOptions(SkiaSharp.SKZeroInitialized,SkiaSharp.SKRectI)">
+            <param name="zeroInitialized">To be added.</param>
+            <param name="subset">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:SkiaSharp.SKCodecOptions.Default">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:SkiaSharp.SKCodecOptions.HasSubset">
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKCodecOptions.HasSubset">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:SkiaSharp.SKCodecOptions.Subset">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="P:SkiaSharp.SKCodecOptions.Subset">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:SkiaSharp.SKCodecOptions.ZeroInitialized">
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKCodecOptions.ZeroInitialized">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:SkiaSharp.SKCodecOrigin">
@@ -1135,9 +1671,31 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:SkiaSharp.SKColor.Empty">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.SKColor.Equals(System.Object)">
             <param name="other">To be added.</param>
             <summary>Determines if this object is equal to the provided one</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKColor.FromHsl(System.Single,System.Single,System.Single,System.Byte)">
+            <param name="h">To be added.</param>
+            <param name="s">To be added.</param>
+            <param name="l">To be added.</param>
+            <param name="a">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKColor.FromHsv(System.Single,System.Single,System.Single,System.Byte)">
+            <param name="h">To be added.</param>
+            <param name="s">To be added.</param>
+            <param name="v">To be added.</param>
+            <param name="a">To be added.</param>
+            <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
@@ -1151,9 +1709,54 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
+        <member name="P:SkiaSharp.SKColor.Hue">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKColor.op_Equality(SkiaSharp.SKColor,SkiaSharp.SKColor)">
+            <param name="left">To be added.</param>
+            <param name="right">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKColor.op_Explicit(SkiaSharp.SKColor)~System.UInt32">
+            <param name="color">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKColor.op_Implicit(System.UInt32)~SkiaSharp.SKColor">
+            <param name="color">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKColor.op_Inequality(SkiaSharp.SKColor,SkiaSharp.SKColor)">
+            <param name="left">To be added.</param>
+            <param name="right">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="P:SkiaSharp.SKColor.Red">
             <summary>The red component of the color.</summary>
             <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKColor.ToHsl(System.Single@,System.Single@,System.Single@)">
+            <param name="h">To be added.</param>
+            <param name="s">To be added.</param>
+            <param name="l">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKColor.ToHsv(System.Single@,System.Single@,System.Single@)">
+            <param name="h">To be added.</param>
+            <param name="s">To be added.</param>
+            <param name="v">To be added.</param>
+            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.SKColor.ToString">
@@ -1164,6 +1767,24 @@
         <member name="M:SkiaSharp.SKColor.WithAlpha(System.Byte)">
             <param name="alpha">To be added.</param>
             <summary>Returns a new SKColor based on this current instance that has a new Alpha channel value.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKColor.WithBlue(System.Byte)">
+            <param name="blue">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKColor.WithGreen(System.Byte)">
+            <param name="green">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKColor.WithRed(System.Byte)">
+            <param name="red">To be added.</param>
+            <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
@@ -1202,6 +1823,12 @@
         <member name="M:SkiaSharp.SKColorFilter.CreateCompose(SkiaSharp.SKColorFilter,SkiaSharp.SKColorFilter)">
             <param name="outer">To be added.</param>
             <param name="inner">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKColorFilter.CreateGamma(System.Single)">
+            <param name="gamma">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
@@ -1847,6 +2474,60 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:SkiaSharp.SKColorTable">
+            <summary>Holds a color table for indexed 8-bit bitmaps.</summary>
+            <remarks>
+                <para>This class is used to represent a color lookup table for indexed bitmap images.</para>
+                <para />
+                <para>The table can contain up to 256 colors (8 bits).</para>
+                <para />
+                <para>The colors are stored are pre-multiplied 32-bit colors.</para>
+            </remarks>
+        </member>
+        <member name="C:SkiaSharp.SKColorTable">
+            <summary>Creates a new emtpy color table with 256 emtpy elements.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:SkiaSharp.SKColorTable(SkiaSharp.SKColor[])">
+            <param name="colors">To be added.</param>
+            <summary>Creates a color table with the provided colors, up to 256 colors can be provided.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:SkiaSharp.SKColorTable(System.Int32)">
+            <param name="count">To be added.</param>
+            <summary>Creates a color table with the specified number of elements, with empty colors.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:SkiaSharp.SKColorTable(SkiaSharp.SKColor[],System.Int32)">
+            <param name="colors">To be added.</param>
+            <param name="count">To be added.</param>
+            <summary>Creates a color table with the provided colors, but only consumes the first count elements from the colors array.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKColorTable.Colors">
+            <summary>Gets a copy of the colors in the color table.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKColorTable.Count">
+            <summary>The number of colors in the lookup table.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKColorTable.Dispose(System.Boolean)">
+            <param name="disposing">To be added.</param>
+            <summary>Use this to dispose this object by subclasses.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:SkiaSharp.SKColorTable.MaxLength">
+            <summary>The maximum number of colors in the color lookup table.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKColorTable.ReadColors">
+            <summary>Returns an unmanaged pointer to the color lookup table.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:SkiaSharp.SKColorType">
             <summary>Describes how to interpret the components of a pixel.</summary>
             <remarks>
@@ -2313,10 +2994,16 @@
         <member name="F:SkiaSharp.SKFontStyleWeight.Bold">
             <summary>To be added.</summary>
         </member>
+        <member name="F:SkiaSharp.SKFontStyleWeight.ExtraBlack">
+            <summary>To be added.</summary>
+        </member>
         <member name="F:SkiaSharp.SKFontStyleWeight.ExtraBold">
             <summary>To be added.</summary>
         </member>
         <member name="F:SkiaSharp.SKFontStyleWeight.ExtraLight">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.SKFontStyleWeight.Invisible">
             <summary>To be added.</summary>
         </member>
         <member name="F:SkiaSharp.SKFontStyleWeight.Light">
@@ -2427,10 +3114,12 @@
             </remarks>
         </member>
         <member name="M:SkiaSharp.SKImage.FromBitmap(SkiaSharp.SKBitmap)">
-            <param name="bitmap">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
+            <param name="bitmap">The bitmap that will be used as the source for the image</param>
+            <summary>Creates a new <see cref="T:SkiaSharp.SKImage" /> from the provided <see cref="T:SkiaSharp.SKBitmap" />.</summary>
+            <returns>An image whose contents are the contents of the specified bitmap.</returns>
+            <remarks>
+                <para>If the bitmap is marked immutable, and its pixel memory is shareable, it may be shared instead of copied.</para>
+            </remarks>
         </member>
         <member name="M:SkiaSharp.SKImage.FromData(SkiaSharp.SKData)">
             <param name="data">Data holding the encoded image.</param>
@@ -2949,6 +3638,19 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:SkiaSharp.SKImageFilter.CreateDropShadow(System.Single,System.Single,System.Single,System.Single,SkiaSharp.SKColor,SkiaSharp.SKDropShadowImageFilterShadowMode,SkiaSharp.SKImageFilter,SkiaSharp.SKImageFilter+CropRect)">
+            <param name="dx">To be added.</param>
+            <param name="dy">To be added.</param>
+            <param name="sigmaX">To be added.</param>
+            <param name="sigmaY">To be added.</param>
+            <param name="color">To be added.</param>
+            <param name="shadowMode">To be added.</param>
+            <param name="input">To be added.</param>
+            <param name="cropRect">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.SKImageFilter.CreateErode(System.Int32,System.Int32,SkiaSharp.SKImageFilter,SkiaSharp.SKImageFilter+CropRect)">
             <param name="radiusX">To be added.</param>
             <param name="radiusY">To be added.</param>
@@ -3143,6 +3845,11 @@
             <summary>Returns the transparency type for the image info.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="P:SkiaSharp.SKImageInfo.AlphaType">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="P:SkiaSharp.SKImageInfo.BytesPerPixel">
             <summary>Returns the number of bytes used per pixel.</summary>
             <value>To be added.</value>
@@ -3157,12 +3864,22 @@
             <summary>Returns the color type.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="P:SkiaSharp.SKImageInfo.ColorType">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:SkiaSharp.SKImageInfo.Empty">
             <summary>An empty SKImageInfo.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:SkiaSharp.SKImageInfo.Height">
             <summary>Returns the height.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKImageInfo.Height">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:SkiaSharp.SKImageInfo.IsEmpty">
@@ -3196,6 +3913,11 @@
         </member>
         <member name="F:SkiaSharp.SKImageInfo.Width">
             <summary>Returns the width.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKImageInfo.Width">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:SkiaSharp.SKManagedStream">
@@ -3682,9 +4404,19 @@
             <value>The current color filter.</value>
             <remarks>A color filter can be used with a Paint to modify the color of each pixel drawn with that paint.</remarks>
         </member>
+        <member name="P:SkiaSharp.SKPaint.DeviceKerningEnabled">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.SKPaint.Dispose(System.Boolean)">
             <param name="disposing">To be added.</param>
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKPaint.FakeBoldText">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:SkiaSharp.SKPaint.FilterQuality">
@@ -3743,6 +4475,11 @@
                 <para />
             </remarks>
         </member>
+        <member name="P:SkiaSharp.SKPaint.HintingLevel">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="P:SkiaSharp.SKPaint.ImageFilter">
             <summary>Image filter</summary>
             <value>To be added.</value>
@@ -3753,10 +4490,25 @@
             <value>The current setting for the anti-alias setting.</value>
             <remarks>If this property is <see langword="true" />, the paint smooths out the edges of what is being drawn, but is has no impact on the interior of the shape. </remarks>
         </member>
+        <member name="P:SkiaSharp.SKPaint.IsAutohinted">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="P:SkiaSharp.SKPaint.IsDither">
             <summary>Controls dither in the SKPaint.</summary>
             <value>The current setting for the dither setting.</value>
             <remarks>If this property is set true, the flags of the paint will be set to enable dithering.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKPaint.IsEmbeddedBitmapText">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKPaint.IsLinearText">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
         </member>
         <member name="P:SkiaSharp.SKPaint.IsStroke">
             <summary>Controls stroke in the SKPaint.</summary>
@@ -3767,6 +4519,11 @@
             <summary>Controls antialiasing in the <see cref="T:SkiaSharp.SKPaint" />.</summary>
             <value>The current setting for the vertical text setting.</value>
             <remarks>If this property is set true, then advances are treated as Y values rather than X values, and <see cref="M:SkiaSharp.SKCanvas.DrawText" /> will place its glyphs vertically rather than horizontally.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKPaint.LcdRenderText">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
         </member>
         <member name="P:SkiaSharp.SKPaint.MaskFilter">
             <summary>The SKPaint’s MaskFilter.</summary>
@@ -3816,6 +4573,11 @@
             <value>The current shader associated with this paint.</value>
             <remarks>Shaders are effects like gradients, or bitmap patterns.</remarks>
         </member>
+        <member name="P:SkiaSharp.SKPaint.StrikeThruText">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="P:SkiaSharp.SKPaint.StrokeCap">
             <summary>Controls how the start and end of stroked lines and paths are treated.</summary>
             <value>The current cap setting.</value>
@@ -3841,6 +4603,16 @@
                 <para>the paint's stroke width, used whenever the paint's style is Stroke or StrokeAndFill.</para>
             </value>
             <remarks>The value of zero is the special hairline mode.   Hairlines always draw with a width of 1 pixel, regardless of the transformation matrix.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKPaint.Style">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKPaint.SubpixelText">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
         </member>
         <member name="P:SkiaSharp.SKPaint.TextAlign">
             <summary>Controls the path’s align value.</summary>
@@ -3874,10 +4646,44 @@
             <value>The current type face, or <see langword="null" /> if not set.</value>
             <remarks>To be added.</remarks>
         </member>
+        <member name="P:SkiaSharp.SKPaint.UnderlineText">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="P:SkiaSharp.SKPaint.XferMode">
             <summary>To be added.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
+        </member>
+        <member name="T:SkiaSharp.SKPaintHinting">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:SkiaSharp.SKPaintHinting.Full">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.SKPaintHinting.NoHinting">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.SKPaintHinting.Normal">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.SKPaintHinting.Slight">
+            <summary>To be added.</summary>
+        </member>
+        <member name="T:SkiaSharp.SKPaintStyle">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:SkiaSharp.SKPaintStyle.Fill">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.SKPaintStyle.Stroke">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.SKPaintStyle.StrokeAndFill">
+            <summary>To be added.</summary>
         </member>
         <member name="T:SkiaSharp.SKPath">
             <summary>
@@ -4007,6 +4813,13 @@
                 <para />
             </remarks>
         </member>
+        <member name="M:SkiaSharp.SKPath.Contains(System.Single,System.Single)">
+            <param name="x">To be added.</param>
+            <param name="y">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.SKPath.CreateIterator(System.Boolean)">
             <param name="forceClose">
                 <para>When this is true, each contour (as defined by a new starting move command) will be completed with a close verb regardless of the contour's contents.</para>
@@ -4061,6 +4874,36 @@
                 <para>Note: this bounds may be larger than the actual shape, since curves do not extend as far as their control points. Additionally this bound encompases all points, even isolated moveTos either preceeding or following the last non-degenerate contour.</para>
             </remarks>
         </member>
+        <member name="M:SkiaSharp.SKPath.GetPoint(System.Int32)">
+            <param name="index">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKPath.GetPoints(System.Int32)">
+            <param name="max">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKPath.GetPoints(SkiaSharp.SKPoint[],System.Int32)">
+            <param name="points">To be added.</param>
+            <param name="max">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKPath.Item(System.Int32)">
+            <param name="index">To be added.</param>
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKPath.LastPoint">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.SKPath.LineTo(System.Single,System.Single)">
             <param name="x">The x-coordinate of the end of a line</param>
             <param name="y">The y-coordinate of the end of a line</param>
@@ -4076,6 +4919,22 @@
             <remarks>
                 <para />
             </remarks>
+        </member>
+        <member name="M:SkiaSharp.SKPath.Offset(System.Single,System.Single)">
+            <param name="dx">To be added.</param>
+            <param name="dy">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKPath.PointCount">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKPath.Points">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.SKPath.QuadTo(System.Single,System.Single,System.Single,System.Single)">
             <param name="x0">The x-coordinate of the control point on a quadratic curve</param>
@@ -4509,6 +5368,20 @@
                 <para />
             </remarks>
         </member>
+        <member name="M:SkiaSharp.SKPoint.Add(SkiaSharp.SKPoint,SkiaSharp.SKPoint)">
+            <param name="pt">To be added.</param>
+            <param name="sz">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKPoint.Add(SkiaSharp.SKPoint,SkiaSharp.SKPointI)">
+            <param name="pt">To be added.</param>
+            <param name="sz">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.SKPoint.Add(SkiaSharp.SKPoint,SkiaSharp.SKSize)">
             <param name="pt">The point to translate.</param>
             <param name="sz">The size that specified the number to add to the coordinates of <see langword="pt" />.</param>
@@ -4545,6 +5418,20 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:SkiaSharp.SKPoint.op_Addition(SkiaSharp.SKPoint,SkiaSharp.SKPoint)">
+            <param name="pt">To be added.</param>
+            <param name="sz">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKPoint.op_Addition(SkiaSharp.SKPoint,SkiaSharp.SKPointI)">
+            <param name="pt">To be added.</param>
+            <param name="sz">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.SKPoint.op_Addition(SkiaSharp.SKPoint,SkiaSharp.SKSize)">
             <param name="pt">The <see cref="T:SkiaSharp.SKPoint" /> to translate.</param>
             <param name="sz">A <see cref="T:SkiaSharp.SKSize" /> that specifies the pair of numbers to add to the coordinates of <paramref name="pt" />.</param>
@@ -4573,6 +5460,20 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:SkiaSharp.SKPoint.op_Subtraction(SkiaSharp.SKPoint,SkiaSharp.SKPoint)">
+            <param name="pt">To be added.</param>
+            <param name="sz">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKPoint.op_Subtraction(SkiaSharp.SKPoint,SkiaSharp.SKPointI)">
+            <param name="pt">To be added.</param>
+            <param name="sz">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.SKPoint.op_Subtraction(SkiaSharp.SKPoint,SkiaSharp.SKSize)">
             <param name="pt">The <see cref="T:SkiaSharp.SKPoint" /> to translate.</param>
             <param name="sz">The <see cref="T:SkiaSharp.SKSize" /> that specifies the numbers to subtract from the coordinates of <paramref name="pt" />.</param>
@@ -4585,6 +5486,20 @@
             <param name="sz">The <see cref="T:SkiaSharp.SKSizeI" /> that specifies the numbers to subtract from the coordinates of <paramref name="pt" />.</param>
             <summary>Translates a <see cref="T:SkiaSharp.SKPoint" /> by the negative of a given <see cref="T:SkiaSharp.SKSizeI" /> added.</summary>
             <returns>The translated <see cref="T:SkiaSharp.SKPoint" />.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKPoint.Subtract(SkiaSharp.SKPoint,SkiaSharp.SKPoint)">
+            <param name="pt">To be added.</param>
+            <param name="sz">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKPoint.Subtract(SkiaSharp.SKPoint,SkiaSharp.SKPointI)">
+            <param name="pt">To be added.</param>
+            <param name="sz">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.SKPoint.Subtract(SkiaSharp.SKPoint,SkiaSharp.SKSize)">
@@ -4627,6 +5542,13 @@
             <summary>Initializes a point from three floating point values.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:SkiaSharp.SKPoint3.Add(SkiaSharp.SKPoint3,SkiaSharp.SKPoint3)">
+            <param name="pt">To be added.</param>
+            <param name="sz">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:SkiaSharp.SKPoint3.Empty">
             <summary>Represents a new instance of the <see cref="T:SkiaSharp.SKPoint3" /> class with member data left uninitialized.</summary>
             <remarks>To be added.</remarks>
@@ -4647,6 +5569,13 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:SkiaSharp.SKPoint3.op_Addition(SkiaSharp.SKPoint3,SkiaSharp.SKPoint3)">
+            <param name="pt">To be added.</param>
+            <param name="sz">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.SKPoint3.op_Equality(SkiaSharp.SKPoint3,SkiaSharp.SKPoint3)">
             <param name="left">A <see cref="T:SkiaSharp.SKPoint3" /> to compare.</param>
             <param name="right">A <see cref="T:SkiaSharp.SKPoint3" /> to compare.</param>
@@ -4658,6 +5587,20 @@
             <param name="left">A <see cref="T:SkiaSharp.SKPoint3" /> to compare.</param>
             <param name="right">A <see cref="T:SkiaSharp.SKPoint3" /> to compare.</param>
             <summary>Determines whether the coordinates of the specified points are not equal.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKPoint3.op_Subtraction(SkiaSharp.SKPoint3,SkiaSharp.SKPoint3)">
+            <param name="pt">To be added.</param>
+            <param name="sz">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKPoint3.Subtract(SkiaSharp.SKPoint3,SkiaSharp.SKPoint3)">
+            <param name="pt">To be added.</param>
+            <param name="sz">To be added.</param>
+            <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
@@ -4694,6 +5637,13 @@
             <param name="x">The horizontal position of the point.</param>
             <param name="y">The vertical position of the point.</param>
             <summary>Initializes a point from two floating point values.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKPointI.Add(SkiaSharp.SKPointI,SkiaSharp.SKPointI)">
+            <param name="pt">To be added.</param>
+            <param name="sz">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.SKPointI.Add(SkiaSharp.SKPointI,SkiaSharp.SKSizeI)">
@@ -4742,6 +5692,13 @@
                 <para />
             </remarks>
         </member>
+        <member name="M:SkiaSharp.SKPointI.op_Addition(SkiaSharp.SKPointI,SkiaSharp.SKPointI)">
+            <param name="pt">To be added.</param>
+            <param name="sz">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.SKPointI.op_Addition(SkiaSharp.SKPointI,SkiaSharp.SKSizeI)">
             <param name="pt">The <see cref="T:SkiaSharp.SKPointI" /> to translate.</param>
             <param name="sz">A <see cref="T:SkiaSharp.SKSizeI" /> that specifies the pair of numbers to add to the coordinates of <paramref name="pt" />.</param>
@@ -4775,6 +5732,13 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:SkiaSharp.SKPointI.op_Subtraction(SkiaSharp.SKPointI,SkiaSharp.SKPointI)">
+            <param name="pt">To be added.</param>
+            <param name="sz">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.SKPointI.op_Subtraction(SkiaSharp.SKPointI,SkiaSharp.SKSizeI)">
             <param name="pt">The <see cref="T:SkiaSharp.SKPointI" /> to translate.</param>
             <param name="sz">
@@ -4789,6 +5753,13 @@
             <param name="value">The <see cref="T:SkiaSharp.SKPoint" /> to convert.</param>
             <summary>Converts the specified <see cref="T:SkiaSharp.SKPoint" /> to a <see cref="T:SkiaSharp.SKPointI" /> object by rounding the <see cref="T:SkiaSharp.SKPoint" /> values to the nearest integer.</summary>
             <returns>The <see cref="T:SkiaSharp.SKPointI" /> this method converts to.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKPointI.Subtract(SkiaSharp.SKPointI,SkiaSharp.SKPointI)">
+            <param name="pt">To be added.</param>
+            <param name="sz">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.SKPointI.Subtract(SkiaSharp.SKPointI,SkiaSharp.SKSizeI)">
@@ -4852,6 +5823,43 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="P:SkiaSharp.SKRect.Bottom">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.Contains(SkiaSharp.SKPoint)">
+            <param name="pt">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.Contains(SkiaSharp.SKRect)">
+            <param name="rect">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.Contains(System.Single,System.Single)">
+            <param name="x">To be added.</param>
+            <param name="y">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.Create(SkiaSharp.SKSize)">
+            <param name="size">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.Create(SkiaSharp.SKPoint,SkiaSharp.SKSize)">
+            <param name="location">To be added.</param>
+            <param name="size">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.SKRect.Create(System.Single,System.Single)">
             <param name="width">To be added.</param>
             <param name="height">To be added.</param>
@@ -4868,16 +5876,162 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:SkiaSharp.SKRect.Empty">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.Equals(System.Object)">
+            <param name="obj">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.GetHashCode">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKRect.Height">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.Inflate(SkiaSharp.SKSize)">
+            <param name="size">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.Inflate(System.Single,System.Single)">
+            <param name="x">To be added.</param>
+            <param name="y">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.Inflate(SkiaSharp.SKRect,System.Single,System.Single)">
+            <param name="rect">To be added.</param>
+            <param name="x">To be added.</param>
+            <param name="y">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.Intersect(SkiaSharp.SKRect)">
+            <param name="rect">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.Intersect(SkiaSharp.SKRect,SkiaSharp.SKRect)">
+            <param name="a">To be added.</param>
+            <param name="b">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.IntersectsWith(SkiaSharp.SKRect)">
+            <param name="rect">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.IntersectsWithInclusive(SkiaSharp.SKRect)">
+            <param name="rect">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKRect.IsEmpty">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:SkiaSharp.SKRect.Left">
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKRect.Left">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKRect.Location">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.Offset(SkiaSharp.SKPoint)">
+            <param name="pos">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.Offset(System.Single,System.Single)">
+            <param name="x">To be added.</param>
+            <param name="y">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.op_Equality(SkiaSharp.SKRect,SkiaSharp.SKRect)">
+            <param name="left">To be added.</param>
+            <param name="right">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.op_Implicit(SkiaSharp.SKRectI)~SkiaSharp.SKRect">
+            <param name="r">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.op_Inequality(SkiaSharp.SKRect,SkiaSharp.SKRect)">
+            <param name="left">To be added.</param>
+            <param name="right">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:SkiaSharp.SKRect.Right">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="P:SkiaSharp.SKRect.Right">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKRect.Size">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:SkiaSharp.SKRect.Top">
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKRect.Top">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.Union(SkiaSharp.SKRect)">
+            <param name="rect">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRect.Union(SkiaSharp.SKRect,SkiaSharp.SKRect)">
+            <param name="a">To be added.</param>
+            <param name="b">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKRect.Width">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:SkiaSharp.SKRectI">
@@ -4896,6 +6050,49 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="P:SkiaSharp.SKRectI.Bottom">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.Ceiling(SkiaSharp.SKRect)">
+            <param name="value">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.Contains(SkiaSharp.SKPointI)">
+            <param name="pt">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.Contains(SkiaSharp.SKRectI)">
+            <param name="rect">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.Contains(System.Int32,System.Int32)">
+            <param name="x">To be added.</param>
+            <param name="y">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.Create(SkiaSharp.SKSizeI)">
+            <param name="size">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.Create(SkiaSharp.SKPointI,SkiaSharp.SKSizeI)">
+            <param name="location">To be added.</param>
+            <param name="size">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.SKRectI.Create(System.Int32,System.Int32)">
             <param name="width">To be added.</param>
             <param name="height">To be added.</param>
@@ -4912,16 +6109,162 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:SkiaSharp.SKRectI.Empty">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.Equals(System.Object)">
+            <param name="obj">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.GetHashCode">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKRectI.Height">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.Inflate(SkiaSharp.SKSizeI)">
+            <param name="size">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.Inflate(System.Int32,System.Int32)">
+            <param name="width">To be added.</param>
+            <param name="height">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.Inflate(SkiaSharp.SKRectI,System.Int32,System.Int32)">
+            <param name="rect">To be added.</param>
+            <param name="x">To be added.</param>
+            <param name="y">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.Intersect(SkiaSharp.SKRectI)">
+            <param name="rect">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.Intersect(SkiaSharp.SKRectI,SkiaSharp.SKRectI)">
+            <param name="a">To be added.</param>
+            <param name="b">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.IntersectsWith(SkiaSharp.SKRectI)">
+            <param name="rect">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKRectI.IsEmpty">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:SkiaSharp.SKRectI.Left">
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKRectI.Left">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKRectI.Location">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.Offset(SkiaSharp.SKPointI)">
+            <param name="pos">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.Offset(System.Int32,System.Int32)">
+            <param name="x">To be added.</param>
+            <param name="y">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.op_Equality(SkiaSharp.SKRectI,SkiaSharp.SKRectI)">
+            <param name="left">To be added.</param>
+            <param name="right">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.op_Inequality(SkiaSharp.SKRectI,SkiaSharp.SKRectI)">
+            <param name="left">To be added.</param>
+            <param name="right">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:SkiaSharp.SKRectI.Right">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="P:SkiaSharp.SKRectI.Right">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.Round(SkiaSharp.SKRect)">
+            <param name="value">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKRectI.Size">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:SkiaSharp.SKRectI.Top">
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKRectI.Top">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.Truncate(SkiaSharp.SKRect)">
+            <param name="value">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.Union(SkiaSharp.SKRectI)">
+            <param name="rect">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKRectI.Union(SkiaSharp.SKRectI,SkiaSharp.SKRectI)">
+            <param name="a">To be added.</param>
+            <param name="b">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKRectI.Width">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:SkiaSharp.SKRegionOperation">
@@ -5159,18 +6502,122 @@
                 <para />
             </remarks>
         </member>
+        <member name="C:SkiaSharp.SKSize(SkiaSharp.SKPoint)">
+            <param name="pt">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="C:SkiaSharp.SKSize(System.Single,System.Single)">
             <param name="width">To be added.</param>
             <param name="height">To be added.</param>
             <summary>Initializes a new SKSize with a given width and height.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:SkiaSharp.SKSize.Add(SkiaSharp.SKSize,SkiaSharp.SKSize)">
+            <param name="sz1">To be added.</param>
+            <param name="sz2">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:SkiaSharp.SKSize.Empty">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSize.Equals(System.Object)">
+            <param name="obj">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSize.GetHashCode">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:SkiaSharp.SKSize.Height">
             <summary>The height</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="P:SkiaSharp.SKSize.Height">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKSize.IsEmpty">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSize.op_Addition(SkiaSharp.SKSize,SkiaSharp.SKSize)">
+            <param name="sz1">To be added.</param>
+            <param name="sz2">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSize.op_Equality(SkiaSharp.SKSize,SkiaSharp.SKSize)">
+            <param name="sz1">To be added.</param>
+            <param name="sz2">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSize.op_Explicit(SkiaSharp.SKSize)~SkiaSharp.SKPoint">
+            <param name="size">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSize.op_Implicit(SkiaSharp.SKSizeI)~SkiaSharp.SKSize">
+            <param name="size">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSize.op_Inequality(SkiaSharp.SKSize,SkiaSharp.SKSize)">
+            <param name="sz1">To be added.</param>
+            <param name="sz2">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSize.op_Subtraction(SkiaSharp.SKSize,SkiaSharp.SKSize)">
+            <param name="sz1">To be added.</param>
+            <param name="sz2">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSize.Subtract(SkiaSharp.SKSize,SkiaSharp.SKSize)">
+            <param name="sz1">To be added.</param>
+            <param name="sz2">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSize.ToPoint">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSize.ToSizeI">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSize.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:SkiaSharp.SKSize.Width">
             <summary>The width</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKSize.Width">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:SkiaSharp.SKSizeI">
@@ -5179,18 +6626,111 @@
                 <para />
             </remarks>
         </member>
+        <member name="C:SkiaSharp.SKSizeI(SkiaSharp.SKPointI)">
+            <param name="pt">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="C:SkiaSharp.SKSizeI(System.Int32,System.Int32)">
             <param name="width">To be added.</param>
             <param name="height">To be added.</param>
             <summary>Initializes a new SKSize with a given width and height.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:SkiaSharp.SKSizeI.Add(SkiaSharp.SKSizeI,SkiaSharp.SKSizeI)">
+            <param name="sz1">To be added.</param>
+            <param name="sz2">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:SkiaSharp.SKSizeI.Empty">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSizeI.Equals(System.Object)">
+            <param name="obj">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSizeI.GetHashCode">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:SkiaSharp.SKSizeI.Height">
             <summary>The height</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="P:SkiaSharp.SKSizeI.Height">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKSizeI.IsEmpty">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSizeI.op_Addition(SkiaSharp.SKSizeI,SkiaSharp.SKSizeI)">
+            <param name="sz1">To be added.</param>
+            <param name="sz2">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSizeI.op_Equality(SkiaSharp.SKSizeI,SkiaSharp.SKSizeI)">
+            <param name="sz1">To be added.</param>
+            <param name="sz2">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSizeI.op_Explicit(SkiaSharp.SKSizeI)~SkiaSharp.SKPointI">
+            <param name="size">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSizeI.op_Inequality(SkiaSharp.SKSizeI,SkiaSharp.SKSizeI)">
+            <param name="sz1">To be added.</param>
+            <param name="sz2">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSizeI.op_Subtraction(SkiaSharp.SKSizeI,SkiaSharp.SKSizeI)">
+            <param name="sz1">To be added.</param>
+            <param name="sz2">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSizeI.Subtract(SkiaSharp.SKSizeI,SkiaSharp.SKSizeI)">
+            <param name="sz1">To be added.</param>
+            <param name="sz2">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSizeI.ToPointI">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSizeI.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:SkiaSharp.SKSizeI.Width">
             <summary>The width</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKSizeI.Width">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:SkiaSharp.SKStream">
@@ -5364,12 +6904,50 @@
             <returns>If the requested surface can not be created, or the configuration is not supported, this returns <see langword="null" />.   Otherwise the return is an instance of SKSuface.</returns>
             <remarks>This will create a buffer with the parameters specified in <paramref name="info" />.</remarks>
         </member>
+        <member name="M:SkiaSharp.SKSurface.Create(SkiaSharp.GRContext,SkiaSharp.GRBackendRenderTargetDesc)">
+            <param name="context">To be added.</param>
+            <param name="desc">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSurface.Create(SkiaSharp.GRContext,SkiaSharp.GRBackendTextureDesc)">
+            <param name="context">To be added.</param>
+            <param name="desc">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.SKSurface.Create(SkiaSharp.SKImageInfo,SkiaSharp.SKSurfaceProps)">
             <param name="info">Contains the image configuration parameters.</param>
             <param name="props">Contains the surface property configuration.</param>
             <summary>Creates a new SKSurface from the specified image parameters and surface properties.</summary>
             <returns>If the requested surface can not be created, or the configuration is not supported, this returns <see langword="null" />.   Otherwise the return is an instance of SKSuface.</returns>
             <remarks>This will create a buffer with the parameters specified in <paramref name="info&amp;nbsp;" />and the properties specified in <paramref name="props" />.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSurface.Create(SkiaSharp.GRContext,SkiaSharp.GRBackendRenderTargetDesc,SkiaSharp.SKSurfaceProps)">
+            <param name="context">To be added.</param>
+            <param name="desc">To be added.</param>
+            <param name="props">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSurface.Create(SkiaSharp.GRContext,SkiaSharp.GRBackendTextureDesc,SkiaSharp.SKSurfaceProps)">
+            <param name="context">To be added.</param>
+            <param name="desc">To be added.</param>
+            <param name="props">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSurface.Create(SkiaSharp.GRContext,System.Boolean,SkiaSharp.SKImageInfo)">
+            <param name="context">To be added.</param>
+            <param name="budgeted">To be added.</param>
+            <param name="info">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.SKSurface.Create(SkiaSharp.SKImageInfo,System.IntPtr,System.Int32)">
             <param name="info">Contains the image configuration parameters.</param>
@@ -5378,6 +6956,15 @@
             <summary>Creates a new SKSurface with the specified image parameters using a provided buffer.</summary>
             <returns>If the requested surface can not be created, or the configuration is not supported, this returns <see langword="null" />.   Otherwise the return is an instance of SKSuface.</returns>
             <remarks>This will create a buffer that will be backend by the in-memory buffer provided in <paramref name="pixels" />.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSurface.Create(SkiaSharp.GRContext,System.Boolean,SkiaSharp.SKImageInfo,System.Int32)">
+            <param name="context">To be added.</param>
+            <param name="budgeted">To be added.</param>
+            <param name="info">To be added.</param>
+            <param name="sampleCount">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.SKSurface.Create(SkiaSharp.SKImageInfo,System.IntPtr,System.Int32,SkiaSharp.SKSurfaceProps)">
             <param name="info">Contains the image configuration parameters.</param>
@@ -5396,6 +6983,16 @@
             <summary>Creates a new SKSurface with the specified image parameters.</summary>
             <returns>If the requested surface can not be created, or the configuration is not supported, this returns <see langword="null" />.   Otherwise the return is an instance of SKSuface.</returns>
             <remarks>This will create a buffer that will be backend by the in-memory buffer.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSurface.Create(SkiaSharp.GRContext,System.Boolean,SkiaSharp.SKImageInfo,System.Int32,SkiaSharp.SKSurfaceProps)">
+            <param name="context">To be added.</param>
+            <param name="budgeted">To be added.</param>
+            <param name="info">To be added.</param>
+            <param name="sampleCount">To be added.</param>
+            <param name="props">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.SKSurface.Create(System.Int32,System.Int32,SkiaSharp.SKColorType,SkiaSharp.SKAlphaType,SkiaSharp.SKSurfaceProps)">
             <param name="width">The desired width for the surface.</param>
@@ -5430,6 +7027,21 @@
             <returns>If the requested surface can not be created, or the configuration is not supported, this returns <see langword="null" />.   Otherwise the return is an instance of SKSuface.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:SkiaSharp.SKSurface.CreateAsRenderTarget(SkiaSharp.GRContext,SkiaSharp.GRBackendTextureDesc)">
+            <param name="context">To be added.</param>
+            <param name="desc">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKSurface.CreateAsRenderTarget(SkiaSharp.GRContext,SkiaSharp.GRBackendTextureDesc,SkiaSharp.SKSurfaceProps)">
+            <param name="context">To be added.</param>
+            <param name="desc">To be added.</param>
+            <param name="props">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.SKSurface.Dispose(System.Boolean)">
             <param name="disposing">To be added.</param>
             <summary>To be added.</summary>
@@ -5448,6 +7060,11 @@
                 <para>Currently the only setting avaialble is the PixelGeometry that you use to describe the order and orientation of the individual LED elements on each pixel.</para>
             </remarks>
         </member>
+        <member name="P:SkiaSharp.SKSurfaceProps.Flags">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:SkiaSharp.SKSurfaceProps.PixelGeometry">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -5459,6 +7076,13 @@
             </summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
+        </member>
+        <member name="T:SkiaSharp.SKSurfacePropsFlags">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:SkiaSharp.SKSurfacePropsFlags.UseDeviceIndependentFonts">
+            <summary>To be added.</summary>
         </member>
         <member name="T:SkiaSharp.SKTextAlign">
             <summary>Possible text alignment values</summary>
