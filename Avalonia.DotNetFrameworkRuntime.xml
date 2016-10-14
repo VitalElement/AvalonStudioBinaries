@@ -4,10 +4,46 @@
         <name>Avalonia.DotNetFrameworkRuntime</name>
     </assembly>
     <members>
+        <member name="T:Avalonia.AppBuilder">
+            <summary>
+            Initializes platform-specific services for an <see cref="T:Avalonia.Application"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.AppBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.AppBuilder"/> class.
+            </summary>
+        </member>
+        <member name="M:Avalonia.AppBuilder.#ctor(Avalonia.Application)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.AppBuilder"/> class.
+            </summary>
+            <param name="app">The <see cref="T:Avalonia.Application"/> instance.</param>
+        </member>
+        <member name="M:Avalonia.AppBuilder.UsePlatformDetect">
+            <summary>
+            Instructs the <see cref="T:Avalonia.AppBuilder"/> to use the best settings for the platform.
+            </summary>
+            <returns>An <see cref="T:Avalonia.AppBuilder"/> instance.</returns>
+        </member>
         <member name="T:Avalonia.Shared.PlatformSupport.AssetLoader">
             <summary>
             Loads assets compiled into the application binary.
             </summary>
+        </member>
+        <member name="M:Avalonia.Shared.PlatformSupport.AssetLoader.#ctor(System.Reflection.Assembly)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Shared.PlatformSupport.AssetLoader"/> class.
+            </summary>
+            <param name="assembly">
+            The default assembly from which to load assets for which no assembly is specified.
+            </param>
+        </member>
+        <member name="M:Avalonia.Shared.PlatformSupport.AssetLoader.SetDefaultAssembly(System.Reflection.Assembly)">
+            <summary>
+            Sets the default assembly from which to load assets for which no assembly is specified.
+            </summary>
+            <param name="assembly">The default assembly.</param>
         </member>
         <member name="M:Avalonia.Shared.PlatformSupport.AssetLoader.Exists(System.Uri,System.Uri)">
             <summary>

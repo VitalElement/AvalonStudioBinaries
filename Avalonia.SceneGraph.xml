@@ -2101,14 +2101,42 @@
             Pushes an opacity mask.
             </summary>
             <param name="mask">The opacity mask.</param>
+            <param name="bounds">
+            The size of the brush's target area. TODO: Are we sure this is needed?
+            </param>
             <returns>A disposable to undo the opacity mask.</returns>
         </member>
         <member name="M:Avalonia.Media.DrawingContext.PushPostTransform(Avalonia.Matrix)">
             <summary>
-            Pushes a matrix transformation.
+            Pushes a matrix post-transformation.
             </summary>
             <param name="matrix">The matrix</param>
             <returns>A disposable used to undo the transformation.</returns>
+        </member>
+        <member name="M:Avalonia.Media.DrawingContext.PushPreTransform(Avalonia.Matrix)">
+            <summary>
+            Pushes a matrix pre-transformation.
+            </summary>
+            <param name="matrix">The matrix</param>
+            <returns>A disposable used to undo the transformation.</returns>
+        </member>
+        <member name="M:Avalonia.Media.DrawingContext.PushSetTransform(Avalonia.Matrix)">
+            <summary>
+            Sets the current matrix transformation.
+            </summary>
+            <param name="matrix">The matrix</param>
+            <returns>A disposable used to undo the transformation.</returns>
+        </member>
+        <member name="M:Avalonia.Media.DrawingContext.PushTransformContainer">
+            <summary>
+            Pushes a new transform context.
+            </summary>
+            <returns>A disposable used to undo the transformation.</returns>
+        </member>
+        <member name="M:Avalonia.Media.DrawingContext.Dispose">
+            <summary>
+            Disposes of any resources held by the <see cref="T:Avalonia.Media.DrawingContext"/>.
+            </summary>
         </member>
         <member name="T:Avalonia.Media.GradientStop">
             <summary>
@@ -2413,7 +2441,7 @@
         </member>
         <member name="T:Avalonia.Media.ScaleTransform">
             <summary>
-            Scale an <see cref="!:IVisual"/>.
+            Scale an <see cref="T:Avalonia.VisualTree.IVisual"/>.
             </summary>
         </member>
         <member name="F:Avalonia.Media.ScaleTransform.ScaleXProperty">
@@ -2922,7 +2950,7 @@
         </member>
         <member name="T:Avalonia.Media.Imaging.RenderTargetBitmap">
             <summary>
-            A bitmap that holds the rendering of a <see cref="!:IVisual"/>.
+            A bitmap that holds the rendering of a <see cref="T:Avalonia.VisualTree.IVisual"/>.
             </summary>
         </member>
         <member name="M:Avalonia.Media.Imaging.RenderTargetBitmap.#ctor(System.Int32,System.Int32)">
@@ -2952,7 +2980,7 @@
         </member>
         <member name="T:Avalonia.Media.TranslateTransform">
             <summary>
-            Translates (moves) an <see cref="!:IVisual"/>.
+            Translates (moves) an <see cref="T:Avalonia.VisualTree.IVisual"/>.
             </summary>
         </member>
         <member name="F:Avalonia.Media.TranslateTransform.XProperty">
@@ -2997,12 +3025,11 @@
             Parses a path markup string.
             </summary>
         </member>
-        <member name="M:Avalonia.Media.PathMarkupParser.#ctor(Avalonia.Media.StreamGeometry,Avalonia.Media.StreamGeometryContext)">
+        <member name="M:Avalonia.Media.PathMarkupParser.#ctor(Avalonia.Media.StreamGeometryContext)">
             <summary>
             Initializes a new instance of the <see cref="T:Avalonia.Media.PathMarkupParser"/> class.
             </summary>
-            <param name="geometry">The geometry in which the path should be stored.</param>
-            <param name="context">The context for <paramref name="geometry"/>.</param>
+            <param name="context">The context for the geometry.</param>
         </member>
         <member name="T:Avalonia.Media.PathMarkupParser.Command">
             <summary>
@@ -3086,7 +3113,7 @@
         </member>
         <member name="T:Avalonia.Media.MatrixTransform">
             <summary>
-            Transforms an <see cref="!:IVisual"/> according to a <see cref="P:Avalonia.Media.MatrixTransform.Matrix"/>.
+            Transforms an <see cref="T:Avalonia.VisualTree.IVisual"/> according to a <see cref="P:Avalonia.Media.MatrixTransform.Matrix"/>.
             </summary>
         </member>
         <member name="F:Avalonia.Media.MatrixTransform.MatrixProperty">
@@ -3117,7 +3144,7 @@
         </member>
         <member name="T:Avalonia.Media.RotateTransform">
             <summary>
-            Rotates an <see cref="!:IVisual"/>.
+            Rotates an <see cref="T:Avalonia.VisualTree.IVisual"/>.
             </summary>
         </member>
         <member name="F:Avalonia.Media.RotateTransform.AngleProperty">
@@ -3354,7 +3381,7 @@
         </member>
         <member name="T:Avalonia.Media.Transform">
             <summary>
-            Represents a transform on an <see cref="!:IVisual"/>.
+            Represents a transform on an <see cref="T:Avalonia.VisualTree.IVisual"/>.
             </summary>
         </member>
         <member name="E:Avalonia.Media.Transform.Changed">
@@ -3519,6 +3546,260 @@
             <summary>
             Gets or sets the visual to draw.
             </summary>
+        </member>
+        <member name="T:Avalonia.Platform.IFormattedTextImpl">
+            <summary>
+            Defines the platform-specific interface for <see cref="T:Avalonia.Media.FormattedText"/>.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Platform.IFormattedTextImpl.Constraint">
+            <summary>
+            Gets or sets the constraint of the text.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Platform.IFormattedTextImpl.GetLines">
+            <summary>
+            Gets the lines in the text.
+            </summary>
+            <returns>
+            A collection of <see cref="T:Avalonia.Media.FormattedTextLine"/> objects.
+            </returns>
+        </member>
+        <member name="M:Avalonia.Platform.IFormattedTextImpl.HitTestPoint(Avalonia.Point)">
+            <summary>
+            Hit tests a point in the text.
+            </summary>
+            <param name="point">The point.</param>
+            <returns>
+            A <see cref="T:Avalonia.Media.TextHitTestResult"/> describing the result of the hit test.
+            </returns>
+        </member>
+        <member name="M:Avalonia.Platform.IFormattedTextImpl.HitTestTextPosition(System.Int32)">
+            <summary>
+            Gets the bounds rectangle that the specified character occupies.
+            </summary>
+            <param name="index">The index of the character.</param>
+            <returns>The character bounds.</returns>
+        </member>
+        <member name="M:Avalonia.Platform.IFormattedTextImpl.HitTestTextRange(System.Int32,System.Int32)">
+            <summary>
+            Gets the bounds rectangles that the specified text range occupies.
+            </summary>
+            <param name="index">The index of the first character.</param>
+            <param name="length">The number of characters in the text range.</param>
+            <returns>The character bounds.</returns>
+        </member>
+        <member name="M:Avalonia.Platform.IFormattedTextImpl.Measure">
+            <summary>
+            Gets the size of the text, taking <see cref="P:Avalonia.Platform.IFormattedTextImpl.Constraint"/> into account.
+            </summary>
+            <returns>The bounds box of the text.</returns>
+        </member>
+        <member name="M:Avalonia.Platform.IFormattedTextImpl.SetForegroundBrush(Avalonia.Media.IBrush,System.Int32,System.Int32)">
+            <summary>
+            Sets the foreground brush for the specified text range.
+            </summary>
+            <param name="brush">The brush.</param>
+            <param name="startIndex">The start of the text range.</param>
+            <param name="length">The length of the text range.</param>
+        </member>
+        <member name="T:Avalonia.Platform.IBitmapImpl">
+            <summary>
+            Defines the platform-specific interface for a <see cref="T:Avalonia.Media.Imaging.Bitmap"/>.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Platform.IBitmapImpl.PixelWidth">
+            <summary>
+            Gets the width of the bitmap, in pixels.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Platform.IBitmapImpl.PixelHeight">
+            <summary>
+            Gets the height of the bitmap, in pixels.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Platform.IBitmapImpl.Save(System.String)">
+            <summary>
+            Saves the bitmap to a file.
+            </summary>
+            <param name="fileName">The filename.</param>
+        </member>
+        <member name="M:Avalonia.Platform.IBitmapImpl.Save(System.IO.Stream)">
+            <summary>
+            Saves the bitmap to a stream in png format.
+            </summary>
+            <param name="stream">The stream.</param>
+        </member>
+        <member name="T:Avalonia.Platform.IGeometryImpl">
+            <summary>
+            Defines the platform-specific interface for <see cref="T:Avalonia.Media.Geometry"/>.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Platform.IGeometryImpl.Bounds">
+            <summary>
+            Gets the geometry's bounding rectangle.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Platform.IGeometryImpl.Transform">
+            <summary>
+            Gets or sets a transform to apply to the geometry.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Platform.IGeometryImpl.GetRenderBounds(System.Double)">
+            <summary>
+            Gets the geometry's bounding rectangle with the specified stroke thickness.
+            </summary>
+            <param name="strokeThickness">The stroke thickness.</param>
+            <returns>The bounding rectangle.</returns>
+        </member>
+        <member name="M:Avalonia.Platform.IGeometryImpl.FillContains(Avalonia.Point)">
+            <summary>
+            Indicates whether the geometry contains the specified point.
+            </summary>
+            <param name="point">The point.</param>
+            <returns><c>true</c> if the geometry contains the point; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="T:Avalonia.Platform.IPlatformRenderInterface">
+            <summary>
+            Defines the main platform-specific interface for the rendering subsystem.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Platform.IPlatformRenderInterface.CreateFormattedText(System.String,System.String,System.Double,Avalonia.Media.FontStyle,Avalonia.Media.TextAlignment,Avalonia.Media.FontWeight,Avalonia.Media.TextWrapping)">
+            <summary>
+            Creates a formatted text implementation.
+            </summary>
+            <param name="text">The text.</param>
+            <param name="fontFamilyName">The font family.</param>
+            <param name="fontSize">The font size.</param>
+            <param name="fontStyle">The font style.</param>
+            <param name="textAlignment">The text alignment.</param>
+            <param name="fontWeight">The font weight.</param>
+            <param name="wrapping">The text wrapping mode.</param>
+            <returns>An <see cref="T:Avalonia.Platform.IFormattedTextImpl"/>.</returns>
+        </member>
+        <member name="M:Avalonia.Platform.IPlatformRenderInterface.CreateStreamGeometry">
+            <summary>
+            Creates a stream geometry implementation.
+            </summary>
+            <returns>An <see cref="T:Avalonia.Platform.IStreamGeometryImpl"/>.</returns>
+        </member>
+        <member name="M:Avalonia.Platform.IPlatformRenderInterface.CreateRenderer(Avalonia.Platform.IPlatformHandle)">
+            <summary>
+            Creates a renderer.
+            </summary>
+            <param name="handle">The platform handle for the renderer.</param>
+            <returns>An <see cref="T:Avalonia.Platform.IRenderTarget"/>.</returns>
+        </member>
+        <member name="M:Avalonia.Platform.IPlatformRenderInterface.CreateRenderTargetBitmap(System.Int32,System.Int32)">
+            <summary>
+            Creates a render target bitmap implementation.
+            </summary>
+            <param name="width">The width of the bitmap.</param>
+            <param name="height">The height of the bitmap.</param>
+            <returns>An <see cref="T:Avalonia.Platform.IRenderTargetBitmapImpl"/>.</returns>
+        </member>
+        <member name="M:Avalonia.Platform.IPlatformRenderInterface.LoadBitmap(System.String)">
+            <summary>
+            Loads a bitmap implementation from a file..
+            </summary>
+            <param name="fileName">The filename of the bitmap.</param>
+            <returns>An <see cref="T:Avalonia.Platform.IBitmapImpl"/>.</returns>
+        </member>
+        <member name="M:Avalonia.Platform.IPlatformRenderInterface.LoadBitmap(System.IO.Stream)">
+            <summary>
+            Loads a bitmap implementation from a file..
+            </summary>
+            <param name="stream">The stream to read the bitmap from.</param>
+            <returns>An <see cref="T:Avalonia.Platform.IBitmapImpl"/>.</returns>
+        </member>
+        <member name="T:Avalonia.Platform.IRenderTarget">
+            <summary>
+            Defines a render target
+            </summary>
+            <remarks>
+            The interface used for obtaining drawing context from surfaces you can render on.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Platform.IRenderTarget.CreateDrawingContext">
+            <summary>
+            Creates an <see cref="T:Avalonia.Media.DrawingContext"/> for a rendering session.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Platform.IRenderTargetBitmapImpl">
+            <summary>
+            Defines the platform-specific interface for a
+            <see cref="T:Avalonia.Media.Imaging.RenderTargetBitmap"/>.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Platform.IStreamGeometryContextImpl">
+            <summary>
+            Describes a geometry using drawing commands.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Platform.IStreamGeometryContextImpl.ArcTo(Avalonia.Point,Avalonia.Size,System.Double,System.Boolean,Avalonia.Media.SweepDirection)">
+            <summary>
+            Draws an arc to the specified point.
+            </summary>
+            <param name="point">The destination point.</param>
+            <param name="size">The radii of an oval whose perimeter is used to draw the angle.</param>
+            <param name="rotationAngle">The rotation angle of the oval that specifies the curve.</param>
+            <param name="isLargeArc">true to draw the arc greater than 180 degrees; otherwise, false.</param>
+            <param name="sweepDirection">
+            A value that indicates whether the arc is drawn in the Clockwise or Counterclockwise direction.
+            </param>
+        </member>
+        <member name="M:Avalonia.Platform.IStreamGeometryContextImpl.BeginFigure(Avalonia.Point,System.Boolean)">
+            <summary>
+            Begins a new figure.
+            </summary>
+            <param name="startPoint">The starting point for the figure.</param>
+            <param name="isFilled">Whether the figure is filled.</param>
+        </member>
+        <member name="M:Avalonia.Platform.IStreamGeometryContextImpl.CubicBezierTo(Avalonia.Point,Avalonia.Point,Avalonia.Point)">
+            <summary>
+            Draws a Bezier curve to the specified point.
+            </summary>
+            <param name="point1">The first control point used to specify the shape of the curve.</param>
+            <param name="point2">The second control point used to specify the shape of the curve.</param>
+            <param name="point3">The destination point for the end of the curve.</param>
+        </member>
+        <member name="M:Avalonia.Platform.IStreamGeometryContextImpl.QuadraticBezierTo(Avalonia.Point,Avalonia.Point)">
+            <summary>
+            Draws a quadratic Bezier curve to the specified point
+            </summary>
+            <param name="control">Control point</param>
+            <param name="endPoint">DestinationPoint</param>
+        </member>
+        <member name="M:Avalonia.Platform.IStreamGeometryContextImpl.LineTo(Avalonia.Point)">
+            <summary>
+            Draws a line to the specified point.
+            </summary>
+            <param name="point">The destination point.</param>
+        </member>
+        <member name="M:Avalonia.Platform.IStreamGeometryContextImpl.EndFigure(System.Boolean)">
+            <summary>
+            Ends the figure started by <see cref="M:Avalonia.Platform.IStreamGeometryContextImpl.BeginFigure(Avalonia.Point,System.Boolean)"/>.
+            </summary>
+            <param name="isClosed">Whether the figure is closed.</param>
+        </member>
+        <member name="T:Avalonia.Platform.IStreamGeometryImpl">
+            <summary>
+            Defines the platform-specific interface for a <see cref="T:Avalonia.Media.StreamGeometry"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Platform.IStreamGeometryImpl.Clone">
+            <summary>
+            Clones the geometry.
+            </summary>
+            <returns>A cloned geometry.</returns>
+        </member>
+        <member name="M:Avalonia.Platform.IStreamGeometryImpl.Open">
+            <summary>
+            Opens the geometry to start defining it.
+            </summary>
+            <returns>
+            An <see cref="T:Avalonia.Platform.IStreamGeometryContextImpl"/> which can be used to define the geometry.
+            </returns>
         </member>
         <member name="T:Avalonia.VisualTree.IVisual">
             <summary>
@@ -3836,260 +4117,6 @@
             <returns>
             True if <paramref name="visual"/> is an ancestor of <paramref name="target"/>;
             otherwise false.
-            </returns>
-        </member>
-        <member name="T:Avalonia.Platform.IFormattedTextImpl">
-            <summary>
-            Defines the platform-specific interface for <see cref="T:Avalonia.Media.FormattedText"/>.
-            </summary>
-        </member>
-        <member name="P:Avalonia.Platform.IFormattedTextImpl.Constraint">
-            <summary>
-            Gets or sets the constraint of the text.
-            </summary>
-        </member>
-        <member name="M:Avalonia.Platform.IFormattedTextImpl.GetLines">
-            <summary>
-            Gets the lines in the text.
-            </summary>
-            <returns>
-            A collection of <see cref="T:Avalonia.Media.FormattedTextLine"/> objects.
-            </returns>
-        </member>
-        <member name="M:Avalonia.Platform.IFormattedTextImpl.HitTestPoint(Avalonia.Point)">
-            <summary>
-            Hit tests a point in the text.
-            </summary>
-            <param name="point">The point.</param>
-            <returns>
-            A <see cref="T:Avalonia.Media.TextHitTestResult"/> describing the result of the hit test.
-            </returns>
-        </member>
-        <member name="M:Avalonia.Platform.IFormattedTextImpl.HitTestTextPosition(System.Int32)">
-            <summary>
-            Gets the bounds rectangle that the specified character occupies.
-            </summary>
-            <param name="index">The index of the character.</param>
-            <returns>The character bounds.</returns>
-        </member>
-        <member name="M:Avalonia.Platform.IFormattedTextImpl.HitTestTextRange(System.Int32,System.Int32)">
-            <summary>
-            Gets the bounds rectangles that the specified text range occupies.
-            </summary>
-            <param name="index">The index of the first character.</param>
-            <param name="length">The number of characters in the text range.</param>
-            <returns>The character bounds.</returns>
-        </member>
-        <member name="M:Avalonia.Platform.IFormattedTextImpl.Measure">
-            <summary>
-            Gets the size of the text, taking <see cref="P:Avalonia.Platform.IFormattedTextImpl.Constraint"/> into account.
-            </summary>
-            <returns>The bounds box of the text.</returns>
-        </member>
-        <member name="M:Avalonia.Platform.IFormattedTextImpl.SetForegroundBrush(Avalonia.Media.IBrush,System.Int32,System.Int32)">
-            <summary>
-            Sets the foreground brush for the specified text range.
-            </summary>
-            <param name="brush">The brush.</param>
-            <param name="startIndex">The start of the text range.</param>
-            <param name="length">The length of the text range.</param>
-        </member>
-        <member name="T:Avalonia.Platform.IBitmapImpl">
-            <summary>
-            Defines the platform-specific interface for a <see cref="T:Avalonia.Media.Imaging.Bitmap"/>.
-            </summary>
-        </member>
-        <member name="P:Avalonia.Platform.IBitmapImpl.PixelWidth">
-            <summary>
-            Gets the width of the bitmap, in pixels.
-            </summary>
-        </member>
-        <member name="P:Avalonia.Platform.IBitmapImpl.PixelHeight">
-            <summary>
-            Gets the height of the bitmap, in pixels.
-            </summary>
-        </member>
-        <member name="M:Avalonia.Platform.IBitmapImpl.Save(System.String)">
-            <summary>
-            Saves the bitmap to a file.
-            </summary>
-            <param name="fileName">The filename.</param>
-        </member>
-        <member name="M:Avalonia.Platform.IBitmapImpl.Save(System.IO.Stream)">
-            <summary>
-            Saves the bitmap to a stream in png format.
-            </summary>
-            <param name="stream">The stream.</param>
-        </member>
-        <member name="T:Avalonia.Platform.IGeometryImpl">
-            <summary>
-            Defines the platform-specific interface for <see cref="T:Avalonia.Media.Geometry"/>.
-            </summary>
-        </member>
-        <member name="P:Avalonia.Platform.IGeometryImpl.Bounds">
-            <summary>
-            Gets the geometry's bounding rectangle.
-            </summary>
-        </member>
-        <member name="P:Avalonia.Platform.IGeometryImpl.Transform">
-            <summary>
-            Gets or sets a transform to apply to the geometry.
-            </summary>
-        </member>
-        <member name="M:Avalonia.Platform.IGeometryImpl.GetRenderBounds(System.Double)">
-            <summary>
-            Gets the geometry's bounding rectangle with the specified stroke thickness.
-            </summary>
-            <param name="strokeThickness">The stroke thickness.</param>
-            <returns>The bounding rectangle.</returns>
-        </member>
-        <member name="M:Avalonia.Platform.IGeometryImpl.FillContains(Avalonia.Point)">
-            <summary>
-            Indicates whether the geometry contains the specified point.
-            </summary>
-            <param name="point">The point.</param>
-            <returns><c>true</c> if the geometry contains the point; otherwise, <c>false</c>.</returns>
-        </member>
-        <member name="T:Avalonia.Platform.IPlatformRenderInterface">
-            <summary>
-            Defines the main platform-specific interface for the rendering subsystem.
-            </summary>
-        </member>
-        <member name="M:Avalonia.Platform.IPlatformRenderInterface.CreateFormattedText(System.String,System.String,System.Double,Avalonia.Media.FontStyle,Avalonia.Media.TextAlignment,Avalonia.Media.FontWeight,Avalonia.Media.TextWrapping)">
-            <summary>
-            Creates a formatted text implementation.
-            </summary>
-            <param name="text">The text.</param>
-            <param name="fontFamilyName">The font family.</param>
-            <param name="fontSize">The font size.</param>
-            <param name="fontStyle">The font style.</param>
-            <param name="textAlignment">The text alignment.</param>
-            <param name="fontWeight">The font weight.</param>
-            <param name="wrapping">The text wrapping mode.</param>
-            <returns>An <see cref="T:Avalonia.Platform.IFormattedTextImpl"/>.</returns>
-        </member>
-        <member name="M:Avalonia.Platform.IPlatformRenderInterface.CreateStreamGeometry">
-            <summary>
-            Creates a stream geometry implementation.
-            </summary>
-            <returns>An <see cref="T:Avalonia.Platform.IStreamGeometryImpl"/>.</returns>
-        </member>
-        <member name="M:Avalonia.Platform.IPlatformRenderInterface.CreateRenderer(Avalonia.Platform.IPlatformHandle)">
-            <summary>
-            Creates a renderer.
-            </summary>
-            <param name="handle">The platform handle for the renderer.</param>
-            <returns>An <see cref="T:Avalonia.Platform.IRenderTarget"/>.</returns>
-        </member>
-        <member name="M:Avalonia.Platform.IPlatformRenderInterface.CreateRenderTargetBitmap(System.Int32,System.Int32)">
-            <summary>
-            Creates a render target bitmap implementation.
-            </summary>
-            <param name="width">The width of the bitmap.</param>
-            <param name="height">The height of the bitmap.</param>
-            <returns>An <see cref="T:Avalonia.Platform.IRenderTargetBitmapImpl"/>.</returns>
-        </member>
-        <member name="M:Avalonia.Platform.IPlatformRenderInterface.LoadBitmap(System.String)">
-            <summary>
-            Loads a bitmap implementation from a file..
-            </summary>
-            <param name="fileName">The filename of the bitmap.</param>
-            <returns>An <see cref="T:Avalonia.Platform.IBitmapImpl"/>.</returns>
-        </member>
-        <member name="M:Avalonia.Platform.IPlatformRenderInterface.LoadBitmap(System.IO.Stream)">
-            <summary>
-            Loads a bitmap implementation from a file..
-            </summary>
-            <param name="stream">The stream to read the bitmap from.</param>
-            <returns>An <see cref="T:Avalonia.Platform.IBitmapImpl"/>.</returns>
-        </member>
-        <member name="T:Avalonia.Platform.IRenderTarget">
-            <summary>
-            Defines a render target
-            </summary>
-            <remarks>
-            The interface used for obtaining drawing context from surfaces you can render on.
-            </remarks>
-        </member>
-        <member name="M:Avalonia.Platform.IRenderTarget.CreateDrawingContext">
-            <summary>
-            Creates an <see cref="T:Avalonia.Media.DrawingContext"/> for a rendering session.
-            </summary>
-        </member>
-        <member name="T:Avalonia.Platform.IRenderTargetBitmapImpl">
-            <summary>
-            Defines the platform-specific interface for a
-            <see cref="T:Avalonia.Media.Imaging.RenderTargetBitmap"/>.
-            </summary>
-        </member>
-        <member name="T:Avalonia.Platform.IStreamGeometryContextImpl">
-            <summary>
-            Describes a geometry using drawing commands.
-            </summary>
-        </member>
-        <member name="M:Avalonia.Platform.IStreamGeometryContextImpl.ArcTo(Avalonia.Point,Avalonia.Size,System.Double,System.Boolean,Avalonia.Media.SweepDirection)">
-            <summary>
-            Draws an arc to the specified point.
-            </summary>
-            <param name="point">The destination point.</param>
-            <param name="size">The radii of an oval whose perimeter is used to draw the angle.</param>
-            <param name="rotationAngle">The rotation angle of the oval that specifies the curve.</param>
-            <param name="isLargeArc">true to draw the arc greater than 180 degrees; otherwise, false.</param>
-            <param name="sweepDirection">
-            A value that indicates whether the arc is drawn in the Clockwise or Counterclockwise direction.
-            </param>
-        </member>
-        <member name="M:Avalonia.Platform.IStreamGeometryContextImpl.BeginFigure(Avalonia.Point,System.Boolean)">
-            <summary>
-            Begins a new figure.
-            </summary>
-            <param name="startPoint">The starting point for the figure.</param>
-            <param name="isFilled">Whether the figure is filled.</param>
-        </member>
-        <member name="M:Avalonia.Platform.IStreamGeometryContextImpl.CubicBezierTo(Avalonia.Point,Avalonia.Point,Avalonia.Point)">
-            <summary>
-            Draws a Bezier curve to the specified point.
-            </summary>
-            <param name="point1">The first control point used to specify the shape of the curve.</param>
-            <param name="point2">The second control point used to specify the shape of the curve.</param>
-            <param name="point3">The destination point for the end of the curve.</param>
-        </member>
-        <member name="M:Avalonia.Platform.IStreamGeometryContextImpl.QuadraticBezierTo(Avalonia.Point,Avalonia.Point)">
-            <summary>
-            Draws a quadratic Bezier curve to the specified point
-            </summary>
-            <param name="control">Control point</param>
-            <param name="endPoint">DestinationPoint</param>
-        </member>
-        <member name="M:Avalonia.Platform.IStreamGeometryContextImpl.LineTo(Avalonia.Point)">
-            <summary>
-            Draws a line to the specified point.
-            </summary>
-            <param name="point">The destination point.</param>
-        </member>
-        <member name="M:Avalonia.Platform.IStreamGeometryContextImpl.EndFigure(System.Boolean)">
-            <summary>
-            Ends the figure started by <see cref="M:Avalonia.Platform.IStreamGeometryContextImpl.BeginFigure(Avalonia.Point,System.Boolean)"/>.
-            </summary>
-            <param name="isClosed">Whether the figure is closed.</param>
-        </member>
-        <member name="T:Avalonia.Platform.IStreamGeometryImpl">
-            <summary>
-            Defines the platform-specific interface for a <see cref="T:Avalonia.Media.StreamGeometry"/>.
-            </summary>
-        </member>
-        <member name="M:Avalonia.Platform.IStreamGeometryImpl.Clone">
-            <summary>
-            Clones the geometry.
-            </summary>
-            <returns>A cloned geometry.</returns>
-        </member>
-        <member name="M:Avalonia.Platform.IStreamGeometryImpl.Open">
-            <summary>
-            Opens the geometry to start defining it.
-            </summary>
-            <returns>
-            An <see cref="T:Avalonia.Platform.IStreamGeometryContextImpl"/> which can be used to define the geometry.
             </returns>
         </member>
         <member name="T:Avalonia.RelativeUnit">

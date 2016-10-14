@@ -241,19 +241,19 @@
             property will be made.
             </returns>
         </member>
-        <member name="T:Avalonia.Markup.Data.Plugins.ObservableValuePlugin">
+        <member name="T:Avalonia.Markup.Data.Plugins.ObservableStreamPlugin">
             <summary>
-            Handles binding to <see cref="T:System.IObservable`1"/>s in an <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/>.
+            Handles binding to <see cref="T:System.IObservable`1"/>s for the '^' stream binding operator.
             </summary>
         </member>
-        <member name="M:Avalonia.Markup.Data.Plugins.ObservableValuePlugin.Match(System.WeakReference)">
+        <member name="M:Avalonia.Markup.Data.Plugins.ObservableStreamPlugin.Match(System.WeakReference)">
             <summary>
             Checks whether this plugin handles the specified value.
             </summary>
             <param name="reference">A weak reference to the value.</param>
             <returns>True if the plugin can handle the value; otherwise false.</returns>
         </member>
-        <member name="M:Avalonia.Markup.Data.Plugins.ObservableValuePlugin.Start(System.WeakReference)">
+        <member name="M:Avalonia.Markup.Data.Plugins.ObservableStreamPlugin.Start(System.WeakReference)">
             <summary>
             Starts producing output based on the specified value.
             </summary>
@@ -262,19 +262,19 @@
             An observable that produces the output for the value.
             </returns>
         </member>
-        <member name="T:Avalonia.Markup.Data.Plugins.TaskValuePlugin">
+        <member name="T:Avalonia.Markup.Data.Plugins.TaskStreamPlugin">
             <summary>
-            Handles binding to <see cref="T:System.Threading.Tasks.Task"/>s in an <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/>.
+            Handles binding to <see cref="T:System.Threading.Tasks.Task"/>s for the '^' stream binding operator.
             </summary>
         </member>
-        <member name="M:Avalonia.Markup.Data.Plugins.TaskValuePlugin.Match(System.WeakReference)">
+        <member name="M:Avalonia.Markup.Data.Plugins.TaskStreamPlugin.Match(System.WeakReference)">
             <summary>
             Checks whether this plugin handles the specified value.
             </summary>
             <param name="reference">A weak reference to the value.</param>
             <returns>True if the plugin can handle the value; otherwise false.</returns>
         </member>
-        <member name="M:Avalonia.Markup.Data.Plugins.TaskValuePlugin.Start(System.WeakReference)">
+        <member name="M:Avalonia.Markup.Data.Plugins.TaskStreamPlugin.Start(System.WeakReference)">
             <summary>
             Starts producing output based on the specified value.
             </summary>
@@ -283,19 +283,19 @@
             An observable that produces the output for the value.
             </returns>
         </member>
-        <member name="T:Avalonia.Markup.Data.Plugins.IValuePlugin">
+        <member name="T:Avalonia.Markup.Data.Plugins.IStreamPlugin">
             <summary>
-            Defines how values are observed by an <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/>.
+            Defines a plugin that handles the '^' stream binding operator.
             </summary>
         </member>
-        <member name="M:Avalonia.Markup.Data.Plugins.IValuePlugin.Match(System.WeakReference)">
+        <member name="M:Avalonia.Markup.Data.Plugins.IStreamPlugin.Match(System.WeakReference)">
             <summary>
             Checks whether this plugin handles the specified value.
             </summary>
             <param name="reference">A weak reference to the value.</param>
             <returns>True if the plugin can handle the value; otherwise false.</returns>
         </member>
-        <member name="M:Avalonia.Markup.Data.Plugins.IValuePlugin.Start(System.WeakReference)">
+        <member name="M:Avalonia.Markup.Data.Plugins.IStreamPlugin.Start(System.WeakReference)">
             <summary>
             Starts producing output based on the specified value.
             </summary>
@@ -452,10 +452,10 @@
             the validation of view model and model data.
             </summary>
         </member>
-        <member name="F:Avalonia.Markup.Data.ExpressionObserver.ValueHandlers">
+        <member name="F:Avalonia.Markup.Data.ExpressionObserver.StreamHandlers">
             <summary>
-            An ordered collection of value handlers that can be used to customize the handling
-            of certain values.
+            An ordered collection of stream plugins that can be used to customize the behavior
+            of the '^' stream binding operator.
             </summary>
         </member>
         <member name="M:Avalonia.Markup.Data.ExpressionObserver.#ctor(System.Object,System.String,System.Boolean,System.String)">

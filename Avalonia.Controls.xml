@@ -6,16 +6,16 @@
     <members>
         <member name="T:Avalonia.Controls.AppBuilderBase`1">
             <summary>
-            Initializes up platform-specific services for an <see cref="T:Avalonia.Application"/>.
+            Base class for initializing platform-specific services for an <see cref="T:Avalonia.Application"/>.
             </summary>
-            <typeparam name="TAppBuilder"></typeparam>
+            <typeparam name="TAppBuilder">The type of the AppBuilder class itself.</typeparam>
         </member>
         <member name="P:Avalonia.Controls.AppBuilderBase`1.RuntimePlatform">
             <summary>
             Gets or sets the <see cref="T:Avalonia.Platform.IRuntimePlatform"/> instance.
             </summary>
         </member>
-        <member name="P:Avalonia.Controls.AppBuilderBase`1.RuntimePlatformServices">
+        <member name="P:Avalonia.Controls.AppBuilderBase`1.RuntimePlatformServicesInitializer">
             <summary>
             Gets or sets a method to call the initialize the runtime platform services (e. g. AssetLoader)
             </summary>
@@ -25,14 +25,29 @@
             Gets or sets the <see cref="T:Avalonia.Application"/> instance being initialized.
             </summary>
         </member>
-        <member name="P:Avalonia.Controls.AppBuilderBase`1.WindowingSubsystem">
+        <member name="P:Avalonia.Controls.AppBuilderBase`1.WindowingSubsystemInitializer">
             <summary>
             Gets or sets a method to call the initialize the windowing subsystem.
             </summary>
         </member>
-        <member name="P:Avalonia.Controls.AppBuilderBase`1.RenderingSubsystem">
+        <member name="P:Avalonia.Controls.AppBuilderBase`1.WindowingSubsystemName">
+            <summary>
+            Gets the name of the currently selected windowing subsystem.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Controls.AppBuilderBase`1.RenderingSubsystemInitializer">
             <summary>
             Gets or sets a method to call the initialize the windowing subsystem.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Controls.AppBuilderBase`1.RenderingSubsystemName">
+            <summary>
+            Gets the name of the currently selected rendering subsystem.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Controls.AppBuilderBase`1.AfterSetupCallback">
+            <summary>
+            Gets or sets a method to call after the <see cref="T:Avalonia.Application"/> is setup.
             </summary>
         </member>
         <member name="P:Avalonia.Controls.AppBuilderBase`1.BeforeStartCallback">
@@ -74,11 +89,12 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Avalonia.Controls.AppBuilderBase`1.UseWindowingSubsystem(System.Action)">
+        <member name="M:Avalonia.Controls.AppBuilderBase`1.UseWindowingSubsystem(System.Action,System.String)">
             <summary>
             Specifies a windowing subsystem to use.
             </summary>
             <param name="initializer">The method to call to initialize the windowing subsystem.</param>
+            <param name="name">The name of the windowing subsystem.</param>
             <returns>An <typeparamref name="TAppBuilder"/> instance.</returns>
         </member>
         <member name="M:Avalonia.Controls.AppBuilderBase`1.UseWindowingSubsystem(System.String)">
@@ -88,11 +104,12 @@
             <param name="dll">The dll in which to look for subsystem.</param>
             <returns>An <typeparamref name="TAppBuilder"/> instance.</returns>
         </member>
-        <member name="M:Avalonia.Controls.AppBuilderBase`1.UseRenderingSubsystem(System.Action)">
+        <member name="M:Avalonia.Controls.AppBuilderBase`1.UseRenderingSubsystem(System.Action,System.String)">
             <summary>
             Specifies a rendering subsystem to use.
             </summary>
             <param name="initializer">The method to call to initialize the rendering subsystem.</param>
+            <param name="name">The name of the rendering subsystem.</param>
             <returns>An <typeparamref name="TAppBuilder"/> instance.</returns>
         </member>
         <member name="M:Avalonia.Controls.AppBuilderBase`1.UseRenderingSubsystem(System.String)">
@@ -489,13 +506,6 @@
         </member>
         <member name="M:Avalonia.Controls.Generators.TreeItemContainerGenerator`1.CreateContainer(System.Object)">
             <inheritdoc/>
-        </member>
-        <member name="M:Avalonia.Controls.Generators.TreeItemContainerGenerator`1.GetTreeDataTemplate(System.Object,Avalonia.Controls.Templates.IDataTemplate)">
-            <summary>
-            Gets the data template for the specified item.
-            </summary>
-            <param name="item">The item.</param>
-            <returns>The template.</returns>
         </member>
         <member name="T:Avalonia.Controls.Generators.ItemContainerGenerator`1">
             <summary>
@@ -2235,6 +2245,9 @@
         <member name="P:Avalonia.Controls.Presenters.ItemVirtualizerSimple.ViewportValue">
             <inheritdoc/>
         </member>
+        <member name="M:Avalonia.Controls.Presenters.ItemVirtualizerSimple.MeasureOverride(Avalonia.Size)">
+            <inheritdoc/>
+        </member>
         <member name="M:Avalonia.Controls.Presenters.ItemVirtualizerSimple.UpdateControls">
             <inheritdoc/>
         </member>
@@ -2389,6 +2402,20 @@
             </summary>
             <param name="owner">The items presenter.</param>
             <returns>An <see cref="T:Avalonia.Controls.Presenters.ItemVirtualizer"/>.</returns>
+        </member>
+        <member name="M:Avalonia.Controls.Presenters.ItemVirtualizer.MeasureOverride(Avalonia.Size)">
+            <summary>
+            Carries out a measure for the related <see cref="T:Avalonia.Controls.Presenters.ItemsPresenter"/>.
+            </summary>
+            <param name="availableSize">The size available to the control.</param>
+            <returns>The desired size for the control.</returns>
+        </member>
+        <member name="M:Avalonia.Controls.Presenters.ItemVirtualizer.ArrangeOverride(Avalonia.Size)">
+            <summary>
+            Carries out an arrange for the related <see cref="T:Avalonia.Controls.Presenters.ItemsPresenter"/>.
+            </summary>
+            <param name="finalSize">The size available to the control.</param>
+            <returns>The actual size used.</returns>
         </member>
         <member name="M:Avalonia.Controls.Presenters.ItemVirtualizer.UpdateControls">
             <inheritdoc/>
@@ -2790,6 +2817,9 @@
             <inheritdoc/>
         </member>
         <member name="M:Avalonia.Controls.Presenters.ItemsPresenter.Avalonia#Controls#Primitives#ILogicalScrollable#GetControlInDirection(Avalonia.Input.NavigationDirection,Avalonia.Controls.IControl)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Controls.Presenters.ItemsPresenter.MeasureOverride(Avalonia.Size)">
             <inheritdoc/>
         </member>
         <member name="M:Avalonia.Controls.Presenters.ItemsPresenter.PanelCreated(Avalonia.Controls.IPanel)">
@@ -6907,6 +6937,46 @@
             <summary>
             Defines a platform-specific embeddable window implementation.
             </summary>
+        </member>
+        <member name="T:Avalonia.Platform.ExportAvaloniaModuleAttribute">
+            <summary>
+            Defines an "Avalonia Module", a 3rd party extension to Avalonia that can be automatically initialized by an AppBuilder instance.
+            </summary>
+            <remarks>
+            Avalonia Modules can either be platform independent (ex default control styles provider) or dependent on a
+            specific windowing or rendering subsystem being used (ex native rendering speedup, subsystem-specific interop backends).
+            In the case of a subsystem-specific module, you can specify multiple module implementations, and also a fallback
+            platform-independent module if you so choose. Additionally, these different implementations can be in different assemblies.
+            They just need to all share the same module name.
+            
+            For example, if I had a module Foo that has a special back-end for Skia and a less performant/less user friendly back-end for
+            any other rendering subsystem, I would do the following:
+            <code>
+            // In assembly FooModuleSkia.dll
+            [assembly:ExportAvaloniaModule("Foo", typeof(FooModuleSkia), ForRenderingSubsystem="Skia")]
+            
+            class FooModuleSkia
+            {
+                public FooModuleSkia()
+                {
+                    InitializeModule();
+                }
+            }
+            
+            // In assembly FooModuleFallback.dll
+            [assembly:ExportAvaloniaModule("Foo", typeof(FooModuleFallback))]
+            
+            class FooModuleFallback
+            {
+                public FooModuleFallback()
+                {
+                    InitializeModule();
+                }
+            }
+            
+            </code>
+            The fallback module will only be initialized if the Skia-specific module is not applicable.
+            </remarks>
         </member>
         <member name="T:Avalonia.Platform.IPopupImpl">
             <summary>

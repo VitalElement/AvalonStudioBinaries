@@ -4,43 +4,45 @@
         <name>Avalonia.Base</name>
     </assembly>
     <members>
-        <member name="T:Avalonia.Data.BindingChainNullException">
+        <member name="T:Avalonia.Data.BindingChainException">
             <summary>
             An exception returned through <see cref="T:Avalonia.Data.BindingNotification"/> signalling that a
             requested binding expression could not be evaluated because of a null in one of the links
             of the binding chain.
             </summary>
         </member>
-        <member name="M:Avalonia.Data.BindingChainNullException.#ctor">
+        <member name="M:Avalonia.Data.BindingChainException.#ctor">
             <summary>
-            Initalizes a new instance of the <see cref="T:Avalonia.Data.BindingChainNullException"/> class.
+            Initalizes a new instance of the <see cref="T:Avalonia.Data.BindingChainException"/> class.
             </summary>
         </member>
-        <member name="M:Avalonia.Data.BindingChainNullException.#ctor(System.String)">
+        <member name="M:Avalonia.Data.BindingChainException.#ctor(System.String)">
             <summary>
-            Initalizes a new instance of the <see cref="T:Avalonia.Data.BindingChainNullException"/> class.
+            Initalizes a new instance of the <see cref="T:Avalonia.Data.BindingChainException"/> class.
             </summary>
+            <param name="message">The error message.</param>
         </member>
-        <member name="M:Avalonia.Data.BindingChainNullException.#ctor(System.String,System.String)">
+        <member name="M:Avalonia.Data.BindingChainException.#ctor(System.String,System.String,System.String)">
             <summary>
-            Initalizes a new instance of the <see cref="T:Avalonia.Data.BindingChainNullException"/> class.
+            Initalizes a new instance of the <see cref="T:Avalonia.Data.BindingChainException"/> class.
             </summary>
+            <param name="message">The error message.</param>
             <param name="expression">The expression.</param>
-            <param name="expressionNullPoint">
-            The point in the expression at which the null was encountered.
+            <param name="errorPoint">
+            The point in the expression at which the error was encountered.
             </param>
         </member>
-        <member name="P:Avalonia.Data.BindingChainNullException.Expression">
+        <member name="P:Avalonia.Data.BindingChainException.Expression">
             <summary>
             Gets the expression that could not be evaluated.
             </summary>
         </member>
-        <member name="P:Avalonia.Data.BindingChainNullException.ExpressionNullPoint">
+        <member name="P:Avalonia.Data.BindingChainException.ExpressionErrorPoint">
             <summary>
-            Gets the point in the expression at which the null was encountered.
+            Gets the point in the expression at which the error occured.
             </summary>
         </member>
-        <member name="P:Avalonia.Data.BindingChainNullException.Message">
+        <member name="P:Avalonia.Data.BindingChainException.Message">
             <inheritdoc/>
         </member>
         <member name="T:Avalonia.Data.BindingErrorType">
@@ -235,7 +237,7 @@
             <remarks>
             Whereas an <see cref="T:Avalonia.Data.IBinding"/> holds a description of a binding such as "Bind to the X
             property on a control's DataContext"; this class represents a binding that has been 
-            *instanced* by calling <see cref="!:IBinding.Initiate(IAvaloniaObject, AvaloniaProperty, object)"/>
+            *instanced* by calling <see cref="M:Avalonia.Data.IBinding.Initiate(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty,System.Object,System.Boolean)"/>
             on a target object.
             
             When a binding is initiated, it can return one of 3 possible sources for the binding:
@@ -1947,7 +1949,8 @@
             <param name="property">The property.</param>
             <remarks>
             You won't usually want to call this method directly, instead use the
-            <see cref="M:Avalonia.AvaloniaProperty.Register``2(System.String,``1,System.Boolean,Avalonia.Data.BindingMode,System.Func{``0,``1,``1},System.Action{Avalonia.IAvaloniaObject,System.Boolean})"/> method.
+            <see cref="M:Avalonia.AvaloniaProperty.Register``2(System.String,``1,System.Boolean,Avalonia.Data.BindingMode,System.Func{``0,``1,``1},System.Action{Avalonia.IAvaloniaObject,System.Boolean})"/>
+            method.
             </remarks>
         </member>
         <member name="T:Avalonia.AvaloniaProperty`1">
@@ -2038,11 +2041,6 @@
             <param name="tick">The action to call on each tick.</param>
             <returns>An <see cref="T:System.IDisposable"/> used to stop the timer.</returns>
         </member>
-        <member name="M:Avalonia.Platform.IPlatformThreadingInterface.Signal">
-            <summary>
-            Sends a message that causes <see cref="!:ProcessMessage"/> to exit.
-            </summary>
-        </member>
         <member name="T:Avalonia.Platform.PlatformHandle">
             <summary>
             Represents a platform-specific handle.
@@ -2080,7 +2078,6 @@
             <param name="index">
             The binding index. Later bindings should have higher indexes.
             </param>
-            <param name="validation">The validation settings for the binding.</param>
         </member>
         <member name="P:Avalonia.PriorityBindingEntry.Observable">
             <summary>

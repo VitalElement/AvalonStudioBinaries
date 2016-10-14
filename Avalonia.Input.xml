@@ -34,6 +34,16 @@
             Whether to ignore the Alt KeyUp event.
             </summary>
         </member>
+        <member name="F:Avalonia.Input.AccessKeyHandler._altIsDown">
+            <summary>
+            Whether the AltKey is down.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Input.AccessKeyHandler._restoreFocusElement">
+            <summary>
+            Element to restore folowing AltKey taking focus.
+            </summary>
+        </member>
         <member name="P:Avalonia.Input.AccessKeyHandler.MainMenu">
             <summary>
             Gets or sets the window's main menu.

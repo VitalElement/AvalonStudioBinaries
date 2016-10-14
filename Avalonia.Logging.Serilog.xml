@@ -4,5 +4,25 @@
         <name>Avalonia.Logging.Serilog</name>
     </assembly>
     <members>
+        <member name="T:Avalonia.Logging.Serilog.SerilogLogger">
+            <summary>
+            Sends log output to serilog.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Logging.Serilog.SerilogLogger.#ctor(Serilog.ILogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Logging.Serilog.SerilogLogger"/> class.
+            </summary>
+            <param name="output">The serilog logger to use.</param>
+        </member>
+        <member name="M:Avalonia.Logging.Serilog.SerilogLogger.Initialize(Serilog.ILogger)">
+            <summary>
+            Initializes the Avalonia logging with a new instance of a <see cref="T:Avalonia.Logging.Serilog.SerilogLogger"/>.
+            </summary>
+            <param name="output">The serilog logger to use.</param>
+        </member>
+        <member name="M:Avalonia.Logging.Serilog.SerilogLogger.Log(Avalonia.Logging.LogEventLevel,System.String,System.Object,System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
     </members>
 </doc>
