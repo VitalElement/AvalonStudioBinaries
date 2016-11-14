@@ -4,60 +4,67 @@
     </assembly>
     <members>
         <member name="T:SkiaSharp.GRBackend">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
+            <summary>Possible 3D APIs that may be used by Ganesh.</summary>
+            <remarks />
         </member>
         <member name="F:SkiaSharp.GRBackend.OpenGL">
-            <summary>To be added.</summary>
+            <summary>Use the OpenGL 3D backend.</summary>
         </member>
         <member name="F:SkiaSharp.GRBackend.Vulkan">
-            <summary>To be added.</summary>
+            <summary>Use the Vulkan 3D backend.</summary>
         </member>
         <member name="T:SkiaSharp.GRBackendRenderTargetDesc">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
+            <summary>Wrap an existing render target created by the client in the 3D API with an underlying GRRenderTarget object.</summary>
+            <remarks>
+                <para>The client is responsible for ensuring that the underlying 3D API object lives at least as long as the GRRenderTarget object wrapping it.</para>
+                <para>We require the client to explicitly provide information about the target, such as width, height, and pixel config rather than querying the 3D API for these values. We expect these properties to be immutable even if the 3D API doesn't require this (OpenGL).</para>
+            </remarks>
         </member>
         <member name="P:SkiaSharp.GRBackendRenderTargetDesc.Config">
-            <summary>To be added.</summary>
+            <summary>The color format.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:SkiaSharp.GRBackendRenderTargetDesc.Height">
-            <summary>To be added.</summary>
+            <summary>The height in pixels.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:SkiaSharp.GRBackendRenderTargetDesc.Origin">
-            <summary>To be added.</summary>
+            <summary>The pixel origin.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:SkiaSharp.GRBackendRenderTargetDesc.RenderTargetHandle">
-            <summary>To be added.</summary>
+            <summary>Handle to the 3D API object.</summary>
             <value>To be added.</value>
-            <remarks>To be added.</remarks>
+            <remarks>When using OpenGL, it is the FBO ID.</remarks>
         </member>
         <member name="P:SkiaSharp.GRBackendRenderTargetDesc.SampleCount">
-            <summary>To be added.</summary>
+            <summary> The number of samples per pixel.</summary>
             <value>To be added.</value>
-            <remarks>To be added.</remarks>
+            <remarks>This is used to influence decisions about applying other forms of anti-aliasing.</remarks>
         </member>
         <member name="P:SkiaSharp.GRBackendRenderTargetDesc.StencilBits">
-            <summary>To be added.</summary>
+            <summary>Number of bits of stencil per-pixel.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:SkiaSharp.GRBackendRenderTargetDesc.Width">
-            <summary>To be added.</summary>
+            <summary>The width in pixels.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:SkiaSharp.GRBackendTextureDesc">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
+            <summary>Wrap an existing texture created by the client in the 3D API with an underlying GRTexture object.</summary>
+            <remarks>
+                <para>The client is responsible for ensuring that the texture lives at least as long as the GrTexture object wrapping it. </para>
+                <para>We require the client to explicitly provide information about the texture, such as width, height, and pixel config, rather than querying the 3D API for these values. We expect these to be immutable even if the 3D API doesn't require this (OpenGL).</para>
+                <para>Textures that are also render targets are supported as well. Any ancillary 3D API (stencil buffer, FBO id, etc) objects necessary will be managed.</para>
+            </remarks>
         </member>
         <member name="P:SkiaSharp.GRBackendTextureDesc.Config">
-            <summary>To be added.</summary>
+            <summary>The color format.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
@@ -67,39 +74,39 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="P:SkiaSharp.GRBackendTextureDesc.Height">
-            <summary>To be added.</summary>
+            <summary>The height in pixels.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:SkiaSharp.GRBackendTextureDesc.Origin">
-            <summary>To be added.</summary>
+            <summary>The pixel origin.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:SkiaSharp.GRBackendTextureDesc.SampleCount">
-            <summary>To be added.</summary>
+            <summary> The number of samples per pixel.</summary>
             <value>To be added.</value>
-            <remarks>To be added.</remarks>
+            <remarks>If the render target flag is set and sample count is greater than 0, then an MSAA buffer that resolves to the texture will be created.</remarks>
         </member>
         <member name="P:SkiaSharp.GRBackendTextureDesc.TextureHandle">
-            <summary>To be added.</summary>
+            <summary>Handle to the 3D API object.</summary>
             <value>To be added.</value>
-            <remarks>To be added.</remarks>
+            <remarks>When using OpenGL, it is the Texture ID.</remarks>
         </member>
         <member name="P:SkiaSharp.GRBackendTextureDesc.Width">
-            <summary>To be added.</summary>
+            <summary>The width in pixels.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:SkiaSharp.GRBackendTextureDescFlags">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
+            <summary />
+            <remarks />
         </member>
         <member name="F:SkiaSharp.GRBackendTextureDescFlags.None">
-            <summary>To be added.</summary>
+            <summary>No flags enabled.</summary>
         </member>
         <member name="F:SkiaSharp.GRBackendTextureDescFlags.RenderTarget">
-            <summary>To be added.</summary>
+            <summary>Indicates that the texture is also a render target, and thus should have a GRRenderTarget object.</summary>
         </member>
         <member name="T:SkiaSharp.GRContext">
             <summary>To be added.</summary>
@@ -112,21 +119,21 @@
         </member>
         <member name="M:SkiaSharp.GRContext.Create(SkiaSharp.GRBackend)">
             <param name="backend">To be added.</param>
-            <summary>To be added.</summary>
+            <summary>Creates a GRContext for a backend context.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.GRContext.Create(SkiaSharp.GRBackend,SkiaSharp.GRGlInterface)">
             <param name="backend">To be added.</param>
             <param name="backendContext">To be added.</param>
-            <summary>To be added.</summary>
+            <summary>Creates a GRContext for a backend context.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.GRContext.Create(SkiaSharp.GRBackend,System.IntPtr)">
             <param name="backend">To be added.</param>
             <param name="backendContext">To be added.</param>
-            <summary>To be added.</summary>
+            <summary>Creates a GRContext for a backend context.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
@@ -134,7 +141,7 @@
             <param name="backend">To be added.</param>
             <param name="backendContext">To be added.</param>
             <param name="options">To be added.</param>
-            <summary>To be added.</summary>
+            <summary>Creates a GRContext for a backend context.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
@@ -142,13 +149,18 @@
             <param name="backend">To be added.</param>
             <param name="backendContext">To be added.</param>
             <param name="options">To be added.</param>
-            <summary>To be added.</summary>
+            <summary>Creates a GRContext for a backend context.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.GRContext.Dispose(System.Boolean)">
             <param name="disposing">To be added.</param>
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRContext.Flush(SkiaSharp.GRContextFlushBits)">
+            <param name="flagsBitfield">Flags that control the flushing behavior.</param>
+            <summary>Call to ensure all drawing to the context has been issued to the underlying 3D API.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.GRContext.GetRecommendedSampleCount(SkiaSharp.GRPixelConfig,System.Single)">
@@ -175,6 +187,16 @@
             <param name="maxResourceBytes">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
+        </member>
+        <member name="T:SkiaSharp.GRContextFlushBits">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:SkiaSharp.GRContextFlushBits.Discard">
+            <summary>A client may reach a point where it has partially rendered a frame through a GRContext that it knows the user will never see. This flag causes the flush to skip submission of deferred content to the 3D API during the flush.</summary>
+        </member>
+        <member name="F:SkiaSharp.GRContextFlushBits.None">
+            <summary>No flags.</summary>
         </member>
         <member name="T:SkiaSharp.GRContextOptions">
             <summary>To be added.</summary>
@@ -256,6 +278,19 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:SkiaSharp.GRGlInterface.AssembleAngleInterface(SkiaSharp.GRGlGetProcDelegate)">
+            <param name="get">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRGlInterface.AssembleAngleInterface(System.Object,SkiaSharp.GRGlGetProcDelegate)">
+            <param name="context">To be added.</param>
+            <param name="get">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.GRGlInterface.AssembleGlesInterface(SkiaSharp.GRGlGetProcDelegate)">
             <param name="get">To be added.</param>
             <summary>To be added.</summary>
@@ -301,6 +336,16 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.GRGlInterface.CreateDefaultInterface">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRGlInterface.CreateNativeAngleInterface">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.GRGlInterface.CreateNativeGlInterface">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
@@ -3085,11 +3130,11 @@
         <member name="T:SkiaSharp.SKImage">
             <summary>Abstraction for drawing a rectangle of pixels.</summary>
             <remarks>
-                <para>SkImage is an abstraction for drawing a rectagle of pixels, though the particular type of image could be actually storing its data on the GPU, or as drawing commands (picture or PDF or otherwise), ready to be played back into another canvas.</para>
+                <para>SKImage is an abstraction for drawing a rectagle of pixels, though the particular type of image could be actually storing its data on the GPU, or as drawing commands (picture or PDF or otherwise), ready to be played back into another canvas.</para>
                 <para />
                 <para>The content of SkImage is always immutable, though the actual storage may change, if for example that image can be re-created via encoded data or other means.</para>
                 <para />
-                <para>SkImage always has a non-zero dimensions. If there is a request to create a new image, either directly or via SkSurface, and either of the requested dimensions are zero, then <see langword="null" /> will be returned.</para>
+                <para>SKImage always has a non-zero dimensions. If there is a request to create a new image, either directly or via SKSurface, and either of the requested dimensions are zero, then <see langword="null" /> will be returned.</para>
             </remarks>
         </member>
         <member name="M:SkiaSharp.SKImage.Dispose(System.Boolean)">
@@ -3174,336 +3219,6 @@
             <remarks>
                 <para />
             </remarks>
-        </member>
-        <member name="T:SkiaSharp.SKImageDecoder">
-            <summary>Base class for decoding compressed images into a SkBitmap.</summary>
-            <remarks>
-                <para />
-                <example>
-                    <code lang="C#"><![CDATA[public static void BitmapDecoder(SKCanvas canvas, int width, int height)
-{
-    canvas.Clear(SKColors.White);
-
-    using (var stream = new SKFileStream("image.png"))
-    using (var decoder = new SKImageDecoder(stream))
-    using (var paint = new SKPaint())
-    using (var tf = SKTypeface.FromFamilyName("Arial")) {
-        paint.IsAntialias = true;
-        paint.TextSize = 14;
-        paint.Typeface = tf;
-        paint.Color = SKColors.Black;
-
-        // read / set decoder settings
-        decoder.DitherImage = true;
-        decoder.PreferQualityOverSpeed = true;
-        decoder.SampleSize = 2;
-
-        // decode the image
-        using (var bitmap = new SKBitmap()) {
-            var result = decoder.Decode(stream, bitmap);
-            if (result != SKImageDecoderResult.Failure) {
-                var info = bitmap.Info;
-                var x = 25;
-                var y = 25;
-
-                canvas.DrawBitmap(bitmap, x, y);
-                x += info.Width + 25;
-                y += 14;
-
-                canvas.DrawText(string.Format("Result: {0}", result), x, y, paint);
-                y += 20;
-
-                canvas.DrawText(string.Format("Size: {0}px x {1}px", bitmap.Width, bitmap.Height), x, y, paint);
-                y += 20;
-
-                canvas.DrawText(string.Format("Pixels: {0} @ {1}b/px", bitmap.Pixels.Length, bitmap.BytesPerPixel), x, y, paint);
-            }
-        }
-    }
-}]]></code>
-                </example>.</remarks>
-        </member>
-        <member name="C:SkiaSharp.SKImageDecoder(SkiaSharp.SKStreamRewindable)">
-            <param name="stream">To be added.</param>
-            <summary>Constructs an SKImageDecoder from a stream.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:SkiaSharp.SKImageDecoder.CancelDecode">
-            <summary>Requests that the decoding be canceled.</summary>
-            <remarks>
-                <para>Decoding is synchronous, but for long decodes, a different thread can call this method safely. This sets a state that the decoders will periodically check, and if they see it changed to cancel, they will cancel. This will result in Decode() returning <paramref name="false" />. However, there is no guarantee that the decoder will see the state change in time, so it is possible that CancelDecode() will be called, but will be ignored and Decode() will return <paramref name="true" /> (assuming no other problems were encountered).</para>
-                <para />
-                <para>This state is automatically reset at the beginning of a Decode operation.</para>
-            </remarks>
-        </member>
-        <member name="M:SkiaSharp.SKImageDecoder.Decode(SkiaSharp.SKStream,SkiaSharp.SKBitmap,SkiaSharp.SKColorType,SkiaSharp.SKImageDecoderMode)">
-            <param name="stream">Stream to decode from.</param>
-            <param name="bitmap">Target bitmap</param>
-            <param name="pref">Give preference to this color type</param>
-            <param name="mode">Decoding mode</param>
-            <summary>Given a stream, decode it into the specified bitmap.</summary>
-            <returns>To be added.</returns>
-            <remarks>
-                <para />
-            </remarks>
-        </member>
-        <member name="M:SkiaSharp.SKImageDecoder.DecodeFile(System.String,SkiaSharp.SKBitmap,SkiaSharp.SKColorType,SkiaSharp.SKImageDecoderMode)">
-            <param name="filename">Filename to decode</param>
-            <param name="bitmap">Target bitmap</param>
-            <param name="pref">Give preference to this color type</param>
-            <param name="mode">Decoding mode</param>
-            <summary>
-                <para>Decode the image stored in the specified file, and store the result in the provided bitmap.</para>
-            </summary>
-            <returns>
-                <paramref name="true" /> on success, <paramref name="false" /> on failure.</returns>
-            <remarks>
-                <para />
-            </remarks>
-        </member>
-        <member name="M:SkiaSharp.SKImageDecoder.DecodeFile(System.String,SkiaSharp.SKBitmap,SkiaSharp.SKColorType,SkiaSharp.SKImageDecoderMode,SkiaSharp.SKImageDecoderFormat@)">
-            <param name="filename">Filename to decode</param>
-            <param name="bitmap">Target bitmap</param>
-            <param name="pref">Give preference to this color type</param>
-            <param name="mode">Decoding mode</param>
-            <param name="format">On success, this will contain the format of the decoded file.</param>
-            <summary>Decode the image stored in the specified file, and store the result in the provided bitmap.</summary>
-            <returns>
-                <paramref name="true" /> on success, <paramref name="false" /> on failure.</returns>
-            <remarks>
-                <para />
-            </remarks>
-        </member>
-        <member name="M:SkiaSharp.SKImageDecoder.DecodeFileBounds(System.String,SkiaSharp.SKImageInfo@,SkiaSharp.SKColorType)">
-            <param name="filename">Filename to decode</param>
-            <param name="info">On success, the boundary information about the image will be stored here.</param>
-            <param name="pref">Give preference to this color type</param>
-            <summary>Parses a file to extract the boundary information.</summary>
-            <returns>
-                <paramref name="true" /> on success and the <paramref name="info" /> field set with the image boundary information, <paramref name="false" /> on failure.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:SkiaSharp.SKImageDecoder.DecodeFileBounds(System.String,SkiaSharp.SKImageInfo@,SkiaSharp.SKColorType,SkiaSharp.SKImageDecoderFormat@)">
-            <param name="filename">Filename to decode</param>
-            <param name="info">On success, the boundary information about the image will be stored here.</param>
-            <param name="pref">Give preference to this color type</param>
-            <param name="format">On success, this will contain the format of the decoded file.</param>
-            <summary>Parses a file to extract the boundary information and the detected file format.</summary>
-            <returns>
-                <paramref name="true" /> on success and the <paramref name="info" /> field set with the image boundary information, <paramref name="false" /> on failure.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:SkiaSharp.SKImageDecoder.DecodeMemory(System.Byte[],SkiaSharp.SKBitmap,SkiaSharp.SKColorType,SkiaSharp.SKImageDecoderMode)">
-            <param name="buffer">Byte array containing the image.</param>
-            <param name="bitmap">Target bitmap</param>
-            <param name="pref">Give preference to this color type</param>
-            <param name="mode">Decoding mode</param>
-            <summary>Decodes a image stored on a byte buffer.</summary>
-            <returns>
-                <paramref name="true" /> on success, <paramref name="false" /> on failure.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:SkiaSharp.SKImageDecoder.DecodeMemory(System.Byte[],SkiaSharp.SKBitmap,SkiaSharp.SKColorType,SkiaSharp.SKImageDecoderMode,SkiaSharp.SKImageDecoderFormat@)">
-            <param name="buffer">Byte array containing the image.</param>
-            <param name="bitmap">Target bitmap</param>
-            <param name="pref">Give preference to this color type</param>
-            <param name="mode">Decoding mode</param>
-            <param name="format">On success, this will contain the format of the decoded file.</param>
-            <summary>Decodes a image stored on a byte buffer.</summary>
-            <returns>
-                <paramref name="true" /> on success, <paramref name="false" /> on failure.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:SkiaSharp.SKImageDecoder.DecodeMemoryBounds(System.Byte[],SkiaSharp.SKImageInfo@,SkiaSharp.SKColorType)">
-            <param name="buffer">Byte array containing the image.</param>
-            <param name="info">On success, the boundary information about the image will be stored here.</param>
-            <param name="pref">Give preference to this color type</param>
-            <summary>Parses a byte array to extract the image boundary information.</summary>
-            <returns>
-                <paramref name="true" /> on success and the <paramref name="info" /> field set with the image boundary information, <paramref name="false" /> on failure.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:SkiaSharp.SKImageDecoder.DecodeMemoryBounds(System.Byte[],SkiaSharp.SKImageInfo@,SkiaSharp.SKColorType,SkiaSharp.SKImageDecoderFormat@)">
-            <param name="buffer">Byte array containing the image.</param>
-            <param name="info">On success, the boundary information about the image will be stored here.</param>
-            <param name="pref">Give preference to this color type</param>
-            <param name="format">On success, this will contain the format of the decoded file.</param>
-            <summary>Parses a byte array to extract the image boundary information and the detected file format.</summary>
-            <returns>
-                <paramref name="true" /> on success and the <paramref name="info" /> field set with the image boundary information, <paramref name="false" /> on failure.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:SkiaSharp.SKImageDecoder.DecodeStream(SkiaSharp.SKStreamRewindable,SkiaSharp.SKBitmap,SkiaSharp.SKColorType,SkiaSharp.SKImageDecoderMode)">
-            <param name="stream">Stream containing the image</param>
-            <param name="bitmap">Target bitmap</param>
-            <param name="pref">Give preference to this color type</param>
-            <param name="mode">Decoding mode</param>
-            <summary>Decodes a image from a stream.</summary>
-            <returns>
-                <paramref name="true" /> on success, <paramref name="false" /> on failure.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:SkiaSharp.SKImageDecoder.DecodeStream(SkiaSharp.SKStreamRewindable,SkiaSharp.SKBitmap,SkiaSharp.SKColorType,SkiaSharp.SKImageDecoderMode,SkiaSharp.SKImageDecoderFormat@)">
-            <param name="stream">Stream containing the image</param>
-            <param name="bitmap">Target bitmap</param>
-            <param name="pref">Give preference to this color type</param>
-            <param name="mode">Decoding mode</param>
-            <param name="format">On success, this will contain the format of the decoded file.</param>
-            <summary>Decodes a image from a stream.</summary>
-            <returns>
-                <paramref name="true" /> on success, <paramref name="false" /> on failure.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:SkiaSharp.SKImageDecoder.DecodeStreamBounds(SkiaSharp.SKStreamRewindable,SkiaSharp.SKImageInfo@,SkiaSharp.SKColorType)">
-            <param name="stream">Stream containing the image</param>
-            <param name="info">On success, the boundary information about the image will be stored here.</param>
-            <param name="pref">Give preference to this color type</param>
-            <summary>Parses a stream to extract the image boundary information</summary>
-            <returns>
-                <paramref name="true" /> on success and the <paramref name="info" /> field set with the image boundary information, <paramref name="false" /> on failure.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:SkiaSharp.SKImageDecoder.DecodeStreamBounds(SkiaSharp.SKStreamRewindable,SkiaSharp.SKImageInfo@,SkiaSharp.SKColorType,SkiaSharp.SKImageDecoderFormat@)">
-            <param name="stream">Stream containing the image</param>
-            <param name="info">On success, the boundary information about the image will be stored here.</param>
-            <param name="pref">Give preference to this color type</param>
-            <param name="format">On success, this will contain the format of the decoded file.</param>
-            <summary>Parses a stream to extract the image boundary information and the detected file format.</summary>
-            <returns>
-                <paramref name="true" /> on success and the <paramref name="info" /> field set with the image boundary information, <paramref name="false" /> on failure.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:SkiaSharp.SKImageDecoder.Dispose(System.Boolean)">
-            <param name="disposing">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="P:SkiaSharp.SKImageDecoder.DitherImage">
-            <summary>Controls whether the decoder attempts to dither the image.</summary>
-            <value>
-                <para />
-            </value>
-            <remarks>The default setting is <paramref name="true" />.</remarks>
-        </member>
-        <member name="P:SkiaSharp.SKImageDecoder.Format">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="P:SkiaSharp.SKImageDecoder.FormatName">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:SkiaSharp.SKImageDecoder.GetFormat(SkiaSharp.SKStreamRewindable)">
-            <param name="stream">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:SkiaSharp.SKImageDecoder.GetFormatName(SkiaSharp.SKImageDecoderFormat)">
-            <param name="format">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="P:SkiaSharp.SKImageDecoder.PreferQualityOverSpeed">
-            <summary>Controls whether the decoder chooses quality over speed.</summary>
-            <value>To be added.</value>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="P:SkiaSharp.SKImageDecoder.RequireUnpremultipliedColors">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="P:SkiaSharp.SKImageDecoder.SampleSize">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="P:SkiaSharp.SKImageDecoder.ShouldCancelDecode">
-            <summary>Returns <see langword="true" /> i<paramref name="true" /> if the decoding should stop.</summary>
-            <value>To be added.</value>
-            <remarks>This method is the companion to the <see cref="M:SkiaSharp.SKImageDecoder.CancelDecode" /> method which will request that the decoding of an image stop.   </remarks>
-        </member>
-        <member name="P:SkiaSharp.SKImageDecoder.SkipWritingZeros">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="T:SkiaSharp.SKImageDecoderFormat">
-            <summary>Decoder file format</summary>
-            <remarks>
-                <para />
-            </remarks>
-        </member>
-        <member name="F:SkiaSharp.SKImageDecoderFormat.Astc">
-            <summary>To be added.</summary>
-        </member>
-        <member name="F:SkiaSharp.SKImageDecoderFormat.Bmp">
-            <summary>BMP file</summary>
-        </member>
-        <member name="F:SkiaSharp.SKImageDecoderFormat.Gif">
-            <summary>GIF file</summary>
-        </member>
-        <member name="F:SkiaSharp.SKImageDecoderFormat.Ico">
-            <summary>Ico file</summary>
-        </member>
-        <member name="F:SkiaSharp.SKImageDecoderFormat.Jpeg">
-            <summary>Jpeg File</summary>
-        </member>
-        <member name="F:SkiaSharp.SKImageDecoderFormat.Ktx">
-            <summary>To be added.</summary>
-        </member>
-        <member name="F:SkiaSharp.SKImageDecoderFormat.Pkm">
-            <summary>To be added.</summary>
-        </member>
-        <member name="F:SkiaSharp.SKImageDecoderFormat.Png">
-            <summary>PNG file</summary>
-        </member>
-        <member name="F:SkiaSharp.SKImageDecoderFormat.Unknown">
-            <summary>Unknown file format.</summary>
-        </member>
-        <member name="F:SkiaSharp.SKImageDecoderFormat.Wbmp">
-            <summary>To be added.</summary>
-        </member>
-        <member name="F:SkiaSharp.SKImageDecoderFormat.Webp">
-            <summary>WebP format</summary>
-        </member>
-        <member name="T:SkiaSharp.SKImageDecoderMode">
-            <summary>Flags passed to the <see cref="M:SkiaSharp.SKImageDecoder.Decode" /> method.</summary>
-            <remarks>These flags are used to control whether the decoder should decode the pixels in an image being loaded, of if the caller is merely interested in obtaining the boundary information from the image.</remarks>
-        </member>
-        <member name="F:SkiaSharp.SKImageDecoderMode.DecodeBounds">
-            <summary>Only returns information about the bitmap (boundary).</summary>
-        </member>
-        <member name="F:SkiaSharp.SKImageDecoderMode.DecodePixels">
-            <summary>Return entire bitmap (including pixels)</summary>
-        </member>
-        <member name="T:SkiaSharp.SKImageDecoderResult">
-            <summary>Results from the <see cref="M:SkiaSharp.SKImageDecoder.Decode" /> methods.</summary>
-            <remarks>
-                <para />
-            </remarks>
-        </member>
-        <member name="F:SkiaSharp.SKImageDecoderResult.Failure">
-            <summary>
-                <para>Image failed to decode. bitmap will be unchanged.</para>
-                <para />
-            </summary>
-        </member>
-        <member name="F:SkiaSharp.SKImageDecoderResult.PartialSuccess">
-            <summary>
-                <para>Part of the image decoded. The rest is filled automatically.</para>
-                <para />
-            </summary>
-        </member>
-        <member name="F:SkiaSharp.SKImageDecoderResult.Success">
-            <summary>
-                <para>The entire image was decoded, if Mode was DecodePixels.   Or the bounds were decoded when the mode is DecodeBounds.</para>
-                <para />
-            </summary>
         </member>
         <member name="T:SkiaSharp.SKImageEncodeFormat">
             <summary>Format to use when encoding an SKImage with the <see cref="M:SkiaSharp.SKImage.Encode(SkiaSharp.SKImageEncodeFormat,System.Int32)" /> method.</summary>
@@ -3823,14 +3538,14 @@
         <member name="C:SkiaSharp.SKImageInfo(System.Int32,System.Int32)">
             <param name="width">To be added.</param>
             <param name="height">To be added.</param>
-            <summary>To be added.</summary>
+            <summary>Creates a new SKImageInfo with the specified width and height.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="C:SkiaSharp.SKImageInfo(System.Int32,System.Int32,SkiaSharp.SKColorType)">
             <param name="width">To be added.</param>
             <param name="height">To be added.</param>
             <param name="colorType">To be added.</param>
-            <summary>To be added.</summary>
+            <summary>Creates a new SKImageInfo with the specified width, height and color type.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="C:SkiaSharp.SKImageInfo(System.Int32,System.Int32,SkiaSharp.SKColorType,SkiaSharp.SKAlphaType)">
@@ -3842,11 +3557,11 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:SkiaSharp.SKImageInfo.AlphaType">
-            <summary>Returns the transparency type for the image info.</summary>
+            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:SkiaSharp.SKImageInfo.AlphaType">
-            <summary>To be added.</summary>
+            <summary>Returns the transparency type for the image info.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
@@ -3861,11 +3576,11 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:SkiaSharp.SKImageInfo.ColorType">
-            <summary>Returns the color type.</summary>
+            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:SkiaSharp.SKImageInfo.ColorType">
-            <summary>To be added.</summary>
+            <summary>Returns the color type.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
@@ -3874,11 +3589,11 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:SkiaSharp.SKImageInfo.Height">
-            <summary>Returns the height.</summary>
+            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:SkiaSharp.SKImageInfo.Height">
-            <summary>To be added.</summary>
+            <summary>Returns the height.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
@@ -3912,11 +3627,11 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:SkiaSharp.SKImageInfo.Width">
-            <summary>Returns the width.</summary>
+            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:SkiaSharp.SKImageInfo.Width">
-            <summary>To be added.</summary>
+            <summary>Returns the width.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
@@ -4047,6 +3762,11 @@
             <param name="second">The second matrix to concatenate.</param>
             <summary>Concatenates the specified matrices into the resulting target matrix.   </summary>
             <remarks>Either source matrices can also be the target matrix.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKMatrix.GetValues(System.Single[])">
+            <param name="values">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.SKMatrix.MakeIdentity">
             <summary>Returns the identity matrix.</summary>
@@ -4187,12 +3907,27 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="P:SkiaSharp.SKMatrix.Persp0">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:SkiaSharp.SKMatrix.Persp1">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="P:SkiaSharp.SKMatrix.Persp1">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:SkiaSharp.SKMatrix.Persp2">
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKMatrix.Persp2">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.SKMatrix.PostConcat(SkiaSharp.SKMatrix@,SkiaSharp.SKMatrix@)">
@@ -4239,8 +3974,18 @@
             <summary>The ScaleX component of the SKMatrix.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="P:SkiaSharp.SKMatrix.ScaleX">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:SkiaSharp.SKMatrix.ScaleY">
             <summary>The ScaleY component of the SKMatrix.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKMatrix.ScaleY">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.SKMatrix.SetScaleTranslate(System.Single,System.Single,System.Single,System.Single)">
@@ -4255,22 +4000,47 @@
             <summary>The SkewX component of the SKMatrix.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="P:SkiaSharp.SKMatrix.SkewX">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:SkiaSharp.SKMatrix.SkewY">
             <summary>The SkewY component of the SKMatrix.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKMatrix.SkewY">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:SkiaSharp.SKMatrix.TransX">
             <summary>The TransX component of the SKMatrix.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="P:SkiaSharp.SKMatrix.TransX">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:SkiaSharp.SKMatrix.TransY">
             <summary>The TransY component of the SKMatrix.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKMatrix.TransY">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.SKMatrix.TryInvert(SkiaSharp.SKMatrix@)">
             <param name="inverse">The destination value to store the inverted matrix if the matrix can be inverted.</param>
             <summary>Attempts to invert the matrix, if possible the inverse matrix contains the result.</summary>
             <returns>True if the matrix can be inverted, and the inverse parameter is initialized with the inverted matrix, false otherwise.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKMatrix.Values">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:SkiaSharp.SKMatrixConvolutionTileMode">
@@ -4317,6 +4087,28 @@
         <member name="M:SkiaSharp.SKMemoryStream.SetMemory(System.Byte[])">
             <param name="data">To be added.</param>
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:SkiaSharp.SKNativeObject">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKNativeObject.Dispose">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKNativeObject.Dispose(System.Boolean)">
+            <param name="disposing">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKNativeObject.Finalize">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKNativeObject.Handle">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:SkiaSharp.SKObject">
@@ -4716,7 +4508,7 @@
             <param name="y">To be added.</param>
             <param name="radius">To be added.</param>
             <param name="dir">To be added.</param>
-            <summary>To be added.</summary>
+            <summary>Adds a circle to the current path.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.SKPath.AddOval(SkiaSharp.SKRect,SkiaSharp.SKPathDirection)">
@@ -4781,7 +4573,7 @@
             <param name="rx">To be added.</param>
             <param name="ry">To be added.</param>
             <param name="dir">To be added.</param>
-            <summary>To be added.</summary>
+            <summary>Adds a closed rectangle with rounded corners to the current path.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.SKPath.ArcTo(System.Single,System.Single,System.Single,SkiaSharp.SKPathArcSize,SkiaSharp.SKPathDirection,System.Single,System.Single)">
@@ -4793,6 +4585,11 @@
             <param name="x">To be added.</param>
             <param name="y">To be added.</param>
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKPath.Bounds">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.SKPath.Close">
@@ -4818,6 +4615,11 @@
             <param name="y">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKPath.Convexity">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.SKPath.CreateIterator(System.Boolean)">
@@ -4893,6 +4695,22 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:SkiaSharp.SKPath.GetTightBounds(SkiaSharp.SKRect@)">
+            <param name="result">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKPath.IsConcave">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKPath.IsConvex">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="P:SkiaSharp.SKPath.Item(System.Int32)">
             <param name="index">To be added.</param>
             <summary>To be added.</summary>
@@ -4926,8 +4744,22 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="P:SkiaSharp.SKPath.PointCount">
+        <member name="M:SkiaSharp.SKPath.Op(SkiaSharp.SKPath,SkiaSharp.SKPathOp,SkiaSharp.SKPath)">
+            <param name="other">To be added.</param>
+            <param name="op">To be added.</param>
+            <param name="result">To be added.</param>
             <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKPath.ParseSvgPathData(System.String)">
+            <param name="svgPath">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKPath.PointCount">
+            <summary>Gets the number of points on the path.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
@@ -5021,6 +4853,22 @@
             <summary>Same as <see cref="M:SkiaSharp.SKPath.QuadTo" /> but the coordinates are considered relative to the last point on this contour.</summary>
             <remarks> If no <see cref="M:SkiaSharp.SKPath.MoveTo" /> call has been made for this contour, the first point is automatically set to (0,0).</remarks>
         </member>
+        <member name="M:SkiaSharp.SKPath.Simplify(SkiaSharp.SKPath)">
+            <param name="result">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:SkiaSharp.SKPath.TightBounds">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKPath.ToSvgPathData">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.SKPath.Transform(SkiaSharp.SKMatrix)">
             <param name="matrix">To be added.</param>
             <summary>Applies a transformation matrix to the all the elements in the path.</summary>
@@ -5063,6 +4911,11 @@
                 <para />
             </remarks>
         </member>
+        <member name="M:SkiaSharp.SKPath+Iterator.Dispose(System.Boolean)">
+            <param name="disposing">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:SkiaSharp.SKPath+Iterator.Finalize">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -5095,6 +4948,31 @@
                 <para>When all segments have been visited, returns Verb.Done</para>
             </remarks>
         </member>
+        <member name="T:SkiaSharp.SKPath+OpBuilder">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:SkiaSharp.SKPath+OpBuilder">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKPath+OpBuilder.Add(SkiaSharp.SKPath,SkiaSharp.SKPathOp)">
+            <param name="path">To be added.</param>
+            <param name="op">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKPath+OpBuilder.Dispose(System.Boolean)">
+            <param name="disposing">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:SkiaSharp.SKPath+OpBuilder.Resolve(SkiaSharp.SKPath)">
+            <param name="result">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:SkiaSharp.SKPath+RawIterator">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -5113,6 +4991,11 @@
             <remarks>
                 <para />
             </remarks>
+        </member>
+        <member name="M:SkiaSharp.SKPath+RawIterator.Dispose(System.Boolean)">
+            <param name="disposing">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:SkiaSharp.SKPath+RawIterator.Finalize">
             <summary>To be added.</summary>
@@ -5177,6 +5060,19 @@
             <summary>To be added.</summary>
         </member>
         <member name="F:SkiaSharp.SKPathArcSize.Small">
+            <summary>To be added.</summary>
+        </member>
+        <member name="T:SkiaSharp.SKPathConvexity">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:SkiaSharp.SKPathConvexity.Concave">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.SKPathConvexity.Convex">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.SKPathConvexity.Unknown">
             <summary>To be added.</summary>
         </member>
         <member name="T:SkiaSharp.SKPathDirection">
@@ -5275,6 +5171,25 @@
         </member>
         <member name="F:SkiaSharp.SKPathFillType.Winding">
             <summary>Specifies that "inside" is computed by a non-zero sum of signed edge crossings.</summary>
+        </member>
+        <member name="T:SkiaSharp.SKPathOp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:SkiaSharp.SKPathOp.Difference">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.SKPathOp.Intersect">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.SKPathOp.ReverseDifference">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.SKPathOp.Union">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:SkiaSharp.SKPathOp.Xor">
+            <summary>To be added.</summary>
         </member>
         <member name="T:SkiaSharp.SKPicture">
             <summary>Records drawing commands made to a canvas to be played back at a later time.</summary>
@@ -7118,9 +7033,8 @@
             <summary>The buffer contains UTF-8 encoded characters.</summary>
         </member>
         <member name="T:SkiaSharp.SKTypeface">
-            <summary>The SkTypeface class specifies the typeface and intrinsic style of a font.</summary>
+            <summary>The SKTypeface class specifies the typeface and intrinsic style of a font.</summary>
             <remarks>
-                <para>The SkTypeface class specifies the typeface and intrinsic style of a font.</para>
                 <para>This is used in the paint, along with optionally algorithmic settings like textSize, textSkewX, textScaleX, FakeBoldText, to specifyhow text appears when drawn (and measured).</para>
                 <para />
                 <para>Typeface objects are immutable, and so they can be shared between threads.</para>

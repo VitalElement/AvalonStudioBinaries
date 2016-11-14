@@ -220,6 +220,13 @@
             </summary>
             <returns>The warp adapter.</returns>
         </member>
+        <member name="M:SharpDX.DXGI.Factory4.GetAdapterByLuid(System.Int64)">
+            <summary>
+            Gets the adapter for the specified LUID.
+            </summary>
+            <param name="adapterLuid">A unique value that identifies the adapter.</param>
+            <returns>The adapter.</returns>
+        </member>
         <member name="M:SharpDX.DXGI.Factory4.#ctor(System.IntPtr)">
             <summary>
             Initializes a new instance of the <see cref="T:SharpDX.DXGI.Factory4"/> class.
@@ -1516,42 +1523,42 @@
             <summary>
             Returns true if the <see cref="T:SharpDX.DXGI.Format"/> is a compressed format.
             </summary>
-            <param name="fmt">The format to check for compressed.</param>
+            <param name="format">The format to check for compressed.</param>
             <returns>True if the <see cref="T:SharpDX.DXGI.Format"/> is a compressed format</returns>
         </member>
         <member name="M:SharpDX.DXGI.FormatHelper.IsPacked(SharpDX.DXGI.Format)">
             <summary>
             Determines whether the specified <see cref="T:SharpDX.DXGI.Format"/> is packed.
             </summary>
-            <param name="fmt">The DXGI Format.</param>
+            <param name="format">The DXGI Format.</param>
             <returns><c>true</c> if the specified <see cref="T:SharpDX.DXGI.Format"/> is packed; otherwise, <c>false</c>.</returns>
         </member>
         <member name="M:SharpDX.DXGI.FormatHelper.IsVideo(SharpDX.DXGI.Format)">
             <summary>
             Determines whether the specified <see cref="T:SharpDX.DXGI.Format"/> is video.
             </summary>
-            <param name="fmt">The <see cref="T:SharpDX.DXGI.Format"/>.</param>
+            <param name="format">The <see cref="T:SharpDX.DXGI.Format"/>.</param>
             <returns><c>true</c> if the specified <see cref="T:SharpDX.DXGI.Format"/> is video; otherwise, <c>false</c>.</returns>
         </member>
         <member name="M:SharpDX.DXGI.FormatHelper.IsSRgb(SharpDX.DXGI.Format)">
             <summary>
             Determines whether the specified <see cref="T:SharpDX.DXGI.Format"/> is a SRGB format.
             </summary>
-            <param name="fmt">The <see cref="T:SharpDX.DXGI.Format"/>.</param>
+            <param name="format">The <see cref="T:SharpDX.DXGI.Format"/>.</param>
             <returns><c>true</c> if the specified <see cref="T:SharpDX.DXGI.Format"/> is a SRGB format; otherwise, <c>false</c>.</returns>
         </member>
         <member name="M:SharpDX.DXGI.FormatHelper.IsTypeless(SharpDX.DXGI.Format)">
             <summary>
             Determines whether the specified <see cref="T:SharpDX.DXGI.Format"/> is typeless.
             </summary>
-            <param name="fmt">The <see cref="T:SharpDX.DXGI.Format"/>.</param>
+            <param name="format">The <see cref="T:SharpDX.DXGI.Format"/>.</param>
             <returns><c>true</c> if the specified <see cref="T:SharpDX.DXGI.Format"/> is typeless; otherwise, <c>false</c>.</returns>
         </member>
         <member name="M:SharpDX.DXGI.FormatHelper.ComputeScanlineCount(SharpDX.DXGI.Format,System.Int32)">
             <summary>
             Computes the scanline count (number of scanlines).
             </summary>
-            <param name="fmt">The <see cref="T:SharpDX.DXGI.Format"/>.</param>
+            <param name="format">The <see cref="T:SharpDX.DXGI.Format"/>.</param>
             <param name="height">The height.</param>
             <returns>The scanline count.</returns>
         </member>
@@ -3568,14 +3575,6 @@
             <unmanaged>DXGI_OVERLAY_SUPPORT_FLAG_SCALING</unmanaged>	
             <unmanaged-short>DXGI_OVERLAY_SUPPORT_FLAG_SCALING</unmanaged-short>	
         </member>
-        <member name="F:SharpDX.DXGI.OverlaySupportFlags.None">
-            <summary>	
-            None.	
-            </summary>	
-            <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='']/*" />	
-            <unmanaged>None</unmanaged>	
-            <unmanaged-short>None</unmanaged-short>	
-        </member>
         <member name="T:SharpDX.DXGI.PresentFlags">
             <summary>	
             <p>Identifies how to perform a present operation.</p>	
@@ -4471,13 +4470,12 @@
             The result of the conversion.
             </returns>
         </member>
-        <member name="M:SharpDX.DXGI.Adapter3.RegisterHardwareContentProtectionTeardownStatusEvent(System.IntPtr,System.Int32@)">
+        <member name="M:SharpDX.DXGI.Adapter3.RegisterHardwareContentProtectionTeardownStatusEvent(System.IntPtr)">
             <summary>	
             <p>Registers to receive notification of hardware content protection teardown events.</p>	
             </summary>	
             <param name="hEvent"><dd>  <p>A handle to the event object that the operating system sets when hardware content protection teardown occurs. The <strong>CreateEvent</strong> or <strong>OpenEvent</strong> function returns this handle. </p> </dd></param>	
-            <param name="dwCookieRef"><dd>  <p>A reference to a key value that an application can pass to the <strong><see cref="M:SharpDX.DXGI.Adapter3.UnregisterHardwareContentProtectionTeardownStatus(System.Int32)" /></strong> method to unregister the notification event that <em>hEvent</em> specifies.</p> </dd></param>	
-            <returns><p>If this method succeeds, it returns <strong><see cref="F:SharpDX.Result.Ok" /></strong>. Otherwise, it returns an <strong><see cref="T:SharpDX.Result" /></strong> error code.</p></returns>	
+            <returns><dd>  <p>A reference to a key value that an application can pass to the <strong><see cref="M:SharpDX.DXGI.Adapter3.UnregisterHardwareContentProtectionTeardownStatus(System.Int32)" /></strong> method to unregister the notification event that <em>hEvent</em> specifies.</p> </dd></returns>	
             <remarks>	
             <p>Call <strong><see cref="!:SharpDX.Direct3D11.VideoDevice.GetContentProtectionCaps" /></strong>() to check for the presence of the <strong><see cref="!:SharpDX.Direct3D11.ContentProtectionCaps.HardwareTeardown" /></strong> capability to know whether the hardware contains an automatic teardown mechanism. After the event is signaled, the application can call <strong><see cref="!:SharpDX.Direct3D11.VideoContext1.CheckCryptoSessionStatus" /></strong> to determine the impact of the hardware teardown for a specific <strong><see cref="!:SharpDX.Direct3D11.CryptoSession" /></strong> interface.	
             </p>	
@@ -4501,14 +4499,13 @@
             <unmanaged>void IDXGIAdapter3::UnregisterHardwareContentProtectionTeardownStatus([In] unsigned int dwCookie)</unmanaged>	
             <unmanaged-short>IDXGIAdapter3::UnregisterHardwareContentProtectionTeardownStatus</unmanaged-short>	
         </member>
-        <member name="M:SharpDX.DXGI.Adapter3.QueryVideoMemoryInfo(System.Int32,SharpDX.DXGI.MemorySegmentGroup,SharpDX.DXGI.QueryVideoMemoryInformation@)">
+        <member name="M:SharpDX.DXGI.Adapter3.QueryVideoMemoryInfo(System.Int32,SharpDX.DXGI.MemorySegmentGroup)">
             <summary>	
             <p> This method informs the process of the current budget and process usage. </p>	
             </summary>	
             <param name="nodeIndex"><dd>  <p> Specifies the device's physical adapter for which the video memory information is queried. For single-GPU operation, set this to zero. If there are multiple GPU nodes, set this to the index of the node (the device's physical adapter) for which the video memory information is queried. See Multi-Adapter. </p> </dd></param>	
             <param name="memorySegmentGroup"><dd>  <p> Specifies a <see cref="T:SharpDX.DXGI.MemorySegmentGroup" /> that identifies the group as local or non-local. </p> </dd></param>	
-            <param name="videoMemoryInfoRef"><dd>  <p> Fills in a <see cref="T:SharpDX.DXGI.QueryVideoMemoryInformation" /> structure with the current values. </p> </dd></param>	
-            <returns><p> Returns <see cref="F:SharpDX.Result.Ok" /> if successful; an error code otherwise. For a list of error codes, see DXGI_ERROR. </p></returns>	
+            <returns><dd>  <p> Fills in a <see cref="T:SharpDX.DXGI.QueryVideoMemoryInformation" /> structure with the current values. </p> </dd></returns>	
             <remarks>	
             <p> Applications must explicitly manage their usage of physical memory explicitly and keep usage within the budget assigned to the application process. Processes that cannot kept their usage within their assigned budgets will likely experience stuttering, as they are intermittently frozen and paged-out to allow other processes to run. </p>	
             </remarks>	
@@ -4533,13 +4530,12 @@
             <unmanaged>HRESULT IDXGIAdapter3::SetVideoMemoryReservation([In] unsigned int NodeIndex,[In] DXGI_MEMORY_SEGMENT_GROUP MemorySegmentGroup,[In] unsigned longlong Reservation)</unmanaged>	
             <unmanaged-short>IDXGIAdapter3::SetVideoMemoryReservation</unmanaged-short>	
         </member>
-        <member name="M:SharpDX.DXGI.Adapter3.RegisterVideoMemoryBudgetChangeNotificationEvent(System.IntPtr,System.Int32@)">
+        <member name="M:SharpDX.DXGI.Adapter3.RegisterVideoMemoryBudgetChangeNotificationEvent(System.IntPtr)">
             <summary>	
             <p>This method establishes a correlation between a CPU synchronization object and the budget change event.</p>	
             </summary>	
             <param name="hEvent"><dd>  <p>Specifies a HANDLE for the event.</p> </dd></param>	
-            <param name="dwCookieRef"><dd>  <p>A key value for the window or event to unregister. The  <strong><see cref="M:SharpDX.DXGI.Adapter3.RegisterHardwareContentProtectionTeardownStatusEvent(System.IntPtr,System.Int32@)" /></strong> method returns this value. </p> </dd></param>	
-            <returns><p>This method returns an <see cref="T:SharpDX.Result" /> success or error code.</p></returns>	
+            <returns><dd>  <p>A key value for the window or event to unregister. The  <strong><see cref="M:SharpDX.DXGI.Adapter3.RegisterHardwareContentProtectionTeardownStatusEvent(System.IntPtr)" /></strong> method returns this value. </p> </dd></returns>	
             <remarks>	
             <p>Instead of calling <strong>QueryVideoMemoryInfo</strong> regularly, applications can use CPU synchronization objects to efficiently wake threads when budget changes occur. </p>	
             </remarks>	
@@ -4552,7 +4548,7 @@
             <summary>	
             <p>This method stops notifying a CPU synchronization object whenever a budget change occurs. An application may switch back to polling the information regularly.</p>	
             </summary>	
-            <param name="dwCookie"><dd>  <p>A key value for the window or event to unregister. The  <strong><see cref="M:SharpDX.DXGI.Adapter3.RegisterHardwareContentProtectionTeardownStatusEvent(System.IntPtr,System.Int32@)" /></strong> method returns this value. </p> </dd></param>	
+            <param name="dwCookie"><dd>  <p>A key value for the window or event to unregister. The  <strong><see cref="M:SharpDX.DXGI.Adapter3.RegisterHardwareContentProtectionTeardownStatusEvent(System.IntPtr)" /></strong> method returns this value. </p> </dd></param>	
             <remarks>	
             <p>An application may switch back to polling for the information regularly.</p>	
             </remarks>	
@@ -6013,16 +6009,15 @@
             The result of the conversion.
             </returns>
         </member>
-        <member name="M:SharpDX.DXGI.Output3.CheckOverlaySupport(SharpDX.DXGI.Format,SharpDX.ComObject,System.Int32@)">
+        <member name="M:SharpDX.DXGI.Output3.CheckOverlaySupport(SharpDX.DXGI.Format,SharpDX.ComObject)">
             <summary>	
             No documentation.	
             </summary>	
             <param name="enumFormat">No documentation.</param>	
             <param name="concernedDeviceRef">No documentation.</param>	
-            <param name="flagsRef">No documentation.</param>	
             <returns>No documentation.</returns>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDXGIOutput3::CheckOverlaySupport']/*" />	
-            <unmanaged>HRESULT IDXGIOutput3::CheckOverlaySupport([In] DXGI_FORMAT EnumFormat,[In] IUnknown* pConcernedDevice,[Out] unsigned int* pFlags)</unmanaged>	
+            <unmanaged>HRESULT IDXGIOutput3::CheckOverlaySupport([In] DXGI_FORMAT EnumFormat,[In] IUnknown* pConcernedDevice,[Out] DXGI_OVERLAY_SUPPORT_FLAG* pFlags)</unmanaged>	
             <unmanaged-short>IDXGIOutput3::CheckOverlaySupport</unmanaged-short>	
         </member>
         <member name="T:SharpDX.DXGI.Output4">
@@ -6052,19 +6047,63 @@
             The result of the conversion.
             </returns>
         </member>
-        <member name="M:SharpDX.DXGI.Output4.CheckOverlayColorSpaceSupport(SharpDX.DXGI.Format,SharpDX.DXGI.ColorSpaceType,SharpDX.ComObject,System.Int32@)">
+        <member name="M:SharpDX.DXGI.Output4.CheckOverlayColorSpaceSupport(SharpDX.DXGI.Format,SharpDX.DXGI.ColorSpaceType,SharpDX.ComObject)">
             <summary>	
             <p>Checks for overlay color space support.</p>	
             </summary>	
             <param name="format"><dd>  <p>A <strong><see cref="T:SharpDX.DXGI.Format" /></strong>-typed value for the color format.</p> </dd></param>	
             <param name="colorSpace"><dd>  <p>A <strong><see cref="T:SharpDX.DXGI.ColorSpaceType" /></strong>-typed value that specifies color space type to check overlay support for.</p> </dd></param>	
             <param name="concernedDeviceRef"><dd>  <p>A reference to the Direct3D device interface. <strong>CheckOverlayColorSpaceSupport</strong> returns only support info about this scan-out device. </p> </dd></param>	
-            <param name="flagsRef"><dd>  <p>A reference to a variable that receives a combination of <strong><see cref="T:SharpDX.DXGI.OverlayColorSpaceSupportFlags" /></strong>-typed values that are combined by using a bitwise OR operation. The resulting value specifies options for overlay color space support. </p> </dd></param>	
-            <returns><p>This method returns <strong><see cref="F:SharpDX.Result.Ok" /></strong> on success, or it returns one of the error codes that are described in the DXGI_ERROR topic.</p></returns>	
+            <returns><dd>  <p>A reference to a variable that receives a combination of <strong><see cref="T:SharpDX.DXGI.OverlayColorSpaceSupportFlags" /></strong>-typed values that are combined by using a bitwise OR operation. The resulting value specifies options for overlay color space support. </p> </dd></returns>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDXGIOutput4::CheckOverlayColorSpaceSupport']/*" />	
             <msdn-id>dn903672</msdn-id>	
-            <unmanaged>HRESULT IDXGIOutput4::CheckOverlayColorSpaceSupport([In] DXGI_FORMAT Format,[In] DXGI_COLOR_SPACE_TYPE ColorSpace,[In] IUnknown* pConcernedDevice,[Out] unsigned int* pFlags)</unmanaged>	
+            <unmanaged>HRESULT IDXGIOutput4::CheckOverlayColorSpaceSupport([In] DXGI_FORMAT Format,[In] DXGI_COLOR_SPACE_TYPE ColorSpace,[In] IUnknown* pConcernedDevice,[Out] DXGI_OVERLAY_COLOR_SPACE_SUPPORT_FLAG* pFlags)</unmanaged>	
             <unmanaged-short>IDXGIOutput4::CheckOverlayColorSpaceSupport</unmanaged-short>	
+        </member>
+        <member name="T:SharpDX.DXGI.Output5">
+            <summary>	
+            <p>An <strong><see cref="T:SharpDX.DXGI.Output" /></strong> interface represents an adapter output (such as a monitor).</p>	
+            </summary>	
+            <remarks>	
+            <p>To see the outputs available, use <strong><see cref="M:SharpDX.DXGI.Adapter.GetOutput(System.Int32)" /></strong>. To see the specific output that the swap chain will update, use <strong><see cref="M:SharpDX.DXGI.SwapChain.GetContainingOutput(SharpDX.DXGI.Output@)" /></strong>.</p>	
+            </remarks>	
+            <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDXGIOutput5']/*" />	
+            <msdn-id>bb174546</msdn-id>	
+            <unmanaged>IDXGIOutput5</unmanaged>	
+            <unmanaged-short>IDXGIOutput5</unmanaged-short>	
+        </member>
+        <member name="M:SharpDX.DXGI.Output5.#ctor(System.IntPtr)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpDX.DXGI.Output5"/> class.
+            </summary>
+            <param name="nativePtr">The native pointer.</param>	
+        </member>
+        <member name="M:SharpDX.DXGI.Output5.op_Explicit(System.IntPtr)~SharpDX.DXGI.Output5">
+            <summary>
+            Performs an explicit conversion from <see cref="T:System.IntPtr"/> to <see cref="T:SharpDX.DXGI.Output5"/>. (This method is a shortcut to <see cref="P:SharpDX.CppObject.NativePointer"/>) 
+            </summary>
+            <param name="nativePointer">The native pointer.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:SharpDX.DXGI.Output5.DuplicateOutput1(SharpDX.ComObject,System.Int32,System.Int32,SharpDX.DXGI.Format[])">
+            <summary>	
+            <p>Allows specifying a list of supported formats for fullscreen surfaces that can be returned by the <strong><see cref="T:SharpDX.DXGI.OutputDuplication" /></strong> object.</p>	
+            </summary>	
+            <param name="deviceRef">No documentation.</param>	
+            <param name="flags">No documentation.</param>	
+            <param name="supportedFormatsCount">No documentation.</param>	
+            <param name="supportedFormatsRef">No documentation.</param>	
+            <returns>No documentation.</returns>	
+            <remarks>	
+            <p>This method allows directly receiving the original back buffer format used by a running fullscreen application. For comparison, using the original <strong>DuplicateOutput</strong> function always converts the fullscreen surface to a 32-bit BGRA format. In cases where the current fullscreen application is using a different buffer format, a conversion to 32-bit BGRA incurs a performance penalty. Besides the performance benefit of being able to skip format conversion, using <strong>DuplicateOutput1</strong> also allows receiving the full gamut of colors in cases where a high-color format (such as R10G10B10A2) is being presented. </p><p>The <em>pSupportedFormats</em> array should only contain display scan-out formats. See Format Support for Direct3D Feature Level 11.0 Hardware for  required scan-out formats at each feature level. If the current fullscreen buffer format is not contained in the <em>pSupportedFormats</em> array, DXGI will pick one of the supplied formats and convert the fullscreen buffer to that format before returning from <strong><see cref="M:SharpDX.DXGI.OutputDuplication.AcquireNextFrame(System.Int32,SharpDX.DXGI.OutputDuplicateFrameInformation@,SharpDX.DXGI.Resource@)" /></strong>. The list of supported formats should always contain <see cref="F:SharpDX.DXGI.Format.B8G8R8A8_UNorm" />, as this is the most common format for the desktop.	
+            </p>	
+            </remarks>	
+            <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDXGIOutput5::DuplicateOutput1']/*" />	
+            <msdn-id>mt679496</msdn-id>	
+            <unmanaged>HRESULT IDXGIOutput5::DuplicateOutput1([In] IUnknown* pDevice,[In] unsigned int Flags,[In] unsigned int SupportedFormatsCount,[In, Buffer] const DXGI_FORMAT* pSupportedFormats,[Out] IDXGIOutputDuplication** ppOutputDuplication)</unmanaged>	
+            <unmanaged-short>IDXGIOutput5::DuplicateOutput1</unmanaged-short>	
         </member>
         <member name="T:SharpDX.DXGI.OutputDuplication">
             <summary>	
@@ -7315,16 +7354,15 @@
             <unmanaged>unsigned int IDXGISwapChain3::GetCurrentBackBufferIndex()</unmanaged>	
             <unmanaged-short>IDXGISwapChain3::GetCurrentBackBufferIndex</unmanaged-short>	
         </member>
-        <member name="M:SharpDX.DXGI.SwapChain3.CheckColorSpaceSupport(SharpDX.DXGI.ColorSpaceType,System.Int32@)">
+        <member name="M:SharpDX.DXGI.SwapChain3.CheckColorSpaceSupport(SharpDX.DXGI.ColorSpaceType)">
             <summary>	
             <p>Checks the swap chain's support for color space.</p>	
             </summary>	
             <param name="colorSpace"><dd>  <p>A <strong><see cref="T:SharpDX.DXGI.ColorSpaceType" /></strong>-typed value that specifies color space type to check support for.</p> </dd></param>	
-            <param name="colorSpaceSupportRef"><dd>  <p>A reference to a variable that receives a combination of <strong><see cref="T:SharpDX.DXGI.SwapChainColorSpaceSupportFlags" /></strong>-typed values that are combined by using a bitwise OR operation. The resulting value specifies options for color space support. </p> </dd></param>	
-            <returns><p>This method returns <strong><see cref="F:SharpDX.Result.Ok" /></strong> on success, or it returns one of the error codes that are described in the DXGI_ERROR topic.</p></returns>	
+            <returns><dd>  <p>A reference to a variable that receives a combination of <strong><see cref="T:SharpDX.DXGI.SwapChainColorSpaceSupportFlags" /></strong>-typed values that are combined by using a bitwise OR operation. The resulting value specifies options for color space support. </p> </dd></returns>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDXGISwapChain3::CheckColorSpaceSupport']/*" />	
             <msdn-id>dn903674</msdn-id>	
-            <unmanaged>HRESULT IDXGISwapChain3::CheckColorSpaceSupport([In] DXGI_COLOR_SPACE_TYPE ColorSpace,[Out] unsigned int* pColorSpaceSupport)</unmanaged>	
+            <unmanaged>HRESULT IDXGISwapChain3::CheckColorSpaceSupport([In] DXGI_COLOR_SPACE_TYPE ColorSpace,[Out] DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG* pColorSpaceSupport)</unmanaged>	
             <unmanaged-short>IDXGISwapChain3::CheckColorSpaceSupport</unmanaged-short>	
         </member>
         <member name="M:SharpDX.DXGI.SwapChain3.SetColorSpace1(SharpDX.DXGI.ColorSpaceType)">
@@ -7338,7 +7376,7 @@
             <unmanaged>HRESULT IDXGISwapChain3::SetColorSpace1([In] DXGI_COLOR_SPACE_TYPE ColorSpace)</unmanaged>	
             <unmanaged-short>IDXGISwapChain3::SetColorSpace1</unmanaged-short>	
         </member>
-        <member name="M:SharpDX.DXGI.SwapChain3.ResizeBuffers1(System.Int32,System.Int32,System.Int32,SharpDX.DXGI.Format,System.Int32,System.Int32[],SharpDX.ComObject[])">
+        <member name="M:SharpDX.DXGI.SwapChain3.ResizeBuffers1(System.Int32,System.Int32,System.Int32,SharpDX.DXGI.Format,SharpDX.DXGI.SwapChainFlags,System.Int32[],SharpDX.ComObject[])">
             <summary>	
             <p> Changes the swap chain's back buffer size, format, and number of buffers, where the swap chain was created using a D3D12 command queue as an input device. This should be called when the application window is resized. </p>	
             </summary>	
@@ -7355,10 +7393,10 @@
             </remarks>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDXGISwapChain3::ResizeBuffers1']/*" />	
             <msdn-id>mt403341</msdn-id>	
-            <unmanaged>HRESULT IDXGISwapChain3::ResizeBuffers1([In] unsigned int BufferCount,[In] unsigned int Width,[In] unsigned int Height,[In] DXGI_FORMAT Format,[In] unsigned int SwapChainFlags,[In, Buffer] const unsigned int* pCreationNodeMask,[In, Buffer] const IUnknown** ppPresentQueue)</unmanaged>	
+            <unmanaged>HRESULT IDXGISwapChain3::ResizeBuffers1([In] unsigned int BufferCount,[In] unsigned int Width,[In] unsigned int Height,[In] DXGI_FORMAT Format,[In] DXGI_SWAP_CHAIN_FLAG SwapChainFlags,[In, Buffer] const unsigned int* pCreationNodeMask,[In, Buffer] const IUnknown** ppPresentQueue)</unmanaged>	
             <unmanaged-short>IDXGISwapChain3::ResizeBuffers1</unmanaged-short>	
         </member>
-        <member name="M:SharpDX.DXGI.SwapChain3.ResizeBuffers1(System.Int32,System.Int32,System.Int32,SharpDX.DXGI.Format,System.Int32,System.Int32[],SharpDX.ComArray{SharpDX.ComObject})">
+        <member name="M:SharpDX.DXGI.SwapChain3.ResizeBuffers1(System.Int32,System.Int32,System.Int32,SharpDX.DXGI.Format,SharpDX.DXGI.SwapChainFlags,System.Int32[],SharpDX.ComArray{SharpDX.ComObject})">
             <summary>	
             <p> Changes the swap chain's back buffer size, format, and number of buffers, where the swap chain was created using a D3D12 command queue as an input device. This should be called when the application window is resized. </p>	
             </summary>	
@@ -7375,10 +7413,10 @@
             </remarks>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDXGISwapChain3::ResizeBuffers1']/*" />	
             <msdn-id>mt403341</msdn-id>	
-            <unmanaged>HRESULT IDXGISwapChain3::ResizeBuffers1([In] unsigned int BufferCount,[In] unsigned int Width,[In] unsigned int Height,[In] DXGI_FORMAT Format,[In] unsigned int SwapChainFlags,[In, Buffer] const unsigned int* pCreationNodeMask,[In, Buffer] const IUnknown** ppPresentQueue)</unmanaged>	
+            <unmanaged>HRESULT IDXGISwapChain3::ResizeBuffers1([In] unsigned int BufferCount,[In] unsigned int Width,[In] unsigned int Height,[In] DXGI_FORMAT Format,[In] DXGI_SWAP_CHAIN_FLAG SwapChainFlags,[In, Buffer] const unsigned int* pCreationNodeMask,[In, Buffer] const IUnknown** ppPresentQueue)</unmanaged>	
             <unmanaged-short>IDXGISwapChain3::ResizeBuffers1</unmanaged-short>	
         </member>
-        <member name="M:SharpDX.DXGI.SwapChain3.ResizeBuffers1(System.Int32,System.Int32,System.Int32,SharpDX.DXGI.Format,System.Int32,System.IntPtr,System.IntPtr)">
+        <member name="M:SharpDX.DXGI.SwapChain3.ResizeBuffers1(System.Int32,System.Int32,System.Int32,SharpDX.DXGI.Format,SharpDX.DXGI.SwapChainFlags,System.IntPtr,System.IntPtr)">
             <summary>	
             <p> Changes the swap chain's back buffer size, format, and number of buffers, where the swap chain was created using a D3D12 command queue as an input device. This should be called when the application window is resized. </p>	
             </summary>	
@@ -7395,7 +7433,7 @@
             </remarks>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDXGISwapChain3::ResizeBuffers1']/*" />	
             <msdn-id>mt403341</msdn-id>	
-            <unmanaged>HRESULT IDXGISwapChain3::ResizeBuffers1([In] unsigned int BufferCount,[In] unsigned int Width,[In] unsigned int Height,[In] DXGI_FORMAT Format,[In] unsigned int SwapChainFlags,[In, Buffer] const unsigned int* pCreationNodeMask,[In, Buffer] const IUnknown** ppPresentQueue)</unmanaged>	
+            <unmanaged>HRESULT IDXGISwapChain3::ResizeBuffers1([In] unsigned int BufferCount,[In] unsigned int Width,[In] unsigned int Height,[In] DXGI_FORMAT Format,[In] DXGI_SWAP_CHAIN_FLAG SwapChainFlags,[In, Buffer] const unsigned int* pCreationNodeMask,[In, Buffer] const IUnknown** ppPresentQueue)</unmanaged>	
             <unmanaged-short>IDXGISwapChain3::ResizeBuffers1</unmanaged-short>	
         </member>
         <member name="T:SharpDX.DXGI.SwapChainMedia">

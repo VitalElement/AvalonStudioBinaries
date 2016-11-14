@@ -1517,6 +1517,14 @@
             Provides extension methods for <see cref="T:Avalonia.AvaloniaObject"/> and related classes.
             </summary>
         </member>
+        <member name="M:Avalonia.AvaloniaObjectExtensions.ToBinding``1(System.IObservable{``0})">
+            <summary>
+            Converts an <see cref="T:System.IObservable`1"/> to an <see cref="T:Avalonia.Data.IBinding"/>.
+            </summary>
+            <typeparam name="T">The type produced by the observable.</typeparam>
+            <param name="source">The observable</param>
+            <returns>An <see cref="T:Avalonia.Data.IBinding"/>.</returns>
+        </member>
         <member name="M:Avalonia.AvaloniaObjectExtensions.GetObservable(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty)">
             <summary>
             Gets an observable for a <see cref="T:Avalonia.AvaloniaProperty"/>.

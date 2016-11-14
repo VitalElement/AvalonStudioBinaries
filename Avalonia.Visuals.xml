@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Avalonia.SceneGraph</name>
+        <name>Avalonia.Visuals</name>
     </assembly>
     <members>
         <member name="T:Avalonia.Animation.PageSlide">
@@ -3683,7 +3683,7 @@
             </summary>
             <returns>An <see cref="T:Avalonia.Platform.IStreamGeometryImpl"/>.</returns>
         </member>
-        <member name="M:Avalonia.Platform.IPlatformRenderInterface.CreateRenderer(Avalonia.Platform.IPlatformHandle)">
+        <member name="M:Avalonia.Platform.IPlatformRenderInterface.CreateRenderTarget(Avalonia.Platform.IPlatformHandle)">
             <summary>
             Creates a renderer.
             </summary>
@@ -3800,6 +3800,157 @@
             <returns>
             An <see cref="T:Avalonia.Platform.IStreamGeometryContextImpl"/> which can be used to define the geometry.
             </returns>
+        </member>
+        <member name="T:Avalonia.Rendering.IRendererFactory">
+            <summary>
+            Defines a factory for creating <see cref="T:Avalonia.Rendering.IRenderer"/> instances.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Rendering.IRendererFactory.CreateRenderer(Avalonia.Rendering.IRenderRoot,Avalonia.Rendering.IRenderLoop)">
+            <summary>
+            Creates a new renderer for the specified render root.
+            </summary>
+            <param name="root">The render root.</param>
+            <param name="renderLoop">The render loop.</param>
+            <returns>An instance of an <see cref="T:Avalonia.Rendering.IRenderer"/>.</returns>
+        </member>
+        <member name="T:Avalonia.Rendering.IRenderLoop">
+            <summary>
+            Defines the interface implemented by an application render loop.
+            </summary>
+        </member>
+        <member name="E:Avalonia.Rendering.IRenderLoop.Tick">
+            <summary>
+            Raised when the render loop ticks to signal a new frame should be drawn.
+            </summary>
+            <remarks>
+            This event can be raised on any thread; it is the responsibility of the subscriber to
+            switch execution to the right thread.
+            </remarks>
+        </member>
+        <member name="T:Avalonia.Rendering.RendererMixin">
+            <summary>
+            Extension methods for rendering.
+            </summary>
+            <remarks>
+            This class provides implements the platform-independent parts of <see cref="T:Avalonia.Platform.IRenderTarget"/>.
+            </remarks>
+        </member>
+        <member name="P:Avalonia.Rendering.RendererMixin.DrawFpsCounter">
+            <summary>
+            Gets or sets a value which determines whether an FPS counted will be drawn on each
+            rendered frame.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Rendering.RendererMixin.Render(Avalonia.Platform.IRenderTarget,Avalonia.VisualTree.IVisual)">
+            <summary>
+            Renders the specified visual.
+            </summary>
+            <param name="renderTarget">IRenderer instance</param>
+            <param name="visual">The visual to render.</param>
+        </member>
+        <member name="M:Avalonia.Rendering.RendererMixin.Render(Avalonia.Media.DrawingContext,Avalonia.VisualTree.IVisual)">
+            <summary>
+            Renders the specified visual.
+            </summary>
+            <param name="visual">The visual to render.</param>
+            <param name="context">The drawing context.</param>
+        </member>
+        <member name="M:Avalonia.Rendering.RendererMixin.Render(Avalonia.Media.DrawingContext,Avalonia.VisualTree.IVisual,Avalonia.Rect)">
+            <summary>
+            Renders the specified visual.
+            </summary>
+            <param name="visual">The visual to render.</param>
+            <param name="context">The drawing context.</param>
+            <param name="clipRect">
+            The current clip rect, in coordinates relative to <paramref name="visual"/>.
+            </param>
+        </member>
+        <member name="T:Avalonia.Rendering.DefaultRenderLoop">
+            <summary>
+            Defines a default render loop that uses a standard timer.
+            </summary>
+            <remarks>
+            This class may be overridden by platform implementations to use a specialized timer
+            implementation.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Rendering.DefaultRenderLoop.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Rendering.DefaultRenderLoop"/> class.
+            </summary>
+            <param name="framesPerSecond">
+            The number of frames per second at which the loop should run.
+            </param>
+        </member>
+        <member name="P:Avalonia.Rendering.DefaultRenderLoop.FramesPerSecond">
+            <summary>
+            Gets the number of frames per second at which the loop runs.
+            </summary>
+        </member>
+        <member name="E:Avalonia.Rendering.DefaultRenderLoop.Tick">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Rendering.DefaultRenderLoop.Start">
+            <summary>
+            Starts the timer.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Rendering.DefaultRenderLoop.StartCore(System.Action)">
+            <summary>
+            Provides the implementation of starting the timer.
+            </summary>
+            <param name="tick">The method to call on each tick.</param>
+            <remarks>
+            This can be overridden by platform implementations to use a specialized timer
+            implementation.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Rendering.DefaultRenderLoop.Stop">
+            <summary>
+            Stops the timer.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Rendering.IRenderRoot">
+            <summary>
+            Represents the root of a renderable tree.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Rendering.IRenderRoot.ClientSize">
+            <summary>
+            Gets the client size of the window.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Rendering.IRenderRoot.Renderer">
+            <summary>
+            Gets the renderer for the window.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Rendering.IRenderRoot.CreateRenderTarget">
+            <summary>
+            Creates a render target for the window.
+            </summary>
+            <returns>An <see cref="T:Avalonia.Platform.IRenderTarget"/>.</returns>
+        </member>
+        <member name="M:Avalonia.Rendering.IRenderRoot.Invalidate(Avalonia.Rect)">
+            <summary>
+            Adds a rectangle to the window's dirty region.
+            </summary>
+            <param name="rect">The rectangle.</param>
+        </member>
+        <member name="M:Avalonia.Rendering.IRenderRoot.PointToClient(Avalonia.Point)">
+            <summary>
+            Converts a point from screen to client coordinates.
+            </summary>
+            <param name="point">The point in screen coordinates.</param>
+            <returns>The point in client coordinates.</returns>
+        </member>
+        <member name="M:Avalonia.Rendering.IRenderRoot.PointToScreen(Avalonia.Point)">
+            <summary>
+            Converts a point from client to screen coordinates.
+            </summary>
+            <param name="point">The point in client coordinates.</param>
+            <returns>The point in screen coordinates.</returns>
         </member>
         <member name="T:Avalonia.VisualTree.IVisual">
             <summary>
@@ -4814,115 +4965,6 @@
             </summary>
             <returns>The string representation of the rectangle.</returns>
         </member>
-        <member name="T:Avalonia.Rendering.IRenderRoot">
-            <summary>
-            Represents the root of a renderable tree.
-            </summary>
-        </member>
-        <member name="P:Avalonia.Rendering.IRenderRoot.RenderQueueManager">
-            <summary>
-            Gets the render manager which schedules renders.
-            </summary>
-        </member>
-        <member name="M:Avalonia.Rendering.IRenderRoot.PointToClient(Avalonia.Point)">
-            <summary>
-            Converts a point from screen to client coordinates.
-            </summary>
-            <param name="point">The point in screen coordinates.</param>
-            <returns>The point in client coordinates.</returns>
-        </member>
-        <member name="M:Avalonia.Rendering.IRenderRoot.PointToScreen(Avalonia.Point)">
-            <summary>
-            Converts a point from client to screen coordinates.
-            </summary>
-            <param name="point">The point in client coordinates.</param>
-            <returns>The point in screen coordinates.</returns>
-        </member>
-        <member name="T:Avalonia.Rendering.IRenderQueueManager">
-            <summary>
-            Defines the interface for a <see cref="T:Avalonia.Rendering.RenderQueueManager"/>.
-            </summary>
-        </member>
-        <member name="P:Avalonia.Rendering.IRenderQueueManager.RenderNeeded">
-            <summary>
-            Gets an observable that is fired whenever a render is required.
-            </summary>
-        </member>
-        <member name="M:Avalonia.Rendering.IRenderQueueManager.InvalidateRender(Avalonia.VisualTree.IVisual)">
-            <summary>
-            Invalidates the render for the specified visual and raises <see cref="P:Avalonia.Rendering.IRenderQueueManager.RenderNeeded"/>.
-            </summary>
-            <param name="visual">The visual.</param>
-        </member>
-        <member name="M:Avalonia.Rendering.IRenderQueueManager.RenderFinished">
-            <summary>
-            Called when rendering is finished.
-            </summary>
-        </member>
-        <member name="T:Avalonia.Rendering.RendererMixin">
-            <summary>
-            Extension methods for rendering.
-            </summary>
-            <remarks>
-            This class provides implements the platform-independent parts of <see cref="T:Avalonia.Platform.IRenderTarget"/>.
-            </remarks>
-        </member>
-        <member name="P:Avalonia.Rendering.RendererMixin.DrawFpsCounter">
-            <summary>
-            Gets or sets a value which determines whether an FPS counted will be drawn on each
-            rendered frame.
-            </summary>
-        </member>
-        <member name="M:Avalonia.Rendering.RendererMixin.Render(Avalonia.Platform.IRenderTarget,Avalonia.VisualTree.IVisual)">
-            <summary>
-            Renders the specified visual.
-            </summary>
-            <param name="renderTarget">IRenderer instance</param>
-            <param name="visual">The visual to render.</param>
-        </member>
-        <member name="M:Avalonia.Rendering.RendererMixin.Render(Avalonia.Media.DrawingContext,Avalonia.VisualTree.IVisual)">
-            <summary>
-            Renders the specified visual.
-            </summary>
-            <param name="visual">The visual to render.</param>
-            <param name="context">The drawing context.</param>
-        </member>
-        <member name="M:Avalonia.Rendering.RendererMixin.Render(Avalonia.Media.DrawingContext,Avalonia.VisualTree.IVisual,Avalonia.Rect)">
-            <summary>
-            Renders the specified visual.
-            </summary>
-            <param name="visual">The visual to render.</param>
-            <param name="context">The drawing context.</param>
-            <param name="clipRect">
-            The current clip rect, in coordinates relative to <paramref name="visual"/>.
-            </param>
-        </member>
-        <member name="T:Avalonia.Rendering.RenderQueueManager">
-            <summary>
-            Schedules the rendering of a tree.
-            </summary>
-        </member>
-        <member name="P:Avalonia.Rendering.RenderQueueManager.RenderNeeded">
-            <summary>
-            Gets an observable that is fired whenever a render is required.
-            </summary>
-        </member>
-        <member name="P:Avalonia.Rendering.RenderQueueManager.RenderQueued">
-            <summary>
-            Gets a value indicating whether a render is queued.
-            </summary>
-        </member>
-        <member name="M:Avalonia.Rendering.RenderQueueManager.InvalidateRender(Avalonia.VisualTree.IVisual)">
-            <summary>
-            Invalidates the render for the specified visual and raises <see cref="P:Avalonia.Rendering.RenderQueueManager.RenderNeeded"/>.
-            </summary>
-            <param name="visual">The visual.</param>
-        </member>
-        <member name="M:Avalonia.Rendering.RenderQueueManager.RenderFinished">
-            <summary>
-            Called when rendering is finished.
-            </summary>
-        </member>
         <member name="T:Avalonia.Size">
             <summary>
             Defines a size.
@@ -5333,6 +5375,16 @@
             <param name="visual">The visual.</param>
             <param name="point">The point in client coordinates.</param>
             <returns>The point in screen coordinates.</returns>
+        </member>
+        <member name="M:Avalonia.VisualExtensions.TranslatePoint(Avalonia.VisualTree.IVisual,Avalonia.Point,Avalonia.VisualTree.IVisual)">
+            <summary>
+            Translates a point relative to this visual to coordinates that are relative to the specified visual.
+            The visual and relativeTo should be descendants of the same root window
+            </summary>
+            <param name="visual">The visual.</param>
+            <param name="point">The point value, as relative to this visual.</param>
+            <param name="relativeTo">The visual to translate the given point into.</param>
+            <returns>A point value, now relative to the target visual rather than this source element.</returns>
         </member>
         <member name="M:Avalonia.VisualExtensions.GetRootAndPosition(Avalonia.VisualTree.IVisual)">
             <summary>

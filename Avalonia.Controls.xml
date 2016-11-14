@@ -521,6 +521,9 @@
             <param name="contentProperty">The container's Content property.</param>
             <param name="contentTemplateProperty">The container's ContentTemplate property.</param>
         </member>
+        <member name="P:Avalonia.Controls.Generators.ItemContainerGenerator`1.ContainerType">
+            <inheritdoc/>
+        </member>
         <member name="P:Avalonia.Controls.Generators.ItemContainerGenerator`1.ContentProperty">
             <summary>
             Gets the container's Content property.
@@ -637,6 +640,11 @@
         <member name="P:Avalonia.Controls.Generators.IItemContainerGenerator.ItemTemplate">
             <summary>
             Gets or sets the data template used to display the items in the control.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Controls.Generators.IItemContainerGenerator.ContainerType">
+            <summary>
+            Gets the ContainerType, or null if its an untyped ContainerGenerator.
             </summary>
         </member>
         <member name="E:Avalonia.Controls.Generators.IItemContainerGenerator.Materialized">
@@ -5683,9 +5691,9 @@
             Gets the platform-specific window implementation.
             </summary>
         </member>
-        <member name="P:Avalonia.Controls.TopLevel.Avalonia#Rendering#IRenderRoot#RenderQueueManager">
+        <member name="P:Avalonia.Controls.TopLevel.Renderer">
             <summary>
-            Gets the window render manager.
+            Gets the renderer for the window.
             </summary>
         </member>
         <member name="P:Avalonia.Controls.TopLevel.Avalonia#Input#IInputRoot#AccessKeyHandler">
@@ -5718,6 +5726,12 @@
             <summary>
             Whether an auto-size operation is in progress.
             </summary>
+        </member>
+        <member name="M:Avalonia.Controls.TopLevel.Avalonia#Rendering#IRenderRoot#CreateRenderTarget">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Controls.TopLevel.Avalonia#Rendering#IRenderRoot#Invalidate(Avalonia.Rect)">
+            <inheritdoc/>
         </member>
         <member name="M:Avalonia.Controls.TopLevel.Avalonia#Rendering#IRenderRoot#PointToClient(Avalonia.Point)">
             <inheritdoc/>
@@ -5766,8 +5780,8 @@
         </member>
         <member name="M:Avalonia.Controls.TopLevel.TryGetService``1(Avalonia.IAvaloniaDependencyResolver)">
             <summary>
-            Tries to get a service from an <see cref="T:Avalonia.IAvaloniaDependencyResolver"/>, throwing an
-            exception if not found.
+            Tries to get a service from an <see cref="T:Avalonia.IAvaloniaDependencyResolver"/>, logging a
+            warning if not found.
             </summary>
             <typeparam name="T">The service type.</typeparam>
             <param name="resolver">The resolver.</param>
@@ -5882,6 +5896,11 @@
             Enables of disables system window decorations (title bar, buttons, etc)
             </summary>
         </member>
+        <member name="F:Avalonia.Controls.Window.IgnoreTaskbarOnMaximizeProperty">
+            <summary>
+            When system window decorations are disables sets if the Window when maximized ignores the taskbar.
+            </summary>
+        </member>
         <member name="F:Avalonia.Controls.Window.TitleProperty">
             <summary>
             Defines the <see cref="P:Avalonia.Controls.Window.Title"/> property.
@@ -5934,6 +5953,11 @@
             Enables of disables system window decorations (title bar, buttons, etc)
             </summary>
             
+        </member>
+        <member name="P:Avalonia.Controls.Window.IgnoreTaskBarOnMaximize">
+            <summary>
+            When system window decorations are disables sets if the Window when maximized ignores the taskbar.
+            </summary>
         </member>
         <member name="P:Avalonia.Controls.Window.WindowState">
             <summary>
@@ -7136,6 +7160,11 @@
             <summary>
             Enables of disables system window decorations (title bar, buttons, etc)
             </summary>
+        </member>
+        <member name="M:Avalonia.Platform.IWindowImpl.SetIgnoreTaskBarWhenMaximized(System.Boolean)">
+            <summary>
+            When system decorations are disabled sets if the maximized state covers the entire screen or just the working area.
+            </summary>        
         </member>
         <member name="M:Avalonia.Platform.IWindowImpl.SetIcon(Avalonia.Platform.IWindowIconImpl)">
             <summary>
