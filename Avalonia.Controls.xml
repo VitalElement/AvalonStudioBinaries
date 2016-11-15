@@ -573,6 +573,9 @@
             Gets the owner control.
             </summary>
         </member>
+        <member name="P:Avalonia.Controls.Generators.ItemContainerGenerator.ContainerType">
+            <inheritdoc/>
+        </member>
         <member name="M:Avalonia.Controls.Generators.ItemContainerGenerator.Materialize(System.Int32,System.Object,Avalonia.Controls.Templates.IMemberSelector)">
             <inheritdoc/>
         </member>
@@ -5896,11 +5899,6 @@
             Enables of disables system window decorations (title bar, buttons, etc)
             </summary>
         </member>
-        <member name="F:Avalonia.Controls.Window.IgnoreTaskbarOnMaximizeProperty">
-            <summary>
-            When system window decorations are disables sets if the Window when maximized ignores the taskbar.
-            </summary>
-        </member>
         <member name="F:Avalonia.Controls.Window.TitleProperty">
             <summary>
             Defines the <see cref="P:Avalonia.Controls.Window.Title"/> property.
@@ -5953,11 +5951,6 @@
             Enables of disables system window decorations (title bar, buttons, etc)
             </summary>
             
-        </member>
-        <member name="P:Avalonia.Controls.Window.IgnoreTaskBarOnMaximize">
-            <summary>
-            When system window decorations are disables sets if the Window when maximized ignores the taskbar.
-            </summary>
         </member>
         <member name="P:Avalonia.Controls.Window.WindowState">
             <summary>
@@ -7160,11 +7153,6 @@
             <summary>
             Enables of disables system window decorations (title bar, buttons, etc)
             </summary>
-        </member>
-        <member name="M:Avalonia.Platform.IWindowImpl.SetIgnoreTaskBarWhenMaximized(System.Boolean)">
-            <summary>
-            When system decorations are disabled sets if the maximized state covers the entire screen or just the working area.
-            </summary>        
         </member>
         <member name="M:Avalonia.Platform.IWindowImpl.SetIcon(Avalonia.Platform.IWindowIconImpl)">
             <summary>
