@@ -5899,6 +5899,12 @@
             Enables of disables system window decorations (title bar, buttons, etc)
             </summary>
         </member>
+        <member name="F:Avalonia.Controls.Window.CoverTaskbarOnMaximizeProperty">
+            <summary>
+            Sets if the window should cover the taskbar when maximized. Only applies to Windows 
+            with HasSystemDecorations = false.
+            </summary>
+        </member>
         <member name="F:Avalonia.Controls.Window.TitleProperty">
             <summary>
             Defines the <see cref="P:Avalonia.Controls.Window.Title"/> property.
@@ -5951,6 +5957,12 @@
             Enables of disables system window decorations (title bar, buttons, etc)
             </summary>
             
+        </member>
+        <member name="P:Avalonia.Controls.Window.CoverTaskbarOnMaximize">
+            <summary>
+            Sets if the window should cover the taskbar when maximized. Only applies to Windows 
+            with HasSystemDecorations = false.
+            </summary>
         </member>
         <member name="P:Avalonia.Controls.Window.WindowState">
             <summary>
@@ -7153,6 +7165,11 @@
             <summary>
             Enables of disables system window decorations (title bar, buttons, etc)
             </summary>
+        </member>
+        <member name="M:Avalonia.Platform.IWindowImpl.SetCoverTaskbarWhenMaximized(System.Boolean)">
+            <summary>
+            When system decorations are disabled sets if the maximized state covers the entire screen or just the working area.
+            </summary>        
         </member>
         <member name="M:Avalonia.Platform.IWindowImpl.SetIcon(Avalonia.Platform.IWindowIconImpl)">
             <summary>
