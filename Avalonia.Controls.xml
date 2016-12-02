@@ -4437,29 +4437,11 @@
         </member>
         <member name="T:Avalonia.Controls.GridSplitter">
             <summary>
-            Represents the control that redistributes space between columns or rows of a Grid control.
+                Represents the control that redistributes space between columns or rows of a Grid control.
             </summary>
             <remarks>
-            Unlike WPF GridSplitter, Avalonia GridSplitter has only one Behavior, GridResizeBehavior.PreviousAndNext.
+                Unlike WPF GridSplitter, Avalonia GridSplitter has only one Behavior, GridResizeBehavior.PreviousAndNext.
             </remarks>
-        </member>
-        <member name="F:Avalonia.Controls.GridSplitter.OrientationProperty">
-            <summary>
-            Defines the <see cref="P:Avalonia.Controls.GridSplitter.Orientation"/> property.
-            </summary>
-        </member>
-        <member name="P:Avalonia.Controls.GridSplitter.Orientation">
-            <summary>
-            Gets or sets the orientation of the GridsSlitter.
-            </summary>
-            <remarks>
-            if null, it's inferred from column/row definition (should be auto).
-            </remarks>
-        </member>
-        <member name="M:Avalonia.Controls.GridSplitter.#cctor">
-            <summary>
-            Initializes static members of the <see cref="T:Avalonia.Controls.GridSplitter"/> class. 
-            </summary>
         </member>
         <member name="T:Avalonia.Controls.ISelectable">
             <summary>
