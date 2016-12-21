@@ -1,0 +1,524 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Avalonia.Layout</name>
+    </assembly>
+    <members>
+        <member name="T:Avalonia.Layout.ILayoutable">
+            <summary>
+            Defines layout-related functionality for a control.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.ILayoutable.DesiredSize">
+            <summary>
+            Gets the size that this element computed during the measure pass of the layout process.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.ILayoutable.Width">
+            <summary>
+            Gets the width of the element.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.ILayoutable.Height">
+            <summary>
+            Gets the height of the element.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.ILayoutable.MinWidth">
+            <summary>
+            Gets the minimum width of the element.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.ILayoutable.MaxWidth">
+            <summary>
+            Gets the maximum width of the element.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.ILayoutable.MinHeight">
+            <summary>
+            Gets the minimum height of the element.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.ILayoutable.MaxHeight">
+            <summary>
+            Gets the maximum height of the element.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.ILayoutable.Margin">
+            <summary>
+            Gets the margin around the element.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.ILayoutable.HorizontalAlignment">
+            <summary>
+            Gets the element's preferred horizontal alignment in its parent.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.ILayoutable.VerticalAlignment">
+            <summary>
+            Gets the element's preferred vertical alignment in its parent.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.ILayoutable.IsMeasureValid">
+            <summary>
+            Gets a value indicating whether the control's layout measure is valid.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.ILayoutable.IsArrangeValid">
+            <summary>
+            Gets a value indicating whether the control's layouts arrange is valid.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.ILayoutable.PreviousMeasure">
+            <summary>
+            Gets the available size passed in the previous layout pass, if any.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.ILayoutable.PreviousArrange">
+            <summary>
+            Gets the layout rect passed in the previous layout pass, if any.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Layout.ILayoutable.ApplyTemplate">
+            <summary>
+            Creates the visual children of the control, if necessary
+            </summary>
+        </member>
+        <member name="M:Avalonia.Layout.ILayoutable.Measure(Avalonia.Size)">
+            <summary>
+            Carries out a measure of the control.
+            </summary>
+            <param name="availableSize">The available size for the control.</param>
+        </member>
+        <member name="M:Avalonia.Layout.ILayoutable.Arrange(Avalonia.Rect)">
+            <summary>
+            Arranges the control and its children.
+            </summary>
+            <param name="rect">The control's new bounds.</param>
+        </member>
+        <member name="M:Avalonia.Layout.ILayoutable.InvalidateMeasure">
+            <summary>
+            Invalidates the measurement of the control and queues a new layout pass.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Layout.ILayoutable.InvalidateArrange">
+            <summary>
+            Invalidates the arrangement of the control and queues a new layout pass.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Layout.ILayoutable.ChildDesiredSizeChanged(Avalonia.Layout.ILayoutable)">
+            <summary>
+            Called when a child control's desired size changes.
+            </summary>
+            <param name="control">The child control.</param>
+        </member>
+        <member name="T:Avalonia.Layout.ILayoutManager">
+            <summary>
+            Manages measuring and arranging of controls.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Layout.ILayoutManager.InvalidateMeasure(Avalonia.Layout.ILayoutable)">
+            <summary>
+            Notifies the layout manager that a control requires a measure.
+            </summary>
+            <param name="control">The control.</param>
+        </member>
+        <member name="M:Avalonia.Layout.ILayoutManager.InvalidateArrange(Avalonia.Layout.ILayoutable)">
+            <summary>
+            Notifies the layout manager that a control requires an arrange.
+            </summary>
+            <param name="control">The control.</param>
+        </member>
+        <member name="M:Avalonia.Layout.ILayoutManager.ExecuteLayoutPass">
+            <summary>
+            Executes a layout pass.
+            </summary>
+            <remarks>
+            You should not usually need to call this method explictly, the layout manager will
+            schedule layout passes itself.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Layout.ILayoutManager.ExecuteInitialLayoutPass(Avalonia.Layout.ILayoutRoot)">
+            <summary>
+            Executes the initial layout pass on a layout root.
+            </summary>
+            <param name="root">The control to lay out.</param>
+            <remarks>
+            You should not usually need to call this method explictly, the layout root will call
+            it to carry out the initial layout of the control.
+            </remarks>
+        </member>
+        <member name="T:Avalonia.Layout.ILayoutRoot">
+            <summary>
+            Defines the root of a layoutable tree.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.ILayoutRoot.ClientSize">
+            <summary>
+            The size available to lay out the controls.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.ILayoutRoot.MaxClientSize">
+            <summary>
+            The maximum client size available.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.ILayoutRoot.LayoutScaling">
+            <summary>
+            The scaling factor to use in layout.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Layout.HorizontalAlignment">
+            <summary>
+            Defines how a control aligns itself horizontally in its parent control.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Layout.HorizontalAlignment.Stretch">
+            <summary>
+            The control stretches to fill the width of the parent control.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Layout.HorizontalAlignment.Left">
+            <summary>
+            The control aligns itself to the left of the parent control.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Layout.HorizontalAlignment.Center">
+            <summary>
+            The control centers itself in the parent control.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Layout.HorizontalAlignment.Right">
+            <summary>
+            The control aligns itself to the right of the parent control.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Layout.VerticalAlignment">
+            <summary>
+            Defines how a control aligns itself vertically in its parent control.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Layout.VerticalAlignment.Stretch">
+            <summary>
+            The control stretches to fill the height of the parent control.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Layout.VerticalAlignment.Top">
+            <summary>
+            The control aligns itself to the top of the parent control.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Layout.VerticalAlignment.Center">
+            <summary>
+            The control centers itself within the parent control.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Layout.VerticalAlignment.Bottom">
+            <summary>
+            The control aligns itself to the bottom of the parent control.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Layout.Layoutable">
+            <summary>
+            Implements layout-related functionality for a control.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Layout.Layoutable.DesiredSizeProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.Layout.Layoutable.DesiredSize"/> property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Layout.Layoutable.WidthProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.Layout.Layoutable.Width"/> property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Layout.Layoutable.HeightProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.Layout.Layoutable.Height"/> property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Layout.Layoutable.MinWidthProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.Layout.Layoutable.MinWidth"/> property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Layout.Layoutable.MaxWidthProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.Layout.Layoutable.MaxWidth"/> property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Layout.Layoutable.MinHeightProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.Layout.Layoutable.MinHeight"/> property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Layout.Layoutable.MaxHeightProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.Layout.Layoutable.MaxHeight"/> property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Layout.Layoutable.MarginProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.Layout.Layoutable.Margin"/> property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Layout.Layoutable.HorizontalAlignmentProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.Layout.Layoutable.HorizontalAlignment"/> property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Layout.Layoutable.VerticalAlignmentProperty">
+            <summary>
+            Defines the <see cref="P:Avalonia.Layout.Layoutable.VerticalAlignment"/> property.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Layout.Layoutable.UseLayoutRoundingProperty">
+            <summary>
+            Defines the <see cref="F:Avalonia.Layout.Layoutable.UseLayoutRoundingProperty"/> property.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Layout.Layoutable.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:Avalonia.Layout.Layoutable"/> class.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.Layoutable.Width">
+            <summary>
+            Gets or sets the width of the element.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.Layoutable.Height">
+            <summary>
+            Gets or sets the height of the element.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.Layoutable.MinWidth">
+            <summary>
+            Gets or sets the minimum width of the element.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.Layoutable.MaxWidth">
+            <summary>
+            Gets or sets the maximum width of the element.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.Layoutable.MinHeight">
+            <summary>
+            Gets or sets the minimum height of the element.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.Layoutable.MaxHeight">
+            <summary>
+            Gets or sets the maximum height of the element.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.Layoutable.Margin">
+            <summary>
+            Gets or sets the margin around the element.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.Layoutable.HorizontalAlignment">
+            <summary>
+            Gets or sets the element's preferred horizontal alignment in its parent.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.Layoutable.VerticalAlignment">
+            <summary>
+            Gets or sets the element's preferred vertical alignment in its parent.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.Layoutable.DesiredSize">
+            <summary>
+            Gets the size that this element computed during the measure pass of the layout process.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.Layoutable.IsMeasureValid">
+            <summary>
+            Gets a value indicating whether the control's layout measure is valid.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.Layoutable.IsArrangeValid">
+            <summary>
+            Gets a value indicating whether the control's layouts arrange is valid.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.Layoutable.UseLayoutRounding">
+            <summary>
+            Gets or sets a value that determines whether the element should be snapped to pixel
+            boundaries at layout time.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.Layoutable.Avalonia#Layout#ILayoutable#PreviousMeasure">
+            <summary>
+            Gets the available size passed in the previous layout pass, if any.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.Layoutable.Avalonia#Layout#ILayoutable#PreviousArrange">
+            <summary>
+            Gets the layout rect passed in the previous layout pass, if any.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Layout.Layoutable.ApplyTemplate">
+            <summary>
+            Creates the visual children of the control, if necessary
+            </summary>
+        </member>
+        <member name="M:Avalonia.Layout.Layoutable.Measure(Avalonia.Size)">
+            <summary>
+            Carries out a measure of the control.
+            </summary>
+            <param name="availableSize">The available size for the control.</param>
+        </member>
+        <member name="M:Avalonia.Layout.Layoutable.Arrange(Avalonia.Rect)">
+            <summary>
+            Arranges the control and its children.
+            </summary>
+            <param name="rect">The control's new bounds.</param>
+        </member>
+        <member name="M:Avalonia.Layout.Layoutable.InvalidateMeasure">
+            <summary>
+            Invalidates the measurement of the control and queues a new layout pass.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Layout.Layoutable.InvalidateArrange">
+            <summary>
+            Invalidates the arrangement of the control and queues a new layout pass.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Layout.Layoutable.Avalonia#Layout#ILayoutable#ChildDesiredSizeChanged(Avalonia.Layout.ILayoutable)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Layout.Layoutable.AffectsMeasure(Avalonia.AvaloniaProperty[])">
+            <summary>
+            Marks a property as affecting the control's measurement.
+            </summary>
+            <param name="properties">The properties.</param>
+            <remarks>
+            After a call to this method in a control's static constructor, any change to the
+            property will cause <see cref="M:Avalonia.Layout.Layoutable.InvalidateMeasure"/> to be called on the element.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Layout.Layoutable.AffectsArrange(Avalonia.AvaloniaProperty[])">
+            <summary>
+            Marks a property as affecting the control's arrangement.
+            </summary>
+            <param name="properties">The properties.</param>
+            <remarks>
+            After a call to this method in a control's static constructor, any change to the
+            property will cause <see cref="M:Avalonia.Layout.Layoutable.InvalidateArrange"/> to be called on the element.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Layout.Layoutable.MeasureCore(Avalonia.Size)">
+            <summary>
+            The default implementation of the control's measure pass.
+            </summary>
+            <param name="availableSize">The size available to the control.</param>
+            <returns>The desired size for the control.</returns>
+            <remarks>
+            This method calls <see cref="M:Avalonia.Layout.Layoutable.MeasureOverride(Avalonia.Size)"/> which is probably the method you
+            want to override in order to modify a control's arrangement.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Layout.Layoutable.MeasureOverride(Avalonia.Size)">
+            <summary>
+            Measures the control and its child elements as part of a layout pass.
+            </summary>
+            <param name="availableSize">The size available to the control.</param>
+            <returns>The desired size for the control.</returns>
+        </member>
+        <member name="M:Avalonia.Layout.Layoutable.ArrangeCore(Avalonia.Rect)">
+            <summary>
+            The default implementation of the control's arrange pass.
+            </summary>
+            <param name="finalRect">The control's new bounds.</param>
+            <remarks>
+            This method calls <see cref="M:Avalonia.Layout.Layoutable.ArrangeOverride(Avalonia.Size)"/> which is probably the method you
+            want to override in order to modify a control's arrangement.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Layout.Layoutable.ArrangeOverride(Avalonia.Size)">
+            <summary>
+            Positions child elements as part of a layout pass.
+            </summary>
+            <param name="finalSize">The size available to the control.</param>
+            <returns>The actual size used.</returns>
+        </member>
+        <member name="M:Avalonia.Layout.Layoutable.OnVisualParentChanged(Avalonia.VisualTree.IVisual,Avalonia.VisualTree.IVisual)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Layout.Layoutable.AffectsMeasureInvalidate(Avalonia.AvaloniaPropertyChangedEventArgs)">
+            <summary>
+            Calls <see cref="M:Avalonia.Layout.Layoutable.InvalidateMeasure"/> on the control on which a property changed.
+            </summary>
+            <param name="e">The event args.</param>
+        </member>
+        <member name="M:Avalonia.Layout.Layoutable.AffectsArrangeInvalidate(Avalonia.AvaloniaPropertyChangedEventArgs)">
+            <summary>
+            Calls <see cref="M:Avalonia.Layout.Layoutable.InvalidateArrange"/> on the control on which a property changed.
+            </summary>
+            <param name="e">The event args.</param>
+        </member>
+        <member name="M:Avalonia.Layout.Layoutable.IsInvalidRect(Avalonia.Rect)">
+            <summary>
+            Tests whether any of a <see cref="T:Avalonia.Rect"/>'s properties incude nagative values,
+            a NaN or Infinity.
+            </summary>
+            <param name="rect">The rect.</param>
+            <returns>True if the rect is invalid; otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.Layout.Layoutable.IsInvalidSize(Avalonia.Size)">
+            <summary>
+            Tests whether any of a <see cref="T:Avalonia.Size"/>'s properties incude nagative values,
+            a NaN or Infinity.
+            </summary>
+            <param name="size">The size.</param>
+            <returns>True if the size is invalid; otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.Layout.Layoutable.NonNegative(Avalonia.Size)">
+            <summary>
+            Ensures neither component of a <see cref="T:Avalonia.Size"/> is negative.
+            </summary>
+            <param name="size">The size.</param>
+            <returns>The non-negative size.</returns>
+        </member>
+        <member name="T:Avalonia.Layout.LayoutHelper">
+            <summary>
+            Provides helper methods needed for layout.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Layout.LayoutHelper.ApplyLayoutConstraints(Avalonia.Layout.ILayoutable,Avalonia.Size)">
+            <summary>
+            Calculates a control's size based on its <see cref="P:Avalonia.Layout.ILayoutable.Width"/>,
+            <see cref="P:Avalonia.Layout.ILayoutable.Height"/>, <see cref="P:Avalonia.Layout.ILayoutable.MinWidth"/>,
+            <see cref="P:Avalonia.Layout.ILayoutable.MaxWidth"/>, <see cref="P:Avalonia.Layout.ILayoutable.MinHeight"/> and
+            <see cref="P:Avalonia.Layout.ILayoutable.MaxHeight"/>.
+            </summary>
+            <param name="control">The control.</param>
+            <param name="constraints">The space available for the control.</param>
+            <returns>The control's size.</returns>
+        </member>
+        <member name="T:Avalonia.Layout.LayoutManager">
+            <summary>
+            Manages measuring and arranging of controls.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Layout.LayoutManager.Instance">
+            <summary>
+            Gets the layout manager.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Layout.LayoutManager.InvalidateMeasure(Avalonia.Layout.ILayoutable)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Layout.LayoutManager.InvalidateArrange(Avalonia.Layout.ILayoutable)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Layout.LayoutManager.ExecuteLayoutPass">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Layout.LayoutManager.ExecuteInitialLayoutPass(Avalonia.Layout.ILayoutRoot)">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

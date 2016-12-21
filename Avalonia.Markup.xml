@@ -1,0 +1,695 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Avalonia.Markup</name>
+    </assembly>
+    <members>
+        <member name="T:Avalonia.Markup.Data.ExpressionParseException">
+            <summary>
+            Exception thrown when <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/> could not parse the provided
+            expression string.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.ExpressionParseException.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Markup.Data.ExpressionParseException"/> class.
+            </summary>
+            <param name="column">The column position of the error.</param>
+            <param name="message">The exception message.</param>
+        </member>
+        <member name="P:Avalonia.Markup.Data.ExpressionParseException.Column">
+            <summary>
+            Gets the column position at which the error occurred.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Markup.Data.BindingExpression">
+            <summary>
+            Binds to an expression on an object using a type value converter to convert the values
+            that are send and received.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.BindingExpression.#ctor(Avalonia.Markup.Data.ExpressionObserver,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/> class.
+            </summary>
+            <param name="inner">The <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/>.</param>
+            <param name="targetType">The type to convert the value to.</param>
+        </member>
+        <member name="M:Avalonia.Markup.Data.BindingExpression.#ctor(Avalonia.Markup.Data.ExpressionObserver,System.Type,Avalonia.Markup.IValueConverter,System.Object,Avalonia.Data.BindingPriority)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/> class.
+            </summary>
+            <param name="inner">The <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/>.</param>
+            <param name="targetType">The type to convert the value to.</param>
+            <param name="converter">The value converter to use.</param>
+            <param name="converterParameter">
+            A parameter to pass to <paramref name="converter"/>.
+            </param>
+            <param name="priority">The binding priority.</param>
+        </member>
+        <member name="M:Avalonia.Markup.Data.BindingExpression.#ctor(Avalonia.Markup.Data.ExpressionObserver,System.Type,System.Object,Avalonia.Markup.IValueConverter,System.Object,Avalonia.Data.BindingPriority)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/> class.
+            </summary>
+            <param name="inner">The <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/>.</param>
+            <param name="targetType">The type to convert the value to.</param>
+            <param name="fallbackValue">
+            The value to use when the binding is unable to produce a value.
+            </param>
+            <param name="converter">The value converter to use.</param>
+            <param name="converterParameter">
+            A parameter to pass to <paramref name="converter"/>.
+            </param>
+            <param name="priority">The binding priority.</param>
+        </member>
+        <member name="P:Avalonia.Markup.Data.BindingExpression.Converter">
+            <summary>
+            Gets the converter to use on the expression.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Markup.Data.BindingExpression.ConverterParameter">
+            <summary>
+            Gets a parameter to pass to <see cref="P:Avalonia.Markup.Data.BindingExpression.Converter"/>.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Markup.Data.BindingExpression.Avalonia#IDescription#Description">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Markup.Data.BindingExpression.OnCompleted">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Markup.Data.BindingExpression.OnError(System.Exception)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Markup.Data.BindingExpression.OnNext(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Markup.Data.BindingExpression.Subscribe(System.IObserver{System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Avalonia.Markup.Data.Plugins.DataAnnotationsValidationPlugin">
+            <summary>
+            Validates properties on that have <see cref="T:System.ComponentModel.DataAnnotations.ValidationAttribute"/>s.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.DataAnnotationsValidationPlugin.Match(System.WeakReference,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.DataAnnotationsValidationPlugin.Start(System.WeakReference,System.String,Avalonia.Markup.Data.Plugins.IPropertyAccessor)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Avalonia.Markup.Data.Plugins.ExceptionValidationPlugin">
+            <summary>
+            Validates properties that report errors by throwing exceptions.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.ExceptionValidationPlugin.Match(System.WeakReference,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.ExceptionValidationPlugin.Start(System.WeakReference,System.String,Avalonia.Markup.Data.Plugins.IPropertyAccessor)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Avalonia.Markup.Data.Plugins.IndeiValidationPlugin">
+            <summary>
+            Validates properties on objects that implement <see cref="T:System.ComponentModel.INotifyDataErrorInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.IndeiValidationPlugin.Match(System.WeakReference,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.IndeiValidationPlugin.Start(System.WeakReference,System.String,Avalonia.Markup.Data.Plugins.IPropertyAccessor)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Avalonia.Markup.Data.Plugins.IDataValidationPlugin">
+            <summary>
+            Defines how data validation is observed by an <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.IDataValidationPlugin.Match(System.WeakReference,System.String)">
+            <summary>
+            Checks whether this plugin can handle data validation on the specified object.
+            </summary>
+            <param name="reference">A weak reference to the object.</param>
+            <param name="memberName">The name of the member to validate.</param>
+            <returns>True if the plugin can handle the object; otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.IDataValidationPlugin.Start(System.WeakReference,System.String,Avalonia.Markup.Data.Plugins.IPropertyAccessor)">
+            <summary>
+            Starts monitoring the data validation state of a property on an object.
+            </summary>
+            <param name="reference">A weak reference to the object.</param>
+            <param name="propertyName">The property name.</param>
+            <param name="inner">The inner property accessor used to aceess the property.</param>
+            <returns>
+            An <see cref="T:Avalonia.Markup.Data.Plugins.IPropertyAccessor"/> interface through which future interactions with the 
+            property will be made.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Markup.Data.Plugins.AvaloniaPropertyAccessorPlugin">
+            <summary>
+            Reads a property from a <see cref="T:Avalonia.AvaloniaObject"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.AvaloniaPropertyAccessorPlugin.Match(System.WeakReference)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.AvaloniaPropertyAccessorPlugin.Start(System.WeakReference,System.String)">
+            <summary>
+            Starts monitoring the value of a property on an object.
+            </summary>
+            <param name="reference">A weak reference to the object.</param>
+            <param name="propertyName">The property name.</param>
+            <returns>
+            An <see cref="T:Avalonia.Markup.Data.Plugins.IPropertyAccessor"/> interface through which future interactions with the 
+            property will be made.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Markup.Data.Plugins.InpcPropertyAccessorPlugin">
+            <summary>
+            Reads a property from a standard C# object that optionally supports the
+            <see cref="T:System.ComponentModel.INotifyPropertyChanged"/> interface.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.InpcPropertyAccessorPlugin.Match(System.WeakReference)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.InpcPropertyAccessorPlugin.Start(System.WeakReference,System.String)">
+            <summary>
+            Starts monitoring the value of a property on an object.
+            </summary>
+            <param name="reference">The object.</param>
+            <param name="propertyName">The property name.</param>
+            <returns>
+            An <see cref="T:Avalonia.Markup.Data.Plugins.IPropertyAccessor"/> interface through which future interactions with the 
+            property will be made.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Markup.Data.Plugins.IPropertyAccessor">
+            <summary>
+            Defines an accessor to a property on an object returned by a 
+            <see cref="T:Avalonia.Markup.Data.Plugins.IPropertyAccessorPlugin"/>
+            </summary>
+        </member>
+        <member name="P:Avalonia.Markup.Data.Plugins.IPropertyAccessor.PropertyType">
+            <summary>
+            Gets the type of the property.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+            The accessor has not been subscribed to yet.
+            </exception>
+        </member>
+        <member name="P:Avalonia.Markup.Data.Plugins.IPropertyAccessor.Value">
+            <summary>
+            Gets the current value of the property.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.IPropertyAccessor.SetValue(System.Object,Avalonia.Data.BindingPriority)">
+            <summary>
+            Sets the property value.
+            </summary>
+            <param name="value">
+            The value to set. Guaranteed to be of a valid type for the property.
+            </param>
+            <param name="priority">
+            The priority with which to set the value.
+            </param>
+            <returns>
+            True if the property was set; false if the property could not be set.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Markup.Data.Plugins.IPropertyAccessorPlugin">
+            <summary>
+            Defines how a member is read, written and observed by an
+            <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.IPropertyAccessorPlugin.Match(System.WeakReference)">
+            <summary>
+            Checks whether this plugin can handle accessing the properties of the specified object.
+            </summary>
+            <param name="reference">A weak reference to the object.</param>
+            <returns>True if the plugin can handle the object; otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.IPropertyAccessorPlugin.Start(System.WeakReference,System.String)">
+            <summary>
+            Starts monitoring the value of a property on an object.
+            </summary>
+            <param name="reference">A weak reference to the object.</param>
+            <param name="propertyName">The property name.</param>
+            <returns>
+            An <see cref="T:Avalonia.Markup.Data.Plugins.IPropertyAccessor"/> interface through which future interactions with the 
+            property will be made.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Markup.Data.Plugins.ObservableStreamPlugin">
+            <summary>
+            Handles binding to <see cref="T:System.IObservable`1"/>s for the '^' stream binding operator.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.ObservableStreamPlugin.Match(System.WeakReference)">
+            <summary>
+            Checks whether this plugin handles the specified value.
+            </summary>
+            <param name="reference">A weak reference to the value.</param>
+            <returns>True if the plugin can handle the value; otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.ObservableStreamPlugin.Start(System.WeakReference)">
+            <summary>
+            Starts producing output based on the specified value.
+            </summary>
+            <param name="reference">A weak reference to the object.</param>
+            <returns>
+            An observable that produces the output for the value.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Markup.Data.Plugins.TaskStreamPlugin">
+            <summary>
+            Handles binding to <see cref="T:System.Threading.Tasks.Task"/>s for the '^' stream binding operator.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.TaskStreamPlugin.Match(System.WeakReference)">
+            <summary>
+            Checks whether this plugin handles the specified value.
+            </summary>
+            <param name="reference">A weak reference to the value.</param>
+            <returns>True if the plugin can handle the value; otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.TaskStreamPlugin.Start(System.WeakReference)">
+            <summary>
+            Starts producing output based on the specified value.
+            </summary>
+            <param name="reference">A weak reference to the object.</param>
+            <returns>
+            An observable that produces the output for the value.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Markup.Data.Plugins.IStreamPlugin">
+            <summary>
+            Defines a plugin that handles the '^' stream binding operator.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.IStreamPlugin.Match(System.WeakReference)">
+            <summary>
+            Checks whether this plugin handles the specified value.
+            </summary>
+            <param name="reference">A weak reference to the value.</param>
+            <returns>True if the plugin can handle the value; otherwise false.</returns>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.IStreamPlugin.Start(System.WeakReference)">
+            <summary>
+            Starts producing output based on the specified value.
+            </summary>
+            <param name="reference">A weak reference to the object.</param>
+            <returns>
+            An observable that produces the output for the value.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Markup.Data.Plugins.PropertyAccessorBase">
+            <summary>
+            Defines a default base implementation for a <see cref="T:Avalonia.Markup.Data.Plugins.IPropertyAccessor"/>.
+            </summary>
+            <remarks>
+            <see cref="T:Avalonia.Markup.Data.Plugins.IPropertyAccessor"/> is an observable that will only be subscribed to one time.
+            In addition, the subscription can be disposed by calling <see cref="M:Avalonia.Markup.Data.Plugins.PropertyAccessorBase.Dispose"/> on the
+            property accessor itself - this prevents needing to hold two references for a subscription.
+            </remarks>
+        </member>
+        <member name="P:Avalonia.Markup.Data.Plugins.PropertyAccessorBase.PropertyType">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Markup.Data.Plugins.PropertyAccessorBase.Value">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.PropertyAccessorBase.Dispose">
+            <summary>
+            Stops the subscription.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.PropertyAccessorBase.SetValue(System.Object,Avalonia.Data.BindingPriority)">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Markup.Data.Plugins.PropertyAccessorBase.Observer">
+            <summary>
+            The currently subscribed observer.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.PropertyAccessorBase.Subscribe(System.IObserver{System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.PropertyAccessorBase.Dispose(System.Boolean)">
+            <summary>
+            Stops listening to the property.
+            </summary>
+            <param name="disposing">
+            True if the <see cref="M:Avalonia.Markup.Data.Plugins.PropertyAccessorBase.Dispose"/> method was called, false if the object is being
+            finalized.
+            </param>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.PropertyAccessorBase.SubscribeCore(System.IObserver{System.Object})">
+            <summary>
+            When overridden in a derived class, begins listening to the property.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Markup.Data.Plugins.PropertyError">
+            <summary>
+            An <see cref="T:Avalonia.Markup.Data.Plugins.IPropertyAccessor"/> that represents an error.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.PropertyError.#ctor(Avalonia.Data.BindingNotification)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Markup.Data.Plugins.PropertyError"/> class.
+            </summary>
+            <param name="error">The error to report.</param>
+        </member>
+        <member name="P:Avalonia.Markup.Data.Plugins.PropertyError.PropertyType">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Markup.Data.Plugins.PropertyError.Value">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.PropertyError.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.PropertyError.SetValue(System.Object,Avalonia.Data.BindingPriority)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Avalonia.Markup.Data.Plugins.DataValidatiorBase">
+            <summary>
+            Base class for data validators.
+            </summary>
+            <remarks>
+            Data validators are <see cref="T:Avalonia.Markup.Data.Plugins.IPropertyAccessor"/>s that are returned from an 
+            <see cref="T:Avalonia.Markup.Data.Plugins.IDataValidationPlugin"/>. They wrap an inner <see cref="T:Avalonia.Markup.Data.Plugins.IPropertyAccessor"/>
+            and convert any values received from the inner property accessor into
+            <see cref="T:Avalonia.Data.BindingNotification"/>s.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.DataValidatiorBase.#ctor(Avalonia.Markup.Data.Plugins.IPropertyAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Markup.Data.Plugins.DataValidatiorBase"/> class.
+            </summary>
+            <param name="inner">The inner property accessor.</param>
+        </member>
+        <member name="P:Avalonia.Markup.Data.Plugins.DataValidatiorBase.PropertyType">
+            <inheritdoc/>
+        </member>
+        <member name="P:Avalonia.Markup.Data.Plugins.DataValidatiorBase.Value">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.DataValidatiorBase.SetValue(System.Object,Avalonia.Data.BindingPriority)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.DataValidatiorBase.System#IObserver{System#Object}#OnCompleted">
+            <summary>
+            Should never be called: the inner <see cref="T:Avalonia.Markup.Data.Plugins.IPropertyAccessor"/> should never notify
+            completion.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.DataValidatiorBase.System#IObserver{System#Object}#OnError(System.Exception)">
+            <summary>
+            Should never be called: the inner <see cref="T:Avalonia.Markup.Data.Plugins.IPropertyAccessor"/> should never notify
+            an error.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.DataValidatiorBase.System#IObserver{System#Object}#OnNext(System.Object)">
+            <summary>
+            Called when the inner <see cref="T:Avalonia.Markup.Data.Plugins.IPropertyAccessor"/> notifies with a new value.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.DataValidatiorBase.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.DataValidatiorBase.SubscribeCore(System.IObserver{System.Object})">
+            <summary>
+            Begins listening to the inner <see cref="T:Avalonia.Markup.Data.Plugins.IPropertyAccessor"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.Plugins.DataValidatiorBase.InnerValueChanged(System.Object)">
+            <summary>
+            Called when the inner <see cref="T:Avalonia.Markup.Data.Plugins.IPropertyAccessor"/> notifies with a new value.
+            </summary>
+            <param name="value">The value.</param>
+            <remarks>
+            Notifies the observer that the value has changed. The value will be wrapped in a
+            <see cref="T:Avalonia.Data.BindingNotification"/> if it is not already a binding notification.
+            </remarks>
+        </member>
+        <member name="T:Avalonia.Markup.Data.ExpressionObserver">
+            <summary>
+            Observes and sets the value of an expression on an object.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Markup.Data.ExpressionObserver.PropertyAccessors">
+            <summary>
+            An ordered collection of property accessor plugins that can be used to customize
+            the reading and subscription of property values on a type.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Markup.Data.ExpressionObserver.DataValidators">
+            <summary>
+            An ordered collection of validation checker plugins that can be used to customize
+            the validation of view model and model data.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Markup.Data.ExpressionObserver.StreamHandlers">
+            <summary>
+            An ordered collection of stream plugins that can be used to customize the behavior
+            of the '^' stream binding operator.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.ExpressionObserver.#ctor(System.Object,System.String,System.Boolean,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/> class.
+            </summary>
+            <param name="root">The root object.</param>
+            <param name="expression">The expression.</param>
+            <param name="enableDataValidation">Whether data validation should be enabled.</param>
+            <param name="description">
+            A description of the expression. If null, <paramref name="expression"/> will be used.
+            </param>
+        </member>
+        <member name="M:Avalonia.Markup.Data.ExpressionObserver.#ctor(System.IObservable{System.Object},System.String,System.Boolean,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/> class.
+            </summary>
+            <param name="rootObservable">An observable which provides the root object.</param>
+            <param name="expression">The expression.</param>
+            <param name="enableDataValidation">Whether data validation should be enabled.</param>
+            <param name="description">
+            A description of the expression. If null, <paramref name="expression"/> will be used.
+            </param>
+        </member>
+        <member name="M:Avalonia.Markup.Data.ExpressionObserver.#ctor(System.Func{System.Object},System.String,System.IObservable{System.Reactive.Unit},System.Boolean,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/> class.
+            </summary>
+            <param name="rootGetter">A function which gets the root object.</param>
+            <param name="expression">The expression.</param>
+            <param name="update">An observable which triggers a re-read of the getter.</param>
+            <param name="enableDataValidation">Whether data validation should be enabled.</param>
+            <param name="description">
+            A description of the expression. If null, <paramref name="expression"/> will be used.
+            </param>
+        </member>
+        <member name="M:Avalonia.Markup.Data.ExpressionObserver.SetValue(System.Object,Avalonia.Data.BindingPriority)">
+            <summary>
+            Attempts to set the value of a property expression.
+            </summary>
+            <param name="value">The value to set.</param>
+            <param name="priority">The binding priority to use.</param>
+            <returns>
+            True if the value could be set; false if the expression does not evaluate to a 
+            property. Note that the <see cref="T:Avalonia.Markup.Data.ExpressionObserver"/> must be subscribed to
+            before setting the target value can work, as setting the value requires the
+            expression to be evaluated.
+            </returns>
+        </member>
+        <member name="P:Avalonia.Markup.Data.ExpressionObserver.Description">
+            <summary>
+            Gets a description of the expression being observed.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Markup.Data.ExpressionObserver.Expression">
+            <summary>
+            Gets the expression being observed.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Markup.Data.ExpressionObserver.ResultType">
+            <summary>
+            Gets the type of the expression result or null if the expression could not be 
+            evaluated.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Markup.Data.ExpressionObserver.Leaf">
+            <summary>
+            Gets the leaf node.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.Data.ExpressionObserver.SubscribeCore(System.IObserver{System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Avalonia.Markup.ControlLocator">
+            <summary>
+            Locates controls relative to other controls.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.ControlLocator.Track(Avalonia.Controls.IControl,System.String)">
+            <summary>
+            Tracks a named control relative to another control.
+            </summary>
+            <param name="relativeTo">
+            The control relative from which the other control should be found.
+            </param>
+            <param name="name">The name of the control to find.</param>
+        </member>
+        <member name="T:Avalonia.Markup.FuncMultiValueConverter`2">
+            <summary>
+            A general purpose <see cref="T:Avalonia.Markup.IValueConverter"/> that uses a <see cref="T:System.Func`2"/>
+            to provide the converter logic.
+            </summary>
+            <typeparam name="TIn">The type of the inputs.</typeparam>
+            <typeparam name="TOut">The output type.</typeparam>
+        </member>
+        <member name="M:Avalonia.Markup.FuncMultiValueConverter`2.#ctor(System.Func{System.Collections.Generic.IEnumerable{`0},`1})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Markup.FuncValueConverter`2"/> class.
+            </summary>
+            <param name="convert">The convert function.</param>
+        </member>
+        <member name="M:Avalonia.Markup.FuncMultiValueConverter`2.Convert(System.Collections.Generic.IList{System.Object},System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Avalonia.Markup.FuncValueConverter`2">
+            <summary>
+            A general purpose <see cref="T:Avalonia.Markup.IValueConverter"/> that uses a <see cref="T:System.Func`2"/>
+            to provide the converter logic.
+            </summary>
+            <typeparam name="TIn">The input type.</typeparam>
+            <typeparam name="TOut">The output type.</typeparam>
+        </member>
+        <member name="M:Avalonia.Markup.FuncValueConverter`2.#ctor(System.Func{`0,`1})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Markup.FuncValueConverter`2"/> class.
+            </summary>
+            <param name="convert">The convert function.</param>
+        </member>
+        <member name="M:Avalonia.Markup.FuncValueConverter`2.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Avalonia.Markup.FuncValueConverter`2.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Avalonia.Markup.IMultiValueConverter">
+            <summary>
+            Converts multi-binding inputs to a final value.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.IMultiValueConverter.Convert(System.Collections.Generic.IList{System.Object},System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts multi-binding inputs to a final value.
+            </summary>
+            <param name="values">The values to convert.</param>
+            <param name="targetType">The type of the target.</param>
+            <param name="parameter">A user-defined parameter.</param>
+            <param name="culture">The culture to use.</param>
+            <returns>The converted value.</returns>
+            <remarks>
+            This method should not throw exceptions. If the value is not convertible, return
+            <see cref="F:Avalonia.AvaloniaProperty.UnsetValue"/>. Any exception thrown will be treated as
+            an application exception.
+            </remarks>
+        </member>
+        <member name="T:Avalonia.Markup.BoolConverters">
+            <summary>
+            Provides a set of useful <see cref="T:Avalonia.Markup.IValueConverter"/>s for working with string values.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Markup.BoolConverters.And">
+            <summary>
+            A multi-value converter that returns true if all inputs are true.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Markup.StringConverters">
+            <summary>
+            Provides a set of useful <see cref="T:Avalonia.Markup.IValueConverter"/>s for working with string values.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Markup.StringConverters.NullOrEmpty">
+            <summary>
+            A value converter that returns true if the input string is null or an empty string.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Markup.StringConverters.NotNullOrEmpty">
+            <summary>
+            A value converter that returns true if the input string is not null or empty.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Markup.DefaultValueConverter">
+            <summary>
+            Provides a default set of value conversions for bindings that do not specify a value
+            converter.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Markup.DefaultValueConverter.Instance">
+            <summary>
+            Gets an instance of a <see cref="T:Avalonia.Markup.DefaultValueConverter"/>.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.DefaultValueConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The value to convert.</param>
+            <param name="targetType">The type of the target.</param>
+            <param name="parameter">A user-defined parameter.</param>
+            <param name="culture">The culture to use.</param>
+            <returns>The converted value.</returns>
+        </member>
+        <member name="M:Avalonia.Markup.DefaultValueConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The value to convert.</param>
+            <param name="targetType">The type of the target.</param>
+            <param name="parameter">A user-defined parameter.</param>
+            <param name="culture">The culture to use.</param>
+            <returns>The converted value.</returns>
+        </member>
+        <member name="T:Avalonia.Markup.IValueConverter">
+            <summary>
+            Converts a binding value.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Markup.IValueConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The value to convert.</param>
+            <param name="targetType">The type of the target.</param>
+            <param name="parameter">A user-defined parameter.</param>
+            <param name="culture">The culture to use.</param>
+            <returns>The converted value.</returns>
+            <remarks>
+            This method should not throw exceptions. If the value is not convertible, return
+            a <see cref="T:Avalonia.Data.BindingNotification"/> in an error state. Any exceptions thrown will be
+            treated as an application exception.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Markup.IValueConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The value to convert.</param>
+            <param name="targetType">The type of the target.</param>
+            <param name="parameter">A user-defined parameter.</param>
+            <param name="culture">The culture to use.</param>
+            <returns>The converted value.</returns>
+            <remarks>
+            This method should not throw exceptions. If the value is not convertible, return
+            a <see cref="T:Avalonia.Data.BindingNotification"/> in an error state. Any exceptions thrown will be
+            treated as an application exception.
+            </remarks>
+        </member>
+    </members>
+</doc>

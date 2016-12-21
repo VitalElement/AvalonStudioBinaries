@@ -1,0 +1,346 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Avalonia.Animation</name>
+    </assembly>
+    <members>
+        <member name="T:Avalonia.Animation.Animation`1">
+            <summary>
+            Tracks the progress of an animation.
+            </summary>
+            <typeparam name="T">The type of the value being animated./</typeparam>
+        </member>
+        <member name="F:Avalonia.Animation.Animation`1._inner">
+            <summary>
+            The animation being tracked.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Animation.Animation`1._subscription">
+            <summary>
+            The disposable used to cancel the animation.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Animation.Animation`1.#ctor(System.IObservable{`0},System.IDisposable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Animation.Animation`1"/> class.
+            </summary>
+            <param name="inner">The animation observable being tracked.</param>
+            <param name="subscription">A disposable used to cancel the animation.</param>
+        </member>
+        <member name="M:Avalonia.Animation.Animation`1.Dispose">
+            <summary>
+            Cancels the animation.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Animation.Animation`1.Subscribe(System.IObserver{`0})">
+            <summary>
+            Notifies the provider that an observer is to receive notifications.
+            </summary>
+            <param name="observer">The observer.</param>
+            <returns>
+            A reference to an interface that allows observers to stop receiving notifications
+            before the provider has finished sending them.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Animation.Animation">
+            <summary>
+            Tracks the progress of an animation.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Animation.Animation._inner">
+            <summary>
+            The animation being tracked.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Animation.Animation._subscription">
+            <summary>
+            The disposable used to cancel the animation.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Animation.Animation.#ctor(System.IObservable{System.Object},System.IDisposable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Animation.Animation"/> class.
+            </summary>
+            <param name="inner">The animation observable being tracked.</param>
+            <param name="subscription">A disposable used to cancel the animation.</param>
+        </member>
+        <member name="M:Avalonia.Animation.Animation.Dispose">
+            <summary>
+            Cancels the animation.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Animation.Animation.Subscribe(System.IObserver{System.Object})">
+            <summary>
+            Notifies the provider that an observer is to receive notifications.
+            </summary>
+            <param name="observer">The observer.</param>
+            <returns>
+            A reference to an interface that allows observers to stop receiving notifications
+            before the provider has finished sending them.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Animation.Animate">
+            <summary>
+            Utilities for creating animations.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Animation.Animate.FramesPerSecond">
+            <summary>
+            The number of frames per second.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Animation.Animate.Tick">
+            <summary>
+            The time span of each frame.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Animation.Animate.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:Avalonia.Animation.Animate"/> class.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Animation.Animate.Stopwatch">
+            <summary>
+            The stopwatch used to track time.
+            </summary>
+            <value>
+            The stopwatch used to track time.
+            </value>
+        </member>
+        <member name="P:Avalonia.Animation.Animate.Timer">
+            <summary>
+            Gets the animation timer.
+            </summary>
+            <remarks>
+            The animation timer ticks <see cref="F:Avalonia.Animation.Animate.FramesPerSecond"/> times per second. The
+            parameter passed to a subsciber is the time span since the animation system was
+            initialized.
+            </remarks>
+            <value>
+            The animation timer.
+            </value>
+        </member>
+        <member name="M:Avalonia.Animation.Animate.GetTimer(System.TimeSpan)">
+            <summary>
+            Gets a timer that fires every frame for the specified duration.
+            </summary>
+            <param name="duration">The duration of the animation.</param>
+            <returns>
+            An observable that notifies the subscriber of the progress along the animation.
+            </returns>
+            <remarks>
+            The parameter passed to the subscriber is the progress along the animation, with
+            0 being the start and 1 being the end. The observable is guaranteed to fire 0
+            immediately on subscribe and 1 at the end of the duration.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Animation.Animate.Property(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty,System.Object,System.Object,Avalonia.Animation.IEasing,System.TimeSpan)">
+            <summary>
+            Animates a <see cref="T:Avalonia.AvaloniaProperty"/>.
+            </summary>
+            <param name="target">The target object.</param>
+            <param name="property">The target property.</param>
+            <param name="start">The value of the property at the start of the animation.</param>
+            <param name="finish">The value of the property at the end of the animation.</param>
+            <param name="easing">The easing function to use.</param>
+            <param name="duration">The duration of the animation.</param>
+            <returns>An <see cref="T:Avalonia.Animation.Animation"/> that can be used to track or stop the animation.</returns>
+        </member>
+        <member name="M:Avalonia.Animation.Animate.Property``1(Avalonia.IAvaloniaObject,Avalonia.AvaloniaProperty{``0},``0,``0,Avalonia.Animation.IEasing{``0},System.TimeSpan)">
+            <summary>
+            Animates a <see cref="T:Avalonia.AvaloniaProperty"/>.
+            </summary>
+            <typeparam name="T">The property type.</typeparam>
+            <param name="target">The target object.</param>
+            <param name="property">The target property.</param>
+            <param name="start">The value of the property at the start of the animation.</param>
+            <param name="finish">The value of the property at the end of the animation.</param>
+            <param name="easing">The easing function to use.</param>
+            <param name="duration">The duration of the animation.</param>
+            <returns>An <see cref="T:Avalonia.Animation.Animation"/> that can be used to track or stop the animation.</returns>
+        </member>
+        <member name="T:Avalonia.Animation.Animatable">
+            <summary>
+            Base class for control which can have property transitions.
+            </summary>
+        </member>
+        <member name="F:Avalonia.Animation.Animatable._propertyTransitions">
+            <summary>
+            The property transitions for the control.
+            </summary>
+        </member>
+        <member name="P:Avalonia.Animation.Animatable.PropertyTransitions">
+            <summary>
+            Gets or sets the property transitions for the control.
+            </summary>
+            <value>
+            The property transitions for the control.
+            </value>
+        </member>
+        <member name="M:Avalonia.Animation.Animatable.OnPropertyChanged(Avalonia.AvaloniaPropertyChangedEventArgs)">
+            <summary>
+            Reacts to a change in a <see cref="T:Avalonia.AvaloniaProperty"/> value in order to animate the
+            change if a <see cref="T:Avalonia.Animation.PropertyTransition"/> is set for the property..
+            </summary>
+            <param name="e">The event args.</param>
+        </member>
+        <member name="T:Avalonia.Animation.AnimationExtensions">
+            <summary>
+            Defines animation extension methods.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Animation.AnimationExtensions.Transition``1(Avalonia.AvaloniaProperty{``0},System.Int32)">
+            <summary>
+            Returns a new <see cref="T:Avalonia.Animation.PropertyTransition"/> for the specified
+            <see cref="T:Avalonia.AvaloniaProperty"/> using linear easing.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:Avalonia.AvaloniaProperty"/>.</typeparam>
+            <param name="property">The property to animate.</param>
+            <param name="milliseconds">The animation duration in milliseconds.</param>
+            <returns>
+            A <see cref="T:Avalonia.Animation.PropertyTransition"/> that can be added to the
+            <see cref="P:Avalonia.Animation.Animatable.PropertyTransitions"/> collection.
+            </returns>
+        </member>
+        <member name="M:Avalonia.Animation.AnimationExtensions.Transition``1(Avalonia.AvaloniaProperty{``0},System.TimeSpan)">
+            <summary>
+            Returns a new <see cref="T:Avalonia.Animation.PropertyTransition"/> for the specified
+            <see cref="T:Avalonia.AvaloniaProperty"/> using linear easing.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:Avalonia.AvaloniaProperty"/>.</typeparam>
+            <param name="property">The property to animate.</param>
+            <param name="duration">The animation duration.</param>
+            <returns>
+            A <see cref="T:Avalonia.Animation.PropertyTransition"/> that can be added to the
+            <see cref="P:Avalonia.Animation.Animatable.PropertyTransitions"/> collection.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Animation.IEasing`1">
+            <summary>
+            Defines the interface for easing functions.
+            </summary>
+            <typeparam name="T">The type of the property being transitioned.</typeparam>
+        </member>
+        <member name="M:Avalonia.Animation.IEasing`1.Ease(System.Double,`0,`0)">
+            <summary>
+            Returns the value of the transition for the specified progress.
+            </summary>
+            <param name="progress">The progress of the transition, from 0 to 1.</param>
+            <param name="start">The start value of the transition.</param>
+            <param name="finish">The end value of the transition.</param>
+            <returns>
+            A value between <paramref name="start"/> and <paramref name="finish"/> as determined
+            by <paramref name="progress"/>.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Animation.LinearEasing">
+            <summary>
+            Returns a linear <see cref="T:Avalonia.Animation.IEasing"/> for the specified type.
+            </summary>
+            <remarks>
+            Unfortunately this class is needed as there's no way to create a true generic easing
+            function at compile time, as mathematical operators don't have an interface.
+            </remarks>
+        </member>
+        <member name="M:Avalonia.Animation.LinearEasing.For``1">
+            <summary>
+            A linear easing function for the specified type.
+            </summary>
+            <typeparam name="T">The type.</typeparam>
+            <returns>An easing function.</returns>
+        </member>
+        <member name="T:Avalonia.Animation.LinearDoubleEasing">
+            <summary>
+            Linearly eases a double value.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Animation.LinearDoubleEasing.Ease(System.Double,System.Double,System.Double)">
+            <summary>
+            Returns the value of the transition for the specified progress.
+            </summary>
+            <param name="progress">The progress of the transition, from 0 to 1.</param>
+            <param name="start">The start value of the transition.</param>
+            <param name="finish">The end value of the transition.</param>
+            <returns>
+            A value between <paramref name="start"/> and <paramref name="finish"/> as determined
+            by <paramref name="progress"/>.
+            </returns>
+        </member>
+        <member name="M:Avalonia.Animation.LinearDoubleEasing.Avalonia#Animation#IEasing#Ease(System.Double,System.Object,System.Object)">
+            <summary>
+            Returns the value of the transition for the specified progress.
+            </summary>
+            <param name="progress">The progress of the transition, from 0 to 1.</param>
+            <param name="start">The start value of the transition.</param>
+            <param name="finish">The end value of the transition.</param>
+            <returns>
+            A value between <paramref name="start"/> and <paramref name="finish"/> as determined
+            by <paramref name="progress"/>.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Animation.IEasing">
+            <summary>
+            Defines the interface for easing functions.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Animation.IEasing.Ease(System.Double,System.Object,System.Object)">
+            <summary>
+            Returns the value of the transition for the specified progress.
+            </summary>
+            <param name="progress">The progress of the transition, from 0 to 1.</param>
+            <param name="start">The start value of the transition.</param>
+            <param name="finish">The end value of the transition.</param>
+            <returns>
+            A value between <paramref name="start"/> and <paramref name="finish"/> as determined
+            by <paramref name="progress"/>.
+            </returns>
+        </member>
+        <member name="T:Avalonia.Animation.PropertyTransitions">
+            <summary>
+            A collection of <see cref="T:Avalonia.Animation.PropertyTransition"/> definitions.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Animation.PropertyTransitions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Animation.PropertyTransitions"/> class.
+            </summary>
+        </member>
+        <member name="T:Avalonia.Animation.PropertyTransition">
+            <summary>
+            Defines how a property should be animated using a transition.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Animation.PropertyTransition.#ctor(Avalonia.AvaloniaProperty,System.TimeSpan,Avalonia.Animation.IEasing)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Animation.PropertyTransition"/> class.
+            </summary>
+            <param name="property">The property to be animated/</param>
+            <param name="duration">The duration of the animation.</param>
+            <param name="easing">The easing function to use.</param>
+        </member>
+        <member name="P:Avalonia.Animation.PropertyTransition.Property">
+            <summary>
+            Gets the property to be animated.
+            </summary>
+            <value>
+            The property to be animated.
+            </value>
+        </member>
+        <member name="P:Avalonia.Animation.PropertyTransition.Duration">
+            <summary>
+            Gets the duration of the animation.
+            </summary>
+            <value>
+            The duration of the animation.
+            </value>
+        </member>
+        <member name="P:Avalonia.Animation.PropertyTransition.Easing">
+            <summary>
+            Gets the easing function used.
+            </summary>
+            <value>
+            The easing function.
+            </value>
+        </member>
+    </members>
+</doc>

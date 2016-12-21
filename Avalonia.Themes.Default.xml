@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Avalonia.Themes.Default</name>
+    </assembly>
+    <members>
+        <member name="T:Avalonia.Themes.Default.DefaultTheme">
+            <summary>
+            The default Avalonia theme.
+            </summary>
+        </member>
+        <member name="M:Avalonia.Themes.Default.DefaultTheme.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Avalonia.Themes.Default.DefaultTheme"/> class.
+            </summary>
+        </member>
+    </members>
+</doc>
